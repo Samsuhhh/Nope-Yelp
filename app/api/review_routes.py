@@ -29,3 +29,20 @@ def edit_review(id):
 
     return review.to_dict()
   pass ## TODO HANDLE VALIDATION ERRS
+
+
+## DELETE A REVIEW
+@review_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_review():
+  review = Review.query.get(id)
+  ## ERROR HANDLING NONEXISTENT REVIEW
+  if not review:
+    return {"message": "Review couldn't be found", "statusCode":404}
+  ## ERROR HANDLING LOGGED IN USER DID NOT CREATE THIS REVIEW
+  if current_user.id != review.user_id:
+    return {"message":"Forbidden", "statusCode":403}
+  db.session.delete(review)
+  db.session.commit()
+
+  return {"message":"Successfully deleted", "statusCode":200}
