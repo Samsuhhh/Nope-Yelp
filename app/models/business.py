@@ -1,5 +1,5 @@
 from .db import db
-
+from .tag import business_tags
 
 class Business(db.Model):
     __tablename__ = "businesses"
@@ -21,5 +21,6 @@ class Business(db.Model):
 
     owner = db.relationship("User", back_populates="businesses")
     reviews = db.relationship("Review", back_populates="businesses")
-    tags = db.relationship("Tag", back_populates="businesses")
-    business_images = db.relationship("BusinessImage", back_populates="businesses")
+    tags = db.relationship("Tag", secondary=business_tags, back_populates="businesses")
+    business_images = db.relationship(
+        "BusinessImage", back_populates="businesses")
