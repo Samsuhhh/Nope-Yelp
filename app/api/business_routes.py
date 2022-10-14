@@ -1,7 +1,6 @@
-from flask import Blueprint, request, Response, jsonify
+from flask import Blueprint, request, jsonify
 from flask_login import login_required
 from app.models import User, Business, Tag, Review
-## TODO CHECK PATHING ABOVE
 from flask_login import current_user
 from app.forms.business_form import BusinessForm
 from app.forms.review_form import ReviewForm
@@ -60,6 +59,35 @@ def get_review_by_business(id):
   reviews = Review.query.filter(Review.business_id == id).all()
   return {"Reviews": [review.to_dict() for review in reviews]}
 
+
+## CREATE A BUSINESS
+@business_routes.route("/", methods=["POST"])
+@login_required
+def create_business():
+  form = BusinessForm()
+
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    business = Business(
+      business_name = form.business_name.data,
+      email = form.business.data,
+      phone = form.phone.data,
+      owner_id = current_user.id,
+      street_address = form.street_address.data,
+      city = form.city.data,
+      zipcode = form.zipcode.data,
+      state = form.state.data,
+      about = form.about.data,
+      longitude = form.longitude.data,
+      latitude = form.latitude.data,
+      price_range = form.price_range.data,
+      website = form.website.data
+    )
+    db.session.add(business)
+    db.session.commit()
+
+    return business.to_dict()
+  return {"errors": validation_form_errors(form.errors), "statusCode":401}
 
 ## CREATE A REVIEW FOR BUSINESS VIA ID
 @business_routes.route('/<int:id>/reviews', methods=["POST"])
