@@ -37,3 +37,17 @@ def get_business_by_id(id):
   if not business:
     return {"message":"Business couldn't be found", "statusCode": 404}
   pass ## TODO FINISH THIS
+
+## THIS WOULD BE IN BUSINESS ROUTE
+## GET REVIEWS BY BUSINESS ID
+@business_routes.route('/<int:id>/reviews', methods=["GET"])
+def get_review_by_business(id):
+
+  ##ERROR HANDLING NON-EXISTING BUSINESS
+  business = Business.query.get(id)
+  if not business:
+    return {"message": "Business couldn't be found.", "statusCode":404}
+
+  ## FILTERING REVIEWS BY BUSINESS ID
+  reviews = Review.query.filter(Review.business_id == id).all()
+  return {"Reviews": [review.to_dict() for review in reviews]}
