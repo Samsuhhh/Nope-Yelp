@@ -1,9 +1,17 @@
 from flask import Blueprint, request, Response, jsonify
 from flask_login import login_required
 from app.models import User, Business, Tag, Review
-
 ## TODO CHECK PATHING ABOVE
 from flask_login import current_user
+from app.forms.business_form import BusinessForm
+from app.forms.review_form import ReviewForm
+
+def validation_form_errors(validation_errors):
+  errors = []
+  for field in validation_errors:
+    for err in validation_errors[field]:
+      errors.append(f'{field}:{err}')
+  return errors
 
 business_routes = Blueprint("businesses", __name__)
 
@@ -39,7 +47,6 @@ def get_business_by_id(id):
     return {"message":"Business couldn't be found", "statusCode": 404}
   pass ## TODO FINISH THIS
 
-## THIS WOULD BE IN BUSINESS ROUTE
 ## GET REVIEWS BY BUSINESS ID
 @business_routes.route('/<int:id>/reviews', methods=["GET"])
 def get_review_by_business(id):
@@ -54,13 +61,11 @@ def get_review_by_business(id):
   return {"Reviews": [review.to_dict() for review in reviews]}
 
 
-## THIS WOULD BE IN BUSINESS ROUTE
 ## CREATE A REVIEW FOR BUSINESS VIA ID
 @business_routes.route('/<int:id>/reviews', methods=["POST"])
 @login_required ## must be logged in to leave a review
 def create_review(id):
-  pass
-  
+
   business = Business.query.get(id)
 
   ##ERROR HANDLING NON-EXISTING BUSINESS
@@ -86,4 +91,4 @@ def create_review(id):
     db.session.commit()
 
     return review.to_dict()
-  pass ## TODO ADD VALIDAITON ERROR HANDLING
+  return {"errors": validation_form_errors(form.errors), "statusCode":401}
