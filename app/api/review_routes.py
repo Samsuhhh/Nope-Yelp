@@ -6,6 +6,22 @@ from flask_login import current_user
 
 business_routes = Blueprint("businesses", __name__)
 
+## BUSINESS ROUTE FOR GET ALL BUSINESSES
+@business_routes.route("/", methods=["GET"])
+def get_all_businesses():
+  ## TODO ADD QUERYING FOR SEARCHING "LIKE%NAME%"
+
+  businesses = Business.query.all()
+
+  business_lst = []
+  for business in businesses:
+    business_dict = business.to_dict()
+    if business.reviews:
+      business_dict["reviewCount"] = len(business.reviews)
+      business_dict["reviewAverage"] = round(sum([review.rating for review in business.reviews]) / len(business.reviews), 2)
+    business_lst.append(business_dict)
+  return {"businesses":[business for business in business_list]}
+
 ## BUSINESS ROUTE FOR GET BUSSINESS OWNED BY CURRENT USER
 @business_routes.route("/current", methods=["GET"])
 @login_required
