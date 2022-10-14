@@ -51,3 +51,36 @@ def get_review_by_business(id):
   ## FILTERING REVIEWS BY BUSINESS ID
   reviews = Review.query.filter(Review.business_id == id).all()
   return {"Reviews": [review.to_dict() for review in reviews]}
+
+
+## THIS WOULD BE IN BUSINESS ROUTE
+## CREATE A REVIEW FOR BUSINESS VIA ID
+@business_routes.route('/<int:id>/reviews', methods=["POST"])
+@login_required ## must be logged in to leave a review
+def create_review(id):
+  business = Business.query.get(id)
+
+  ##ERROR HANDLING NON-EXISTING BUSINESS
+  if not business:
+    return {"message": "Business couldn't be found.", "statusCode":404}
+
+  ## CHECK IF current_user.id WORKS
+  if business.owner_id == current_user.id:
+    return {"message": "Business owner cannot wrtie a review for their business", "statusCode":403}
+
+  form = ReviewForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+
+    review = Review(
+      user_id = current_user.id,
+      business_id = id,
+      rating = form.rating.data,
+      review = form.review.data
+    )
+
+    db.session.add(review)
+    db.session.commit()
+
+    return review.to_dict()
+  return {"errors": validation_errors_to_error_messages(form.error)}
