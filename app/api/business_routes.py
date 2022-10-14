@@ -1,6 +1,7 @@
 from flask import Blueprint, request, Response, jsonify
 from flask_login import login_required
 from app.models import User, Business, Tag, Review
+
 ## TODO CHECK PATHING ABOVE
 from flask_login import current_user
 
@@ -58,6 +59,8 @@ def get_review_by_business(id):
 @business_routes.route('/<int:id>/reviews', methods=["POST"])
 @login_required ## must be logged in to leave a review
 def create_review(id):
+  pass
+  
   business = Business.query.get(id)
 
   ##ERROR HANDLING NON-EXISTING BUSINESS
@@ -83,4 +86,4 @@ def create_review(id):
     db.session.commit()
 
     return review.to_dict()
-  return {"errors": validation_errors_to_error_messages(form.error)}
+  pass ## TODO ADD VALIDAITON ERROR HANDLING
