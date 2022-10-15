@@ -3,7 +3,7 @@ from sqlalchemy.sql import func
 
 
 class Review(db.Model):
-    __tablename__ = 'review'
+    __tablename__ = 'reviews'
 
     id = db.Column(db.Integer, primary_key=True)
     review = db.Column(db.String(3000), nullable=False)
@@ -14,4 +14,4 @@ class Review(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.current_timestamp())
 
     user = db.relationship("User", back_populates="reviews")
-    business = db.relationship("Business", back_populates="reviews")
+    businesses = db.relationship("Business", back_populates="reviews")
