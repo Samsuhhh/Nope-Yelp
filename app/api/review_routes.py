@@ -1,8 +1,8 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
-from app.models import User, Business, Tag, Review
+from app.models import Review, db
 from flask_login import current_user
-
+from app.forms.review_form import ReviewForm
 review_routes= Blueprint('reviews', __name__)
 
 ## EDIT REVIEW
@@ -10,10 +10,10 @@ review_routes= Blueprint('reviews', __name__)
 @login_required
 def edit_review(id):
 
-  review= Review.query.get(id):
+  review= Review.query.get(id)
 
   if not review:
-    return {"message":"Review could not be found", "statusCode:404"}
+    return {"message":"Review could not be found", "statusCode":404}
 
   if current_user.id != review.user_id:
     return {"message":"Forbidden", "statusCode":403}
