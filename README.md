@@ -1011,7 +1011,7 @@ Returns all tag options.
   * Body:
 ```json
   {
-      tags: ["some tag", "some other tag", "etc"]
+      "tags": ["some tag", "some other tag", "etc"]
   }
 ```
 
@@ -1030,7 +1030,7 @@ Returns all tags associated with a business by business ID
   * Body:
 ```json
     {
-      tags: ["some tag", "some other tag", "etc"]
+      "tags": ["some tag", "some other tag", "etc"]
     }
 ```
 * Error response: Couldn't find a Business with the specified id
@@ -1056,7 +1056,7 @@ Add tags to a business through its ID
   * Body:
 ```json
   {
-     tags: ["some tag", "some other tag", "etc"]
+     "tags": ["some tag", "some other tag", "etc"]
   }
 ```
 * Successful Response
@@ -1066,7 +1066,7 @@ Add tags to a business through its ID
   * Body:
 ```json
    {
-      tags: ["some tag", "some other tag", "etc"]
+      "tags": ["some tag", "some other tag", "etc"]
    }
 ```
 * Error response: Couldn't find a Business associated with the specified ID
@@ -1090,7 +1090,7 @@ Update tags associated with a business.
   * Body:
 ```json
   {
-      tags: ["some tag", "some other tag", "etc"]
+      "tags": ["some tag", "some other tag", "etc"]
   }
 ```
 * Successful Response
@@ -1100,7 +1100,7 @@ Update tags associated with a business.
   * Body:
 ```json
    {
-     tags: ["some tag", "some other tag", "etc"]
+     "tags": ["some tag", "some other tag", "etc"]
    }
 ```
 * Error Response: Body Validation Error
