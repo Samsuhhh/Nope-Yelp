@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
-from app.models import User, Business, Tag, Review, db
+from app.models import User, Business, Review, db
 from flask_login import current_user
 from app.forms.business_form import BusinessForm
 from app.forms.review_form import ReviewForm
@@ -16,7 +16,7 @@ business_routes = Blueprint("businesses", __name__)
 
 ## BUSINESS ROUTE FOR GET ALL BUSINESSES
 @business_routes.route("/", methods=["GET"])
-def get_all_businesses(id):
+def get_all_businesses():
   ## TODO ADD QUERYING FOR SEARCHING "LIKE%NAME%"
 
   businesses = Business.query.all()
@@ -70,6 +70,7 @@ def get_review_by_business(id):
   reviews = Review.query.filter(Review.business_id == id).all()
   return {"Reviews": [review.to_dict() for review in reviews]}
 
+## DELETE A BUSINESS
 @business_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_a_business(id):
@@ -101,6 +102,20 @@ def edit_a_business(id):
     return business.to_dict()
   return {"errors": validation_form_errors(form.errors), "statusCode":401}
 
+## DELETE A BUSINESS
+@business_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_business(id):
+  business = Business.query.get(id)
+  if not business:
+    return {"message":"Business couldn't be found", "statusCode":404}
+  if business.owner_id != current_user.id:
+    return {"message":"Forbidden", "statusCode":403}
+
+  db.session.delete(business)
+  db.session.commit()
+
+  return {"message":"Successfully deleted", "statusCode":200}
 ## CREATE A BUSINESS
 @business_routes.route("/", methods=["POST"])
 @login_required
