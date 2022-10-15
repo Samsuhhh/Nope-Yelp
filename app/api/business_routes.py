@@ -18,23 +18,25 @@ business_routes = Blueprint("businesses", __name__)
 @business_routes.route("/", methods=["GET"])
 def get_all_businesses():
   ## TODO ADD QUERYING FOR SEARCHING "LIKE%NAME%"
-
   businesses = Business.query.all()
 
   business_lst = []
   for business in businesses:
     business_dict = business.to_dict()
+    # print(business)
     if business.reviews:
-      business_dict["reviewCount"] = len(business.reviews)
-      business_dict["reviewAverage"] = round(sum([review.rating for review in business.reviews]) / len(business.reviews), 2)
+      business_dict["review_count"] = len(business.reviews)
+      business_dict["review_average"] = round(sum([review.nope for review in business.reviews]) / len(business.reviews), 2)
     business_lst.append(business_dict)
-  return {"businesses":[business for business in business_lst]}
+  return {"businesses": business_lst}
 
 ## BUSINESS ROUTE FOR GET BUSSINESS OWNED BY CURRENT USER
+## TODO FIXME
 @business_routes.route("/current", methods=["GET"])
 @login_required
 def get_businesses_of_curr_user():
-  businesses = Business.query.filter(Business.owner_id == current_user.id).all()
+
+  businesses = Business.query.filter(current_user.id == Business.owner_id ).all()
   return {"businesses":[business.to_dict() for business in businesses]}
 
 ## GET BUSINESS BY ID
@@ -54,7 +56,7 @@ def get_business_by_id(id):
 
   if reviews:
     business_dict["reviewCount"] = len(business.reviews)
-    business_dict["reviewAverage"] = round(sum([review.rating for review in business.reviews]) / len(business.reviews), 2)
+    business_dict["reviewAverage"] = round(sum([review.nope for review in business.reviews]) / len(business.reviews), 2)
 
   return business_dict
 ## GET REVIEWS BY BUSINESS ID
@@ -70,7 +72,7 @@ def get_review_by_business(id):
   reviews = Review.query.filter(Review.business_id == id).all()
   return {"Reviews": [review.to_dict() for review in reviews]}
 
-## DELETE A BUSINESS
+## EDIT A BUSINESS
 @business_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_a_business(id):

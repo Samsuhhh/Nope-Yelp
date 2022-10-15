@@ -24,3 +24,22 @@ class Business(db.Model):
     tags = db.relationship("Tag", secondary=business_tags, back_populates="businesses")
     business_images = db.relationship(
         "BusinessImage", back_populates="businesses")
+
+    def to_dict(self):
+        return {
+            "id":self.id,
+            "owner_id":self.owner_id,
+            "business_name":self.business_name,
+            "email":self.email,
+            "phone":self.phone,
+            "street_address":self.street_address,
+            "city":self.city,
+            "zipcode":self.zipcode,
+            "state":self.state,
+            "about":self.about,
+            "longitude":self.longitude,
+            "latitude":self.latitude,
+            "price_range":self.price_range,
+            "website":self.website,
+
+            }
