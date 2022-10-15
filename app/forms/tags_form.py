@@ -1,4 +1,3 @@
-from xmlrpc.client import Boolean
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, SubmitField
 
