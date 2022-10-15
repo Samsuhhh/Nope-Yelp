@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
-from app.models import User, Business, Tag, Review
+from app.models import User, Business, Tag, Review, db
 from flask_login import current_user
 from app.forms.business_form import BusinessForm
 from app.forms.review_form import ReviewForm
@@ -16,7 +16,7 @@ business_routes = Blueprint("businesses", __name__)
 
 ## BUSINESS ROUTE FOR GET ALL BUSINESSES
 @business_routes.route("/", methods=["GET"])
-def get_all_businesses():
+def get_all_businesses(id):
   ## TODO ADD QUERYING FOR SEARCHING "LIKE%NAME%"
 
   businesses = Business.query.all()
@@ -28,7 +28,7 @@ def get_all_businesses():
       business_dict["reviewCount"] = len(business.reviews)
       business_dict["reviewAverage"] = round(sum([review.rating for review in business.reviews]) / len(business.reviews), 2)
     business_lst.append(business_dict)
-  return {"businesses":[business for business in business_list]}
+  return {"businesses":[business for business in business_lst]}
 
 ## BUSINESS ROUTE FOR GET BUSSINESS OWNED BY CURRENT USER
 @business_routes.route("/current", methods=["GET"])
@@ -38,14 +38,25 @@ def get_businesses_of_curr_user():
   return {"businesses":[business.to_dict() for business in businesses]}
 
 ## GET BUSINESS BY ID
-@business_routes.route("/<int:id>")
+@business_routes.route("/<int:id>", methods=["GET"])
 def get_business_by_id(id):
   business = Business.query.get(id)
 
   if not business:
     return {"message":"Business couldn't be found", "statusCode": 404}
-  pass ## TODO FINISH THIS
 
+  business_dict = business.to_dict()
+  owner = (User.query.filter(User.id == business.owner_id).one()).to_dict()
+  business_dict['Owner'] = owner
+
+  reviews = Review.query.filter(Review.business_id == id)
+  business_dict['Reviews'] = [review.to_dict() for review in reviews]
+
+  if reviews:
+    business_dict["reviewCount"] = len(business.reviews)
+    business_dict["reviewAverage"] = round(sum([review.rating for review in business.reviews]) / len(business.reviews), 2)
+
+  return business_dict
 ## GET REVIEWS BY BUSINESS ID
 @business_routes.route('/<int:id>/reviews', methods=["GET"])
 def get_review_by_business(id):
@@ -59,6 +70,36 @@ def get_review_by_business(id):
   reviews = Review.query.filter(Review.business_id == id).all()
   return {"Reviews": [review.to_dict() for review in reviews]}
 
+@business_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_a_business(id):
+  business = Business.query.get(id)
+  if not business:
+    return {"message":"Business couldn't be found", "statusCode":404}
+
+  if business.owner_id != current_user.id:
+    return {"message":"Forbidden", "statusCode":403}
+
+  form = BusinessForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    business.business_name = form.business_name.data
+    business.email = form.business.data
+    business.phone = form.phone.data
+    business.owner_id = current_user.id
+    business.street_address = form.street_address.data
+    business.city = form.city.data
+    business.zipcode = form.zipcode.data
+    business.state = form.state.data
+    business.about = form.about.data
+    business.longitude = form.longitude.data
+    business.latitude = form.latitude.data
+    business.price_range = form.price_range.data
+    business.website = form.website.data
+
+    db.session.commit()
+    return business.to_dict()
+  return {"errors": validation_form_errors(form.errors), "statusCode":401}
 
 ## CREATE A BUSINESS
 @business_routes.route("/", methods=["POST"])
