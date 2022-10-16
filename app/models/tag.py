@@ -14,3 +14,9 @@ class Tag(db.Model):
     tag = db.Column(db.String(15), nullable=False)
 
     businesses = db.relationship("Business", secondary=business_tags, back_populates="tags", cascade="all, delete")
+
+    def to_dict(self):
+        return {
+            "id":self.id,
+            "tag":self.tag
+        }
