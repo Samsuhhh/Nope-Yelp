@@ -37,3 +37,24 @@ const remove = businessId => ({
   type: REMOVE,
   businessId
 })
+
+// THUNK action creators
+
+export const getAllBusinesses = () => async (dispatch) => {
+  const response = await fetch("/api/businesses")
+  const businessData = await response.json()
+
+  if (response.ok) {
+    await dispatch(loadAll(businessData))
+  }
+}
+
+export const getCurrentUserBusinesses = () => async (dispatch) => {
+  const response = await fetch("/api/businesses/current")
+  const businessData = await response.json()
+
+  if(response.ok) {
+    await dispatch(loadCurrent(businessData))
+  }
+  return businessData
+}
