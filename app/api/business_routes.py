@@ -54,9 +54,14 @@ def get_business_by_id(id):
   reviews = Review.query.filter(Review.business_id == id)
   business_dict['Reviews'] = [review.to_dict() for review in reviews]
 
+  ## reviews is superfulous not doing anything because reviews is always truthy
   if reviews:
-    business_dict["reviewCount"] = len(business.reviews)
-    business_dict["reviewAverage"] = round(sum([review.nope for review in business.reviews]) / len(business.reviews), 2)
+    if len(business.reviews) == 0:
+      business_dict["reviewCount"] = 0
+      business_dict["reviewAverage"] = 0
+    else:
+      business_dict["reviewCount"] = len(business.reviews)
+      business_dict["reviewAverage"] = round(sum([review.nope for review in business.reviews]) / len(business.reviews), 2)
 
   return business_dict
 ## GET REVIEWS BY BUSINESS ID
@@ -87,7 +92,7 @@ def edit_a_business(id):
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     business.business_name = form.business_name.data
-    business.email = form.business.data
+    business.email = form.email.data
     business.phone = form.phone.data
     business.owner_id = current_user.id
     business.street_address = form.street_address.data
@@ -128,7 +133,7 @@ def create_business():
   if form.validate_on_submit():
     business = Business(
       business_name = form.business_name.data,
-      email = form.business.data,
+      email = form.email.data,
       phone = form.phone.data,
       owner_id = current_user.id,
       street_address = form.street_address.data,
