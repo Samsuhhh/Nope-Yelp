@@ -47,7 +47,7 @@ export const getAllBusinessesThunk = () => async (dispatch) => {
     dispatch(loadAll(businessData));
   }
   else {
-    console.log("Get All Business Thunk Error");
+    console.log("-----Get All Business Thunk Error-----");
   }
   return businessData;
 };
@@ -60,7 +60,7 @@ export const getCurrentUserBusinessesThunk = () => async (dispatch) => {
     dispatch(loadCurrent(businessData));
   }
   else {
-    console.log("Get Current User Businesses Thunk Error");
+    console.log("-----Get Current User Businesses Thunk Error-----");
   }
   return businessData;
 };
@@ -73,24 +73,41 @@ export const getSingleBusinessThunk = (business) => async (dispatch) => {
     dispatch(loadOne(singleBusinessData));
   }
   else {
-    console.log("Get Single Business Thunk Error");
+    console.log("-----Get Single Business Thunk Error-----");
   }
   return singleBusinessData;
 }
 
-export const createBusinessThunk = business => async (dispatch) => {
+export const createBusinessThunk = (business) => async (dispatch) => {
   const response = await fetch("/api/businesses", {
     method: "POST",
-    headers: { "Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(business)
   });
-  const businessData = await response.json();
+  const createdBusinessData = await response.json();
 
   if (response.ok) {
-    dispatch(create(businessData));
+    dispatch(create(createdBusinessData));
   }
   else {
-    console.log("Create Business Thunk Error");
+    console.log("-----Create Business Thunk Error-----");
   }
-  return businessData;
+  return createdBusinessData;
+}
+
+export const updateBusinessThunk = (business) => async (dispatch) => {
+  const response = await fetch(`/api/businesses${business.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(business)
+  });
+  const updatedBusinessData = await response.json()
+
+  if (response.ok) {
+    dispatch(update(updatedBusinessData))
+  }
+  else {
+    console.log("-----Updated Business Thunk Error-----")
+  }
+  return updateBusinessThunk
 }
