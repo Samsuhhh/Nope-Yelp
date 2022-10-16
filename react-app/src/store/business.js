@@ -39,7 +39,7 @@ const remove = businessId => ({
 });
 
 // THUNK action creators
-export const getAllBusinesses = () => async (dispatch) => {
+export const getAllBusinessesThunk = () => async (dispatch) => {
   const response = await fetch("/api/businesses");
   const businessData = await response.json();
 
@@ -47,12 +47,12 @@ export const getAllBusinesses = () => async (dispatch) => {
     dispatch(loadAll(businessData));
   }
   else {
-    return console.log("Get All Business Thunk Error");
+    console.log("Get All Business Thunk Error");
   }
   return businessData;
 };
 
-export const getCurrentUserBusinesses = () => async (dispatch) => {
+export const getCurrentUserBusinessesThunk = () => async (dispatch) => {
   const response = await fetch("/api/businesses/current");
   const businessData = await response.json();
 
@@ -60,21 +60,37 @@ export const getCurrentUserBusinesses = () => async (dispatch) => {
     dispatch(loadCurrent(businessData));
   }
   else {
-    return console.log("Get Current User Businesses Thunk Error")
+    console.log("Get Current User Businesses Thunk Error");
   }
   return businessData;
 };
 
-export const getSingleBusiness = (business) => async (dispatch) => {
+export const getSingleBusinessThunk = (business) => async (dispatch) => {
   const response = await fetch(`/api/businesses/${business.id}`);
   const singleBusinessData = await response.json();
 
   if (response.ok) {
-    dispatch(loadOne(singleBusinessData))
+    dispatch(loadOne(singleBusinessData));
   }
   else {
-    console.log("Get Single Business Thunk Error")
+    console.log("Get Single Business Thunk Error");
   }
-  return singleBusinessData
+  return singleBusinessData;
+}
 
+export const createBusinessThunk = business => async (dispatch) => {
+  const response = await fetch("/api/businesses", {
+    method: "POST",
+    headers: { "Content-Type": "application/json"},
+    body: JSON.stringify(business)
+  });
+  const businessData = await response.json();
+
+  if (response.ok) {
+    dispatch(create(businessData));
+  }
+  else {
+    console.log("Create Business Thunk Error");
+  }
+  return businessData;
 }
