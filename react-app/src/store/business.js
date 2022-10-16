@@ -5,10 +5,35 @@ const LOAD_CURRENT = "businesses/LOAD_CURRENT"
 const LOAD_ONE = "businesses/LOAD_ONE"
 const CREATE = "businesses/CREATE"
 const UPDATE = "businesses/UPDATE"
-const DELETE = "businesses/DELETE"
+const REMOVE = "businesses/DELETE"
 
 //Action Creators
-const loadCurrent = businesses => ({
+const loadAll = (businesses) => ({
+  type: LOAD_ALL,
+  businesses
+})
+
+const loadCurrent = (businesses) => ({
   type: LOAD_CURRENT,
   businesses
+})
+
+const loadOne = (business) => ({
+  type: LOAD_ONE,
+  business
+})
+
+const create = (business) => ({
+  type: CREATE,
+  business
+})
+
+const update = (business) => ({
+  type: UPDATE,
+  business
+})
+
+const remove = businessId => ({
+  type: REMOVE,
+  businessId
 })
