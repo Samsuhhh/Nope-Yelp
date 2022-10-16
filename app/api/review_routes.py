@@ -3,7 +3,20 @@ from flask_login import login_required
 from app.models import Review, db
 from flask_login import current_user
 from app.forms.review_form import ReviewForm
-review_routes= Blueprint('reviews', __name__)
+
+review_routes = Blueprint('reviews', __name__)
+
+## GET ALL REVIEWS
+@review_routes.route("/", methods=["GET"])
+def get_reviews():
+  reviews = Review.query.all()
+  review_list = []
+
+  for review in reviews:
+    reviews_dict = review.to_dict()
+    review_list.append(reviews_dict)
+
+  return {"reviews": [review for review in review_list]}
 
 ## EDIT REVIEW
 @review_routes.route("/<int:id>", methods=["PUT"])
