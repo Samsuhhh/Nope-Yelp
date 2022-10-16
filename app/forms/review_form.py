@@ -11,4 +11,4 @@ def valid_review(form, field):
 
 class ReviewForm(FlaskForm):
   review = StringField('Review', validators=[DataRequired(), valid_review])
-  rating = IntegerField('Rating', validators=[DataRequired(), NumberRange(min=1, max=5, message="Rating must be between 1-5")])
+  nope = IntegerField('Nope', validators=[DataRequired(), NumberRange(min=1, max=5, message="Nope must be between 1-5")])

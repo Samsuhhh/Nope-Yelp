@@ -174,7 +174,7 @@ def create_review(id):
     review = Review(
       user_id = current_user.id,
       business_id = id,
-      rating = form.rating.data,
+      nope = form.nope.data,
       review = form.review.data
     )
 
