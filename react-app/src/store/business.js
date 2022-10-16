@@ -101,13 +101,28 @@ export const updateBusinessThunk = (business) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(business)
   });
-  const updatedBusinessData = await response.json()
+  const updatedBusinessData = await response.json();
 
   if (response.ok) {
-    dispatch(update(updatedBusinessData))
+    dispatch(update(updatedBusinessData));
   }
   else {
-    console.log("-----Updated Business Thunk Error-----")
+    console.log("-----Updated Business Thunk Error-----");
   }
-  return updateBusinessThunk
+  return updateBusinessThunk;
+}
+
+export const deleteBusinessThunk = (businessId) => async (dispatch) => {
+  const response = await fetch(`/api/businesses${businessId}`,
+    { method: "DELETE" });
+
+  const deletedBusinessData = await response.json();
+
+  if (response.ok) {
+    dispatch(remove(deletedBusinessData));
+  }
+  else {
+    console.log("------Delete Business Thunk Error-----");
+  }
+  return deletedBusinessData;
 }
