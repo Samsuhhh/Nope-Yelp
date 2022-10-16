@@ -34,7 +34,7 @@ def edit_review(id):
   form = ReviewForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
-    review.rating = form.rating.data
+    review.nope = form.nope.data
     review.review = form.review.data
 
     db.session.add(review)
@@ -47,7 +47,7 @@ def edit_review(id):
 ## DELETE A REVIEW
 @review_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
-def delete_review():
+def delete_review(id):
   review = Review.query.get(id)
   ## ERROR HANDLING NONEXISTENT REVIEW
   if not review:
