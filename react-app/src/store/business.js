@@ -96,7 +96,7 @@ export const createBusinessThunk = (business) => async (dispatch) => {
 }
 
 export const updateBusinessThunk = (business) => async (dispatch) => {
-  const response = await fetch(`/api/businesses${business.id}`, {
+  const response = await fetch(`/api/businesses/${business.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(business)
@@ -113,7 +113,7 @@ export const updateBusinessThunk = (business) => async (dispatch) => {
 }
 
 export const deleteBusinessThunk = (businessId) => async (dispatch) => {
-  const response = await fetch(`/api/businesses${businessId}`,
+  const response = await fetch(`/api/businesses/${businessId}`,
     { method: "DELETE" });
 
   const deletedBusinessData = await response.json();
@@ -126,3 +126,5 @@ export const deleteBusinessThunk = (businessId) => async (dispatch) => {
   }
   return deletedBusinessData;
 }
+
+
