@@ -18,6 +18,12 @@ def get_reviews():
 
   return {"reviews": [review for review in review_list]}
 
+## GET REVIEWS OF CURRENT USER
+@review_routes.route("/current", methods=["GET"])
+def get_reviews_of_curr_user():
+  reviews = Review.query.filter(current_user.id == Review.user_id).all()
+  return {"reviews": [review.to_dict() for review in reviews]}
+
 ## EDIT REVIEW
 @review_routes.route("/<int:id>", methods=["PUT"])
 @login_required
