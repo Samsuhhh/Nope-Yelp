@@ -5,6 +5,15 @@ import { useParams, useHistory } from 'react-router-dom';
 import React from 'react';
 import './BusinessDetails.css'
 
+import nopes5 from "../../../assets/nopes/5-nopes.png"
+import nopes4 from "../../../assets/nopes/4-nopes.png"
+import nopes3 from "../../../assets/nopes/3-nopes.png"
+import nopes2 from "../../../assets/nopes/2-nopes.png"
+import nopes1 from "../../../assets/nopes/1-nopes.png"
+
+
+
+
 const BusinessDetails = () => {
     const dispatch = useDispatch();
     // const history = useHistory();
@@ -12,7 +21,7 @@ const BusinessDetails = () => {
     const { businessId } = params;
     const business = useSelector(state => state.businesses[businessId]);
     const [isLoaded, setIsLoaded] = useState(false)
-
+    const [img, setImg] = useState()
     // const [current, setCurrent] = useState(0);
 
     useEffect(() => {
@@ -32,6 +41,14 @@ const BusinessDetails = () => {
     //     setCurrent(current === 0 ? length - 1 : current - 1)
     // }
 
+    const nopeImgs = (averageNopes) => {
+        if (averageNopes > 4 && averageNopes <= 5) return (nopes5)
+        if (averageNopes >3 && averageNopes <= 4) return (nopes4)
+        if (averageNopes > 2 && averageNopes <= 3) return (nopes3)
+        if (averageNopes > 1 && averageNopes <= 2) return (nopes2)
+        if (averageNopes > 0 && averageNopes <= 1) return (nopes1)
+    }
+
 
 
     return isLoaded && (
@@ -48,17 +65,14 @@ const BusinessDetails = () => {
                             )}
                         </div>
                     </div>
-
-
                 </div>
                 <div id='business-details-header-content'>
                     <div id='business-details-header-info-container'>
                         <div id='business-details-info'>
                             <h1>{business.business_name}</h1>
-                            <div id='business-details-info-review-divs' style={{"display": "flex"}}>
-                                <div>
-                                    review avg {business.reviewAverage}
-                                    <div>Nopes</div>
+                            <div id='business-details-info-review-divs' style={{ "display": "flex" }}>
+                                <div id='nopes-container'>
+                                    <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
                                 <div>
                                     review count {business.reviewCount}

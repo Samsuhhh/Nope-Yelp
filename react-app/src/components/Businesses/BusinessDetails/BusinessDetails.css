@@ -22,6 +22,7 @@
 
 
 
+
 #business-details-header-content{
     width: 85%;
     height: 10%;
@@ -41,12 +42,20 @@
 #business-details-info{
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 
 /* #business-details-info-review-divs{
     display: flex;
     flex-direction: row;
 } */
+
+#nopes-container,
+#nopes{
+    width: 140px;
+    height: 25px;
+}
 
 
 #all-photos-div{
