@@ -14,7 +14,7 @@
 .home-img {
     position: absolute;
     top: 0;
-    left: 0;
+    padding-left: 400px;
     opacity: 1;
     transition: 1s;
     width: 100%;
@@ -110,8 +110,8 @@
     justify-content: space-between;
     width: 10px;
     height: 320px;
-    padding-left: 200px;
-    padding-top: 80px;
+    padding-left: 350px;
+    padding-top: 200px;
 }
 
 .barcontainer {
@@ -124,14 +124,53 @@
     border-radius: 999px;
 }
 
-.bar {
-    height: 100%;
+.bar1 {
+
     background-color: white;
     position: absolute;
     bottom: 0;
     width: 100%;
     box-sizing: border-box;
     animation: grow 4s ease-out backwards;
+    transform-origin: bottom;
+    border-radius: 999px;
+}
+
+.bar2 {
+
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    animation: grow 4s ease-out backwards;
+    animation-delay: 4.5s;
+    transform-origin: bottom;
+    border-radius: 999px;
+}
+
+.bar3 {
+
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    animation: grow 4s ease-out backwards;
+    animation-delay: 9s;
+    transform-origin: bottom;
+    border-radius: 999px;
+}
+
+.bar4 {
+
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    animation: grow 4s ease-out backwards;
+    animation-delay: 14s;
     transform-origin: bottom;
     border-radius: 999px;
 }
@@ -274,6 +313,7 @@
   }
 
   .left-side {
+    font-family: 'Open-Sans', sans-serif;
     position: relative;
     display: inline-block;
     width: 480px;
@@ -286,18 +326,6 @@
     margin: 0;
     padding: 0;
   }
-
-  .left-side::before {
-    position: absolute;
-    top: 6px;
-    right: -1px;
-    content: '';
-    width: 1px;
-    height: 30px;
-    border-right: 1px solid #ccc;
-    z-index: 2;
-  }
-
 
   .field {
     display: inline-block;
@@ -392,6 +420,185 @@
 .search-button-wrapper:hover {
     background-color: #ff2323;
 }
+
+  .left-side__sublist {
+    display: none;
+    width: inherit;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+  }
+
+  .left-side__subitem {
+    position: relative;
+  }
+
+  .left-side__sublink {
+    display: inline-block;
+    width: 480px;
+    background-color: #fff;
+    color: #333;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-stretch: condensed;
+    padding: 7px 7px 7px 37px;
+    box-sizing: border-box;
+  }
+
+  .restaraunts.left-side__sublink {
+    border-radius: -10px -10px 0 0;
+  }
+
+  .restaraunts.left-side__sublink:before {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: 0 -2px;
+  }
+
+  .restaraunts.left-side__sublink:hover::before {
+    position: absolute;
+    left: 5px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: -2px -8px;
+  }
+
+  .bar.left-side__sublink:before {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: 0 -2px;
+  }
+
+  .bar.left-side__sublink:hover::before {
+    position: absolute;
+    left: 5px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: 0px -2px;
+  }
+
+  .coffee.left-side__sublink:before {
+    position: absolute;
+    left: 5px;
+    top: 7px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: 0 -91px;
+  }
+
+  .coffee.left-side__sublink:hover::before {
+    position: absolute;
+    left: 5px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: -5px -68px;
+  }
+
+  .delivery.left-side__sublink:before {
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: 0 -134px;
+  }
+
+  .delivery.left-side__sublink:hover::before {
+    position: absolute;
+    left: 5px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: -3px -93px;
+  }
+
+  .takeout.left-side__sublink:before {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: 0 -177px;
+  }
+
+  .takeout.left-side__sublink:hover::before {
+    position: absolute;
+    left: 5px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: -5px -120px;
+  }
+
+  .reservations.left-side__sublink {
+    border-radius: 0 0 4px 4px;
+  }
+
+  .reservations.left-side__sublink:before {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: 0 -220px;
+  }
+
+  .reservations.left-side__sublink:hover::before {
+    position: absolute;
+    left: 5px;
+    display: inline-block;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-position: -5px -145px;
+  }
+
+  .field:focus ~ .left-side__sublist {
+    position: absolute;
+    display: block;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-radius: 0 0 4px 4px;
+    border-top: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .field.request:focus {
+    border-radius: 4px 0 0 0;
+  }
+
+  .left-side__sublink:hover {
+    background-color: rgb(230, 230, 230);
+  }
 
 
 #mag {

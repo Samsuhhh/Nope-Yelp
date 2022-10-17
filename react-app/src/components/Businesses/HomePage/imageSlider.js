@@ -5,13 +5,47 @@ import websiteicon from '../../../assets/icons/websiteicon.svg'
 import './imageSlider.css'
 
 const HomeSlider = () => {
+    function barfill1() {
+        setTimeout(() => {
+        document.querySelector(".bar1").style.height = '100%';
+        barfill2()
+        }, 1)
+    }
+    function barfill2() {
+        document.querySelector(".bar2").style.height = '0%';
+        setTimeout(() => {
+        document.querySelector(".bar2").style.height = '100%';
+        barfill3()
+        }, 4500)
+    }
+    function barfill3() {
+        document.querySelector(".bar3").style.height = '0%';
+        setTimeout(() => {
+        document.querySelector(".bar3").style.height = '100%';
+        barfill4()
+        }, 4500)
+    }
+    function barfill4() {
+        document.querySelector(".bar4").style.height = '0%';
+        setTimeout(() => {
+        document.querySelector(".bar4").style.height = '100%';
+
+        }, 4500)
+    }
+    barfill1()
+
+
+
+
     function bgFade1() {
         setTimeout(() => {
             console.log('gary')
+
             document.querySelector(".img1").style.opacity = 0;
             document.querySelector(".img2").style.opacity = 1;
             document.querySelector(".img3").style.opacity = 1;
             document.querySelector(".img4").style.opacity = 1;
+
             orderCb(["-4", "-1", "-2", "-3"], () => { bgFade2() }, 1000)
         }, 4000)
     }
@@ -23,6 +57,7 @@ const HomeSlider = () => {
             document.querySelector(".img2").style.opacity = 0;
             document.querySelector(".img3").style.opacity = 1;
             document.querySelector(".img4").style.opacity = 1;
+
             orderCb(["-3", "-4", "-1", "-2"], () => { bgFade3() }, 1000)
         }, 4000)
     }
@@ -60,28 +95,27 @@ const HomeSlider = () => {
     }
 
     bgFade1();
-
     return (
         <div className="main-home-div">
-            <div className="home-img img1">
                 <div className="bar-outer-container">
                     <div className="barcontainer">
-                        <div className="bar">
+                        <div className="bar1">
                         </div>
                     </div>
                     <div className="barcontainer">
-                        <div className="bar">
+                        <div className="bar2">
                         </div>
                     </div>
                     <div className="barcontainer">
-                        <div className="bar">
+                        <div className="bar3">
                         </div>
                     </div>
                     <div className="barcontainer">
-                        <div onClick={bgFade4} className="bar">
+                        <div className="bar4">
                         </div>
                     </div>
                 </div>
+            <div className="home-img img1">
                 <div className="text-contacts-container">
                     <div className="tagline">
                         In search of a software engineer?
@@ -109,24 +143,7 @@ const HomeSlider = () => {
             </div>
 
             <div className="home-img img2">
-                <div className="bar-outer-container">
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                </div>
+
                 <div className="text-contacts-container">
                     <div className="tagline">
                         Looking for a master of Flask backends?
@@ -150,24 +167,7 @@ const HomeSlider = () => {
             </div>
 
             <div className="home-img img3">
-                <div className="bar-outer-container">
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                </div>
+
                 <div className="text-contacts-container">
                     <div className="tagline">
                         Hire the dev that can take care of your entire database
@@ -191,24 +191,7 @@ const HomeSlider = () => {
             </div>
 
             <div className="home-img img4">
-                <div className="bar-outer-container">
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                    <div className="barcontainer">
-                        <div className="bar">
-                        </div>
-                    </div>
-                </div>
+
                 <div className="text-contacts-container">
                     <div className="tagline">
                         Learn data structures and algorithms with ease
