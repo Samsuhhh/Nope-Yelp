@@ -133,12 +133,12 @@ let initialState = {}
 const businessReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
-    // case LOAD_ALL:
-    //   console.log('Businesses Reducer HITTING', action)
-    //   action.businesses.forEach(business => {
-    //     businesses[business.id] = business;
-    //   })
-    //   return { businesses }
+    case LOAD_ALL:
+      console.log('Businesses Reducer HITTING', action)
+      action.businesses.forEach(business => {
+        newState[business.id] = business;
+      })
+      return newState
     case LOAD_ONE:
       console.log('SINGLE business Reducer hitting', action.business)
       newState = { [action.business.id]: { ...action.business } }
