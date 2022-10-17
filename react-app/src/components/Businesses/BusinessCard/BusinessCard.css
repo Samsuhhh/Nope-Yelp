@@ -46,3 +46,30 @@
   background-color: rgb(219, 219, 219);
   cursor: pointer;
 }
+
+#business-card-business-name{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#business-card-business-name:hover {
+  text-decoration: underline;
+}
+#business-card-link{
+  text-decoration: none;
+  color:black;
+}
+#more-link{
+  text-decoration:none;
+  color: rgb(0, 142, 167);
+  font-weight: bold;
+}
+#more-link:hover{
+  text-decoration: underline;
+}
+#checkbox-container{
+  display:flex;
+  flex-direction: column;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 25px;
+}
