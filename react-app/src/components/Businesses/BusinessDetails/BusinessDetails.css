@@ -137,6 +137,7 @@
     width: 100%;
     border: 1px solid green;
     display: flex;
+    /* spacing incorrect, holding as is for visual flow of elements */
 }
 
 
@@ -148,6 +149,7 @@
     width: 25%;
     height: 900px;
     border: 1px solid pink;
+    /* have to change width to fixed sizing so it doesn't change width */
 }
 
 #sticky-sidebar-content{
