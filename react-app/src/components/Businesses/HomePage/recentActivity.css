@@ -1,0 +1,46 @@
+.recent-act-wrapper {
+    display: flex;
+    justify-content: center;
+    height: 1090px;
+    width: 100%;
+    left: 0;
+    z-index: 4;
+    margin-top: 630px;
+}
+
+.recent-act-body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.recent-act-title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.recent-act-title {
+    display: flex;
+    justify-self: center;
+    font-family: 'Open-Sans', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+
+.recent-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 40px;
+    height: 980px;
+    width: 980px;
+
+}
+
+.recent-act-card {
+    width: 300px;
+    height: 300px;
+    border: lightgray 1px solid;
+}
