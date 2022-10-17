@@ -27,14 +27,15 @@ const BusinessDetails = () => {
             <div id='business-details-header-images'>
                 <div id='business-details-header-content'>
                     <div id='business-details-header-info-container'>
-                        <div id='business-details-logo'>
-                            <span>BUSINESS LOGO IMG</span>
-                        </div>
                         <div id='business-details-info'>
-                            <div>{business.business_name}</div>
+                            <h1>{business.business_name}</h1>
+                            <div>{business.reviewCount}</div>
+                            <div>HOURS OF OPERATION</div>
                         </div>
                     </div>
-                    <button id='all-photos-button'>All Photos</button>
+                    <div id='all-photos-div'>
+                        <button id='all-photos-button'>All Photos</button>
+                    </div>
                 </div>
             </div>
             <div id='business-details-container'>
@@ -58,7 +59,15 @@ const BusinessDetails = () => {
                 </div>
                 <div id='sticky-sidebar-container'>
                     <div id='sticky-sidebar-content'>
-                        {business.website}
+                        <div>
+                            <a href={business.website}> {business.website}</a>
+                        </div>
+                        <div>
+                            {business.email}
+                        </div>
+                        <div>
+                            {business.phone}
+                        </div>
                     </div>
                 </div>
             </div>

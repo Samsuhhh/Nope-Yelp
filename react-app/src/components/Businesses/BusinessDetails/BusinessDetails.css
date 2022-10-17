@@ -4,7 +4,44 @@
     border: 2px solid blue;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
+
+#business-details-header-images{
+    width: 100%;
+    height: 100%;
+    border: 5px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+#business-details-header-content{
+    width: 85%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#business-details-header-info-container{
+    width: 80%;
+    height: 5%;
+    border: 3px solid yellow;
+    display: flex;
+    flex-direction: row;
+}
+
+#business-details-info{
+    display: flex;
+    flex-direction: column;
+}
+
+#all-photos-div{
+    width: 20%;
+}
+
+
+
 
 #business-details-container {
     border: 2px solid green;
@@ -12,6 +49,8 @@
     height: 100%;
     display: flex;
     flex-direction: row;
+    /* margin-left: 20%;
+    margin-right: 20%; */
 }
 
 #details-content{
@@ -26,14 +65,22 @@
     border: 1px solid purple;
     width: 100px;
     height: 50px;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 
 #sticky-sidebar-container {
-    width: 30%;
-    height: 100%;
-    border: 10px solid pink;
+    top: 0;
+    width: 25%;
+    height: 900px;
+    border: 1px solid pink;
+}
+
+#sticky-sidebar-content{
+    position: sticky;
+    top: 10px;
+    border: 1px solid lightgrey;
+    padding-left: 20px;
 }
 
 
