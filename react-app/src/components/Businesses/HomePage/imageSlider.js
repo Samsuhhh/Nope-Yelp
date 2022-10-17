@@ -96,6 +96,7 @@ const HomeSlider = () => {
 
     bgFade1();
     return (
+
         <div className="main-home-div">
                 <div className="bar-outer-container">
                     <div className="barcontainer">
@@ -213,6 +214,7 @@ const HomeSlider = () => {
                 </div>
             </div>
         </div>
+
     )
 }
 
