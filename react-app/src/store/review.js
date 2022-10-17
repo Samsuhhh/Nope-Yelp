@@ -1,9 +1,13 @@
+
+// Action Types
 const LOAD_ALL = 'reviews/LOAD_ALL'
 const LOAD_CURRENT = 'reviews/LOAD_CURRENT'
 const CREATE = 'reviews/CREATE'
 const UPDATE = 'reviews/UPDATE'
 const REMOVE = 'reviews/REMOVE'
+const RESET = 'reviews/RESET'
 
+// Action Creators
 const load = (reviews, businessId) => ({
     type: LOAD_ALL,
     reviews,
@@ -30,3 +34,77 @@ const remove = (reviewId) => ({
     type: REMOVE,
     reviewId
 })
+
+export const reset = () => ({
+    type: RESET
+})
+
+// THUNK action creators
+export const getAllReviews = (businessId) => async dispatch => {
+    const response = await fetch(`/api/businesses/${businessId}/reviews`)
+
+    if (response.ok) {
+        const reviews = await response.json()
+        dispatch(load(reviews, businessId))
+    }
+    return null
+}
+
+export const getCurrentReviews = () => async dispatch => {
+    const response = await fetch('/api/reivews/current')
+
+    if (response.ok) {
+        const review = await response.json()
+        dispatch(loadCurrent(review))
+        return review
+    }
+}
+
+export const createReview = (review, businessId) => async dispatch => {
+    const response = await fetch(`/api/businesses/${businessId}/reviews`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(review)
+    })
+
+    if (response.ok) {
+        const businessReview = await response.json()
+        dispatch(create(businessReview))
+        return businessReview
+    }
+    return null
+}
+
+export const updateReview = (review, reviewId) => async dispatch => {
+    const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(review)
+    })
+
+    if (response.ok) {
+        const updatedReview = await response.json()
+        dispatch(update(updatedReview))
+        return updatedReview
+    }
+    return null
+}
+
+export const removeReview = (reviewId) => async dispatch => {
+    const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: 'DELETE'
+    })
+
+    if (response.ok) {
+        dispatch(remove(reviewId))
+        return
+    }
+}
+
+const initialState = {
+    
+}
