@@ -15,7 +15,9 @@ def seed_businesses():
         longitude=-122.3924,
         latitude=37.77882,
         price_range=2,
-        website='http://marufukuramen.com')
+        website='http://marufukuramen.com',
+        # tags=['Tapas', 'Acai Bowls', 'Breweries']
+        )
     restaurant2 = Business(
         owner_id=2,
         business_name='KAIYO Rooftop',
@@ -29,7 +31,9 @@ def seed_businesses():
         longitude=-122.3924,
         latitude=37.77882,
         price_range=2,
-        website='https://kaiyosf.com/kaiyorooftop')
+        website='https://kaiyosf.com/kaiyorooftop',
+        # tags=['Juice Bars & Smoothies', 'Burgers', 'Caribbean']
+        )
     restaurant3 = Business(
         owner_id=3,
         business_name='Starbelly',
@@ -43,7 +47,9 @@ def seed_businesses():
         longitude=-122.43253,
         latitude=37.76402,
         price_range=2,
-        website='http://www.starbellysf.com')
+        website='http://www.starbellysf.com',
+        # tags=['Japanese', 'Thai', 'Dumplings']
+        )
     restaurant4 = Business(
         owner_id=4,
         business_name='Dumpling House',
@@ -57,7 +63,9 @@ def seed_businesses():
         longitude=-122.432762,
         latitude=37.763552,
         price_range=2,
-        website='http://dumplinghouse.us')
+        website='http://dumplinghouse.us',
+        # tags=['French', 'Food Court', 'Hot Pot']
+        )
     restaurant5 = Business(
         owner_id=5,
         business_name="Jamie's Place",
@@ -71,7 +79,9 @@ def seed_businesses():
         longitude=-122.465979,
         latitude=37.762616,
         price_range=2,
-        website='https://sfjamiesplace.com/')
+        website='https://sfjamiesplace.com/',
+        # tags=['Seafood', 'Cafes', 'Comfort Food']
+        )
     restaurant6 = Business(
         owner_id=6,
         business_name='Savor',
@@ -85,7 +95,9 @@ def seed_businesses():
         longitude=-122.46223,
         latitude=37.764114,
         price_range=2,
-        website='https://savor.menu')
+        website='https://savor.menu',
+        # tags=['Grocery', 'Hong Kong Style Cafe', 'Breweries']
+        )
     restaurant7 = Business(
         owner_id=7,
         business_name='Lily',
@@ -99,7 +111,9 @@ def seed_businesses():
         longitude=-122.461686,
         latitude=37.782826,
         price_range=2,
-        website='https://www.lilyonclement.com')
+        website='https://www.lilyonclement.com',
+        # tags=['American', 'Food Trucks', 'Asian Fusion']
+        )
     restaurant8 = Business(
         owner_id=8,
         business_name='Bottega',
@@ -113,7 +127,9 @@ def seed_businesses():
         longitude=-122.4212,
         latitude=37.75472,
         price_range=2,
-        website='https://www.bottegavalencia.com/')
+        website='https://www.bottegavalencia.com/',
+        # tags=['Acai Bowls', 'Dim Sum', 'Cuban']
+        )
     restaurant9 = Business(
         owner_id=9,
         business_name='Beit Rima',
@@ -127,7 +143,9 @@ def seed_businesses():
         longitude=-122.4496,
         latitude=37.7659,
         price_range=2,
-        website='http://www.beitrimasf.com')
+        website='http://www.beitrimasf.com',
+        # tags=['Butcher', 'Gastropubs', 'Hong Kong Style Cafe']
+        )
     restaurant10 = Business(
         owner_id=10,
         business_name='Kin Khao',
@@ -141,7 +159,9 @@ def seed_businesses():
         longitude=-122.43443,
         latitude=37.79094,
         price_range=2,
-        website='http://kinkhao.com/')
+        website='http://kinkhao.com/',
+        # tags=['Dumplings', 'Chicken Wings', 'Convenience Stores']
+        )
     restaurant11 = Business(
         owner_id=11,
         business_name='The Snug',
@@ -155,7 +175,9 @@ def seed_businesses():
         longitude=-122.43443,
         latitude=37.79094,
         price_range=2,
-        website='http://www.thesnugsf.com')
+        website='http://www.thesnugsf.com',
+        # tags=['Gastropubs', 'Beer, Wine & Spirits', 'Fast Food']
+        )
     restaurant12 = Business(
         owner_id=12,
         business_name='Hog Island Oyster',
@@ -169,7 +191,9 @@ def seed_businesses():
         longitude=-122.40834,
         latitude=37.79300,
         price_range=2,
-        website='https://hogislandoysters.com')
+        website='https://hogislandoysters.com',
+        # tags=['Comfort Food', 'Pizza', 'Tortillas']
+        )
     restaurant13 = Business(
         owner_id=13,
         business_name='Sotto Mare',
@@ -183,7 +207,9 @@ def seed_businesses():
         longitude=-122.40834,
         latitude=37.79979,
         price_range=2,
-        website='http://www.sottomaresf.com')
+        website='http://www.sottomaresf.com',
+        # tags=['Honey', 'Mediterranean', 'Mexican']
+        )
     restaurant14 = Business(
         owner_id=14,
         business_name='Fog Harbor Fish House',
@@ -197,7 +223,9 @@ def seed_businesses():
         longitude=-122.41029,
         latitude=37.808988,
         price_range=2,
-        website='https://fogharbor.com')
+        website='https://fogharbor.com',
+        # tags=['Acai Bowls', 'Desserts', 'Dim Sum']
+        )
     restaurant15 = Business(
         owner_id=15,
         business_name='Kitchen Story',
@@ -211,7 +239,9 @@ def seed_businesses():
         longitude=-122.43072,
         latitude=37.76429,
         price_range=2,
-        website='http://kitchenstorysf.com')
+        website='http://kitchenstorysf.com',
+        # tags=['Raw Food', 'Delicatessen', 'Comfort Food']
+        )
     restaurant16 = Business(
         owner_id=1,
         business_name='The Pink Door',
@@ -225,7 +255,9 @@ def seed_businesses():
         longitude=-122.3425,
         latitude=47.61028,
         price_range=2,
-        website='https://www.thepinkdoor.net/welcome-mobile')
+        website='https://www.thepinkdoor.net/welcome-mobile',
+        # tags=['Chinese', 'Breweries', 'Greek']
+        )
     restaurant17 = Business(
         owner_id=2,
         business_name='Biang Biang Noodles',
@@ -239,7 +271,9 @@ def seed_businesses():
         longitude=-122.324239,
         latitude=47.61393,
         price_range=2,
-        website='https://www.biangbiangnoodles.com/')
+        website='https://www.biangbiangnoodles.com/',
+        # tags=['Beer, Wine & Spirits', 'Donuts', 'Fusion']
+        )
     restaurant18 = Business(
         owner_id=3,
         business_name='Tilikum Place Cafe',
@@ -253,7 +287,9 @@ def seed_businesses():
         longitude=-122.347691,
         latitude=47.6179,
         price_range=2,
-        website='https://www.tilikumplacecafe.com/')
+        website='https://www.tilikumplacecafe.com/',
+        # tags=['Mexican', 'African', 'Breakfast & Brunch']
+        )
     restaurant19 = Business(
         owner_id=4,
         business_name='Nue',
@@ -267,7 +303,9 @@ def seed_businesses():
         longitude=-122.3146,
         latitude=47.61483,
         price_range=2,
-        website='https://www.nueseattle.com/')
+        website='https://www.nueseattle.com/',
+        # tags=['Food Trucks', 'Chinese', 'Noodles']
+        )
     restaurant20 = Business(
         owner_id=5,
         business_name='Toulouse Petit Kitchen & Lounge',
@@ -281,7 +319,9 @@ def seed_businesses():
         longitude=-122.357127,
         latitude=47.62485,
         price_range=2,
-        website='https://toulousepetit.com/')
+        website='https://toulousepetit.com/',
+        # tags=['Greek', 'Vietnamese', 'Gelato']
+        )
     restaurant21 = Business(
         owner_id=6,
         business_name='Biscuit Bitch',
@@ -295,7 +335,9 @@ def seed_businesses():
         longitude=-122.34167,
         latitude=47.61034,
         price_range=1,
-        website='https://biscuitbitch.square.site/home')
+        website='https://biscuitbitch.square.site/home',
+        # tags=['Internet Cafes', 'Tortillas', 'Beer, Wine & Spirits']
+        )
     restaurant22 = Business(
         owner_id=7,
         business_name='Katsu-ya Seattle',
@@ -309,7 +351,9 @@ def seed_businesses():
         longitude=-122.33809,
         latitude=47.6192,
         price_range=2,
-        website='https://www.katsu-yagroup.com/')
+        website='https://www.katsu-yagroup.com/',
+        # tags=['Steakhouse', 'Food Trucks', 'Hong Kong Style Cafe']
+        )
     restaurant23 = Business(
         owner_id=8,
         business_name='Kedai Makan',
@@ -323,7 +367,9 @@ def seed_businesses():
         longitude=-122.32658,
         latitude=47.6179,
         price_range=2,
-        website='http://www.kedaimakansea.com/')
+        website='http://www.kedaimakansea.com/',
+        # tags=['Coffee & Tea', 'Burgers', 'Eastern European']
+        )
     restaurant24 = Business(
         owner_id=9,
         business_name='Six Seven Restaurant',
@@ -337,7 +383,9 @@ def seed_businesses():
         longitude=-122.35230,
         latitude=47.612304,
         price_range=3,
-        website='https://www.edgewaterhotel.com/seattle-six-seven-restaurant/')
+        website='https://www.edgewaterhotel.com/seattle-six-seven-restaurant/',
+        # tags=['Food Delivery Services', 'Vietnamese', 'Donuts']
+        )
     restaurant25 = Business(
         owner_id=10,
         business_name='Skalka',
@@ -351,7 +399,9 @@ def seed_businesses():
         longitude=-122.3376,
         latitude=47.60491,
         price_range=2,
-        website='https://www.skalkaseattle.com/')
+        website='https://www.skalkaseattle.com/',
+        # tags=['Cuban', 'Barbeque', 'Hot Pot']
+        )
     restaurant26 = Business(
         owner_id=11,
         business_name="Elliott's Oyster House",
@@ -365,7 +415,9 @@ def seed_businesses():
         longitude=-122.34025,
         latitude=47.605473,
         price_range=3,
-        website='https://www.elliottsoysterhouse.com/')
+        website='https://www.elliottsoysterhouse.com/',
+        # tags=['Bakeries', 'Fast Food', 'Kosher']
+        )
     restaurant27 = Business(
         owner_id=12,
         business_name='Taurus Ox',
@@ -379,7 +431,9 @@ def seed_businesses():
         longitude=-122.30763,
         latitude=47.627150,
         price_range=2,
-        website='https://taurusox.square.site/')
+        website='https://taurusox.square.site/',
+        # tags=['Fast Food', 'Salad', 'Mediterranean']
+        )
     restaurant28 = Business(
         owner_id=13,
         business_name='Ishoni Yakiniku',
@@ -393,7 +447,9 @@ def seed_businesses():
         longitude=-122.32117,
         latitude=47.62461,
         price_range=3,
-        website="https://ishoniyakinikuseattle.wordpress.com/")
+        website="https://ishoniyakinikuseattle.wordpress.com/",
+        # tags=['Tortillas', 'Middle Eastern', 'Fast Food']
+        )
     restaurant29 = Business(
         owner_id=14,
         business_name='Piroshky Piroshky',
@@ -407,7 +463,9 @@ def seed_businesses():
         longitude=-122.34231,
         latitude=47.60991,
         price_range=1,
-        website='https://piroshkybakery.com/')
+        website='https://piroshkybakery.com/',
+        # tags=['Convenience Stores', 'Barbeque', 'Afghan']
+        )
     restaurant30 = Business(
         owner_id=15,
         business_name='Dough Zone - Seattle Downtown Pine St.',
@@ -423,7 +481,9 @@ def seed_businesses():
         longitude=-122.3321,
         latitude=47.613314,
         price_range=2,
-        website='https://www.doughzonedumplinghouse.com/')
+        website='https://www.doughzonedumplinghouse.com/',
+        # tags=['Gelato', 'Asian Fusion', 'Pizza']
+        )
     restaurant31 = Business(
         owner_id=1,
         business_name='Barbuzzo',
@@ -437,7 +497,9 @@ def seed_businesses():
         longitude=-75.16216,
         latitude=39.94999,
         price_range=2,
-        website='http://barbuzzo.com/')
+        website='http://barbuzzo.com/',
+        # tags=['Sushi', 'Indian', 'Poke']
+        )
     restaurant32 = Business(
         owner_id=2,
         business_name="Talula's Garden",
@@ -451,7 +513,9 @@ def seed_businesses():
         longitude=-75.153542,
         latitude=39.947327,
         price_range=3,
-        website='https://talulasgarden.com/')
+        website='https://talulasgarden.com/',
+        # tags=['Gluten-Free', 'Steakhouse', 'Mediterranean']
+        )
     restaurant33 = Business(
         owner_id=3,
         business_name='Cantina La Martina',
@@ -465,7 +529,9 @@ def seed_businesses():
         longitude=-75.12281,
         latitude=39.99157,
         price_range=1,
-        website='https://cantinalamartinaphilly.com/home')
+        website='https://cantinalamartinaphilly.com/home',
+        # tags=['Asian Fusion', 'Juice Bars & Smoothies', 'Soup']
+        )
     restaurant34 = Business(
         owner_id=4,
         business_name='DuBu',
@@ -479,7 +545,9 @@ def seed_businesses():
         longitude=-75.13762,
         latitude=40.06315,
         price_range=2,
-        website='https://duburestaurant.com/')
+        website='https://duburestaurant.com/',
+        # tags=['Breweries', 'Gastropubs', 'Raw Food']
+        )
     restaurant35 = Business(
         owner_id=5,
         business_name='Suraya',
@@ -493,7 +561,9 @@ def seed_businesses():
         longitude=-75.1339557,
         latitude=39.973686,
         price_range=3,
-        website='https://www.surayaphilly.com/')
+        website='https://www.surayaphilly.com/',
+        # tags=['Eastern European', 'Greek', 'Breweries']
+        )
     restaurant36 = Business(
         owner_id=6,
         business_name='So Korean Grill',
@@ -507,7 +577,9 @@ def seed_businesses():
         longitude=-75.117652,
         latitude=40.0453172,
         price_range=2,
-        website='https://sokoreangrill.com/menu')
+        website='https://sokoreangrill.com/menu',
+        # tags=['Raw Food', 'Danish', 'Kosher']
+        )
     restaurant37 = Business(
         owner_id=7,
         business_name='Kensington Pub',
@@ -521,7 +593,9 @@ def seed_businesses():
         longitude=-75.10253,
         latitude=39.99556,
         price_range=1,
-        website="http://places.singleplatform.com/kensington-pub/menu?ref=google")
+        website="http://places.singleplatform.com/kensington-pub/menu?ref=google",
+        # tags=['Tortillas', 'Gelato', 'Butcher']
+        )
     restaurant38 = Business(
         owner_id=8,
         business_name='Chubby Cattle',
@@ -535,7 +609,9 @@ def seed_businesses():
         longitude=-75.15622,
         latitude=39.95498,
         price_range=2,
-        website="https://www.chubbycattle.com/chubby-cattle-philadelphia/")
+        website="https://www.chubbycattle.com/chubby-cattle-philadelphia/",
+        # tags=['Burgers', 'Greek', 'Vietnamese']
+        )
     restaurant39 = Business(
         owner_id=9,
         business_name='Bao & Bun Studio',
@@ -549,7 +625,9 @@ def seed_businesses():
         longitude=-75.06408,
         latitude=40.0089526,
         price_range=1,
-        website="https://www.baobunstudio.com/")
+        website="https://www.baobunstudio.com/",
+        # tags=['Food Trucks', 'Greek', 'Hot Pot']
+        )
     restaurant40 = Business(
         owner_id=10,
         business_name='Tierra Colombiana Restaurant',
@@ -563,7 +641,9 @@ def seed_businesses():
         longitude=-75.13381,
         latitude=40.02051,
         price_range=2,
-        website="http://tierracolombianarestaurant.com/")
+        website="http://tierracolombianarestaurant.com/",
+        # tags=['Breakfast & Brunch', 'Kosher', 'Bagels']
+        )
     restaurant41 = Business(
         owner_id=11,
         business_name='Cafe Mi Quang',
@@ -577,7 +657,9 @@ def seed_businesses():
         longitude=-75.11027,
         latitude=39.99843,
         price_range=1,
-        website="https://www.zmenu.com/cafe-mi-quang-philadelphia-online-menu/")
+        website="https://www.zmenu.com/cafe-mi-quang-philadelphia-online-menu/",
+        # tags=['Food Court', 'Acai Bowls', 'Raw Food']
+        )
     restaurant42 = Business(
         owner_id=12,
         business_name='Bourbon & Branch',
@@ -591,7 +673,9 @@ def seed_businesses():
         longitude=-75.14104,
         latitude=39.96207,
         price_range=2,
-        website="https://www.bourbonandbranchphilly.com/")
+        website="https://www.bourbonandbranchphilly.com/",
+        # tags=['Cafes', 'Gluten-Free', 'Farmers Market']
+        )
     restaurant43 = Business(
         owner_id=13,
         business_name='Grill N Dutchy',
@@ -605,7 +689,9 @@ def seed_businesses():
         longitude=-75.17371,
         latitude=40.03459,
         price_range=2,
-        website="https://www.grillndutchy.com/")
+        website="https://www.grillndutchy.com/",
+        # tags=['Middle Eastern', 'Comfort Food', 'Ice Cream & Frozen Yogurt']
+        )
     restaurant44 = Business(
         owner_id=14,
         business_name="Sutton's",
@@ -619,7 +705,9 @@ def seed_businesses():
         longitude=-75.143672,
         latitude=39.97715,
         price_range=2,
-        website="https://suttonsphilly.com/")
+        website="https://suttonsphilly.com/",
+        # tags=['Cajun/Creole', 'Bagels', 'Honey']
+        )
     restaurant45 = Business(
         owner_id=15,
         business_name='Harp & Crown',
@@ -633,7 +721,9 @@ def seed_businesses():
         longitude=-75.166428,
         latitude=39.950417,
         price_range=2,
-        website="https://harpcrown.com/")
+        website="https://harpcrown.com/",
+        # tags=['Farmers Market', 'Danish', 'Cuban']
+        )
     restaurant46 = Business(
         owner_id=1,
         business_name='Da Andrea',
@@ -647,7 +737,9 @@ def seed_businesses():
         longitude=-73.99597,
         latitude=40.736218,
         price_range=2,
-        website="https://www.daandreanyc.com/")
+        website="https://www.daandreanyc.com/",
+        # tags=['Delicatessen', 'Chicken Wings', 'Coffee & Tea']
+        )
     restaurant47 = Business(
         owner_id=2,
         business_name="Joe's Shanghai",
@@ -661,7 +753,9 @@ def seed_businesses():
         longitude=-73.99670,
         latitude=40.715660,
         price_range=2,
-        website="https://joeshanghairestaurants.com/")
+        website="https://joeshanghairestaurants.com/",
+        # tags=['Hawaiian', 'Grocery', 'French']
+        )
     restaurant48 = Business(
         owner_id=3,
         business_name='LoveMama',
@@ -675,7 +769,9 @@ def seed_businesses():
         longitude=-73.986126,
         latitude=40.7304087,
         price_range=2,
-        website="https://lovemamanyc.com/Home/index")
+        website="https://lovemamanyc.com/Home/index",
+        # tags=['Chinese', 'Soup', 'Food Trucks']
+        )
     restaurant49 = Business(
         owner_id=4,
         business_name='Time Out Market New York',
@@ -689,7 +785,9 @@ def seed_businesses():
         longitude=-73.99214,
         latitude=40.703428,
         price_range=2,
-        website="https://www.timeoutmarket.com/newyork/#")
+        website="https://www.timeoutmarket.com/newyork/#",
+        # tags=['Steakhouse', 'Japanese', 'Shaved Ice']
+        )
     restaurant50 = Business(
         owner_id=5,
         business_name='Olio e Più',
@@ -703,7 +801,9 @@ def seed_businesses():
         longitude=-73.999773,
         latitude=40.7337980,
         price_range=2,
-        website="https://www.olioepiu.com/")
+        website="https://www.olioepiu.com/",
+        # tags=['Hong Kong Style Cafe', 'Mediterranean', 'Kosher']
+        )
     restaurant51 = Business(
         owner_id=6,
         business_name='Antidote',
@@ -717,7 +817,9 @@ def seed_businesses():
         longitude=-73.965448,
         latitude=40.714253,
         price_range=2,
-        website="https://www.antidoteny.com/")
+        website="https://www.antidoteny.com/",
+        # tags=['Soup', 'Ice Cream & Frozen Yogurt', 'Bistros']
+        )
     restaurant52 = Business(
         owner_id=7,
         business_name='Thursday Kitchen',
@@ -731,7 +833,9 @@ def seed_businesses():
         longitude=-73.98373,
         latitude=40.72761,
         price_range=2,
-        website="https://www.thursdaykitchen.com/")
+        website="https://www.thursdaykitchen.com/",
+        # tags=['Beer, Wine & Spirits', 'Comfort Food', 'Kebab']
+        )
     restaurant53 = Business(
         owner_id=8,
         business_name='Raku',
@@ -745,7 +849,9 @@ def seed_businesses():
         longitude=-73.986652,
         latitude=40.726498,
         price_range=2,
-        website="https://rakunyc.com/")
+        website="https://rakunyc.com/",
+        # tags=['Hawaiian', 'Brazilian', 'Coffee & Tea']
+        )
     restaurant54 = Business(
         owner_id=9,
         business_name='The Osprey',
@@ -759,7 +865,9 @@ def seed_businesses():
         longitude=-73.995539,
         latitude=40.702241,
         price_range=2,
-        website="https://www.1hotels.com/brooklyn-bridge/taste/osprey")
+        website="https://www.1hotels.com/brooklyn-bridge/taste/osprey",
+        # tags=['Tapas', 'Breakfast & Brunch', 'Italian']
+        )
     restaurant55 = Business(
         owner_id=10,
         business_name='The Cabin NYC',
@@ -773,7 +881,9 @@ def seed_businesses():
         longitude=-73.98383,
         latitude=40.72393,
         price_range=2,
-        website="https://thecabinnyc.com/")
+        website="https://thecabinnyc.com/",
+        # tags=['Convenience Stores', 'Buffets', 'Mexican']
+        )
     restaurant56 = Business(
         owner_id=11,
         business_name='Tin Building by Jean-Georges',
@@ -787,7 +897,9 @@ def seed_businesses():
         longitude=-74.002266,
         latitude=40.7062000,
         price_range=4,
-        website="https://www.tinbuilding.com/")
+        website="https://www.tinbuilding.com/",
+        # tags=['African', 'Juice Bars & Smoothies', 'Sushi']
+        )
     restaurant57 = Business(
         owner_id=12,
         business_name="Jack's Wife Freda",
@@ -801,7 +913,9 @@ def seed_businesses():
         longitude=-73.99754,
         latitude=40.72213,
         price_range=2,
-        website="https://jackswifefreda.com/")
+        website="https://jackswifefreda.com/",
+        # tags=['Danish', 'Vegetarian', 'Italian']
+        )
     restaurant58 = Business(
         owner_id=13,
         business_name="Ye's Apothecary",
@@ -815,7 +929,9 @@ def seed_businesses():
         longitude=-73.9898,
         latitude=40.71945,
         price_range=2,
-        website="https://www.yesapothecary.com/")
+        website="https://www.yesapothecary.com/",
+        # tags=['Vegetarian', 'Italian', 'Food Trucks']
+        )
     restaurant59 = Business(
         owner_id=14,
         business_name="Juliana's",
@@ -829,7 +945,9 @@ def seed_businesses():
         longitude=-73.993434,
         latitude=40.702747,
         price_range=2,
-        website="https://julianaspizza.com/")
+        website="https://julianaspizza.com/",
+        # tags=['Comfort Food', 'Japanese', 'Brazilian']
+        )
     restaurant60 = Business(
         owner_id=15,
         business_name='Rubirosa',
@@ -843,7 +961,9 @@ def seed_businesses():
         longitude=-73.99623,
         latitude=40.722766,
         price_range=2,
-        website="https://www.rubirosanyc.com/")
+        website="https://www.rubirosanyc.com/",
+        # tags=['Grocery', 'Halal', 'Cafes']
+        )
     restaurant61 = Business(
         owner_id=1,
         business_name='Mister O1 Dallas',
@@ -857,7 +977,9 @@ def seed_businesses():
         longitude=-96.8014862,
         latitude=32.814480,
         price_range=2,
-        website='https://www.mistero1.com')
+        website='https://www.mistero1.com',
+        # tags=['Gluten-Free', 'Shaved Ice', 'Honey']
+        )
     restaurant62 = Business(
         owner_id=2,
         business_name='il Bracco',
@@ -871,7 +993,9 @@ def seed_businesses():
         longitude=-96.802592,
         latitude=32.864895,
         price_range=2,
-        website='http://ilbraccorestaurant.com')
+        website='http://ilbraccorestaurant.com',
+        # tags=['Vegan', 'Mexican', 'Eastern European']
+        )
     restaurant63 = Business(
         owner_id=3,
         business_name='The Porch',
@@ -885,7 +1009,9 @@ def seed_businesses():
         longitude=-96.7847469,
         latitude=32.8206424,
         price_range=2,
-        website='http://www.theporchrestaurant.com/')
+        website='http://www.theporchrestaurant.com/',
+        # tags=['Danish', 'Asian Fusion', 'French']
+        )
     restaurant64 = Business(
         owner_id=4,
         business_name='Monarch',
@@ -899,7 +1025,9 @@ def seed_businesses():
         longitude=-96.80069,
         latitude=32.781565,
         price_range=4,
-        website='https://www.monarchrestaurants.com/')
+        website='https://www.monarchrestaurants.com/',
+        # tags=['Ice Cream & Frozen Yogurt', 'Bubble Tea', 'Donuts']
+        )
     restaurant65 = Business(
         owner_id=5,
         business_name='Mami Coco',
@@ -913,7 +1041,9 @@ def seed_businesses():
         longitude=-96.77751,
         latitude=32.80038,
         price_range=1,
-        website='http://www.mamicoco.org')
+        website='http://www.mamicoco.org',
+        # tags=['Raw Food', 'Convenience Stores', 'Danish']
+        )
     restaurant66 = Business(
         owner_id=6,
         business_name='R+D Kitchen',
@@ -927,7 +1057,9 @@ def seed_businesses():
         longitude=-96.802789,
         latitude=32.863065,
         price_range=2,
-        website='http://rd-kitchen.com')
+        website='http://rd-kitchen.com',
+        # tags=['African', 'Raw Food', 'Bakeries']
+        )
     restaurant67 = Business(
         owner_id=7,
         business_name='Au Troisieme',
@@ -941,7 +1073,9 @@ def seed_businesses():
         longitude=-96.806932,
         latitude=32.86386775,
         price_range=4,
-        website='https://autroisiemedallas.com')
+        website='https://autroisiemedallas.com',
+        # tags=['Dumplings', 'Raw Food', 'Salad']
+        )
     restaurant68 = Business(
         owner_id=8,
         business_name='Hudson House',
@@ -955,7 +1089,9 @@ def seed_businesses():
         longitude=-96.8116955,
         latitude=32.8514422,
         price_range=2,
-        website='http://hudsonhousehp.com')
+        website='http://hudsonhousehp.com',
+        # tags=['Desserts', 'Gelato', 'Middle Eastern']
+        )
     restaurant69 = Business(
         owner_id=9,
         business_name="Ellen's",
@@ -969,7 +1105,9 @@ def seed_businesses():
         longitude=-96.8076125,
         latitude=32.7818955,
         price_range=2,
-        website='https://www.ellens.com')
+        website='https://www.ellens.com',
+        # tags=['Food Delivery Services', 'Cuban', 'Japanese']
+        )
     restaurant70 = Business(
         owner_id=10,
         business_name='Rodeo Goat',
@@ -983,7 +1121,9 @@ def seed_businesses():
         longitude=-96.823986,
         latitude=32.7971504,
         price_range=2,
-        website='http://rodeogoat.com')
+        website='http://rodeogoat.com',
+        # tags=['Italian', 'Hong Kong Style Cafe', 'African']
+        )
     restaurant71 = Business(
         owner_id=11,
         business_name='Malai Kitchen',
@@ -997,7 +1137,9 @@ def seed_businesses():
         longitude=-96.8054994,
         latitude=32.8634651,
         price_range=2,
-        website='https://www.malaikitchen.com/')
+        website='https://www.malaikitchen.com/',
+        # tags=['Korean', 'Food Delivery Services', 'Food Trucks']
+        )
     restaurant72 = Business(
         owner_id=12,
         business_name='The Honor Bar',
@@ -1011,7 +1153,9 @@ def seed_businesses():
         longitude=-96.806765,
         latitude=32.835492,
         price_range=2,
-        website='http://honorbar.com')
+        website='http://honorbar.com',
+        # tags=['Bistros', 'French', 'Food Trucks']
+        )
     restaurant73 = Business(
         owner_id=13,
         business_name='Meso Maya Comida y Copas',
@@ -1025,7 +1169,9 @@ def seed_businesses():
         longitude=-96.8049378,
         latitude=32.7877819,
         price_range=2,
-        website='http://www.mesomaya.com')
+        website='http://www.mesomaya.com',
+        # tags=['Internet Cafes', 'Thai', 'French']
+        )
     restaurant74 = Business(
         owner_id=14,
         business_name='Douglas Bar and Grill',
@@ -1039,7 +1185,9 @@ def seed_businesses():
         longitude=-96.787534,
         latitude=32.848823,
         price_range=3,
-        website='https://thedouglastx.com/')
+        website='https://thedouglastx.com/',
+        # tags=['Fusion', 'Buffets', 'Halal']
+        )
     restaurant75 = Business(
         owner_id=15,
         business_name='Pecan Lodge',
@@ -1053,7 +1201,9 @@ def seed_businesses():
         longitude=-96.7838607,
         latitude=32.783719430,
         price_range=2,
-        website='http://www.pecanlodge.com')
+        website='http://www.pecanlodge.com',
+        # tags=['American', 'Coffee & Tea', 'Bistros']
+        )
     restaurant76 = Business(
         owner_id=1,
         business_name='The Purple Pig',
@@ -1067,7 +1217,9 @@ def seed_businesses():
         longitude=-87.624782,
         latitude=41.890694,
         price_range=3,
-        website='http://thepurplepigchicago.com')
+        website='http://thepurplepigchicago.com',
+        # tags=['Caribbean', 'Kosher', 'Bubble Tea']
+        )
     restaurant77 = Business(
         owner_id=2,
         business_name='The Perch',
@@ -1081,7 +1233,9 @@ def seed_businesses():
         longitude=-87.676221,
         latitude=41.90348,
         price_range=2,
-        website='https://www.theperchchicago.com')
+        website='https://www.theperchchicago.com',
+        # tags=['Butcher', 'French', 'Kosher']
+        )
     restaurant78 = Business(
         owner_id=3,
         business_name='Girl & The Goat',
@@ -1091,11 +1245,13 @@ def seed_businesses():
         city='Chicago',
         state='IL',
         zipcode=60607,
-        about="As one of the first restaurants on Chicago's famed Restaurant Row in the West Loop, Stephanie Izard's Girl & the Goat began in 2010 with a goal of serving bold, global flavors to our local community (and visitors!). Since then, our desire to treat guests like family has remained the same (as have our Green Beans) but our seasonal flavors, cocktails, wine and locally-rooted beer are ever-changing.",
+        about="As one of the first restaurants on Chicago's famed Restaurant Row in the West Loop, Stephanie Izard's Girl & the Goat began in 2010 with a goal of serving bold, global flavors to our local community (and visitors!). Since then, our desire to treat guests like family has remained the same (as have our Green Beans), but our seasonal flavors, cocktails, wine and locally-rooted beer are ever-changing.",
         longitude=-87.64795134,
         latitude=41.88418277,
         price_range=3,
-        website='https://girlandthegoat.com')
+        website='https://girlandthegoat.com',
+        # tags=['Bagels', 'Grocery', 'Tapas']
+        )
     restaurant79 = Business(
         owner_id=4,
         business_name='The Dearborn',
@@ -1109,7 +1265,9 @@ def seed_businesses():
         longitude=-87.6293151,
         latitude=41.884252,
         price_range=2,
-        website='http://thedearborntavern.com')
+        website='http://thedearborntavern.com',
+        # tags=['Thai', 'Beer, Wine & Spirits', 'Soul Food']
+        )
     restaurant80 = Business(
         owner_id=5,
         business_name='Penumbra',
@@ -1123,7 +1281,9 @@ def seed_businesses():
         longitude=-87.710933,
         latitude=41.92445,
         price_range=2,
-        website='http://www.penumbrawinebar.com')
+        website='http://www.penumbrawinebar.com',
+        # tags=['Tortillas', 'Cafes', 'Tortillas']
+        )
     restaurant81 = Business(
         owner_id=6,
         business_name='The Whale Chicago',
@@ -1137,7 +1297,9 @@ def seed_businesses():
         longitude=-87.70112,
         latitude=41.92555,
         price_range=2,
-        website='http://www.thewhalechicago.com')
+        website='http://www.thewhalechicago.com',
+        # tags=['Kebab', 'Ice Cream & Frozen Yogurt', 'Convenience Stores']
+        )
     restaurant82 = Business(
         owner_id=7,
         business_name='Giant',
@@ -1151,7 +1313,9 @@ def seed_businesses():
         longitude=-87.70746,
         latitude=41.9171,
         price_range=3,
-        website='http://www.giantrestaurant.com')
+        website='http://www.giantrestaurant.com',
+        # tags=['Donuts', 'Sushi', 'Tortillas']
+        )
     restaurant83 = Business(
         owner_id=8,
         business_name='etta - Bucktown',
@@ -1165,7 +1329,9 @@ def seed_businesses():
         longitude=-87.67417,
         latitude=41.91073,
         price_range=2,
-        website='https://ettarestaurant.com')
+        website='https://ettarestaurant.com',
+        # tags=['Fast Food', 'Dim Sum', 'Acai Bowls']
+        )
     restaurant84 = Business(
         owner_id=9,
         business_name="Jack's Wicker Park",
@@ -1179,7 +1345,9 @@ def seed_businesses():
         longitude=-87.67947,
         latitude=41.90346,
         price_range=3,
-        website='https://www.jackswickerpark.com')
+        website='https://www.jackswickerpark.com',
+        # tags=['Vegetarian', 'Comfort Food', 'Farmers Market']
+        )
     restaurant85 = Business(
         owner_id=10,
         business_name='Amaru',
@@ -1193,7 +1361,9 @@ def seed_businesses():
         longitude=-87.67536,
         latitude=41.91071,
         price_range=3,
-        website='https://amaruchicago.com')
+        website='https://amaruchicago.com',
+        # tags=['Vegan', 'Afghan', 'Soul Food']
+        )
     restaurant86 = Business(
         owner_id=11,
         business_name='Union',
@@ -1207,7 +1377,9 @@ def seed_businesses():
         longitude=-87.69769,
         latitude=41.9218,
         price_range=2,
-        website='https://www.unionlogansquare.com')
+        website='https://www.unionlogansquare.com',
+        # tags=['Italian', 'German', 'Raw Food']
+        )
     restaurant87 = Business(
         owner_id=12,
         business_name='Forbidden Root',
@@ -1221,7 +1393,9 @@ def seed_businesses():
         longitude=-87.671551,
         latitude=41.89628,
         price_range=2,
-        website='http://www.forbiddenroot.com')
+        website='http://www.forbiddenroot.com',
+        # tags=['Indian', 'Kebab', 'Comfort Food']
+        )
     restaurant88 = Business(
         owner_id=13,
         business_name='Qing Xiang Yuan Dumplings',
@@ -1235,7 +1409,9 @@ def seed_businesses():
         longitude=-87.63219,
         latitude=41.85505,
         price_range=2,
-        website='https://qxydumplings.com')
+        website='https://qxydumplings.com',
+        # tags=['Filipino', 'Delicatessen', 'Food Delivery Services']
+        )
     restaurant89 = Business(
         owner_id=14,
         business_name="Dove's Luncheonette",
@@ -1249,7 +1425,9 @@ def seed_businesses():
         longitude=-87.677293,
         latitude=41.909487,
         price_range=2,
-        website='http://www.doveschicago.com')
+        website='http://www.doveschicago.com',
+        # tags=['Korean', 'Bagels', 'Dim Sum']
+        )
     restaurant90 = Business(
         owner_id=15,
         business_name='The VIG Chicago',
@@ -1263,7 +1441,9 @@ def seed_businesses():
         longitude=-87.6345035,
         latitude=41.9099251,
         price_range=2,
-        website='http://www.thevigchicago.com')
+        website='http://www.thevigchicago.com',
+        # tags=['Kebab', 'Honey', 'Gelato']
+        )
     restaurant91 = Business(
         owner_id=1,
         business_name="Poor Calvin's",
@@ -1277,7 +1457,9 @@ def seed_businesses():
         longitude=-84.38226,
         latitude=33.7684,
         price_range=3,
-        website="https://poorcalvins.com/")
+        website="https://poorcalvins.com/",
+        # tags=['Gelato', 'Breakfast & Brunch', 'Vietnamese']
+        )
     restaurant92 = Business(
         owner_id=2,
         business_name='Postino Buckhead',
@@ -1291,7 +1473,9 @@ def seed_businesses():
         longitude=-84.38251,
         latitude=33.85494,
         price_range=3,
-        website="https://www.postinowinecafe.com/locations/georgia/buckhead/")
+        website="https://www.postinowinecafe.com/locations/georgia/buckhead/",
+        # tags=['Middle Eastern', 'Chicken Wings', 'Acai Bowls']
+        )
     restaurant93 = Business(
         owner_id=3,
         business_name='South City Kitchen Midtown',
@@ -1305,7 +1489,9 @@ def seed_businesses():
         longitude=-84.3845599,
         latitude=33.786,
         price_range=2,
-        website="https://www.southcitykitchen.com/")
+        website="https://www.southcitykitchen.com/",
+        # tags=['Filipino', 'Delicatessen', 'Pizza']
+        )
     restaurant94 = Business(
         owner_id=4,
         business_name='Aviva by Kameel - Atlanta',
@@ -1319,7 +1505,9 @@ def seed_businesses():
         longitude=-84.386555,
         latitude=33.760538,
         price_range=2,
-        website="https://www.avivabykameel.com/")
+        website="https://www.avivabykameel.com/",
+        # tags=['Convenience Stores', 'Chinese', 'Caribbean']
+        )
     restaurant95 = Business(
         owner_id=5,
         business_name='Krave',
@@ -1333,7 +1521,9 @@ def seed_businesses():
         longitude=-84.42574,
         latitude=33.81099,
         price_range=2,
-        website="https://kraveatl.com/")
+        website="https://kraveatl.com/",
+        # tags=['Italian', 'Convenience Stores', 'Coffee & Tea']
+        )
     restaurant96 = Business(
         owner_id=6,
         business_name='Two Urban Licks',
@@ -1347,7 +1537,9 @@ def seed_businesses():
         longitude=-84.3612738,
         latitude=33.7684555,
         price_range=2,
-        website="https://www.twourbanlicks.com/")
+        website="https://www.twourbanlicks.com/",
+        # tags=['Seafood', 'Noodles', 'Beer, Wine & Spirits']
+        )
     restaurant97 = Business(
         owner_id=7,
         business_name='Whiskey Bird',
@@ -1357,11 +1549,13 @@ def seed_businesses():
         city='Atlanta',
         state='GA',
         zipcode=30306,
-        about="Grilled yakitori skewers & cross-cultural fusion plates (tacos, burgers) in an easygoing space.",
+        about="Grilled yakitori skewers & cross-cultural fusion plates (tacos, burgers in an easygoing space.)",
         longitude=-84.351852,
         latitude=33.792656,
         price_range=2,
-        website="https://www.eatwhiskeybird.com/")
+        website="https://www.eatwhiskeybird.com/",
+        # tags=['Vegan', 'Halal', 'Kosher']
+        )
     restaurant98 = Business(
         owner_id=8,
         business_name='Urban Hai',
@@ -1375,7 +1569,9 @@ def seed_businesses():
         longitude=-84.3849647,
         latitude=33.784326,
         price_range=2,
-        website="https://www.yelp.com/biz/urban-hai-atlanta")
+        website="https://www.yelp.com/biz/urban-hai-atlanta",
+        # tags=['Soul Food', 'Bagels', 'Bakeries']
+        )
     restaurant99 = Business(
         owner_id=9,
         business_name='Grana',
@@ -1389,7 +1585,9 @@ def seed_businesses():
         longitude=-84.36667,
         latitude=33.805648,
         price_range=2,
-        website="https://www.granaatl.com/")
+        website="https://www.granaatl.com/",
+        # tags=['Hawaiian', 'Burgers', 'Vietnamese']
+        )
     restaurant100 = Business(
         owner_id=10,
         business_name='5Church - Buckhead',
@@ -1403,7 +1601,9 @@ def seed_businesses():
         longitude=-84.3657890,
         latitude=33.8478353,
         price_range=3,
-        website="https://buckhead.5church-atlanta.com/")
+        website="https://buckhead.5church-atlanta.com/",
+        # tags=['Tapas', 'Breweries']
+        )
     restaurant101 = Business(
         owner_id=11,
         business_name='Okiboru Tsukemen & Ramen',
@@ -1417,7 +1617,9 @@ def seed_businesses():
         longitude=-84.3901,
         latitude=33.8158,
         price_range=2,
-        website="https://okiboru.com/")
+        website="https://okiboru.com/",
+        # tags=['Buffets', 'Vegetarian', 'Hawaiian']
+        )
     restaurant102 = Business(
         owner_id=12,
         business_name='Little Rey',
@@ -1431,7 +1633,9 @@ def seed_businesses():
         longitude=-84.36634,
         latitude=33.80799,
         price_range=2,
-        website="https://www.littlerey.com/")
+        website="https://www.littlerey.com/",
+        # tags=['Vietnamese', 'Gastropubs', 'Soul Food']
+        )
     restaurant103 = Business(
         owner_id=13,
         business_name='26 Thai Kitchen & Bar',
@@ -1445,7 +1649,9 @@ def seed_businesses():
         longitude=-84.36912,
         latitude=33.82237,
         price_range=2,
-        website="https://26thai.com/")
+        website="https://26thai.com/",
+        # tags=['Cajun/Creole', 'Barbeque', 'Delicatessen']
+        )
     restaurant104 = Business(
         owner_id=14,
         business_name='Atlanta Breakfast Club',
@@ -1459,7 +1665,9 @@ def seed_businesses():
         longitude=-84.395400,
         latitude=33.7650217,
         price_range=2,
-        website="https://atlantabreakfastclub.ordersnapp.com/home")
+        website="https://atlantabreakfastclub.ordersnapp.com/home",
+        # tags=['Kosher', 'Food Trucks', 'Asian Fusion']
+        )
     restaurant105 = Business(
         owner_id=15,
         business_name='Roc South Cuisine',
@@ -1473,7 +1681,9 @@ def seed_businesses():
         longitude=-84.33755,
         latitude=33.83534,
         price_range=2,
-        website="https://www.rocsouth.com/")
+        website="https://www.rocsouth.com/",
+        # tags=['Salad', 'Comfort Food', 'Hawaiian']
+        )
 
     db.session.add(restaurant1)
     db.session.add(restaurant2)

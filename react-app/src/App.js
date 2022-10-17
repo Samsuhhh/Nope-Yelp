@@ -9,6 +9,8 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import BusinessDetails from './components/Businesses/BusinessDetails';
+import HomeSlider from './components/Businesses/HomePage/imageSlider';
+import RecentActivity from './components/Businesses/HomePage/recentActivity';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -29,7 +31,7 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/login' exact={true}>
+        {/* <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
@@ -47,8 +49,11 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        </ProtectedRoute> */}
+        <Route path='/' exact={true}>
+          <RecentActivity />
+          <HomeSlider />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

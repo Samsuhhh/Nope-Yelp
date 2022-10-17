@@ -1,0 +1,135 @@
+.tag-button{
+  background-color: rgb(232, 232, 232);
+  color: rgb(77, 77, 77);
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition:.6s;
+}
+.tag-button:hover{
+  background-color: rgb(197, 197, 197);
+  color: rgb(67, 66, 66);
+}
+
+#price-range-btn-one{
+  border: rgb(165, 165, 165) solid 1px;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+  padding: 6px 14px;
+
+}
+#price-range-btn-two,
+#price-range-btn-three{
+  border-radius: 0px;
+  border: rgb(165, 165, 165) solid 1px;
+  padding: 6px 14px;
+  border-left: none;
+
+}
+
+#price-range-btn-four{
+  border: rgb(165, 165, 165) solid 1px;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  border-left: none;
+  padding: 6px 14px;
+
+}
+.price-range-btn{
+  background-color: white;
+  transition:.6s;
+  font: 12px;
+}
+.price-range-btn:hover {
+  background-color: rgb(219, 219, 219);
+  cursor: pointer;
+}
+
+#business-card-business-name{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#business-card-business-name:hover {
+  text-decoration: underline;
+}
+#business-card-link{
+  text-decoration: none;
+  color:black;
+}
+#more-link{
+  text-decoration:none;
+  color: rgb(0, 142, 167);
+  font-weight: bold;
+}
+#more-link:hover{
+  text-decoration: underline;
+}
+#checkbox-container{
+  display:flex;
+  flex-direction: column;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 25px;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border: 1px rgb(168, 168, 168) solid;
+  border-radius: 20%;
+  transition:.6s;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: rgb(226, 225, 225);
+  border: 1px rgb(60, 60, 60) solid
+}
+
+.container input:checked ~ .checkmark {
+  background-color: rgb(0, 142, 167);
+  border:1px rgb(0, 142, 167) solid;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
