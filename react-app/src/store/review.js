@@ -126,22 +126,24 @@ const reviewReducer = (state = initialState, action) => {
     let newState = { ...initialState }
     switch (action.type) {
         case LOAD_ALL:
-            action.reviews.Reviews.forEach(review => {
+            action.reviews.forEach(review => {
                 newState[review.id] = review
             })
-            return { newState }
+            return newState
         case LOAD_CURRENT:
-            action.reviews.Reviews.forEach(review => {
+            action.reviews.reviews.forEach(review => {
                 newState[review.id] = review
             })
-            return { newState }
+            return newState
         case CREATE:
             newState[action.review.id] = action.review
             return newState
         case UPDATE:
             newState[action.review.id] = action.review
+            return newState
         case REMOVE:
             delete newState[action.review.id]
+            return newState
         case RESET:
             return initialState
         default:
