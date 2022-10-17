@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
-import { getAllReviews } from '../../../store/review'
+import { getAllReviews, removeReview } from '../../../store/review'
 import './BusinessReviews.css'
 
 const BusinessReview = () => {
@@ -15,7 +15,7 @@ const BusinessReview = () => {
 
     useEffect(() => {
         dispatch(getAllReviews(businessId))
-    }, [dispatch])
+    }, [dispatch, businessId])
 
     return (
         <div>
