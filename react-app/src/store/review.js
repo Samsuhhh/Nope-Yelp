@@ -100,7 +100,7 @@ export const updateReview = (review, reviewId) => async dispatch => {
         return updatedReview
     }
     else {
-        return ("-------Update Review Thunk Error-------")
+        console.log("-------Update Review Thunk Error-------")
     }
     return null
 }
@@ -130,6 +130,22 @@ const reviewReducer = (state = initialState, action) => {
                 newState[review.id] = review
             })
             return { newState }
+        case LOAD_CURRENT:
+            action.reviews.Reviews.forEach(review => {
+                newState[review.id] = review
+            })
+            return { newState }
+        case CREATE:
+            newState[action.review.id] = action.review
+            return newState
+        case UPDATE:
+            newState[action.review.id] = action.review
+        case REMOVE:
+            delete newState[action.review.id]
+        case RESET:
+            return initialState
+        default:
+            return state
     }
 }
 
