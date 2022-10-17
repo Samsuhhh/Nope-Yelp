@@ -68,15 +68,15 @@ const NavBar = () => {
       <div className="search-wrapper">
         <div class="search">
           <div class="left-side">
-            <input type="text" placeholder="tacos, cheap dinner, Max's" class="field request" />
+            <input type="text" placeholder="tacos, cheap dinner, Max's" class="field request"></input>
             <ul class="left-side__sublist">
               <li class="left-side__subitem"><a href="#" class="left-side__sublink restaraunts first">Restaurants</a></li>
-              <li class="left-side__subitem"><a href="#" class="left-side__sublink bar">Breakfast & Brunch</a></li>
               <li class="left-side__subitem"><a href="#" class="left-side__sublink coffee">Coffee & tea</a></li>
               <li class="left-side__subitem"><a href="#" class="left-side__sublink delivery">Delivery</a></li>
               <li class="left-side__subitem"><a href="#" class="left-side__sublink takeout">Takeout</a></li>
               <li class="left-side__subitem"><a href="#" class="left-side__sublink reservations">Reservations</a></li>
             </ul>
+
           </div>
           <a href="javascript.void(0);">
           <div className="search-button-wrapper">
