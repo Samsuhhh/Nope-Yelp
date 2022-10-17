@@ -46,6 +46,8 @@ export const getAllReviews = (businessId) => async dispatch => {
     if (response.ok) {
         const reviews = await response.json()
         dispatch(load(reviews, businessId))
+    } else {
+        console.log("------Get All Reviews Thunk Error-------")
     }
     return null
 }
@@ -57,6 +59,9 @@ export const getCurrentReviews = () => async dispatch => {
         const review = await response.json()
         dispatch(loadCurrent(review))
         return review
+    }
+    else {
+        console.log("------Get Current Reviews Thunk Error------")
     }
 }
 
@@ -73,6 +78,9 @@ export const createReview = (review, businessId) => async dispatch => {
         const businessReview = await response.json()
         dispatch(create(businessReview))
         return businessReview
+    }
+    else {
+        console.log('------Create Review Thunk Error------')
     }
     return null
 }
@@ -91,6 +99,9 @@ export const updateReview = (review, reviewId) => async dispatch => {
         dispatch(update(updatedReview))
         return updatedReview
     }
+    else {
+        return ("-------Update Review Thunk Error-------")
+    }
     return null
 }
 
@@ -103,8 +114,23 @@ export const removeReview = (reviewId) => async dispatch => {
         dispatch(remove(reviewId))
         return
     }
+    else {
+        console.log("----Delete Review Thunk Error----")
+        return
+    }
 }
 
-const initialState = {
-    
+const initialState = {}
+
+const reviewReducer = (state = initialState, action) => {
+    let newState = { ...initialState }
+    switch (action.type) {
+        case LOAD_ALL:
+            action.reviews.Reviews.forEach(review => {
+                newState[review.id] = review
+            })
+            return { newState }
+    }
 }
+
+export default reviewReducer
