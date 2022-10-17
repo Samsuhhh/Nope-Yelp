@@ -12,7 +12,27 @@ export default function BusinessCard(){
           <button className="price-range-btn" id="price-range-btn-three">$$$</button>
           <button className="price-range-btn" id="price-range-btn-four">$$$$</button>
         </div>
+        <div id="checkbox-container">
+          <h3>Suggested</h3>
+          <label className='container'>
+            <input  type="checkbox"></input> Tag 1
+            <span className='checkmark'></span>
+          </label>
+          <label className='container'>
+            <input  type="checkbox"></input> Tag 2
+            <span className='checkmark'></span>
+          </label>
+          <label className='container'>
+            <input  type="checkbox"></input> Tag 3
+            <span className='checkmark'></span>
+          </label>
+          <label className='container'>
+            <input  type="checkbox"></input> Tag 4
+            <span className='checkmark'></span>
+          </label>
+        </div>
       </div>
+      {/* MIDDLE DIV START */}
     </div>
   )
 }
