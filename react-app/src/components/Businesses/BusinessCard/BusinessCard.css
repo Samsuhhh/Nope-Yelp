@@ -1,0 +1,14 @@
+.tag-button{
+  background-color: rgb(232, 232, 232);
+  color: rgb(77, 77, 77);
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition:.6s;
+}
+.tag-button:hover{
+  background-color: rgb(197, 197, 197);
+  color: rgb(67, 66, 66);
+}

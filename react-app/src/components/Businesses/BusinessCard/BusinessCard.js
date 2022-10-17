@@ -58,6 +58,8 @@ export default function BusinessCard(){
 
       </div>
       {/* MIDDLE DIV END */}
+      {/* RIGHT DIV START */}
+      <div>Map Will Go Here...eventually</div>
     </div>
   )
 }
