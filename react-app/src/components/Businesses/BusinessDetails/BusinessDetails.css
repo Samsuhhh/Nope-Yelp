@@ -1,0 +1,50 @@
+#business-details-page{
+    width: 100%;
+    height: 100%;
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+}
+
+#business-details-container {
+    border: 2px solid green;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#details-content{
+    width: 80%;
+    height: 100%;
+    border: 3px solid red;
+}
+
+
+#business-details-action-buttons{
+    display: flex;
+    border: 1px solid purple;
+    width: 100px;
+    height: 50px;
+    padding: 10px;
+}
+
+
+#sticky-sidebar-container {
+    width: 30%;
+    height: 100%;
+    border: 10px solid pink;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
