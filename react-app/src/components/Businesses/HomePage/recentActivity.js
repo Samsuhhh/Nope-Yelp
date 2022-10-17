@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Footer from '../../Footer/Footer'
 import './recentActivity.css'
 
 
@@ -24,6 +25,8 @@ function RecentActivity() {
                     </div>
                 </div>
             </div>
+            <br/><br/><br/><br/>
+            <Footer />
         </>
     )
 }
