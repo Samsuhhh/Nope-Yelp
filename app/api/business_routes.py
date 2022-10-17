@@ -56,8 +56,11 @@ def get_business_by_id(id):
   business_dict['Reviews'] = [review.to_dict() for review in reviews]
 
   
-  businessImages = BusinessImage.query.filter(BusinessImage.business_id == id)
-  business_dict['BusinessImages'] = [businessImage.to_dict() for businessImage in businessImages]
+  # businessImages = BusinessImage.query.filter(BusinessImage.business_id == id)
+  # business_dict['BusinessImages'] = [businessImage.to_dict() for businessImage in businessImages]
+  businessImages = business.business_images
+  business_dict["businessImages"] = [businessImage.to_dict() for businessImage in businessImages]
+
 
   ## reviews is superfulous not doing anything because reviews is always truthy
   if reviews:
