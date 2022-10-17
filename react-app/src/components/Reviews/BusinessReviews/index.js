@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { getAllReviews } from '../../../store/review'
-import './BusinessReviewPage.css'
+import './BusinessReviews.css'
 
 const BusinessReview = () => {
     const { businessId } = useParams()
