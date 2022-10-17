@@ -31,13 +31,13 @@
     height: 100%;
 }
 
-ul {
+.footer-grid-comp ul {
     padding-top: 10px;
     font-weight: 700;
     padding-left: 30px;
 }
 
-li {
+.footer-grid-comp li {
     font-size: 13px;
     padding-left: 30px;
     padding-top: 10px;
