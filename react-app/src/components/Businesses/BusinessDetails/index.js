@@ -6,15 +6,13 @@ import './BusinessDetails.css'
 
 const BusinessDetails = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const params = useParams();
     const { businessId } = params;
     const business = useSelector(state => state.businesses[businessId]);
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
-        // let pause = businesses[businessId]
-        // console.log('what the fuck', pause)
         console.log('Business Id', businessId)
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })

@@ -1,9 +1,10 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
-from app.models import User, Business, Review, db
+from app.models import User, Business, Review, BusinessImage, db
 from flask_login import current_user
 from app.forms.business_form import BusinessForm
 from app.forms.review_form import ReviewForm
+
 
 def validation_form_errors(validation_errors):
   errors = []
@@ -53,6 +54,10 @@ def get_business_by_id(id):
 
   reviews = Review.query.filter(Review.business_id == id)
   business_dict['Reviews'] = [review.to_dict() for review in reviews]
+
+  
+  businessImages = BusinessImage.query.filter(BusinessImage.business_id == id)
+  business_dict['BusinessImages'] = [businessImage.to_dict() for businessImage in businessImages]
 
   ## reviews is superfulous not doing anything because reviews is always truthy
   if reviews:
