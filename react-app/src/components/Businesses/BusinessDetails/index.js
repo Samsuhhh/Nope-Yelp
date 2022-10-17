@@ -34,7 +34,7 @@ const BusinessDetails = () => {
                         </div>
                     </div>
                     <div id='all-photos-div'>
-                        <button id='all-photos-button'>All Photos</button>
+                        <button id='all-photos-button'>See all photos</button>
                     </div>
                 </div>
             </div>
@@ -43,18 +43,60 @@ const BusinessDetails = () => {
                     <div id='business-details-action-buttons'>
                         <button>Write a Review</button>
                         <button>Add a photo </button>
+                        <button>Share</button>
+                        <button>Save</button>
                     </div>
-                    <section id='business-details-amenities'></section>
+                    <section id='business-details-amenities'>
+                        <div>POSSIBLY AMENITIES</div>
+                    </section>
                     <section id='business-details-about-container'>
                         <div> <h1>About the Business</h1> </div>
-                        <div id='about-content'>
-                            <div id='business-details-owner-avatar'></div>
+                        <div id='about-owner-content'>
+                            <div id='business-details-owner-avatar'>
+                                <img alt='sexy pfp'id='owner-avatar' src={business.Owner.userAvatar}/>
+                            </div>
                             <div id='owner-name-title-div-column'>
-                                <div id='business-details-owner-name'></div>
-                                <div id='business-details-owner-title'></div>
+                                <div id='business-details-owner-name'>
+                                    {business.Owner.firstName} {business.Owner.lastName}
+                                </div>
+                                <div id='business-details-owner-title'>
+                                    Business Owner
+                                </div>
                             </div>
                         </div>
-                        <div> {business.about}</div>
+                        <div>{business.about}</div>
+                    </section>
+                    <section id='reviews-business-details-container'>
+                        <div id='reviews-analytics-container'>
+                            <div id='overall-ratings'>
+                                <p>Overall rating</p>
+                                <div id='average-stars'>STARS**(placeholder)</div>
+                                <div><p> {business.reviewCount}</p></div>
+                            </div>
+                            <div id='dynamic-horizontal-reviews'>
+                                <div className='dynamic-stars'>
+                                    <div>5 Stars</div>
+                                    <div>red color</div>
+                                </div>
+                                <div className='dynamic-stars'>
+                                    <div>4 Stars</div>
+                                    <div>red-orange color</div>
+                                </div>
+                                <div className='dynamic-stars'>
+                                    <div>3 Stars</div>
+                                    <div>orange color</div>
+                                </div>
+                                <div className='dynamic-stars'>
+                                    <div>2 Stars</div>
+                                    <div>light orange color</div>
+                                </div>
+                                <div className='dynamic-stars'>
+                                    <div>1 star</div>
+                                    <div>golden color</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id='review-card'></div>
                     </section>
                 </div>
                 <div id='sticky-sidebar-container'>
