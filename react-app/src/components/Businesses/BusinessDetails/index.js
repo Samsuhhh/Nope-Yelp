@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleBusinessThunk } from '../../../store/business';
 import { useParams, useHistory } from 'react-router-dom';
+import React from 'react';
 import './BusinessDetails.css'
 
 const BusinessDetails = () => {
@@ -12,6 +13,8 @@ const BusinessDetails = () => {
     const business = useSelector(state => state.businesses[businessId]);
     const [isLoaded, setIsLoaded] = useState(false)
 
+    // const [current, setCurrent] = useState(0);
+
     useEffect(() => {
         console.log('Business Id', businessId)
         dispatch(getSingleBusinessThunk(businessId))
@@ -19,20 +22,61 @@ const BusinessDetails = () => {
 
     }, [dispatch, businessId])
 
+    // let images = Object.keys(business?.businessImages)
+    // const length = images.length
+    // console.log(length)
+    // const nextSlide = () => {
+    //     setCurrent(current === length - 1 ? 0 : current + 1)
+    // };
+    // const prevSlide = () => {
+    //     setCurrent(current === 0 ? length - 1 : current - 1)
+    // }
+
+
 
     return isLoaded && (
         <div id='business-details-page'>
             <div id='business-details-header-images'>
+                <div id='business-details-images-main'>
+                    <div id='carousel-wrapper'>
+                        <div id='image-container'>
+                            {business.businessImages.map((image) =>
+                                <div className='carousel-images'>
+                                    <div>{image.id}</div>
+                                    <img></img>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+
+                </div>
                 <div id='business-details-header-content'>
                     <div id='business-details-header-info-container'>
                         <div id='business-details-info'>
                             <h1>{business.business_name}</h1>
-                            <div>{business.reviewCount}</div>
-                            <div>HOURS OF OPERATION</div>
+                            <div id='business-details-info-review-divs' style={{"display": "flex"}}>
+                                <div>
+                                    review avg {business.reviewAverage}
+                                    <div>Nopes</div>
+                                </div>
+                                <div>
+                                    review count {business.reviewCount}
+                                </div>
+                            </div>
+                            <div id='business-details-info-price-tags'>
+                                <div>
+                                    price range {business.price_range}
+                                </div>
+                            </div>
+                            <div id='business-details-info-location'>
+                                <div> {business.street_address}</div>
+                                <div>{business.city}, {business.state} {business.zipcode}</div>
+                            </div>
                         </div>
                     </div>
                     <div id='all-photos-div'>
-                        <button id='all-photos-button'>See all photos</button>
+                        <button id='all-photos-button'>See {business.businessImages.length} photos</button>
                     </div>
                 </div>
             </div>
@@ -92,19 +136,6 @@ const BusinessDetails = () => {
                                     <div>1 star</div>
                                     <div>golden color</div>
                                 </div>
-                            </div>
-                        </div>
-                        <div id='business-reviews'>
-                            <div id='review-card'>
-                                <div id='review-user-info'>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                                {/* have to move user info into each mapped review card */}
-                                {business.Reviews.map(review =>
-                                    <div style={{'border':'1px solid black'}}>{review.review}</div>
-                                )}
                             </div>
                         </div>
                     </section>
