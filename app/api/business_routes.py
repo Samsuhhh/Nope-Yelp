@@ -20,7 +20,7 @@ def get_all_businesses():
   ## TODO ADD QUERYING FOR SEARCHING "LIKE%NAME%"
   businesses = Business.query.all()
 
-  business_lst = []
+  business_lst = [{"placeholder":"placehodor"}]
   for business in businesses:
     business_dict = business.to_dict()
     # print(business)
@@ -28,7 +28,7 @@ def get_all_businesses():
       business_dict["review_count"] = len(business.reviews)
       business_dict["review_average"] = round(sum([review.nope for review in business.reviews]) / len(business.reviews), 2)
     business_lst.append(business_dict)
-  return {"businesses": business_lst}
+  return jsonify(business_lst)
 
 ## BUSINESS ROUTE FOR GET BUSSINESS OWNED BY CURRENT USER
 ## TODO FIXME
