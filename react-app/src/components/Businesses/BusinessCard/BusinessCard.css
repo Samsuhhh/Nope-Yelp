@@ -12,3 +12,37 @@
   background-color: rgb(197, 197, 197);
   color: rgb(67, 66, 66);
 }
+
+#price-range-btn-one{
+  border: rgb(165, 165, 165) solid 1px;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+  padding: 6px 14px;
+
+}
+#price-range-btn-two,
+#price-range-btn-three{
+  border-radius: 0px;
+  border: rgb(165, 165, 165) solid 1px;
+  padding: 6px 14px;
+  border-left: none;
+
+}
+
+#price-range-btn-four{
+  border: rgb(165, 165, 165) solid 1px;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  border-left: none;
+  padding: 6px 14px;
+
+}
+.price-range-btn{
+  background-color: white;
+  transition:.6s;
+  font: 12px;
+}
+.price-range-btn:hover {
+  background-color: rgb(219, 219, 219);
+  cursor: pointer;
+}
