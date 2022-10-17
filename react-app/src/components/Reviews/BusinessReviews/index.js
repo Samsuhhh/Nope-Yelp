@@ -16,4 +16,18 @@ const BusinessReview = () => {
     useEffect(() => {
         dispatch(getAllReviews(businessId))
     }, [dispatch])
+
+    return (
+        <div>
+            {businessReviews &&
+                <div>
+                    {Object.values(businessReviews).map(review => (
+                        <div key={review.id}>{review.review}</div>
+                    ))}
+                </div>
+            }
+        </div>
+    )
 }
+
+export default BusinessReview
