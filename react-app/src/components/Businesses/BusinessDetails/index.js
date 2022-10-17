@@ -53,7 +53,7 @@ const BusinessDetails = () => {
                         <div> <h1>About the Business</h1> </div>
                         <div id='about-owner-content'>
                             <div id='business-details-owner-avatar'>
-                                <img alt='sexy pfp'id='owner-avatar' src={business.Owner.userAvatar}/>
+                                <img alt='sexy pfp' id='owner-avatar' src={business.Owner.userAvatar} />
                             </div>
                             <div id='owner-name-title-div-column'>
                                 <div id='business-details-owner-name'>
@@ -96,7 +96,19 @@ const BusinessDetails = () => {
                                 </div>
                             </div>
                         </div>
-                        <div id='review-card'></div>
+                        <div id='business-reviews'>
+                            <div id='review-card'>
+                                <div id='review-user-info'>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                {/* have to move user info into each mapped review card */}
+                                {business.Reviews.map(review =>
+                                    <div style={{'border':'1px solid black'}}>{review.review}</div>
+                                )}
+                            </div>
+                        </div>
                     </section>
                 </div>
                 <div id='sticky-sidebar-container'>
