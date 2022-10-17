@@ -1,0 +1,187 @@
+#business-details-page{
+    width: 100%;
+    height: 100%;
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#business-details-header-images{
+    width: 100%;
+    height: 100%;
+    border: 5px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+
+#business-details-images{
+    z-index: -2;
+}
+
+
+
+#business-details-header-content{
+    width: 85%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+#business-details-header-info-container{
+    width: 80%;
+    height: 5%;
+    border: 3px solid yellow;
+    display: flex;
+    flex-direction: row;
+}
+
+#business-details-info{
+    display: flex;
+    flex-direction: column;
+}
+
+/* #business-details-info-review-divs{
+    display: flex;
+    flex-direction: row;
+} */
+
+
+#all-photos-div{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative; */
+    width: 20%;
+    height: 100%;
+}
+#all-photos-button{
+    width: 175px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+
+
+
+#business-details-container {
+    border: 2px solid green;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* margin-left: 20%;
+    margin-right: 20%; */
+}
+
+#details-content{
+    width: 60%;
+    height: 100%;
+    border: 3px solid red;
+}
+
+
+#business-details-action-buttons{
+    display: flex;
+    border: 1px solid purple;
+    width: 100%;
+    height: 50px;
+
+    /* padding: 10px; */
+}
+
+
+#business-details-amenities{
+
+}
+
+#business-details-about-container{
+    width: 100%;
+    height: 100%;
+    border: 5px solid blue;
+}
+
+#about-owner-content{
+    display: flex;
+    width: 100%;
+}
+
+#business-details-owner-avatar{
+
+}
+
+#owner-avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 999px;
+}
+
+#business-details-owner-name{
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+#owner-name-title-div-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 15px;
+}
+
+
+
+#reviews-analytics-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    border: 1px solid blue;
+}
+
+#overall-ratings{
+    border: 1px solid red;
+}
+
+
+.dynamic-stars{
+    width: 100%;
+    border: 1px solid green;
+    display: flex;
+    /* spacing incorrect, holding as is for visual flow of elements */
+}
+
+
+
+
+
+
+#sticky-sidebar-container {
+    width: 25%;
+    height: 900px;
+    border: 1px solid pink;
+    /* have to change width to fixed sizing so it doesn't change width */
+}
+
+#sticky-sidebar-content{
+    position: sticky;
+    top: 10px;
+    border: 1px solid lightgrey;
+    padding-left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
