@@ -44,7 +44,8 @@ export const getAllBusinessesThunk = () => async (dispatch) => {
   const businessData = await response.json();
 
   if (response.ok) {
-    dispatch(loadAll(businessData));
+    console.log('Get All businesses Thunk data', businessData)
+    await dispatch(loadAll(businessData));
   }
   else {
     console.log("-----Get All Business Thunk Error-----");
@@ -65,8 +66,8 @@ export const getCurrentUserBusinessesThunk = () => async (dispatch) => {
   return businessData;
 };
 
-export const getSingleBusinessThunk = (business) => async (dispatch) => {
-  const response = await fetch(`/api/businesses/${business.id}`);
+export const getSingleBusinessThunk = (businessId) => async (dispatch) => {
+  const response = await fetch(`/api/businesses/${businessId}`);
   const singleBusinessData = await response.json();
 
   if (response.ok) {
@@ -127,4 +128,28 @@ export const deleteBusinessThunk = (businessId) => async (dispatch) => {
   return deletedBusinessData;
 }
 
+let initialState = {}
 
+const businessReducer = (state = initialState, action) => {
+  let newState = {};
+  switch (action.type) {
+    // case LOAD_ALL:
+    //   console.log('Businesses Reducer HITTING', action)
+    //   action.businesses.forEach(business => {
+    //     businesses[business.id] = business;
+    //   })
+    //   return { businesses }
+    case LOAD_ONE:
+      console.log('SINGLE business Reducer hitting', action.business)
+      newState = { [action.business.id]: { ...action.business } }
+      return newState
+
+
+    default:
+      return initialState
+  }
+}
+
+
+
+export default businessReducer
