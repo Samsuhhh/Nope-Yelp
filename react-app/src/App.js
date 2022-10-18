@@ -16,6 +16,7 @@ import RecentActivity from './components/Businesses/HomePage/recentActivity';
 import BusinessReview from './components/Reviews/BusinessReviews';
 
 import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
+import AddBusiness from './components/Businesses/AddBusiness';
 
 
 function App() {
@@ -45,20 +46,10 @@ function App() {
           <SignUpForm />
         </Route>
 
-        <Route path='/businesses/:businessId/reviews' exact={true}>
-          <BusinessReview></BusinessReview>
-        </Route>
-
-        <Route path='/businesses/:businessId'>
-          <BusinessDetails />
-        </Route>
-
-
-
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+          <ProtectedRoute path='/users' exact={true} >
+          <UsersList/>
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
 
           </ProtectedRoute>
@@ -86,6 +77,14 @@ function App() {
 
         <Route path='/writeareview' exact={true}>
           <AddBusinessReview />
+        </Route>
+
+        <Route path='/businesses/new' exact={true}>
+          <AddBusiness />
+        </Route>
+
+        <Route path='/businesses/:businessId'>
+          <BusinessDetails />
         </Route>
 
         <Route>
