@@ -110,10 +110,10 @@ const BusinessDetails = () => {
             <div id='business-details-container'>
                 <div id='details-content'>
                     <div id='business-details-action-buttons'>
-                        <button>Write a Review</button>
-                        <button>Add a photo </button>
-                        <button>Share</button>
-                        <button>Save</button>
+                        <button style={{ color: 'white' ,backgroundColor: 'red', border:'1px solid lightgrey', borderRadius: '5px'}}>Write a Review</button>
+                        <button className='action-buttons'>Add a photo </button>
+                        <button className='action-buttons'>Share</button>
+                        <button className='action-buttons'>Save</button>
                     </div>
                     <section id='business-details-amenities'>
                         <div>POSSIBLY AMENITIES</div>
@@ -133,7 +133,7 @@ const BusinessDetails = () => {
                                 </div>
                             </div>
                         </div>
-                        <div>{business.about}</div>
+                        <div style={{ borderTop: '1px solid #ebebeb', paddingTop: '25px', marginTop: '15px'}}>{business.about}</div>
                     </section>
                     <section id='reviews-business-details-container'>
                         <div id='reviews-analytics-container'>

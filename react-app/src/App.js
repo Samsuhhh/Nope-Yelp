@@ -48,7 +48,7 @@ function App() {
           <User />
           </ProtectedRoute>
           <ProtectedRoute path='/' exact={true} >
-        </ProtectedRoute> */}
+        </ProtectedRoute> 
 
 
         <Route path='/' exact={true}>
