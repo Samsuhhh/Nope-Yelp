@@ -38,8 +38,8 @@ export default function BusinessCard({ search }) {
 
       <div id="center-div-container">
 
-        <h3 style={{ paddingLeft: "20px" }}>GGANNNGGGG</h3>
-        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "100%" }}>
+        <h3 style={{ paddingLeft: "20px" }}>All Results</h3>
+        <div id="middle-div-list-container">
         {Object.values(search).map((business, i) => {
           return (
 

@@ -15,6 +15,14 @@
   padding-bottom: 30px;
   border-bottom: 1px solid lightgrey;
 }
+
+#middle-div-list-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 .tag-button{
   background-color: rgb(232, 232, 232);
   color: rgb(77, 77, 77);
