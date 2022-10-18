@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import BusinessDetails from './components/Businesses/BusinessDetails';
+import AddBusinessReview from './components/Reviews/AddBusinessReview'
 import HomeSlider from './components/Businesses/HomePage/imageSlider';
 import RecentActivity from './components/Businesses/HomePage/recentActivity';
 import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
@@ -19,7 +20,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -33,33 +34,51 @@ function App() {
     <BrowserRouter>
       <NavBar setSearch={setSearch}/>
       <Switch>
-        {/* <Route path='/login' exact={true}>
+        <Route path='/login' exact={true}>
           <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
+          </Route>
+          <Route path='/sign-up' exact={true}>
           <SignUpForm />
-        </Route>
+          </Route>
 
-        <Route path='/businesses/:businessId'>
+          <Route path='/businesses/:businessId'>
           <BusinessDetails/>
-        </Route>
+          </Route>
 
-        <ProtectedRoute path='/users' exact={true} >
+          <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+          </ProtectedRoute>
+          <ProtectedRoute path='/' exact={true} >
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-        </ProtectedRoute> */}
+
+
         <Route path='/' exact={true}>
+          <NavBar />
           <RecentActivity />
           <HomeSlider />
         </Route>
         <Route>
           <BusinessCard search={search} path='/businesses' />
         </Route>
+
+        <Route path='/sign-up' exact={true}>
+          <SignUpForm />
+        </Route>
+
+        <Route path='/login' exact={true}>
+          <LoginForm />
+        </Route>
+
+        <Route path='/writeareview' exact={true}>
+          <AddBusinessReview />
+        </Route>
+
       </Switch>
+
+
     </BrowserRouter>
   );
 }

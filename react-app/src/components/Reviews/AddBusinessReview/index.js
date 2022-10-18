@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { createReview } from '../../../store/review'
+import nope from '../../../assets/nope.png'
+import ratingimg from '../../../assets/nopes/ratingimg.png'
+import js from '../../../assets/icons/JavaScript.svg'
 import './AddBusinessReview.css'
 
 const AddBusinessReview = () => {
@@ -54,47 +57,64 @@ const AddBusinessReview = () => {
     }
     return (
         <>
-            {user && (
-                <div>
-                    <form onSubmit={handleSubmit}>
-                        <div>
-                            {showErrors &&
-                                <ul>
-                                    {validationErrors.map((e, i) => {
-                                        return <div key={i}>{e}</div>
-                                    })}
-                                </ul>
-                            }
-                            <textarea
-                                type='text'
-                                placeholder=''
-                                value={review}
-                                required
-                                onChange={updateReview} />
-                            <div>
-                                <div>Nopes</div>
-                                <input
-                                    type='number'
-                                    min='1'
-                                    max='5'
-                                    placeholder="1-5 nopes"
-                                    value={nopes}
-                                    required
-                                    onChange={updateNopes} />
-                            </div>
-                            <button
-                                type='submit'>
-                                Submit
-                            </button>
-                            <button
-                                type='button'
-                                onClick={handleCancel}>
-                                Cancel
-                            </button>
-                        </div>
-                    </form>
+            {/* {user && ( */}
+            <div className="write-review-main">
+                <div className="write-review-nav">
+                    <div className="write-review-nav-wrapper">
+                        <img id="write-review-logo" src={nope} />
+                        <img id="user-avatar" src={js} />
+                    </div>
                 </div>
-            )}
+                <div className="review-wrapper">
+                    <div class="nopes">
+                        <span><img src={ratingimg}/></span>
+                        <span><img src={ratingimg}/></span>
+                        <span><img src={ratingimg}/></span>
+                        <span><img src={ratingimg}/></span>
+                        <span><img src={ratingimg}/></span>
+                    </div>
+                    <div className="write-a-review">
+                        <form onSubmit={handleSubmit}>
+                            <div>
+                                {showErrors &&
+                                    <ul>
+                                        {validationErrors.map((e, i) => {
+                                            return <div key={i}>{e}</div>
+                                        })}
+                                    </ul>
+                                }
+                                <textarea
+                                    type='text'
+                                    placeholder=''
+                                    value={review}
+                                    required
+                                    onChange={updateReview} />
+                                <div>
+                                    <div>Nopes</div>
+                                    <input
+                                        type='number'
+                                        min='1'
+                                        max='5'
+                                        placeholder="1-5 nopes"
+                                        value={nopes}
+                                        required
+                                        onChange={updateNopes} />
+                                </div>
+                                <button
+                                    type='submit'>
+                                    Submit
+                                </button>
+                                <button
+                                    type='button'
+                                    onClick={handleCancel}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {/* )} */}
         </>
     )
 }

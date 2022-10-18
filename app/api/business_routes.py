@@ -1,9 +1,11 @@
+import json
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
-from app.models import User, Business, Review, db
+from app.models import User, Business, Review, BusinessImage, db
 from flask_login import current_user
 from app.forms.business_form import BusinessForm
 from app.forms.review_form import ReviewForm
+
 
 def validation_form_errors(validation_errors):
   errors = []
@@ -54,6 +56,13 @@ def get_business_by_id(id):
   reviews = Review.query.filter(Review.business_id == id)
   business_dict['Reviews'] = [review.to_dict() for review in reviews]
 
+  
+  # businessImages = BusinessImage.query.filter(BusinessImage.business_id == id)
+  # business_dict['BusinessImages'] = [businessImage.to_dict() for businessImage in businessImages]
+  businessImages = business.business_images
+  business_dict["businessImages"] = [businessImage.to_dict() for businessImage in businessImages]
+
+
   ## reviews is superfulous not doing anything because reviews is always truthy
   if reviews:
     if len(business.reviews) == 0:
@@ -74,8 +83,18 @@ def get_review_by_business(id):
     return {"message": "Business couldn't be found.", "statusCode":404}
 
   ## FILTERING REVIEWS BY BUSINESS ID
+  reviews_lst = []
   reviews = Review.query.filter(Review.business_id == id).all()
-  return {"Reviews": [review.to_dict() for review in reviews]}
+  for review in reviews:
+    review_dict = review.to_dict()
+
+    ## FINDING THE OWNER OF EACH REVIEW BY USER ID
+    owner = (User.query.filter(User.id == review.user_id).one()).to_dict()
+    review_dict['Owner'] = owner
+
+    reviews_lst.append(review_dict)
+  return jsonify(reviews_lst)
+  # return {"Reviews": [review.to_dict() for review in reviews]}
 
 ## EDIT A BUSINESS
 @business_routes.route('/<int:id>', methods=['PUT'])
