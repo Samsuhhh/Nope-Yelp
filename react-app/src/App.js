@@ -9,12 +9,18 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import BusinessDetails from './components/Businesses/BusinessDetails';
+import AddBusinessReview from './components/Reviews/AddBusinessReview'
 import HomeSlider from './components/Businesses/HomePage/imageSlider';
 import RecentActivity from './components/Businesses/HomePage/recentActivity';
+
 import BusinessReview from './components/Reviews/BusinessReviews';
+
+import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [search, setSearch] = useState([])
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,6 +37,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
+      {/* <NavBar setSearch={setSearch}/>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -53,13 +60,15 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-        </ProtectedRoute>
+
+          </ProtectedRoute>
+          <ProtectedRoute path='/' exact={true} >
+        </ProtectedRoute> */}
+
 
 
         <Route path='/' exact={true}>
-          <NavBar />
+          <NavBar setSearch={setSearch}/>
           <RecentActivity />
           <HomeSlider />
         </Route>
@@ -71,6 +80,14 @@ function App() {
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
+        <Route path='/writeareview' exact={true}>
+          <AddBusinessReview />
+        </Route>
+        <Route>
+          <BusinessCard search={search} path='/businesses' exact={true}/>
+        </Route>
+
+
 
       </Switch>
 
