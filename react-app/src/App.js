@@ -41,10 +41,6 @@ function App() {
           <SignUpForm />
           </Route>
 
-          <Route path='/businesses/:businessId'>
-          <BusinessDetails/>
-          </Route>
-
           <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
           </ProtectedRoute>
@@ -71,6 +67,11 @@ function App() {
         <Route path='/writeareview' exact={true}>
           <AddBusinessReview />
         </Route>
+        
+        <Route path='/businesses/:businessId'>
+          <BusinessDetails />
+        </Route>
+
         <Route>
           <BusinessCard search={search} path='/businesses' exact={true}/>
         </Route>
