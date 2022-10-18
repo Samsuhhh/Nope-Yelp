@@ -79,31 +79,32 @@ const BusinessDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div id='business-details-header-content'>
+                <div id='business-details-header-content' style={{ fontFamily: 'Open Sans' }}>
                     <div id='business-details-header-info-container'>
                         <div id='business-details-info'>
-                            <h1>{business.business_name}</h1>
-                            <div id='business-details-info-review-divs' style={{ "display": "flex" }}>
+                            <h1 style={{ color: 'white', fontFamily: 'Open Sans' }}>{business.business_name}</h1>
+                            <div id='business-details-info-review-divs' style={{ display: "flex"}}>
                                 <div id='nopes-container'>
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
-                                <div>
-                                    review count {business.reviewCount}
+                                <div style={{color: 'white'}}>
+                                    {business.reviewCount} reviews
                                 </div>
                             </div>
                             <div id='business-details-info-price-tags'>
-                                <div>
+                                <div style={{ color: 'white', marginTop:'10px' }}>
                                     price range {business.price_range}
                                 </div>
                             </div>
-                            <div id='business-details-info-location'>
+                            <div id='business-details-info-location' style={{ color: 'white' }}>
                                 <div> {business.street_address}</div>
                                 <div>{business.city}, {business.state} {business.zipcode}</div>
                             </div>
                         </div>
                     </div>
                     <div id='all-photos-div'>
-                        <button id='all-photos-button'>See {business.businessImages.length} photos</button>
+                        <button style={{ color: 'white', border: '1px solid white', backgroundColor: 'transparent' }}
+                         id='all-photos-button'>See {business.businessImages.length} photos</button>
                     </div>
                 </div>
             </div>
