@@ -16,6 +16,7 @@ import RecentActivity from './components/Businesses/HomePage/recentActivity';
 import BusinessReview from './components/Reviews/BusinessReviews';
 
 import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
+import AddBusiness from './components/Businesses/AddBusiness';
 
 
 function App() {
@@ -84,7 +85,11 @@ function App() {
         <Route path='/writeareview' exact={true}>
           <AddBusinessReview />
         </Route>
-        
+
+        <Route path='/businesses/new' exact={true}>
+          <AddBusiness />
+        </Route>
+
         <Route>
           <BusinessCard search={search} path='/businesses' exact={true}/>
         </Route>
