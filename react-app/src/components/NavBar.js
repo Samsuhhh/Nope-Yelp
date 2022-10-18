@@ -1,13 +1,53 @@
 
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import { getAllBusinessesThunk } from '../store/business';
 import nope from '../assets/nope-white.png';
 import magglass from '../assets/icons/mag-glass.png';
-import { useSelector } from 'react-redux';
+import Fuse from 'fuse.js'
+import BusinessCard from './Businesses/BusinessCard/BusinessCard';
+const options = {
+  findAllMatches: true,
+  keys: [
+    "business_name",
+    "about"
+  ],
+  includeScore:true
+}
 
+const NavBar = ({setSearch}) => {
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const businesses = useSelector(state => state.businesses)
+  const [query, setQuery] = useState("")
 
-const NavBar = () => {
+  useEffect(() => {
+    dispatch(getAllBusinessesThunk())
+  }, [dispatch])
+
+  const fuse = new Fuse (Object.values(businesses), options)
+  const results = fuse.search(query)
+  const businessResults = results.map(result => result.item)
+
+  function handleOnSearch({target = {}}) {
+    const {value} = target
+    setQuery(value)
+  }
+
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault()
+    console.log("is this even hitting", document.getElementById("test").value)
+    // const {value} = target
+    // setQuery(value)
+    const fuse = new Fuse (Object.values(businesses), options)
+    const results = fuse.search(document.getElementById("test").value)
+    const businessResults = results.map(result => result.item)
+    console.log("fuse results",businessResults)
+    setSearch(businessResults)
+    return history.push("/businesses")
+  }
   const sessionUser = useSelector(state => state.session.user)
   const [showMenu, setShowMenu] = useState(false);
 
@@ -68,14 +108,19 @@ const NavBar = () => {
       <div className="search-wrapper">
         <div class="search">
           <div class="left-side">
-            <input type="text" placeholder="tacos, cheap dinner, Max's" class="field request"></input>
-            <ul class="left-side__sublist">
-              <li class="left-side__subitem"><a href="#" class="left-side__sublink restaraunts first">Restaurants</a></li>
-              <li class="left-side__subitem"><a href="#" class="left-side__sublink coffee">Coffee & tea</a></li>
-              <li class="left-side__subitem"><a href="#" class="left-side__sublink delivery">Delivery</a></li>
-              <li class="left-side__subitem"><a href="#" class="left-side__sublink takeout">Takeout</a></li>
-              <li class="left-side__subitem"><a href="#" class="left-side__sublink reservations">Reservations</a></li>
-            </ul>
+              <form onSubmit={handleSearchSubmit}>
+
+              <input type="search" value={query}  onChange={handleOnSearch} placeholder="tacos, cheap dinner, Max's" id="test" class="field request" />
+              <ul class="left-side__sublist">
+                <li class="left-side__subitem"><a href="#" class="left-side__sublink restaraunts first">Restaurants</a></li>
+                <li class="left-side__subitem"><a href="#" class="left-side__sublink bar">Breakfast & Brunch</a></li>
+                <li class="left-side__subitem"><a href="#" class="left-side__sublink coffee">Coffee & tea</a></li>
+                <li class="left-side__subitem"><a href="#" class="left-side__sublink delivery">Delivery</a></li>
+                <li class="left-side__subitem"><a href="#" class="left-side__sublink takeout">Takeout</a></li>
+                <li class="left-side__subitem"><a href="#" class="left-side__sublink reservations">Reservations</a></li>
+              </ul>
+              <button type="submit"></button>
+              </form>
 
           </div>
           <a href="javascript.void(0);">

@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom"
 import './BusinessCard.css'
-export default function BusinessCard(){
+export default function BusinessCard({search}){
+  console.log("Search working",search)
   return (
     <div style={{ display: "flex", justifyContent: "center", margin: "50px 300px", }}>
       {/* LEFT DIV START */}
