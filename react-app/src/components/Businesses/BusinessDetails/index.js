@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleBusinessThunk } from '../../../store/business';
+import { getAllReviews } from '../../../store/review';
 import { useParams, useHistory } from 'react-router-dom';
 import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
@@ -18,7 +19,7 @@ const BusinessDetails = () => {
     // const history = useHistory();
     const params = useParams();
     const { businessId } = params;
-    const business = useSelector(state => state.businesses[businessId]);
+    const business = useSelector(state => state.businesses.singleBusiness);
     const [isLoaded, setIsLoaded] = useState(false)
     const [img, setImg] = useState()
 
@@ -42,8 +43,11 @@ const BusinessDetails = () => {
     useEffect(() => {
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })
-
     }, [dispatch, businessId])
+
+    // useEffect(() => {
+    //     dispatch(getAllReviews(businessId))
+    // }, [dispatch, businessId])
 
     // let images = Object.keys(business?.businessImages)
     // const length = images.length
@@ -179,7 +183,7 @@ const BusinessDetails = () => {
                                 </div>
                             </div>
                             <div>
-                                {/* <BusinessReview></BusinessReview> */}
+                                <BusinessReview></BusinessReview>
                             </div>
                         </div>
                     </section>

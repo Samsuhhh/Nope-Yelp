@@ -11,7 +11,7 @@ const BusinessReview = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
-    const businessReviews = useSelector(state => state.reviews)
+    const businessReviews = useSelector(state => state.reviews.business)
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
