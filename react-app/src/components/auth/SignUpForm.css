@@ -1,0 +1,90 @@
+.sign-up-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background-color: #E00707;
+}
+
+#signup-logo {
+    height: 40px;
+}
+
+.sign-up-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.sign-up-and-image {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 700px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#unhappy-img {
+    width: 340px;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 320px;
+}
+
+#first-name-input {
+    height: 30px;
+    width: 147px;
+    border: 1px lightgray solid;
+    border-radius: 5px;
+}
+
+#first-name-input:focus {
+    border: blue;
+}
+
+#last-name-input {
+    margin-left: 6px;
+    height: 30px;
+    width: 147px;
+    border: 1px lightgray solid;
+    border-radius: 5px;
+}
+
+#username-input {
+    height: 30px;
+    width: 308px;
+    border: 1px lightgray solid;
+    border-radius: 5px;
+}
+
+#email-input {
+    height: 30px;
+    width: 308px;
+    border: 1px lightgray solid;
+    border-radius: 5px;
+}
+
+#password-input {
+    height: 30px;
+    width: 308px;
+    border: 1px lightgray solid;
+    border-radius: 5px;
+}
+
+#signup-submit-button {
+    font-weight: 700;
+    height: 40px;
+    width: 316px;
+    background-color: #E00707;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
