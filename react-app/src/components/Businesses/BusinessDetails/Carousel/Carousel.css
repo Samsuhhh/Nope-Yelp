@@ -1,0 +1,103 @@
+#container {
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#galleryContainer {
+    height: 500px;
+    width: 1400px;
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+#galleryView {
+    height: 100vh;
+    width: 100vw;
+    background: rgb(246, 210, 106);
+    background: linear-gradient(111deg, rgba(246, 210, 106, 1) 0%, rgba(255, 159, 0, 1) 52%, rgba(251, 197, 100, 1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mainView {
+    height: 450px;
+    width: 450px;
+    border-radius: 5px;
+    background-color: #eb9100;
+    z-index: 1;
+    transition: all 1s;
+}
+
+#mainView:hover {
+    transition: all 1s;
+}
+
+#leftView {
+    height: 450px;
+    width: 450px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+}
+
+#leftView:hover {
+    opacity: 1;
+    transition: all 1s;
+}
+
+#rightView {
+    height: 450px;
+    width: 450px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+}
+
+#rightView:hover {
+    opacity: 1;
+    transition: all 1s;
+}
+
+.navBtns {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    position: absolute;
+    opacity: 0.8;
+    background-color: transparent;
+    cursor: pointer;
+    color: white;
+}
+
+.navBtns:hover {
+    opacity: 1;
+    transition: all 1s;
+    background-color: #eb9100;
+}
+
+#navLeft {
+    left: 50px;
+}
+
+#navRight {
+    right: 50px;
+}
+
+#linkTag {
+    cursor: pointer;
+    z-index: 1;
+    box-sizing: border-box;
+}

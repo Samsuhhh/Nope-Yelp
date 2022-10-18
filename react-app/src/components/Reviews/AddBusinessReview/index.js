@@ -1,7 +1,7 @@
 // TODO
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
+import { NavLink, useHistory, useParams } from 'react-router-dom'
 import { createReview } from '../../../store/review'
 import nope from '../../../assets/nope.png'
 import ratingimg from '../../../assets/nopes/ratingimg.png'
@@ -76,7 +76,10 @@ const AddBusinessReview = () => {
             <div className="write-review-main">
                 <div className="write-review-nav">
                     <div className="write-review-nav-wrapper">
-                        <img id="write-review-logo" src={nope} />
+                        <NavLink to='/' exact={true} activeClassName='active'>
+                            <img id="write-review-logo" src={nope} />
+                        </NavLink>
+
                         <img id="user-avatar" src={js} />
                     </div>
                 </div>
@@ -86,48 +89,48 @@ const AddBusinessReview = () => {
                         <div className="nopes-and-review-wrapper">
                             <div id="nope-selector" className='nopes'>
                                 <span
-                                onClick={selectedNopes(4)}
-                                value={1}
-                                required
-                                onChange={updateNopes}
+                                    onClick={selectedNopes(4)}
+                                    value={1}
+                                    required
+                                    onChange={updateNopes}
                                 >
-                                <img src={ratingimg} />
+                                    <img src={ratingimg} />
                                 </span>
 
                                 <span
-                                onClick={selectedNopes(3)}
-                                value={2}
-                                required
-                                onChange={updateNopes}
+                                    onClick={selectedNopes(3)}
+                                    value={2}
+                                    required
+                                    onChange={updateNopes}
                                 >
-                                <img src={ratingimg} />
+                                    <img src={ratingimg} />
                                 </span>
 
                                 <span
-                                onClick={selectedNopes(2)}
-                                value={3}
-                                required
-                                onChange={updateNopes}
+                                    onClick={selectedNopes(2)}
+                                    value={3}
+                                    required
+                                    onChange={updateNopes}
                                 >
-                                <img src={ratingimg} />
+                                    <img src={ratingimg} />
                                 </span>
 
                                 <span
-                                onClick={selectedNopes(1)}
-                                value={4}
-                                required
-                                onChange={updateNopes}
+                                    onClick={selectedNopes(1)}
+                                    value={4}
+                                    required
+                                    onChange={updateNopes}
                                 >
-                                <img src={ratingimg} />
+                                    <img src={ratingimg} />
                                 </span>
 
                                 <span
-                                onClick={selectedNopes(0)}
-                                value={5}
-                                required
-                                onChange={updateNopes}
+                                    onClick={selectedNopes(0)}
+                                    value={5}
+                                    required
+                                    onChange={updateNopes}
                                 >
-                                <img src={ratingimg} />
+                                    <img src={ratingimg} />
                                 </span>
 
                             </div>
@@ -148,17 +151,17 @@ const AddBusinessReview = () => {
                                             required
                                             onChange={updateReview} />
                                         <div className="submit-and-cancel-review">
-                                        <button
-                                            id='submit-review'
-                                            type='submit'>
-                                            Post Review
-                                        </button>
-                                        <button
-                                            id='cancel-review'
-                                            type='button'
-                                            onClick={handleCancel}>
-                                            Cancel
-                                        </button>
+                                            <button
+                                                id='submit-review'
+                                                type='submit'>
+                                                Post Review
+                                            </button>
+                                            <button
+                                                id='cancel-review'
+                                                type='button'
+                                                onClick={handleCancel}>
+                                                Cancel
+                                            </button>
                                         </div>
                                     </div>
                                 </form>

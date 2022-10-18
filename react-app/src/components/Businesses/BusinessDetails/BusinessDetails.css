@@ -25,19 +25,24 @@
 
 
 #business-details-header-content{
-    width: 85%;
+    width: 100%;
     height: 10%;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: flex-end;
 }
 
 #business-details-header-info-container{
-    width: 80%;
+    width: 70%;
     height: 5%;
     border: 3px solid yellow;
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
+    font-family: "Open Sans";
+    justify-content: space-between;
+    font-weight: 600;
 }
 
 #business-details-info{
@@ -47,10 +52,12 @@
     height: 100%;
 }
 
-/* #business-details-info-review-divs{
+#business-details-info-review-divs{
     display: flex;
     flex-direction: row;
-} */
+    align-items: center;
+
+}
 
 #nopes-container,
 #nopes{
@@ -60,10 +67,6 @@
 
 
 #all-photos-div{
-    /* display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: relative; */
     width: 20%;
     height: 100%;
 }
@@ -71,9 +74,12 @@
     width: 175px;
     height: 35px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid white;
+    color: white;
+    background-color: transparent;
+    font-family: "Open Sans";
+    font-weight: 600;
 }
-
 
 
 
@@ -89,21 +95,33 @@
 }
 
 #details-content{
-    width: 60%;
+    width: 45%;
     height: 100%;
     border: 3px solid red;
 }
 
 
-#business-details-action-buttons{
+#business-details-action-buttons-div{
     display: flex;
     border: 1px solid purple;
-    width: 60%;
+    width: 100%;
     height: 35px;
-    justify-content: space-around;
-    margin-left: -20px;
-    
+    cursor: pointer;
+    font-family: "Open Sans";
+    align-items: center;
+
     /* padding: 10px; */
+}
+#write-review-button{
+    font-family: "Open Sans";
+    color: white;
+    background-color: red;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 25px;
 }
 
 .action-buttons{
@@ -111,6 +129,11 @@
     background-color: transparent;
     border: 1px solid lightgrey;
     border-radius: 5px;
+    font-family: 'Open Sans';
+    margin-left: 16px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 25px;
 }
 
 
@@ -122,7 +145,7 @@
     width: 100%;
     height: 400px;
     border: 1px solid blue;
-
+    font-family: 'Open Sans';
 }
 
 #about-owner-content{
@@ -162,6 +185,7 @@
     width: 100%;
     height: 100%;
     border: 1px solid purple;
+    font-family: 'Open Sans';
     /* justify-content: space-between; */
 }
 
@@ -245,12 +269,14 @@
 
 
 
-
-
 #sticky-sidebar-container {
-    width: 25%;
+    width: 425px;
     height: 900px;
     border: 1px solid pink;
+    font-family: 'Open Sans';
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 2%;
     /* have to change width to fixed sizing so it doesn't change width */
 }
 

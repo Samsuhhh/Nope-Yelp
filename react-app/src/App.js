@@ -46,20 +46,10 @@ function App() {
           <SignUpForm />
         </Route>
 
-        <Route path='/businesses/:businessId/reviews' exact={true}>
-          <BusinessReview></BusinessReview>
-        </Route>
-
-        <Route path='/businesses/:businessId'>
-          <BusinessDetails />
-        </Route>
-
-
-
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+          <ProtectedRoute path='/users' exact={true} >
+          <UsersList/>
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
 
           </ProtectedRoute>
@@ -67,6 +57,9 @@ function App() {
         </ProtectedRoute> */}
 
 
+        <Route path='/businesses/:businessId'>
+        <BusinessDetails/>
+        </Route>
 
         <Route path='/' exact={true}>
           <NavBar setSearch={setSearch}/>
@@ -88,6 +81,10 @@ function App() {
 
         <Route path='/businesses/new' exact={true}>
           <AddBusiness />
+        </Route>
+
+        <Route path='/businesses/:businessId'>
+          <BusinessDetails />
         </Route>
 
         <Route>

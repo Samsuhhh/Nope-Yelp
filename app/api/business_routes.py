@@ -25,6 +25,9 @@ def get_all_businesses():
   business_lst = [{"placeholder":"placehodor"}]
   for business in businesses:
     business_dict = business.to_dict()
+    images = BusinessImage.query.get(business.id)
+    images_dict =images.to_dict()
+    business_dict["images"] = images_dict
     # print(business)
     if business.reviews:
       business_dict["review_count"] = len(business.reviews)
@@ -57,7 +60,10 @@ def get_business_by_id(id):
   business_dict['Reviews'] = [review.to_dict() for review in reviews]
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> jake-main
   # businessImages = BusinessImage.query.filter(BusinessImage.business_id == id)
   # business_dict['BusinessImages'] = [businessImage.to_dict() for businessImage in businessImages]
   businessImages = business.business_images
