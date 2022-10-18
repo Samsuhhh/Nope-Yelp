@@ -122,7 +122,10 @@ export const removeReview = (reviewId) => async dispatch => {
     }
 }
 
-const initialState = { business: {}, user: {} }
+const initialState = {
+    business: {},
+    user: {}
+}
 
 const reviewReducer = (state = initialState, action) => {
     const business = {}
