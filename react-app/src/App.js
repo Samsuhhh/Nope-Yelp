@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import BusinessDetails from './components/Businesses/BusinessDetails';
 import HomeSlider from './components/Businesses/HomePage/imageSlider';
 import RecentActivity from './components/Businesses/HomePage/recentActivity';
+import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -53,6 +54,9 @@ function App() {
         <Route path='/' exact={true}>
           <RecentActivity />
           <HomeSlider />
+        </Route>
+        <Route>
+          <BusinessCard path='/businesses' />
         </Route>
       </Switch>
     </BrowserRouter>
