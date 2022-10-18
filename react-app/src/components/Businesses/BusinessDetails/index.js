@@ -4,6 +4,7 @@ import { getSingleBusinessThunk } from '../../../store/business';
 import { useParams, useHistory } from 'react-router-dom';
 import React from 'react';
 import './BusinessDetails.css'
+import Carousel from './Carousel';
 
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
@@ -89,7 +90,7 @@ const BusinessDetails = () => {
         <div id='business-details-page'>
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
-                    <div id='carousel-wrapper'>
+                    {/* <div id='carousel-wrapper'>
                         <div id='image-container'>
                             {business.businessImages.map((image) =>
                                 <div className='carousel-images'>
@@ -98,7 +99,8 @@ const BusinessDetails = () => {
                                 </div>
                             )}
                         </div>
-                    </div>
+                    </div> */}
+                    <Carousel/>
                 </div>
                 <div id='business-details-header-content' style={{ fontFamily: 'Open Sans' }}>
                     <div id='business-details-header-info-container'>
