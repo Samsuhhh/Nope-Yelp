@@ -22,12 +22,11 @@ const BusinessDetails = () => {
     const [img, setImg] = useState()
 
     const allReviews = business?.Reviews.length
-    const fiveNopeReviews = business?.Reviews.filter(review => review.nope === 5).length
-    const fourNopeReviews = business?.Reviews.filter(review => review.nope === 4).length
-    const threeNopeReviews = business?.Reviews.filter(review => review.nope === 3).length
-    const twoNopeReviews = business?.Reviews.filter(review => review.nope === 2).length
-    const oneNopeReviews = business?.Reviews.filter(review => review.nope === 1).length
-    console.log(allReviews)
+    const fiveNopes = business?.Reviews.filter(review => review.nope === 5).length
+    const fourNopes = business?.Reviews.filter(review => review.nope === 4).length
+    const threeNopes = business?.Reviews.filter(review => review.nope === 3).length
+    const twoNopes = business?.Reviews.filter(review => review.nope === 2).length
+    const oneNope = business?.Reviews.filter(review => review.nope === 1).length
 
     const dynamicFills = (nopes) => {
         let qmaths = nopes/allReviews
@@ -36,12 +35,10 @@ const BusinessDetails = () => {
         }
         return qmaths * 100
     }
-    
 
     // const [current, setCurrent] = useState(0);
 
     useEffect(() => {
-        console.log('Business Id', businessId)
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })
 
@@ -151,31 +148,31 @@ const BusinessDetails = () => {
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>5 Stars</div>
                                     <div id='dbar-5' className='dynamic-bar'>
-                                        <div  style={{width: `${dynamicFills(fiveNopeReviews)}%`, backgroundColor: "red", height: '100%', borderRadius:'15px'}}></div>
+                                        <div style={{width: `${dynamicFills(fiveNopes)}%`, backgroundColor: "red", height: '100%', borderRadius:'15px'}}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>4 Stars</div>
                                     <div id='dbar-4' className='dynamic-bar'>
-                                        <div style={{ width: `${dynamicFills(fourNopeReviews)}%`, backgroundColor: "orange", height: '100%', borderRadius: '15px' }}></div>
+                                        <div style={{ width: `${dynamicFills(fourNopes)}%`, backgroundColor: "orange", height: '100%', borderRadius: '15px' }}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>3 Stars</div>
                                     <div id='dbar-3'  className='dynamic-bar'>
-                                        <div style={{ width: `${dynamicFills(threeNopeReviews)}%`, backgroundColor: "orange", height: '100%', borderRadius: '15px' }}></div>
+                                        <div style={{ width: `${dynamicFills(threeNopes)}%`, backgroundColor: "orange", height: '100%', borderRadius: '15px' }}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>2 Stars</div>
                                     <div id='dbar-2' className='dynamic-bar'>
-                                        <div style={{ width: `${dynamicFills(twoNopeReviews)}%`, backgroundColor: "yellow", height: '100%', borderRadius: '15px' }}></div>
+                                        <div style={{ width: `${dynamicFills(twoNopes)}%`, backgroundColor: "yellow", height: '100%', borderRadius: '15px' }}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>1 star</div>
                                     <div id='dbar-1' className='dynamic-bar'>
-                                        <div style={{ width: `${dynamicFills(oneNopeReviews)}%`, backgroundColor: "gold", height: '100%', borderRadius: '15px' }}></div>
+                                        <div style={{ width: `${dynamicFills(oneNope)}%`, backgroundColor: "gold", height: '100%', borderRadius: '15px' }}></div>
                                     </div>
                                 </div>
                             </div>
@@ -196,6 +193,7 @@ const BusinessDetails = () => {
                     </div>
                 </div>
             </div>
+            <div>Reviews</div>
         </div>
     )
 
