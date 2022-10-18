@@ -3,7 +3,7 @@ from .users import seed_users, undo_users
 from .businesses import seed_businesses, undo_businesses
 from .reviews import seed_reviews, undo_reviews
 from .business_images import seed_business_images, undo_business_images
-from .tag import seed_tags, undo_tags
+# from .tag import seed_tags, undo_tags
 # from .business_tags import seed_bussiness_tags, undo_business_tags
 
 # Creates a seed group to hold our commands
@@ -18,7 +18,7 @@ def seed():
     seed_businesses()
     seed_reviews()
     seed_business_images()
-    seed_tags()
+    # seed_tags()
     # seed_bussiness_tags()
     # Add other seed functions here
 
@@ -30,6 +30,6 @@ def undo():
     undo_businesses()
     undo_reviews()
     undo_business_images()
-    undo_tags()
+    # undo_tags()
     # undo_business_tags()
     # Add other undo functions here
