@@ -45,7 +45,9 @@ export const getAllReviews = (businessId) => async dispatch => {
 
     if (response.ok) {
         const reviews = await response.json()
+        // console.log('reviews in thunk action creator', reviews)
         dispatch(load(reviews, businessId))
+        return reviews
     } else {
         console.log("------Get All Reviews Thunk Error-------")
     }
@@ -120,16 +122,18 @@ export const removeReview = (reviewId) => async dispatch => {
     }
 }
 
-const initialState = {}
+const initialState = { business: {}, user: {} }
 
 const reviewReducer = (state = initialState, action) => {
-    let newState = { ...initialState }
+    const business = {}
+    let newState = { ...state }
     switch (action.type) {
         case LOAD_ALL:
+            console.log('All Reviews reducer hitting', action)
             action.reviews.forEach(review => {
-                newState[review.id] = review
+                business[review.id] = review
             })
-            return newState
+            return { business }
         case LOAD_CURRENT:
             action.reviews.reviews.forEach(review => {
                 newState[review.id] = review
