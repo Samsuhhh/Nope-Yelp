@@ -15,6 +15,7 @@ import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [search, setSearch] = useState([])
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +31,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar setSearch={setSearch}/>
       <Switch>
         {/* <Route path='/login' exact={true}>
           <LoginForm />
@@ -56,7 +57,7 @@ function App() {
           <HomeSlider />
         </Route>
         <Route>
-          <BusinessCard path='/businesses' />
+          <BusinessCard search={search} path='/businesses' />
         </Route>
       </Switch>
     </BrowserRouter>

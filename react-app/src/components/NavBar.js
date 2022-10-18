@@ -7,36 +7,47 @@ import { getAllBusinessesThunk } from '../store/business';
 import nope from '../assets/nope-white.png';
 import magglass from '../assets/icons/mag-glass.png';
 import Fuse from 'fuse.js'
-
+import BusinessCard from './Businesses/BusinessCard/BusinessCard';
 const options = {
   findAllMatches: true,
   keys: [
     "business_name",
+    "about"
   ],
   includeScore:true
 }
 
-const NavBar = () => {
+const NavBar = ({setSearch}) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const businesses = useSelector(state => state.businesses)
   const [query, setQuery] = useState("")
 
   useEffect(() => {
-    console.log("hit")
     dispatch(getAllBusinessesThunk())
   }, [dispatch])
 
   const fuse = new Fuse (Object.values(businesses), options)
   const results = fuse.search(query)
   const businessResults = results.map(result => result.item)
-  console.log(results)
+
   function handleOnSearch({target = {}}) {
     const {value} = target
     setQuery(value)
   }
 
-
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault()
+    console.log("is this even hitting", document.getElementById("test").value)
+    // const {value} = target
+    // setQuery(value)
+    const fuse = new Fuse (Object.values(businesses), options)
+    const results = fuse.search(document.getElementById("test").value)
+    const businessResults = results.map(result => result.item)
+    console.log("fuse results",businessResults)
+    setSearch(businessResults)
+    return history.push("/businesses")
+  }
   const sessionUser = useSelector(state => state.session.user)
   const [showMenu, setShowMenu] = useState(false);
 
@@ -97,7 +108,9 @@ const NavBar = () => {
       <div className="search-wrapper">
         <div class="search">
           <div class="left-side">
-              <input type="search" value={query} onChange={handleOnSearch} placeholder="tacos, cheap dinner, Max's" class="field request" />
+              <form onSubmit={handleSearchSubmit}>
+
+              <input type="search" value={query}  onChange={handleOnSearch} placeholder="tacos, cheap dinner, Max's" id="test" class="field request" />
               <ul class="left-side__sublist">
                 <li class="left-side__subitem"><a href="#" class="left-side__sublink restaraunts first">Restaurants</a></li>
                 <li class="left-side__subitem"><a href="#" class="left-side__sublink bar">Breakfast & Brunch</a></li>
@@ -106,6 +119,8 @@ const NavBar = () => {
                 <li class="left-side__subitem"><a href="#" class="left-side__sublink takeout">Takeout</a></li>
                 <li class="left-side__subitem"><a href="#" class="left-side__sublink reservations">Reservations</a></li>
               </ul>
+              <button type="submit"></button>
+              </form>
 
           </div>
           <a href="javascript.void(0);">
