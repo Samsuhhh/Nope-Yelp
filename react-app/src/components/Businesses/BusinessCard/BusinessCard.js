@@ -46,9 +46,9 @@ export default function BusinessCard({ search }) {
           <Link id='business-card-link'>
             <div id="business-card-container">
               <div>
-                <img src={business.images.url} style={{ width: "200px", height: "200px", borderRadius: "8px" }}></img>
+                <img id="business-card-image" src={business.images.url}></img>
               </div>
-              <div style={{ paddingLeft: "20px", display: "flex", flexDirection: "column", marginTop: "-65px" }}>
+              <div id="business-card-text-container">
                 <div id="business-card-business-name">{business.business_name}</div>
                 <div>Nopes:{Math.floor(business.review_average)} | Grumbles:{business.review_count}</div>
                 <div><button className="tag-button">Tag1</button>{" "}<button className="tag-button">Tag2</button>{" "}<button className="tag-button">Tag3</button>{" "}<span>$$ &#x2022;

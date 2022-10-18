@@ -16,6 +16,18 @@
   border-bottom: 1px solid lightgrey;
 }
 
+#business-card-image{
+  width:200px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+#business-card-text-container{
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  margin-top: -65px;
+}
 #business-card-container{
   display: flex;
   width: 800px;
