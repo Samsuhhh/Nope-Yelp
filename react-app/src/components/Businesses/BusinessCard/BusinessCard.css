@@ -16,6 +16,16 @@
   border-bottom: 1px solid lightgrey;
 }
 
+#business-card-container{
+  display: flex;
+  width: 800px;
+  height: 275px;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid lightgrey;
+  padding: 0px 20px;
+}
+
 #middle-div-list-container{
   display: flex;
   flex-direction: column;

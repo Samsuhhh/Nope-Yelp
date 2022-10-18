@@ -44,7 +44,7 @@ export default function BusinessCard({ search }) {
           return (
 
           <Link id='business-card-link'>
-            <div style={{ display: "flex", width: "800px", height: "275px", justifyContent: "flex-start", alignItems: "center", borderBottom: "1px solid lightgrey", padding: "0px 20px" }}>
+            <div id="business-card-container">
               <div>
                 <img src={business.images.url} style={{ width: "200px", height: "200px", borderRadius: "8px" }}></img>
               </div>
