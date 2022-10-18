@@ -10,6 +10,7 @@ import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
 import nopes2 from "../../../assets/nopes/2-nopes.png"
 import nopes1 from "../../../assets/nopes/1-nopes.png"
+import nope from "../../../assets/nopes/0-nopes.png"
 import whiteNope from "../../../assets/nopes/ratingimg.png"
 
 
@@ -20,7 +21,7 @@ const BusinessDetails = () => {
     const { businessId } = params;
     const business = useSelector(state => state.businesses[businessId]);
     const [isLoaded, setIsLoaded] = useState(false)
-    const [img, setImg] = useState()
+    // const [img, setImg] = useState()
 
     const allReviews = business?.Reviews.length
     const fiveNopes = business?.Reviews.filter(review => review.nope === 5).length
@@ -30,8 +31,8 @@ const BusinessDetails = () => {
     const oneNope = business?.Reviews.filter(review => review.nope === 1).length
 
     const dynamicFills = (nopes) => {
-        let qmaths = nopes/allReviews
-        if (qmaths !== 0){
+        let qmaths = nopes / allReviews
+        if (qmaths !== 0) {
             return qmaths * 100
         }
         return qmaths * 100
@@ -58,15 +59,23 @@ const BusinessDetails = () => {
         if (price === 1) return '$';
     }
 
-    console.log(priceSetter(4))
-
     const nopeImgs = (averageNopes) => {
         if (averageNopes > 4 && averageNopes <= 5) return (nopes5)
         if (averageNopes > 3 && averageNopes <= 4) return (nopes4)
         if (averageNopes > 2 && averageNopes <= 3) return (nopes3)
         if (averageNopes > 1 && averageNopes <= 2) return (nopes2)
         if (averageNopes > 0 && averageNopes <= 1) return (nopes1)
+        else return nope
     }
+
+    const phoneStyling = (phone) => {
+        let split = phone.split("");
+        split.unshift('(')
+        split.splice(4, 0, ') ')
+        split.splice(8, 0, '-')
+        return split.join('')
+    }
+
 
     useEffect(() => {
         dispatch(getSingleBusinessThunk(businessId))
@@ -95,17 +104,17 @@ const BusinessDetails = () => {
                     <div id='business-details-header-info-container'>
                         <div id='business-details-info'>
                             <h1 style={{ color: 'white', fontFamily: 'Open Sans' }}>{business.business_name}</h1>
-                            <div id='business-details-info-review-divs' style={{ display: "flex"}}>
+                            <div id='business-details-info-review-divs' style={{ display: "flex" }}>
                                 <div id='nopes-container'>
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
-                                <div style={{color: 'white'}}>
+                                <div style={{ color: 'white', marginLeft: "10px" }}>
                                     {business.reviewCount} reviews
                                 </div>
                             </div>
                             <div id='business-details-info-price-tags'>
-                                <div style={{ color: 'white', marginTop:'10px' }}>
-                                    {priceSetter(business.price_range)}
+                                <div style={{ color: 'white' }}>
+                                    {priceSetter(business.price_range)} &bull; TAGS
                                 </div>
                             </div>
                             <div id='business-details-info-location' style={{ color: 'white' }}>
@@ -113,18 +122,19 @@ const BusinessDetails = () => {
                                 <div>{business.city}, {business.state} {business.zipcode}</div>
                             </div>
                         </div>
-                    </div>
                     <div id='all-photos-div'>
-                        <button style={{ color: 'white', border: '1px solid white', backgroundColor: 'transparent' }}
-                         id='all-photos-button'>See {business.businessImages.length} photos</button>
+                        <button id='all-photos-button'>
+                            See {business.businessImages.length} photos
+                        </button>
+                    </div>
                     </div>
                 </div>
             </div>
             <div id='business-details-container'>
                 <div id='details-content'>
-                    <div id='business-details-action-buttons'>
-                        <button style={{ fontFamily: 'Open Sans', color: 'white' ,backgroundColor: 'red', border:'1px solid lightgrey', borderRadius: '5px'}}>
-                            <img src={whiteNope} alt='white nope' style={{width: "20px", height: "20px"}} ></img> Write a Review</button>
+                    <div id='business-details-action-buttons-div'>
+                        <button id='write-review-button'>
+                            <img src={whiteNope} alt='white nope' style={{ width: "20px", height: "20px" }} ></img> Write a Review</button>
                         <button className='action-buttons'>Add a photo </button>
                         <button className='action-buttons'>Share</button>
                         <button className='action-buttons'>Save</button>
@@ -147,7 +157,7 @@ const BusinessDetails = () => {
                                 </div>
                             </div>
                         </div>
-                        <div style={{ borderTop: '1px solid #ebebeb', paddingTop: '25px', marginTop: '15px'}}>{business.about}</div>
+                        <div style={{ borderTop: '1px solid #ebebeb', paddingTop: '25px', marginTop: '15px' }}>{business.about}</div>
                     </section>
                     <section id='reviews-business-details-container'>
                         <div id='reviews-analytics-container'>
@@ -162,7 +172,7 @@ const BusinessDetails = () => {
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>5 nopes</div>
                                     <div id='dbar-5' className='dynamic-bar'>
-                                        <div style={{width: `${dynamicFills(fiveNopes)}%`, backgroundColor: "red", height: '100%', borderRadius:'15px'}}></div>
+                                        <div style={{ width: `${dynamicFills(fiveNopes)}%`, backgroundColor: "red", height: '100%', borderRadius: '15px' }}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
@@ -173,7 +183,7 @@ const BusinessDetails = () => {
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>3 nopes</div>
-                                    <div id='dbar-3'  className='dynamic-bar'>
+                                    <div id='dbar-3' className='dynamic-bar'>
                                         <div style={{ width: `${dynamicFills(threeNopes)}%`, backgroundColor: "#fa2", height: '100%', borderRadius: '15px' }}></div>
                                     </div>
                                 </div>
@@ -202,7 +212,7 @@ const BusinessDetails = () => {
                             {business.email}
                         </div>
                         <div>
-                            {business.phone}
+                            {phoneStyling(business.phone)}
                         </div>
                     </div>
                 </div>
