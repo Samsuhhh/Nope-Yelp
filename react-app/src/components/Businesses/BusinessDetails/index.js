@@ -22,6 +22,24 @@ const BusinessDetails = () => {
     const business = useSelector(state => state.businesses[businessId]);
     const [isLoaded, setIsLoaded] = useState(false)
     const [img, setImg] = useState()
+
+    const allReviews = business?.Reviews.length
+    const fiveNopeReviews = business?.Reviews.filter(review => review.nope === 5).length
+    const fourNopeReviews = business?.Reviews.filter(review => review.nope === 4).length
+    const threeNopeReviews = business?.Reviews.filter(review => review.nope === 3).length
+    const twoNopeReviews = business?.Reviews.filter(review => review.nope === 2).length
+    const oneNopeReviews = business?.Reviews.filter(review => review.nope === 1).length
+    console.log(allReviews)
+
+    const dynamicFills = (nopes) => {
+        let qmaths = nopes/allReviews
+        if (qmaths !== 0){
+            return qmaths * 100
+        }
+        return qmaths * 100
+    }
+    
+
     // const [current, setCurrent] = useState(0);
 
     useEffect(() => {
@@ -43,7 +61,7 @@ const BusinessDetails = () => {
 
     const nopeImgs = (averageNopes) => {
         if (averageNopes > 4 && averageNopes <= 5) return (nopes5)
-        if (averageNopes >3 && averageNopes <= 4) return (nopes4)
+        if (averageNopes > 3 && averageNopes <= 4) return (nopes4)
         if (averageNopes > 2 && averageNopes <= 3) return (nopes3)
         if (averageNopes > 1 && averageNopes <= 2) return (nopes2)
         if (averageNopes > 0 && averageNopes <= 1) return (nopes1)
@@ -126,29 +144,41 @@ const BusinessDetails = () => {
                         <div id='reviews-analytics-container'>
                             <div id='overall-ratings'>
                                 <p>Overall rating</p>
-                                <div id='average-stars'>STARS**(placeholder)</div>
-                                <div><p> {business.reviewCount}</p></div>
+                                <div id='nopes-container'>
+                                    <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
+                                </div>
+                                <div><p>{business.reviewCount} reviews</p></div>
                             </div>
                             <div id='dynamic-horizontal-reviews'>
                                 <div className='dynamic-stars'>
-                                    <div>5 Stars</div>
-                                    <div>red color</div>
+                                    <div className='star-tag-div'>5 Stars</div>
+                                    <div className='dynamic-bar'>
+                                        <div id='dbar-5' style={{width: `${dynamicFills(fiveNopeReviews)}`, backgroundColor: "red"}}>red color</div>
+                                    </div>
                                 </div>
                                 <div className='dynamic-stars'>
-                                    <div>4 Stars</div>
-                                    <div>red-orange color</div>
+                                    <div className='star-tag-div'>4 Stars</div>
+                                    <div className='dynamic-bar'>
+                                        <div id='dbar-4'>red-orange color</div>
+                                    </div>
                                 </div>
                                 <div className='dynamic-stars'>
-                                    <div>3 Stars</div>
-                                    <div>orange color</div>
+                                    <div className='star-tag-div'>3 Stars</div>
+                                    <div className='dynamic-bar'>
+                                        <div id='dbar-3'>orange color</div>
+                                    </div>
                                 </div>
                                 <div className='dynamic-stars'>
-                                    <div>2 Stars</div>
-                                    <div>light orange color</div>
+                                    <div className='star-tag-div'>2 Stars</div>
+                                    <div className='dynamic-bar'>
+                                        <div id='dbar-2'>light-orange color</div>
+                                    </div>
                                 </div>
                                 <div className='dynamic-stars'>
-                                    <div>1 star</div>
-                                    <div>golden color</div>
+                                    <div className='star-tag-div'>1 star</div>
+                                    <div className='dynamic-bar'>
+                                        <div id='dbar-1'>yellow color</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

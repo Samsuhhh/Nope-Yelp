@@ -53,8 +53,8 @@
 
 #nopes-container,
 #nopes{
-    width: 140px;
-    height: 25px;
+    width: 175px;
+    height: 30px;
 }
 
 
@@ -147,22 +147,83 @@
     display: flex;
     width: 100%;
     height: 100%;
-    justify-content: space-around;
-    border: 1px solid blue;
+    border: 1px solid purple;
+    justify-content: space-between;
 }
+
 
 #overall-ratings{
     border: 1px solid red;
 }
+
+#dynamic-horizontal-reviews{
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+
+}
+
+
+.star-tag-div{
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dynamic-bar {
+    width: 100%;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#dbar-5{
+    background-color: lightgray;
+    height: 30%;
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+}
+#dbar-4{
+    background-color: lightgray;
+        height: 30%;
+        width: 100%;
+        border: none;
+        border-radius: 20px;
+}
+#dbar-3{
+    background-color: lightgray;
+        height: 30%;
+        width: 100%;
+        border: none;
+        border-radius: 20px;
+}
+#dbar-2{
+    background-color: lightgray;
+        height: 30%;
+        width: 100%;
+        border: none;
+        border-radius: 20px;
+}
+#dbar-1{
+    background-color: lightgray;
+        height: 30%;
+        width: 100%;
+        border: none;
+        border-radius: 20px;
+}
+
 
 
 .dynamic-stars{
     width: 100%;
     border: 1px solid green;
     display: flex;
+    /* justify-content: space-between; */
     /* spacing incorrect, holding as is for visual flow of elements */
 }
-
 
 
 
