@@ -32,8 +32,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setSearch={setSearch}/>
       <Switch>
+      {/* <NavBar setSearch={setSearch}/>
         <Route path='/login' exact={true}>
           <LoginForm />
           </Route>
@@ -52,16 +52,16 @@ function App() {
           <User />
           </ProtectedRoute>
           <ProtectedRoute path='/' exact={true} >
-        </ProtectedRoute>
+        </ProtectedRoute> */}
 
 
         <Route path='/' exact={true}>
-          <NavBar />
+          <NavBar setSearch={setSearch}/>
           <RecentActivity />
           <HomeSlider />
         </Route>
         <Route>
-          <BusinessCard search={search} path='/businesses' />
+          <BusinessCard search={search} path='/businesses' exact={true}/>
         </Route>
 
         <Route path='/sign-up' exact={true}>
