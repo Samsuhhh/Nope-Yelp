@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import BusinessDetails from './components/Businesses/BusinessDetails';
+import AddBusinessReview from './components/Reviews/AddBusinessReview'
 import HomeSlider from './components/Businesses/HomePage/imageSlider';
 import RecentActivity from './components/Businesses/HomePage/recentActivity';
 
@@ -63,6 +64,10 @@ function App() {
 
         <Route path='/login' exact={true}>
           <LoginForm />
+        </Route>
+
+        <Route path='/writeareview' exact={true}>
+          <AddBusinessReview />
         </Route>
 
       </Switch>
