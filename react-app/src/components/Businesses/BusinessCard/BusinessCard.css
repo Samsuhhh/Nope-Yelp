@@ -1,3 +1,20 @@
+#main-div-business-card{
+  display: flex;
+  justify-content: center;
+  margin: 50px 300px;
+}
+
+#left-div-business-card{
+  position:fixed;
+  left: 175px;
+  top: 145px;
+}
+
+#price-range-container{
+  font-size: 0;
+  padding-bottom: 30px;
+  border-bottom: 1px solid lightgrey;
+}
 .tag-button{
   background-color: rgb(232, 232, 232);
   color: rgb(77, 77, 77);

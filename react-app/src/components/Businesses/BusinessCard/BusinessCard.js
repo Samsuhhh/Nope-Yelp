@@ -4,11 +4,11 @@ export default function BusinessCard({ search }) {
   console.log("Search working", Object.values(search))
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", margin: "50px 300px", }}>
+    <div id="main-div-business-card">
       {/* LEFT DIV START */}
-      <div style={{ position: "fixed", left: "175px", top: "145px" }}>
+      <div id="left-div-business-card">
         <h3>Filters</h3>
-        <div style={{ fontSize: "0", paddingBottom: "30px", borderBottom: "1px solid lightgrey" }}>
+        <div id="price-range-container">
           <button className="price-range-btn" id="price-range-btn-one">$</button>
           <button className="price-range-btn" id="price-range-btn-two">$$</button>
           <button className="price-range-btn" id="price-range-btn-three">$$$</button>
