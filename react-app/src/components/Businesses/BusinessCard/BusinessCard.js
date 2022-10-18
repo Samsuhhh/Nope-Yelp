@@ -76,7 +76,7 @@ export default function BusinessCard({ search }) {
                 <div>
                 <img id='nopes' alt='nopes' style={{height:"23px", width:"125px"}}src={nopeRatingBar(business.review_average)} ></img><span >{" "}{business.review_average}</span>
                 </div>
-                <div>Grumbles{" "}:{" "}{business.review_count}</div>
+                <div>Grumbles{" "}({business.review_count})</div>
                 <div><button className="tag-button">Tag1</button>{" "}<button className="tag-button">Tag2</button>{" "}
                 <button className="tag-button">Tag3</button>{" "}<span>{priceRange(business.price_range)} &#x2022;
                 </span>{" "}<span>{business.city}</span></div>
