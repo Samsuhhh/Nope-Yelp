@@ -75,6 +75,12 @@ textarea::placeholder {
     color: lightgray;
 }
 
+textarea:focus {
+    border: none;
+    overflow: auto;
+    outline: none;
+}
+
 .nopes{
     displaY:inline-block;
     position:relative;
