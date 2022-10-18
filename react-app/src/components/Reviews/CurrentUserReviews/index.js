@@ -22,16 +22,19 @@ const CurrentUserReviews = () => {
         return (
             <div>
                 {reviews && Object.values(reviews).length &&
-                <div>
-                    <h2>Person's Reviews!</h2>
                     <div>
-                        {Object.values(reviews).map(review => {
-                            <div key={review.id}>
-                                {review.review}
-                            </div>
-                        })}
+                        <h2>Person's Reviews!</h2>
+                        <div>
+                            {Object.values(reviews).map(review => {
+                                <div key={review.id}>
+                                    <div>{review.review}</div>
+                                    {(user && user.id === review.user_id) && (
+                                        <button onClick={() => dispatch(removeReview(review.id))}>Delete Review</button>
+                                    )}
+                                </div>
+                            })}
+                        </div>
                     </div>
-                </div>
                 }
             </div>
         )

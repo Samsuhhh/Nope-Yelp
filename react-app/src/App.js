@@ -17,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -29,32 +29,45 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
+          </Route>
+          <Route path='/sign-up' exact={true}>
+          <SignUpForm />
+          </Route>
+
+          <Route path='/businesses/:businessId'>
+          <BusinessDetails/>
+          </Route>
+
+          <ProtectedRoute path='/users' exact={true} >
+          <UsersList/>
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true} >
+          <User />
+          </ProtectedRoute>
+          <ProtectedRoute path='/' exact={true} >
+        </ProtectedRoute> */}
+
+
+        <Route path='/' exact={true}>
+          <NavBar />
+          <RecentActivity />
+          <HomeSlider />
         </Route>
+
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
 
-        <Route path='/businesses/:businessId'>
-          <BusinessDetails/>
+        <Route path='/login' exact={true}>
+          <LoginForm />
         </Route>
 
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-        </ProtectedRoute>
-        <Route path='/' exact={true}>
-          <RecentActivity />
-          <HomeSlider />
-        </Route>
       </Switch>
+
+
     </BrowserRouter>
   );
 }
