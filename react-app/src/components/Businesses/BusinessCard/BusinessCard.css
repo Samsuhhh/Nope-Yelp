@@ -5,7 +5,7 @@
 }
 
 #left-div-business-card{
-  position:fixed;
+  /* position:fixed; */
   left: 175px;
   top: 145px;
 }
@@ -17,17 +17,23 @@
 }
 
 #business-card-image{
-  width:200px;
-  height: 200px;
+  width:250px;
+  height: 250px;
   border-radius: 8px;
 }
 
 #business-card-text-container{
+  font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: column;
   padding-left: 20px;
   margin-top: -65px;
 }
+
+div{
+  font-family: "Open Sans", sans-serif;
+}
+
 #business-card-container{
   display: flex;
   width: 800px;

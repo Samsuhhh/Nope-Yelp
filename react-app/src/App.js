@@ -41,9 +41,6 @@ function App() {
           <SignUpForm />
           </Route>
 
-          <Route path='/businesses/:businessId'>
-          <BusinessDetails/>
-          </Route>
 
           <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
@@ -55,6 +52,9 @@ function App() {
         </ProtectedRoute> */}
 
 
+        <Route path='/businesses/:businessId'>
+        <BusinessDetails/>
+        </Route>
         <Route path='/' exact={true}>
           <NavBar setSearch={setSearch}/>
           <RecentActivity />

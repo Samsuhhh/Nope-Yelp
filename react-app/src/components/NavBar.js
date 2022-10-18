@@ -38,16 +38,16 @@ const NavBar = ({setSearch}) => {
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault()
-    console.log("is this even hitting", document.getElementById("test").value)
-    // const {value} = target
-    // setQuery(value)
+    console.log("is this even hitting", document.getElementById("search-input-field").value)
+
     const fuse = new Fuse (Object.values(businesses), options)
-    const results = fuse.search(document.getElementById("test").value)
+    const results = fuse.search(document.getElementById("search-input-field").value)
     const businessResults = results.map(result => result.item)
-    console.log("fuse results",businessResults)
+    // console.log("fuse results",businessResults)
     setSearch(businessResults)
     return history.push("/businesses")
   }
+
   const sessionUser = useSelector(state => state.session.user)
   const [showMenu, setShowMenu] = useState(false);
 
@@ -110,24 +110,19 @@ const NavBar = ({setSearch}) => {
           <div class="left-side">
               <form onSubmit={handleSearchSubmit}>
 
-              <input type="search" value={query}  onChange={handleOnSearch} placeholder="tacos, cheap dinner, Max's" id="test" class="field request" />
-              <ul class="left-side__sublist">
-                <li class="left-side__subitem"><a href="#" class="left-side__sublink restaraunts first">Restaurants</a></li>
-                <li class="left-side__subitem"><a href="#" class="left-side__sublink bar">Breakfast & Brunch</a></li>
-                <li class="left-side__subitem"><a href="#" class="left-side__sublink coffee">Coffee & tea</a></li>
-                <li class="left-side__subitem"><a href="#" class="left-side__sublink delivery">Delivery</a></li>
-                <li class="left-side__subitem"><a href="#" class="left-side__sublink takeout">Takeout</a></li>
-                <li class="left-side__subitem"><a href="#" class="left-side__sublink reservations">Reservations</a></li>
-              </ul>
-              <button type="submit"></button>
+              <input type="search" value={query}  onChange={handleOnSearch} id="search-input-field" placeholder="tacos, cheap dinner, Max's" class="field request" />
+              {/* <ul class="left-side__sublist">
+                <li class="left-side__subitem" ><a  class="left-side__sublink restaraunts first">Restaurants</a></li>
+                <li class="left-side__subitem"><a  class="left-side__sublink bar">Breakfast & Brunch</a></li>
+                <li class="left-side__subitem"><a  class="left-side__sublink coffee">Coffee & tea</a></li>
+                <li class="left-side__subitem"><a  class="left-side__sublink delivery">Delivery</a></li>
+                <li class="left-side__subitem"><a  class="left-side__sublink takeout">Takeout</a></li>
+                <li class="left-side__subitem"><a  class="left-side__sublink reservations">Reservations</a></li>
+              </ul> */}
+              <button className="search-button-wrapper" type="submit" ><img id="mag" src={magglass} ></img></button>
               </form>
 
           </div>
-          <a href="javascript.void(0);">
-          <div className="search-button-wrapper">
-            <img id="mag" src={magglass} />
-          </div>
-          </a>
         </div>
       </div>
 
