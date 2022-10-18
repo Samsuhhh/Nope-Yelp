@@ -60,9 +60,10 @@ function App() {
           <RecentActivity />
           <HomeSlider />
         </Route>
-        <Route>
+
+        {/* <Route>
           <BusinessCard search={search} path='/businesses' exact={true}/>
-        </Route>
+        </Route> */}
 
         <Route path='/sign-up' exact={true}>
           <SignUpForm />

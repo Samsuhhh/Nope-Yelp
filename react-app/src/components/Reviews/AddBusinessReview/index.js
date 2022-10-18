@@ -20,9 +20,24 @@ const AddBusinessReview = () => {
     const [nopes, setNopes] = useState(1)
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
+    // const [selected, setSelected] = useState(false)
 
     const updateReview = (e) => setReview(e.target.value)
     const updateNopes = (e) => setNopes(e.target.value)
+
+    const nopeClass = [
+        'nopes-selected-1',
+        'nopes-selected-2',
+        'nopes-selected-3',
+        'nopes-selected-4',
+        'nopes-selected-5'
+    ]
+
+    const selectedNopes = (n) => {
+        return () => document.getElementById('nope-selector').className = nopeClass[n]
+    }
+
+
 
     useEffect(() => {
         const errors = []
@@ -66,12 +81,12 @@ const AddBusinessReview = () => {
                     </div>
                 </div>
                 <div className="review-wrapper">
-                    <div class="nopes">
-                        <span><img src={ratingimg}/></span>
-                        <span><img src={ratingimg}/></span>
-                        <span><img src={ratingimg}/></span>
-                        <span><img src={ratingimg}/></span>
-                        <span><img src={ratingimg}/></span>
+                    <div id="nope-selector" className='nopes'>
+                        <span onClick={selectedNopes(4)}><img src={ratingimg}/></span>
+                        <span onClick={selectedNopes(3)}><img src={ratingimg}/></span>
+                        <span onClick={selectedNopes(2)}><img src={ratingimg}/></span>
+                        <span onClick={selectedNopes(1)}><img src={ratingimg}/></span>
+                        <span onClick={selectedNopes(0)}><img src={ratingimg}/></span>
                     </div>
                     <div className="write-a-review">
                         <form onSubmit={handleSubmit}>
