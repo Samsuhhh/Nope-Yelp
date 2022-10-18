@@ -1,5 +1,5 @@
 //  empty for now TODO
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { getAllReviews, removeReview } from '../../../store/review'
@@ -11,18 +11,21 @@ const BusinessReview = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
-    const businessReviews = useSelector(state => state.reviews)
+    const businessReviews = useSelector(state => state.reviews.business)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         dispatch(getAllReviews(businessId))
+            .then(() => { setIsLoaded(true) })
     }, [dispatch, businessId])
 
-    return (
+    return isLoaded && (
         <div>
             {businessReviews &&
                 <div>
                     {Object.values(businessReviews).map(review => (
                         <div key={review.id}>
+                            <div>{review.Owner.userAvatar}</div>
                             <div>{review.Owner.firstName} {review.Owner.lastName}</div>
                             <div>{review.review}</div>
                             <div>{review.nope}</div>
