@@ -45,9 +45,12 @@ function App() {
           <SignUpForm />
         </Route>
 
+<<<<<<< HEAD
+=======
         <Route path='/businesses/:businessId/reviews' exact={true}>
           <BusinessReview></BusinessReview>
         </Route>
+>>>>>>> jake-main
 
         <Route path='/businesses/:businessId'>
           <BusinessDetails />
@@ -66,7 +69,13 @@ function App() {
         </ProtectedRoute> */}
 
 
+<<<<<<< HEAD
+        <Route path='/businesses/:businessId'>
+        <BusinessDetails/>
+        </Route>
+=======
 
+>>>>>>> jake-main
         <Route path='/' exact={true}>
           <NavBar setSearch={setSearch}/>
           <RecentActivity />
