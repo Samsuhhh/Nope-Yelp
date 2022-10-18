@@ -56,7 +56,8 @@ def get_business_by_id(id):
   reviews = Review.query.filter(Review.business_id == id)
   business_dict['Reviews'] = [review.to_dict() for review in reviews]
 
-  
+
+
   # businessImages = BusinessImage.query.filter(BusinessImage.business_id == id)
   # business_dict['BusinessImages'] = [businessImage.to_dict() for businessImage in businessImages]
   businessImages = business.business_images
