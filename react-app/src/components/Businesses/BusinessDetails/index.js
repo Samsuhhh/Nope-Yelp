@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleBusinessThunk } from '../../../store/business';
+import { getAllReviews } from '../../../store/review';
 import { useParams, useHistory } from 'react-router-dom';
+import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
 import './BusinessDetails.css'
 import Carousel from './Carousel';
@@ -20,7 +22,7 @@ const BusinessDetails = () => {
     // const history = useHistory();
     const params = useParams();
     const { businessId } = params;
-    const business = useSelector(state => state.businesses[businessId]);
+    const business = useSelector(state => state.businesses.singleBusiness);
     const [isLoaded, setIsLoaded] = useState(false)
     // const [img, setImg] = useState()
 
@@ -202,6 +204,9 @@ const BusinessDetails = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div>
+                                <BusinessReview></BusinessReview>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -219,7 +224,6 @@ const BusinessDetails = () => {
                     </div>
                 </div>
             </div>
-            <div>Reviews</div>
         </div>
     )
 

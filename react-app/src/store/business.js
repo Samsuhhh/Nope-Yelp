@@ -128,7 +128,10 @@ export const deleteBusinessThunk = (businessId) => async (dispatch) => {
   return deletedBusinessData;
 }
 
-let initialState = {}
+let initialState = {
+  allBusinesses: {},
+  singleBusiness: {}
+}
 
 const businessReducer = (state = initialState, action) => {
   let newState = {};
@@ -140,13 +143,13 @@ const businessReducer = (state = initialState, action) => {
       })
       return newState
     case LOAD_ONE:
-      console.log('SINGLE business Reducer hitting', action.business)
-      newState = { [action.business.id]: { ...action.business } }
+      //   console.log('SINGLE business Reducer hitting', action.business)
+      //   newState = { [action.business.id]: { ...action.business } }
+      newState = { ...state, singleBusiness: { ...state.singleBusiness } }
+      newState.singleBusiness = action.business
       return newState
-
-
     default:
-      return initialState
+      return state
   }
 }
 

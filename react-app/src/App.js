@@ -12,7 +12,11 @@ import BusinessDetails from './components/Businesses/BusinessDetails';
 import AddBusinessReview from './components/Reviews/AddBusinessReview'
 import HomeSlider from './components/Businesses/HomePage/imageSlider';
 import RecentActivity from './components/Businesses/HomePage/recentActivity';
+
+import BusinessReview from './components/Reviews/BusinessReviews';
+
 import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,20 +40,25 @@ function App() {
       {/* <NavBar setSearch={setSearch}/>
         <Route path='/login' exact={true}>
           <LoginForm />
-          </Route>
-          <Route path='/sign-up' exact={true}>
+        </Route>
+        <Route path='/sign-up' exact={true}>
           <SignUpForm />
-          </Route>
+        </Route>
 
           <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
           </ProtectedRoute>
           <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+
           </ProtectedRoute>
           <ProtectedRoute path='/' exact={true} >
         </ProtectedRoute> */}
 
+
+        <Route path='/businesses/:businessId'>
+        <BusinessDetails/>
+        </Route>
 
         <Route path='/' exact={true}>
           <NavBar setSearch={setSearch}/>
@@ -64,6 +73,7 @@ function App() {
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
+
         <Route path='/writeareview' exact={true}>
           <AddBusinessReview />
         </Route>
