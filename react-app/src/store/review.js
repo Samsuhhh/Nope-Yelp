@@ -123,7 +123,7 @@ export const removeReview = (reviewId) => async dispatch => {
 const initialState = {}
 
 const reviewReducer = (state = initialState, action) => {
-    let newState = { ...initialState }
+    let newState = {...state}
     switch (action.type) {
         case LOAD_ALL:
             action.reviews.forEach(review => {
