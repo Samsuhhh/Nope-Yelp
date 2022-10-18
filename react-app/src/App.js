@@ -68,9 +68,11 @@ function App() {
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
+
         <Route path='/writeareview' exact={true}>
           <AddBusinessReview />
         </Route>
+        
         <Route>
           <BusinessCard search={search} path='/businesses' exact={true}/>
         </Route>
