@@ -12,8 +12,6 @@ import nopes2 from "../../../assets/nopes/2-nopes.png"
 import nopes1 from "../../../assets/nopes/1-nopes.png"
 
 
-
-
 const BusinessDetails = () => {
     const dispatch = useDispatch();
     // const history = useHistory();
@@ -152,32 +150,32 @@ const BusinessDetails = () => {
                             <div id='dynamic-horizontal-reviews'>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>5 Stars</div>
-                                    <div className='dynamic-bar'>
-                                        <div id='dbar-5' style={{width: `${dynamicFills(fiveNopeReviews)}`, backgroundColor: "red"}}>red color</div>
+                                    <div id='dbar-5' className='dynamic-bar'>
+                                        <div  style={{width: `${dynamicFills(fiveNopeReviews)}%`, backgroundColor: "red", height: '100%', borderRadius:'15px'}}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>4 Stars</div>
-                                    <div className='dynamic-bar'>
-                                        <div id='dbar-4'>red-orange color</div>
+                                    <div id='dbar-4' className='dynamic-bar'>
+                                        <div style={{ width: `${dynamicFills(fourNopeReviews)}%`, backgroundColor: "orange", height: '100%', borderRadius: '15px' }}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>3 Stars</div>
-                                    <div className='dynamic-bar'>
-                                        <div id='dbar-3'>orange color</div>
+                                    <div id='dbar-3'  className='dynamic-bar'>
+                                        <div style={{ width: `${dynamicFills(threeNopeReviews)}%`, backgroundColor: "orange", height: '100%', borderRadius: '15px' }}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>2 Stars</div>
-                                    <div className='dynamic-bar'>
-                                        <div id='dbar-2'>light-orange color</div>
+                                    <div id='dbar-2' className='dynamic-bar'>
+                                        <div style={{ width: `${dynamicFills(twoNopeReviews)}%`, backgroundColor: "yellow", height: '100%', borderRadius: '15px' }}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>1 star</div>
-                                    <div className='dynamic-bar'>
-                                        <div id='dbar-1'>yellow color</div>
+                                    <div id='dbar-1' className='dynamic-bar'>
+                                        <div style={{ width: `${dynamicFills(oneNopeReviews)}%`, backgroundColor: "gold", height: '100%', borderRadius: '15px' }}></div>
                                     </div>
                                 </div>
                             </div>

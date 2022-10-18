@@ -176,7 +176,7 @@
     line-height: 30px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    
 }
 
 #dbar-5{
@@ -221,6 +221,8 @@
     width: 100%;
     border: 1px solid green;
     display: flex;
+    height: 30px;
+    align-items: center;
     /* justify-content: space-between; */
     /* spacing incorrect, holding as is for visual flow of elements */
 }
