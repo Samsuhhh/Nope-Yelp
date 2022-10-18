@@ -26,12 +26,12 @@ const BusinessDetails = () => {
     const [isLoaded, setIsLoaded] = useState(false)
     // const [img, setImg] = useState()
 
-    const allReviews = business?.Reviews.length
-    const fiveNopes = business?.Reviews.filter(review => review.nope === 5).length
-    const fourNopes = business?.Reviews.filter(review => review.nope === 4).length
-    const threeNopes = business?.Reviews.filter(review => review.nope === 3).length
-    const twoNopes = business?.Reviews.filter(review => review.nope === 2).length
-    const oneNope = business?.Reviews.filter(review => review.nope === 1).length
+    const allReviews = business?.Reviews?.length
+    const fiveNopes = business?.Reviews?.filter(review => review.nope === 5).length
+    const fourNopes = business?.Reviews?.filter(review => review.nope === 4).length
+    const threeNopes = business?.Reviews?.filter(review => review.nope === 3).length
+    const twoNopes = business?.Reviews?.filter(review => review.nope === 2).length
+    const oneNope = business?.Reviews?.filter(review => review.nope === 1).length
 
     const dynamicFills = (nopes) => {
         let qmaths = nopes / allReviews
@@ -102,7 +102,7 @@ const BusinessDetails = () => {
                             )}
                         </div>
                     </div> */}
-                    <Carousel/>
+                    {/* <Carousel/> */}
                 </div>
                 <div id='business-details-header-content' style={{ fontFamily: 'Open Sans' }}>
                     <div id='business-details-header-info-container'>
@@ -128,7 +128,7 @@ const BusinessDetails = () => {
                         </div>
                     <div id='all-photos-div'>
                         <button id='all-photos-button'>
-                            See {business.businessImages.length} photos
+                            See {business.BusinessImages.length} photos
                         </button>
                     </div>
                     </div>
@@ -204,9 +204,10 @@ const BusinessDetails = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <BusinessReview></BusinessReview>
-                            </div>
+
+                        </div>
+                        <div>
+                            <BusinessReview></BusinessReview>
                         </div>
                     </section>
                 </div>
