@@ -61,6 +61,10 @@ function App() {
           <SignUpForm />
         </Route>
 
+        <Route path='/login' exact={true}>
+          <LoginForm />
+        </Route>
+
       </Switch>
 
 

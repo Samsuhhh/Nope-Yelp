@@ -1,0 +1,55 @@
+.sign-up-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background-color: #E00707;
+}
+
+.login-and-image {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 700px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#signup-logo {
+    height: 40px;
+}
+
+#unhappy-img {
+    width: 340px;
+}
+
+#login-password-input {
+    height: 30px;
+    width: 308px;
+    border: 1px lightgray solid;
+    border-radius: 5px;
+}
+
+#login-email-input {
+    height: 30px;
+    width: 308px;
+    border: 1px lightgray solid;
+    border-radius: 5px;
+}
+
+#input-space {
+    margin-bottom: 12px;
+}
+
+#login-submit-button {
+    font-weight: 700;
+    height: 40px;
+    width: 316px;
+    background-color: #E00707;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin-top: 12px;
+}
