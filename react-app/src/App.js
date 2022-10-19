@@ -17,6 +17,7 @@ import BusinessReview from './components/Reviews/BusinessReviews';
 
 import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
 import AddBusiness from './components/Businesses/AddBusiness';
+import Carousel, {CarouselItem} from './components/Businesses/BusinessDetails/Carousel';
 
 
 function App() {
@@ -81,6 +82,14 @@ function App() {
 
         <Route path='/businesses/new' exact={true}>
           <AddBusiness />
+        </Route>
+
+        <Route path='/caro' exact={true}>
+          <Carousel>
+            <CarouselItem>Item1</CarouselItem>
+            <CarouselItem>Item2</CarouselItem>
+            <CarouselItem>Item3</CarouselItem>
+          </Carousel>
         </Route>
 
         <Route path='/businesses/:businessId'>
