@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import githubicon from '../../../assets/icons/githubicon.svg'
 import linkedinicon from '../../../assets/icons/linkedinicon.svg'
 import websiteicon from '../../../assets/icons/websiteicon.svg'
+import emailicon from '../../../assets/icons/emailicon.svg'
 import './imageSlider.css'
 
 const HomeSlider = () => {
@@ -199,6 +200,15 @@ const HomeSlider = () => {
                                 <span className="contact-text">LinkedIn</span>
                             </button>
                         </a>
+
+                        <a href="mailto:jakematillano.z@gmail.com" target="_blank">
+                            <button
+                                className="slider-contact"
+                            >
+                                <img src={emailicon} id="icon"></img>
+                                <span className="contact-text">Email</span>
+                            </button>
+                        </a>
                     </div>
 
                 </div>
@@ -227,6 +237,15 @@ const HomeSlider = () => {
                                 <span className="contact-text">LinkedIn</span>
                             </button>
                         </a>
+
+                        <a href="mailto:alexdam55@gmail.com" target="_blank">
+                            <button
+                                className="slider-contact"
+                            >
+                                <img src={emailicon} id="icon"></img>
+                                <span className="contact-text">Email</span>
+                            </button>
+                        </a>
                     </div>
 
                 </div>
@@ -248,10 +267,20 @@ const HomeSlider = () => {
                                 <span className="contact-text">GitHub</span>
                             </button>
                         </a>
+
                         <a href="https://www.linkedin.com/" target="_blank">
                             <button className="slider-contact">
                                 <img src={linkedinicon} id="icon"></img>
                                 <span className="contact-text">LinkedIn</span>
+                            </button>
+                        </a>
+
+                        <a href="mailto:suhvivor24@gmail.com" target="_blank">
+                            <button
+                                className="slider-contact"
+                            >
+                                <img src={emailicon} id="icon"></img>
+                                <span className="contact-text">Email</span>
                             </button>
                         </a>
                     </div>
