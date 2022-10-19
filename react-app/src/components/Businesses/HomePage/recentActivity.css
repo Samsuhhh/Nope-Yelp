@@ -40,7 +40,48 @@
 }
 
 .recent-act-card {
+    padding: 10px;
     width: 300px;
     height: 300px;
     border: lightgray 1px solid;
+}
+
+.user-recent-act-grid-wrapper {
+    display: flex;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: lightgray 1px solid;
+}
+
+.review-recent-act-grid {
+    display: -webkit-box;
+    max-width: 100%;
+    margin: 0 auto;
+    -webkit-line-clamp: 4;
+    /* autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    height: 90px;
+}
+
+.user-name-recent-act-grid-wrapper {
+    margin-left: 10px;
+}
+
+#grid-avi {
+    height: 40px;
+    border-radius: 999px;
+}
+
+#grid-business-img {
+    height: 90px;
+    width: 100%;
+    object-fit: cover;
+}
+
+#nopes-grid {
+    height: 20px;
 }
