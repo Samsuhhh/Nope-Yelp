@@ -25,6 +25,7 @@ export default function BusinessCard({ search }) {
     if (e === 2) return "$$"
     if (e === 1) return "$"
   }
+
   if (!search.length) return (<h1>No results for this search</h1>)
   return (
     <div id="main-div-business-card">
@@ -64,6 +65,8 @@ export default function BusinessCard({ search }) {
         <h3 style={{ paddingLeft: "20px" }}>All Results</h3>
         <div id="middle-div-list-container">
         {Object.values(search).map((business, i) => {
+          let about = business.about
+          business.about.length > 180 ? about = business.about.slice(0, 180) + "..." : about = business.about
           return (
 
           <Link id='business-card-link' to={`/businesses/${business.id}`}>
@@ -81,7 +84,9 @@ export default function BusinessCard({ search }) {
                 <button className="tag-button">Tag3</button>{" "}<span>{priceRange(business.price_range)} &#x2022;
                 </span>{" "}<span>{business.city}</span></div>
                 <br></br>
-                <div>{business.about}{" "}<Link id="more-link" to={`/adhgaeg`}>more</Link></div>
+
+                  <div>"{about}"{" "}{business.about.length > 180 && (<Link id="more-link" to={`/businesses/${business.id}`}>more</Link>)}</div>
+
               </div>
             </div>
           </Link>
