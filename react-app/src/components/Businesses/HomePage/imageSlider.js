@@ -142,17 +142,27 @@ const HomeSlider = () => {
                         Gary Song
                     </h2>
                     <div className="contact-buttons">
-                        <button className="github">
+                        <button
+                        className="github"
+                        onClick={'http://www.github.com/garydsong'}
+                        type='button'
+                        >
                             <img src={githubicon} id="icon"></img>
                             <span className="contact-text">GitHub</span>
                         </button>
 
-                        <button className="github">
+                        <button
+                        className="github"
+                        onClick={'http://www.github.com/garydsong'}
+                        >
                             <img src={linkedinicon} id="icon"></img>
                             <span className="contact-text">LinkedIn</span>
                         </button>
 
-                        <button className="github">
+                        <button
+                        className="github"
+                        onClick={'http://www.github.com/garydsong'}
+                        >
                             <img src={websiteicon} id="icon"></img>
                             <span className="contact-text">Website</span>
                         </button>

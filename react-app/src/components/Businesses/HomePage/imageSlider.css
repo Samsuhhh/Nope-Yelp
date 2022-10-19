@@ -63,6 +63,7 @@
     padding-left: 40px;
     font-family: 'Open Sans', sans-serif;
     color: white;
+    margin-bottom: 50px;
 }
 
 .text-contacts-container h2 {
@@ -103,6 +104,7 @@
     background-color: #ff2323;
     cursor: pointer;
 }
+
 
 .bar-outer-container {
     display: flex;
