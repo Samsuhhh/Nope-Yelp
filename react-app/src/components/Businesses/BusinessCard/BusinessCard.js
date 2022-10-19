@@ -64,35 +64,40 @@ export default function BusinessCard({ search }) {
 
         <h3 style={{ paddingLeft: "20px" }}>All Results</h3>
         <div id="middle-div-list-container">
-        {Object.values(search).map((business, i) => {
-          let about = business.about
-          business.about.length > 180 ? about = business.about.slice(0, 180) + "..." : about = business.about
-          return (
+          {Object.values(search).map((business, i) => {
+            let about = business.about
+            business.about.length > 180 ? about = business.about.slice(0, 180) + "..." : about = business.about
+            return (
 
-          <Link id='business-card-link' to={`/businesses/${business.id}`}>
-            <div id="business-card-container">
-              <div>
-                <img id="business-card-image" alt="" src={business.images.url}></img>
-              </div>
-              <div id="business-card-text-container">
-                <div id="business-card-business-name">{business.business_name}</div>
-                <div>
-                <img id='nopes' alt='nopes' style={{height:"23px", width:"125px"}}src={nopeRatingBar(business.review_average)} ></img><span >{" "}{business.review_average}</span>
+              <Link id='business-card-link' to={`/businesses/${business.id}`}>
+                <div id="business-card-container">
+                  <div id="business-card-img-div">
+                    <img id="business-card-image" alt="" src={business.images.url}></img>
+                  </div>
+                  <div id="business-card-text-container">
+                    <div id="business-card-business-name">{business.business_name}</div>
+                    <div id="business-card-nopes-review-average-div">
+                      <div>
+                        <img id='nopes' alt='nopes' style={{ height: "23px", width: "125px" }} src={nopeRatingBar(business.review_average)} ></img>
+                      </div>
+                      <div id="business-card-review-average-div">
+                        <span >{business.review_average}</span>
+                      </div>
+                      <div>({business.review_count} Grumbles)</div>
+                    </div>
+                    <div><button className="tag-button">Tag1</button>{" "}<button className="tag-button">Tag2</button>{" "}
+                      <button className="tag-button">Tag3</button>{" "}<span>{priceRange(business.price_range)} &#x2022;
+                      </span>{" "}<span>{business.city}</span></div>
+                    <br></br>
+
+                    <div>"{about}"{" "}{business.about.length > 180 && (<Link id="more-link" to={`/businesses/${business.id}`}>more</Link>)}</div>
+
+                  </div>
                 </div>
-                <div>Grumbles{" "}({business.review_count})</div>
-                <div><button className="tag-button">Tag1</button>{" "}<button className="tag-button">Tag2</button>{" "}
-                <button className="tag-button">Tag3</button>{" "}<span>{priceRange(business.price_range)} &#x2022;
-                </span>{" "}<span>{business.city}</span></div>
-                <br></br>
+              </Link>
 
-                  <div>"{about}"{" "}{business.about.length > 180 && (<Link id="more-link" to={`/businesses/${business.id}`}>more</Link>)}</div>
-
-              </div>
-            </div>
-          </Link>
-
-          )
-        })}
+            )
+          })}
         </div>
 
       </div>
