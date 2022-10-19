@@ -176,7 +176,7 @@
 #owner-avatar {
     width: 45px;
     height: 45px;
-    border-radius: 999px;
+    border-radius: 50%;
 }
 
 #business-details-owner-name {

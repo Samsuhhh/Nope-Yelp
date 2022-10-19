@@ -18,8 +18,8 @@
 }
 
 #review-user-avatar-div{
-    height: 45px;
-    width: 45px;
+    height: 65px;
+    width: 65px;
     /* border: 1px solid purple;
     display: flex;
     justify-content: center;
@@ -27,9 +27,9 @@
 }
 
 #user-avatar {
-    /* width: 45px; */
-    height: 45px;
-    border-radius: 999px;
+    /* width: 65px; */
+    height: 65px;
+    border-radius: 50%;
 }
 
 #user-name{
