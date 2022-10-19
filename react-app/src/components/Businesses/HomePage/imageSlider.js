@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import githubicon from '../../../assets/icons/githubicon.svg'
 import linkedinicon from '../../../assets/icons/linkedinicon.svg'
 import websiteicon from '../../../assets/icons/websiteicon.svg'
 import './imageSlider.css'
 
 const HomeSlider = () => {
+
     useEffect(() => {
         let clear1;
         let clear2;
@@ -142,30 +144,34 @@ const HomeSlider = () => {
                         Gary Song
                     </h2>
                     <div className="contact-buttons">
-                        <button
-                        className="github"
-                        onClick={'http://www.github.com/garydsong'}
-                        type='button'
-                        >
-                            <img src={githubicon} id="icon"></img>
-                            <span className="contact-text">GitHub</span>
-                        </button>
+                        <a href="http://www.github.com/garydsong" target="_blank">
+                            <button
+                                className="slider-contact"
+                                type='button'
+                            >
+                                <img src={githubicon} id="icon"></img>
+                                <span className="contact-text">GitHub</span>
+                            </button>
+                        </a>
 
-                        <button
-                        className="github"
-                        onClick={'http://www.github.com/garydsong'}
-                        >
-                            <img src={linkedinicon} id="icon"></img>
-                            <span className="contact-text">LinkedIn</span>
-                        </button>
+                        <a href="https://www.linkedin.com/in/gary-song-96b071246/" target="_blank">
+                            <button
+                                className="slider-contact"
+                            >
+                                <img src={linkedinicon} id="icon"></img>
+                                <span className="contact-text">LinkedIn</span>
+                            </button>
+                        </a>
 
-                        <button
-                        className="github"
-                        onClick={'http://www.github.com/garydsong'}
-                        >
-                            <img src={websiteicon} id="icon"></img>
-                            <span className="contact-text">Website</span>
-                        </button>
+                        <a href="https://www.gary-song.com" target="_blank">
+                            <button
+                                className="slider-contact"
+                            >
+                                <img src={websiteicon} id="icon"></img>
+                                <span className="contact-text">Website</span>
+                            </button>
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -180,15 +186,19 @@ const HomeSlider = () => {
                         Jake Matillano
                     </h2>
                     <div className="contact-buttons">
-                        <button className="github">
-                            <img src={githubicon} id="icon"></img>
-                            <span className="contact-text">GitHub</span>
-                        </button>
+                        <a href="https://github.com/jakezmat" target="_blank">
+                            <button className="slider-contact">
+                                <img src={githubicon} id="icon"></img>
+                                <span className="contact-text">GitHub</span>
+                            </button>
+                        </a>
 
-                        <button className="github">
-                            <img src={linkedinicon} id="icon"></img>
-                            <span className="contact-text">LinkedIn</span>
-                        </button>
+                        <a href="https://www.linkedin.com/in/jake-matillano-b141811a3/" target="_blank">
+                            <button className="slider-contact">
+                                <img src={linkedinicon} id="icon"></img>
+                                <span className="contact-text">LinkedIn</span>
+                            </button>
+                        </a>
                     </div>
 
                 </div>
@@ -204,15 +214,19 @@ const HomeSlider = () => {
                         Alex Dam
                     </h2>
                     <div className="contact-buttons">
-                        <button className="github">
-                            <img src={githubicon} id="icon"></img>
-                            <span className="contact-text">GitHub</span>
-                        </button>
+                        <a href="https://github.com/Aldam55" target="_blank">
+                            <button className="slider-contact">
+                                <img src={githubicon} id="icon"></img>
+                                <span className="contact-text">GitHub</span>
+                            </button>
+                        </a>
 
-                        <button className="github">
-                            <img src={linkedinicon} id="icon"></img>
-                            <span className="contact-text">LinkedIn</span>
-                        </button>
+                        <a href="https://www.linkedin.com/in/alexander-dam-a45b8821a/" target="_blank">
+                            <button className="slider-contact">
+                                <img src={linkedinicon} id="icon"></img>
+                                <span className="contact-text">LinkedIn</span>
+                            </button>
+                        </a>
                     </div>
 
                 </div>
@@ -228,15 +242,18 @@ const HomeSlider = () => {
                         Sam Suh
                     </h2>
                     <div className="contact-buttons">
-                        <button className="github">
-                            <img src={githubicon} id="icon"></img>
-                            <span className="contact-text">GitHub</span>
-                        </button>
-
-                        <button className="github">
-                            <img src={linkedinicon} id="icon"></img>
-                            <span className="contact-text">LinkedIn</span>
-                        </button>
+                        <a href="https://github.com/Samsuhhh" target="_blank">
+                            <button className="slider-contact">
+                                <img src={githubicon} id="icon"></img>
+                                <span className="contact-text">GitHub</span>
+                            </button>
+                        </a>
+                        <a href="https://www.linkedin.com/" target="_blank">
+                            <button className="slider-contact">
+                                <img src={linkedinicon} id="icon"></img>
+                                <span className="contact-text">LinkedIn</span>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>

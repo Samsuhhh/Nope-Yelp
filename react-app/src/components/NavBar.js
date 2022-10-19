@@ -69,6 +69,7 @@ const NavBar = ({setSearch}) => {
   } else {
     sessionLinks = (
       <>
+      <div className="nav-bar-button-wrapper">
         <div id="for-businesses-button">
         <NavLink to='/login' exact={true} activeClassName='active' id='login-nav'>
             For Businesses
@@ -91,6 +92,7 @@ const NavBar = ({setSearch}) => {
           <NavLink to='/sign-up' exact={true} activeClassName='active' id='signup-nav'>
             Sign Up
           </NavLink>
+        </div>
         </div>
       </>
     )
