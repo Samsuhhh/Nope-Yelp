@@ -151,10 +151,10 @@ const reviewReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_ALL:
             console.log('All Reviews reducer hitting', action)
-            action.reviews.reviews.forEach(review => {
-                business[review.id] = review
+            action.reviews.forEach(review => {
+                newState.reviews[review.id] = review
             })
-            return { business }
+            return newState 
         case LOAD_ALL_BUSINESSES_REVIEWS:
             action.reviews.reviews.forEach(review => {
                 newState.reviews[review.id] = review

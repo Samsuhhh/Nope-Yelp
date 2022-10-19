@@ -18,7 +18,7 @@ const BusinessReview = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
-    const businessReviews = useSelector(state => state.reviews.business)
+    const businessReviews = useSelector(state => state.reviews.reviews)
     const [isLoaded, setIsLoaded] = useState(false)
 
 
@@ -42,7 +42,7 @@ const BusinessReview = () => {
                     {Object.values(businessReviews).map(review => (
                         <div id='review-card' key={review.id}>
                             <div id='review-info'>
-                                <div >
+                                <div id='review-user-avatar-div'>
                                     <img id='user-avatar' alt='user avatar' src={review.Owner.userAvatar}/>
                                 </div>
                                 <div id='user-info-div'>
