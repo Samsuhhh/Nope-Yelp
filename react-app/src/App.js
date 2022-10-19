@@ -18,6 +18,7 @@ import BusinessReview from './components/Reviews/BusinessReviews';
 import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
 import AddBusiness from './components/Businesses/AddBusiness';
 import Carousel, {CarouselItem} from './components/Businesses/BusinessDetails/Carousel';
+import BusinessNavBar from './components/Businesses/BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar';
 
 
 function App() {
@@ -97,6 +98,7 @@ function App() {
         </Route>
 
         <Route>
+          <BusinessNavBar setSearch={setSearch} />
           <BusinessCard search={search} path='/businesses' exact={true}/>
         </Route>
 
