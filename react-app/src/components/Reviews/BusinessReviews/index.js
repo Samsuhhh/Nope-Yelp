@@ -24,9 +24,11 @@ const BusinessReview = () => {
             {businessReviews &&
                 <div>
                     {Object.values(businessReviews).map(review => (
-                        <div key={review.id}>
-                            <div>{review.Owner.userAvatar}</div>
-                            <div>{review.Owner.firstName} {review.Owner.lastName}</div>
+                        <div id='review-card' key={review.id}>
+                            <div id='review-info'>
+                                <div>{review.Owner.userAvatar}</div>
+                                <div>{review.Owner.firstName} {review.Owner.lastName}</div>
+                            </div>
                             <div>{review.review}</div>
                             <div>{review.nope}</div>
                             <div>{review.updated_at ? new Date(review.updated_at).toString().slice(4, 15) : new Date(review.created_at).toString().slice(4, 15)}</div>
