@@ -135,19 +135,23 @@ let initialState = {
 
 const businessReducer = (state = initialState, action) => {
   let newState;
+  const allBusinesses = {}
   switch (action.type) {
     case LOAD_ALL:
       console.log('Businesses Reducer HITTING', action)
       action.businesses.forEach(business => {
-        newState[business.id] = business;
+        allBusinesses[business.id] = business;
       })
-      return newState
+      return {
+        ...state,
+        allBusinesses
+      }
     case LOAD_ONE:
       //   console.log('SINGLE business Reducer hitting', action.business)
       //   newState = { [action.business.id]: { ...action.business } }
-      newState = { ...state, singleBusiness: { ...state.singleBusiness } }
+      newState = { ...state, allBusinesses: { ...state.allBusinesses }, singleBusiness: { ...state.singleBusiness } }
       newState.singleBusiness = action.business
-      return newState
+      return { ...newState }
     default:
       return state
   }

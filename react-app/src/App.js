@@ -93,7 +93,7 @@ function App() {
           </Carousel>
         </Route>
 
-        <Route path='/businesses/:businessId'>
+        <Route path='/businesses/:businessId' exact={true}>
           <BusinessDetails />
         </Route>
 
