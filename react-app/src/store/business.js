@@ -134,7 +134,7 @@ let initialState = {
 }
 
 const businessReducer = (state = initialState, action) => {
-  let newState = {};
+  let newState;
   switch (action.type) {
     case LOAD_ALL:
       console.log('Businesses Reducer HITTING', action)
