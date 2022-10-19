@@ -9,16 +9,25 @@
 
 #business-details-header-images{
     width: 100%;
-    height: 100%;
+    height: 460px;
     border: 5px solid black;
     background-color: black;
     display: flex;
     justify-content: center;
+    align-items: flex-end;
 }
 
 
-#business-details-images{
-    z-index: -2;
+#business-details-images-main{
+z-index: 1;
+position: absolute;
+/* border: 1px solid purple; */
+height: 480px;
+
+}
+
+#business-details-images-main > button{
+    z-index: 5;
 }
 
 
@@ -26,7 +35,7 @@
 
 #business-details-header-content{
     width: 100%;
-    height: 10%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -35,21 +44,25 @@
 
 #business-details-header-info-container{
     width: 70%;
-    height: 5%;
-    border: 3px solid yellow;
+    height: 100%;
+    /* border: 3px solid yellow; */
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     font-family: "Open Sans";
     justify-content: space-between;
     font-weight: 600;
+    /* position: absolute;
+    top: 100px;
+    right: 275px; */
 }
 
 #business-details-info{
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    height: 40%;
+    /* border: 1px solid white; */
 }
 
 #business-details-info-review-divs{
@@ -68,7 +81,7 @@
 
 #all-photos-div{
     width: 20%;
-    height: 100%;
+    
 }
 #all-photos-button{
     width: 175px;

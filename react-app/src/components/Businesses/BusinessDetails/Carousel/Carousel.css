@@ -1,18 +1,20 @@
 .carousel {
     overflow: hidden;
+    
 }
 
 .inner {
     white-space: nowrap;
     transition: transform 0.3s;
+    z-index: -5;
 }
 
 .carousel-item {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 200px;
-    background-color: red;
+    height: 500px;
+    /* background-color: red; */
     color: white;
 }
 
