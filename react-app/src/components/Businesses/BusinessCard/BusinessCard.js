@@ -83,7 +83,7 @@ export default function BusinessCard({ search }) {
                       <div id="business-card-review-average-div">
                         <span >{business.review_average}</span>
                       </div>
-                      <div>({business.review_count} Grumbles)</div>
+                      <div id="business-card-grumble-count-div">({business.review_count} {" "}{business.review_count > 1 ? "Grumbles" : "Grumble"})</div>
                     </div>
                     <div><button className="tag-button">Tag1</button>{" "}<button className="tag-button">Tag2</button>{" "}
                       <button className="tag-button">Tag3</button>{" "}<span>{priceRange(business.price_range)} &#x2022;
