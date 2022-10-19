@@ -14,25 +14,23 @@ const Carousel = ({ children }) => {
 
     return (
         <div className="carousel">
+            <button className='indicators'
+                onClick={() => {
+                    setActiveIndex(activeIndex - 1);
+                }}>
+                Prev
+            </button>
             <div className="inner" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
                 {React.Children.map(children, (child, index) => {
                     return React.cloneElement(child, { width: "100%" })
                 })}
             </div>
-            <div className="indicators">
-                <button
-                    onClick={() => {
-                        setActiveIndex(activeIndex - 1);
-                    }}>
-                        Prev
-                </button>
-                <button
-                    onClick={() => {
-                        setActiveIndex(activeIndex + 1);
-                    }}>
-                        Next
-                </button>
-            </div>
+            <button className='indicators'
+                onClick={() => {
+                    setActiveIndex(activeIndex + 1);
+                }}>
+                Next
+            </button>
         </div>
 
     );
