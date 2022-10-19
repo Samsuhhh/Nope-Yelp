@@ -91,6 +91,11 @@ div{
   padding: 6px 14px;
 
 }
+
+.price-range-btn:focus{
+  background-color: #ff2323;
+  color: rgb(236, 236, 236);
+}
 .price-range-btn{
   background-color: white;
   transition:.6s;
@@ -99,6 +104,23 @@ div{
 .price-range-btn:hover {
   background-color: rgb(219, 219, 219);
   cursor: pointer;
+  color: black;
+}
+
+#business-card-nopes-review-average-div{
+  display:flex;
+  flex-direction: row;
+}
+
+#business-card-review-average-div{
+  margin:0px 6px;
+  align-self: center;
+}
+
+#business-card-grumble-count-div{
+  align-self:center;
+  color: grey;
+  font-size: 12px;
 }
 
 #business-card-business-name{
