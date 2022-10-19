@@ -63,7 +63,7 @@ def get_business_by_id(id):
 
   businessImages = BusinessImage.query.filter(BusinessImage.business_id == id)
   business_dict['BusinessImages'] = [businessImage.to_dict() for businessImage in businessImages]
-  
+
 
 
   ## reviews is superfulous not doing anything because reviews is always truthy
@@ -238,18 +238,19 @@ main_tag_lst = [
 @login_required
 def create_business():
   form = BusinessForm()
-  user = current_user.to_dict()
+  # user = current_user.to_dict()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     tags_lst = []
     for tag in form.tags.data:
-      add_tag = Tag(tag=tag)
+      add_tag=Tag(tag=tag)
       tags_lst.append(add_tag)
+
     business = Business(
       business_name = form.business_name.data,
       email = form.email.data,
       phone = form.phone.data,
-      owner_id = user.id,
+      owner_id = current_user.id,
       street_address = form.street_address.data,
       city = form.city.data,
       zipcode = form.zipcode.data,
@@ -264,7 +265,13 @@ def create_business():
     db.session.add(business)
     db.session.commit()
 
-    return business.to_dict()
+    new_tags = [tag.to_dict() for tag in business.tags]
+
+    new_business = business.to_dict()
+    new_business['tags'] = new_tags
+
+    return new_business
+
   return {"errors": validation_form_errors(form.errors), "statusCode":401}
 
 ## CREATE A REVIEW FOR BUSINESS VIA ID

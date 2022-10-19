@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { createBusinessThunk } from '../../../store/business'
+import { createBusinessThunk, addBusinessImage } from '../../../store/business'
 import './CreateBusiness.css'
 
 const CreateBusiness = () => {
@@ -15,11 +15,11 @@ const CreateBusiness = () => {
     const [phone, setPhone] = useState('')
     const [streetAddress, setStreetAddress] = useState('')
     const [city, setCity] = useState('')
-    const [zipcode, setZipcode] = useState(11111)
+    const [zipcode, setZipcode] = useState('')
     const [state, setState] = useState('')
     const [about, setAbout] = useState('')
-    const [longitude, setLongitude] = useState(0)
-    const [latitude, setLatitude] = useState(0)
+    const [longitude, setLongitude] = useState('')
+    const [latitude, setLatitude] = useState('')
     const [priceRange, setPriceRange] = useState('')
     const [website, setWebsite] = useState('')
     const [imgUrl, setImgUrl] = useState('')
@@ -42,6 +42,92 @@ const CreateBusiness = () => {
     const updateImgUrl = (e) => setImgUrl(e.target.value)
     // MIGHT NEED ONE FOR TAGS? NOT SURE YET
     // const updateTags = (e) => setTags(e.target.value)
+    const mainTagsList = [
+        { 'title': 'Acai Bowls' },
+        { 'title': 'Bagels' },
+        { 'title': 'Bakeries' },
+        { 'title': 'Beer, Wine & Spirits' },
+        { 'title': 'Breweries' },
+        { 'title': 'Bubble Tea' },
+        { 'title': 'Butcher' },
+        { 'title': 'Coffee & Tea' },
+        { 'title': 'Convenience Stores' },
+        { 'title': 'Delicatessen' },
+        { 'title': 'Desserts' },
+        { 'title': 'Donuts' },
+        { 'title': 'Farmers Market' },
+        { 'title': 'Food Delivery Services' },
+        { 'title': 'Food Trucks' },
+        { 'title': 'Gelato' },
+        { 'title': 'Grocery' },
+        { 'title': 'Honey' },
+        { 'title': 'Ice Cream & Frozen Yogurt' },
+        { 'title': 'Internet Cafes' },
+        { 'title': 'Juice Bars & Smoothies' },
+        { 'title': 'Poke' },
+        { 'title': 'Shaved Ice' },
+        { 'title': 'Tortillas' },
+        { 'title': 'Afghan' },
+        { 'title': 'African' },
+        { 'title': 'American' },
+        { 'title': 'Asian Fusion' },
+        { 'title': 'Barbeque' },
+        { 'title': 'Bistros' },
+        { 'title': 'Brazilian' },
+        { 'title': 'Breakfast & Brunch' },
+        { 'title': 'Buffets' },
+        { 'title': 'Burgers' },
+        { 'title': 'Cafes' },
+        { 'title': 'Cajun/Creole' },
+        { 'title': 'Caribbean' },
+        { 'title': 'Chicken Wings' },
+        { 'title': 'Chinese' },
+        { 'title': 'Comfort Food' },
+        { 'title': 'Cuban' },
+        { 'title': 'Danish' },
+        { 'title': 'Diners' },
+        { 'title': 'Dim Sum' },
+        { 'title': 'Dumplings' },
+        { 'title': 'Eastern European' },
+        { 'title': 'Filipino' },
+        { 'title': 'Fish & Chips' },
+        { 'title': 'Food Court' },
+        { 'title': 'French' },
+        { 'title': 'Gastropubs' },
+        { 'title': 'German' },
+        { 'title': 'Gluten-Free' },
+        { 'title': 'Greek' },
+        { 'title': 'Halal' },
+        { 'title': 'Hawaiian' },
+        { 'title': 'Hong Kong Style Cafe' },
+        { 'title': 'Fast Food' },
+        { 'title': 'Hot Pot' },
+        { 'title': 'Indian' },
+        { 'title': 'Italian' },
+        { 'title': 'Japanese' },
+        { 'title': 'Kebab' },
+        { 'title': 'Korean' },
+        { 'title': 'Kosher' },
+        { 'title': 'Raw Food' },
+        { 'title': 'Mediterranean' },
+        { 'title': 'Mexican' },
+        { 'title': 'Middle Eastern' },
+        { 'title': 'Noodles' },
+        { 'title': 'Pizza' },
+        { 'title': 'Salad' },
+        { 'title': 'Seafood' },
+        { 'title': 'Soul Food' },
+        { 'title': 'Soup' },
+        { 'title': 'Steakhouse' },
+        { 'title': 'Sushi' },
+        { 'title': 'Tapas' },
+        { 'title': 'Fusion' },
+        { 'title': 'Thai' },
+        { 'title': 'Vegan' },
+        { 'title': 'Vegetarian' },
+        { 'title': 'Vietnamese' },
+        { 'title': 'Bootcamp' }
+    ]
 
     // NEED TO ADD MORE VALIDATION ERRORS
     useEffect(() => {
@@ -67,11 +153,11 @@ const CreateBusiness = () => {
                 about,
                 longitude,
                 latitude,
-                price_range: Number(priceRange),
+                price_range: priceRange,
                 website,
                 tags
             }
-
+            console.log('what does our business object look like?', business)
             let createdBusiness = await dispatch(createBusinessThunk(business))
 
             if (createdBusiness) {
@@ -79,7 +165,7 @@ const CreateBusiness = () => {
                     url: imgUrl
                 })
 
-                await dispatch("ADD IMAGE TO BUSINESS THUNK HERE", createdBusiness.id)
+                await dispatch(addBusinessImage(imgBody, createdBusiness.id))
                 setShowErrors(false)
                 history.push(`/businesses/${createdBusiness.id}`)
             }
@@ -145,15 +231,6 @@ const CreateBusiness = () => {
                     onChange={updateCity}
                     required />
             </div>
-            {/*------- ZIPCODE -------*/}
-            <div>
-                <input
-                    type='number'
-                    placeholder='Zipcode'
-                    value={zipcode}
-                    onChange={updateZipcode}
-                    required />
-            </div>
             {/*------- STATE -------*/}
             <div>
                 <input
@@ -161,6 +238,15 @@ const CreateBusiness = () => {
                     placeholder='State'
                     value={state}
                     onChange={updateState}
+                    required />
+            </div>
+            {/*------- ZIPCODE -------*/}
+            <div>
+                <input
+                    type='number'
+                    placeholder='Zipcode'
+                    value={zipcode}
+                    onChange={updateZipcode}
                     required />
             </div>
             {/*------- ABOUT -------*/}
@@ -196,7 +282,7 @@ const CreateBusiness = () => {
             </div>
             {/*------- PRICE RANGE -------*/}
             <div>
-                <select
+                {/* <select
                     value={priceRange}
                     onChange={updatePriceRange}
                     required>
@@ -204,7 +290,13 @@ const CreateBusiness = () => {
                     <option value='2'>$$</option>
                     <option value='3'>$$$</option>
                     <option value='4'>$$$$</option>
-                </select>
+                </select> */}
+                <input
+                    type='number'
+                    placeholder='Price Range'
+                    value={priceRange}
+                    onChange={updatePriceRange}
+                    required />
             </div>
             {/*------- WEBSITE -------*/}
             <div>
@@ -226,6 +318,29 @@ const CreateBusiness = () => {
             </div>
             {/*------- TAGS -------*/}
             {/* SOME TYPE OF MODAL HERE FOR TAGS */}
+            <div>
+                {mainTagsList.map(tag => (
+                    <div key={tag.title}>
+                        <input
+                            type="checkbox"
+                            onChange={(e) => {
+                                const tagsList = tags
+                                if (e.target.checked) {
+                                    console.log("adding tag to array")
+                                    tagsList.push(e.target.value)
+                                    console.log('current tag array', tagsList)
+                                } else {
+                                    const index = tagsList.indexOf(e.target.value)
+                                    tagsList.splice(index, 1)
+                                }
+                                setTags(tagsList)
+                            }}
+                            value={tag.title}
+                            name={tag.title} />
+                        <label>{tag.title}</label>
+                    </div>
+                ))}
+            </div>
             {/*------- SUBMIT BUTTON -------*/}
             <button type='submit'>Create Your Business</button>
             {/*------- CANCEL BUTTON -------*/}
