@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSingleBusinessThunk } from '../../../store/business';
+import { getSingleBusinessThunk, updateBusinessThunk } from '../../../store/business';
 import { getAllReviews } from '../../../store/review';
 import { useParams, useHistory } from 'react-router-dom';
 import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
 import './BusinessDetails.css'
+import { deleteBusinessThunk } from '../../../store/business';
 import Carousel, { CarouselItem } from './Carousel';
 
 import nopes5 from "../../../assets/nopes/5-nopes.png"
@@ -19,10 +20,11 @@ import whiteNope from "../../../assets/nopes/ratingimg.png"
 
 const BusinessDetails = () => {
     const dispatch = useDispatch();
-    // const history = useHistory();
+    const history = useHistory();
     const params = useParams();
     const { businessId } = params;
     const business = useSelector(state => state.businesses.singleBusiness);
+    const currentUser = useSelector(state => state.session.user)
     const [isLoaded, setIsLoaded] = useState(false)
     // const [img, setImg] = useState()
 
@@ -77,6 +79,15 @@ const BusinessDetails = () => {
         split.splice(4, 0, ') ')
         split.splice(8, 0, '-')
         return split.join('')
+    }
+
+    const updateRedirect = () => {
+        history.push('/update')
+    }
+
+    const deleteHandler = async (businessId) => {
+        await dispatch(deleteBusinessThunk(businessId))
+        history.push('/')
     }
 
 
@@ -151,8 +162,12 @@ const BusinessDetails = () => {
                         <button id='write-review-button'>
                             <img src={whiteNope} alt='white nope' style={{ width: "20px", height: "20px" }} ></img> Write a Review</button>
                         <button className='action-buttons'>Add a photo </button>
-                        <button className='action-buttons'>Share</button>
-                        <button className='action-buttons'>Save</button>
+                        {currentUser && currentUser.id === business.Owner.id && (
+                            <div id='auth-action-buttons'>
+                                <button onClick={updateRedirect} className='action-buttons'>Edit your business</button>
+                                <button disabled='true' onClick={deleteHandler} className='action-buttons'>Delete your business</button>
+                            </div>
+                        )}
                     </div>
                     <section id='business-details-amenities'>
                         <div>POSSIBLY AMENITIES</div>
