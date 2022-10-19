@@ -1,5 +1,6 @@
 from crypt import methods
 import json
+from turtle import title
 from flask import Blueprint, request, jsonify
 from flask_login import current_user, login_required
 from app.models import User, Business, Review, BusinessImage, db, Tag
@@ -243,7 +244,8 @@ def create_business():
   if form.validate_on_submit():
     tags_lst = []
     for tag in form.tags.data:
-      add_tag=Tag(tag=tag)
+      valid = [tag_title for tag_title in main_tag_lst if tag_title['title'] == tag]
+      add_tag=Tag(tag=valid['title'])
       tags_lst.append(add_tag)
 
     business = Business(
