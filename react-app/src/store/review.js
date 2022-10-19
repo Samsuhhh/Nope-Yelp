@@ -129,7 +129,8 @@ const initialState = {
 
 const reviewReducer = (state = initialState, action) => {
     const business = {}
-    let newState = { ...state }
+    const user = {}
+    let newState
     switch (action.type) {
         case LOAD_ALL:
             console.log('All Reviews reducer hitting', action)
@@ -139,17 +140,24 @@ const reviewReducer = (state = initialState, action) => {
             return { business }
         case LOAD_CURRENT:
             action.reviews.reviews.forEach(review => {
-                newState[review.id] = review
+                user[review.id] = review
             })
-            return newState
+            return {
+                ...state,
+                user
+            }
         case CREATE:
-            newState[action.review.id] = action.review
+            newState = { business: { ...state.business }, user: { ...state.user } }
+            newState.business[action.review.id] = action.review
             return newState
         case UPDATE:
-            newState[action.review.id] = action.review
+            newState = { business: { ...state.business } }
+            newState.business[action.review.id] = action.review
             return newState
         case REMOVE:
-            delete newState[action.review.id]
+            newState = { business: { ...state.business }, user: { ...state.user } }
+            delete newState.business[action.reviewId]
+            delete newState.user[action.reviewId]
             return newState
         case RESET:
             return initialState

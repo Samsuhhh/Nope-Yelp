@@ -1,3 +1,4 @@
+from crypt import methods
 import json
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
@@ -5,6 +6,7 @@ from app.models import User, Business, Review, BusinessImage, db
 from flask_login import current_user
 from app.forms.business_form import BusinessForm
 from app.forms.review_form import ReviewForm
+from app.forms.business_img_form import BusinessImageForm
 
 
 def validation_form_errors(validation_errors):
@@ -185,7 +187,7 @@ def create_review(id):
 
   ## CHECK IF current_user.id WORKS
   if business.owner_id == current_user.id:
-    return {"message": "Business owner cannot wrtie a review for their business", "statusCode":403}
+    return {"message": "Business owner cannot write a review for their business", "statusCode":403}
 
   form = ReviewForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -203,3 +205,28 @@ def create_review(id):
 
     return review.to_dict()
   return {"errors": validation_form_errors(form.errors), "statusCode":401}
+
+
+## ADD AN IMAGE TO A BUSINESS VIA ID
+@business_routes.route('/<int:id>/images', methods=["POST"])
+@login_required
+def add_image(id):
+  business = Business.query.get(id)
+
+  ## ERROR HANDLING NON-EXISTENT BUSINESS
+  if not business:
+    return {"message": "Business coulnd't be found.", "statusCode": 404}
+
+  form = BusinessImageForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    img = BusinessImage(
+      business_id = id,
+      url = form.url.data
+    )
+
+    db.session.add(img)
+    db.session.commit()
+
+    return img.to_dict()
+  return {"errors": validation_form_errors(form.errors), "statusCode": 401}
