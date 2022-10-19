@@ -1,3 +1,8 @@
+#root {
+  position: absolute;
+  z-index: -6;
+}
+
 .main-home-div {
     display: flex;
     flex-direction: column;
@@ -8,6 +13,17 @@
     width: 100%;
     z-index: -1;
 }
+
+
+
+a:link { text-decoration: none; }
+
+a:visited { text-decoration: none; }
+
+a:hover { text-decoration: none; }
+
+a:active { text-decoration: none; }
+
 
 
 .home-img {
@@ -63,6 +79,7 @@
     padding-left: 40px;
     font-family: 'Open Sans', sans-serif;
     color: white;
+    margin-bottom: 50px;
 }
 
 .text-contacts-container h2 {
@@ -82,9 +99,10 @@
 .contact-buttons {
     display: flex;
     height: 48px;
+    z-index: 5;
 }
 
-.github {
+.slider-contact {
     display: flex;
     font-family: 'Open Sans', sans-serif;
     justify-content: center;
@@ -99,10 +117,11 @@
     transition: 1s;
 }
 
-.github:hover {
+.slider-contact:hover {
     background-color: #ff2323;
     cursor: pointer;
 }
+
 
 .bar-outer-container {
     display: flex;
@@ -173,6 +192,13 @@
     animation-delay: 14s;
     transform-origin: bottom;
     border-radius: 999px;
+}
+
+.nav-bar-button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  width: 500px;
 }
 
 .bar:hover {
