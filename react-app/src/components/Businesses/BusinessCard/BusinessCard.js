@@ -9,7 +9,7 @@ import nopes1 from "../../../assets/nopes/1-nopes.png"
 import nopes0 from "../../../assets/nopes/0-nopes.png"
 
 export default function BusinessCard({ search }) {
-  console.log("Search working", Object.values(search))
+  console.log("Search working in business card", Object.values(search))
 
   const nopeRatingBar = (rating) => {
     if (rating > 4 && rating <= 5) return (nopes5)
