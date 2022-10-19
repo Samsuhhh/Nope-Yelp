@@ -6,7 +6,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
 import './BusinessDetails.css'
-import Carousel from './Carousel';
+import Carousel, {CarouselItem} from './Carousel';
 
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
@@ -92,6 +92,11 @@ const BusinessDetails = () => {
         <div id='business-details-page'>
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
+                    <Carousel>
+                        <CarouselItem>1</CarouselItem>
+                        <CarouselItem>2</CarouselItem>
+                        <CarouselItem>3</CarouselItem>
+                    </Carousel>
                     {/* <div id='carousel-wrapper'>
                         <div id='image-container'>
                             {business.businessImages.map((image) =>
