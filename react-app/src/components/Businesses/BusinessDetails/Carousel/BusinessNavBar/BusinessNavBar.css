@@ -1,0 +1,199 @@
+.business-nav-navbar-wrapper {
+    display: flex;
+    position: fixed;
+    z-index: 6;
+    height: 100px;
+    width: 100%;
+    background-color: white;
+    border-bottom: rgb(230, 230, 230) 1px solid;
+}
+
+
+.business-nav-nav-bar-button-wrapper {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    height: 40px;
+    width: 500px;
+    margin-left: 300px;
+}
+
+.business-nav-navbar {
+    font-family: 'Open-Sans', sans-serif;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    top: -20px;
+}
+
+#logo {
+    height: 40px;
+    width: 126px;
+}
+
+.business-nav-right-side-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+}
+
+#business-nav-for-businesses-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    width: 140px;
+    border-radius: 5px;
+}
+
+
+#business-nav-for-businesses-button:hover {
+    background-color: rgba(225, 225, 225, 0.3);
+}
+
+#business-nav-write-a-review-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    width: 140px;
+    border-radius: 5px;
+}
+
+#business-nav-write-a-review-button:hover {
+    background-color: rgba(225, 225, 225, 0.3);
+}
+
+
+#business-nav-login-button {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 76px;
+    border-radius: 5px;
+    border: rgb(220, 220, 220) 1px solid;
+    transition: 1s;
+}
+
+#business-nav-login-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+#business-nav-signup-button {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 90px;
+    background-color: #E00707;
+    border-radius: 5px;
+    transition: 1s;
+}
+
+#business-nav-signup-button:hover {
+    background-color: #ff2323;
+    cursor: pointer;
+}
+
+#business-nav-signup-nav {
+    color: white;
+    font-weight: 700;
+}
+
+#business-nav-signup-nav:link {
+    text-decoration: none;
+}
+
+#business-nav-signup-nav:visited {
+    text-decoration: none;
+}
+
+#business-nav-signup-nav:active {
+    text-decoration: none;
+}
+
+#business-nav-signup-nav:hover {
+    text-decoration: none;
+}
+
+#business-nav-login-nav {
+    color: black;
+    font-weight: 700;
+}
+
+#business-nav-login-nav:link {
+    text-decoration: none;
+}
+
+#business-nav-login-nav:visited {
+    text-decoration: none;
+}
+
+#business-nav-login-nav:active {
+    text-decoration: none;
+}
+
+#business-nav-login-nav:hover {
+    text-decoration: none;
+}
+
+.business-nav-search-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 750px;
+    padding-left: 300px;
+}
+
+.business-nav-search {
+    justify-self: center;
+    width: 465px;
+    font-size: 0;
+    line-height: normal;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px;
+}
+
+.business-nav-search-button-wrapper {
+    display: inline-block;
+    width: 63px;
+    height: 46.3px;
+    box-sizing: border-box;
+    background-color: #E00707;
+    background-repeat: no-repeat;
+    transition: 1s;
+    background-position: 17px 8px;
+    color: #fff;
+    font-size: 0;
+    vertical-align: top;
+    border-radius: 0 4px 4px 0;
+    border: 1px #E00707 solid;
+}
+
+.business-nav-search-button-wrapper:hover {
+    background-color: #ff2323;
+    cursor: pointer;
+}
+
+#mag {
+    position: static;
+    width: 22px;
+    height: 22px;
+    padding-top: 17%;
+    padding-left: 25%;
+    padding-right: 20%;
+    padding-bottom: 30%;
+}

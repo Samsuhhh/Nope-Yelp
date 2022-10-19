@@ -84,6 +84,7 @@ usedTags = [
     {'title': 'Vegan'},
     {'title': 'Vegetarian'},
     {'title': 'Vietnamese'},
+    {'title': 'Bootcamp'}
 ]
 
 add_tag = []

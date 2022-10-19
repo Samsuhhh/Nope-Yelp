@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   margin: 50px 300px;
+  padding-top: 80px;
 }
 
 #left-div-business-card{
@@ -111,7 +112,12 @@ div{
 #business-card-link{
   text-decoration: none;
   color:black;
+  transition: .5s;
 }
+#business-card-link:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
 #more-link{
   text-decoration:none;
   color: rgb(0, 142, 167);
@@ -135,6 +141,7 @@ div{
   cursor: pointer;
   font-size: 18px;
   user-select: none;
+  z-index: 4;
 }
 
 .container input {

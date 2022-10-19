@@ -62,10 +62,10 @@ export const getAllReviews = (businessId) => async dispatch => {
 
 export const getAllBusinessesReviews = () => async (dispatch) => {
     const response = await fetch('/api/reviews')
-    const reviewData = await response.json()
-    console.log(reviewData)
 
     if (response.ok) {
+        const reviewData = await response.json()
+        console.log(reviewData)
         await dispatch(loadAllBusinessesReviews(reviewData))
         return reviewData
     } else {
@@ -76,7 +76,7 @@ export const getAllBusinessesReviews = () => async (dispatch) => {
 };
 
 export const getCurrentReviews = () => async dispatch => {
-    const response = await fetch('/api/reivews/current')
+    const response = await fetch('/api/reviews/current')
 
     if (response.ok) {
         const review = await response.json()
@@ -143,36 +143,57 @@ export const removeReview = (reviewId) => async dispatch => {
     }
 }
 
-const initialState = { business: {}, user: {}, reviews: {} }
+
+const initialState = {
+    business: {},
+    user: {},
+    allReviews: {}
+}
 
 const reviewReducer = (state = initialState, action) => {
-    const business = {}
-    let newState = { ...state }
+    const business = {};
+    const user = {};
+    const allReviews = {};
+    let newState
     switch (action.type) {
         case LOAD_ALL:
             console.log('All Reviews reducer hitting', action)
             action.reviews.forEach(review => {
-                newState.reviews[review.id] = review
+                business[review.id] = review
             })
-            return newState 
+            return {
+                ...state,
+                business
+            }
         case LOAD_ALL_BUSINESSES_REVIEWS:
+            console.log('TESTING', action.reviews)
             action.reviews.reviews.forEach(review => {
-                newState.reviews[review.id] = review
+                allReviews[review.id] = review
             })
-            return newState
+            return {
+                ...state,
+                allReviews
+            }
         case LOAD_CURRENT:
             action.reviews.forEach(review => {
-                newState[review.id] = review
+                newState.user[review.id] = review
             })
-            return newState
+            return {
+                ...state,
+                user
+            }
         case CREATE:
-            newState[action.review.id] = action.review
+            newState = { business: { ...state.business }, user: { ...state.user } }
+            newState.business[action.review.id] = action.review
             return newState
         case UPDATE:
-            newState[action.review.id] = action.review
+            newState = { business: { ...state.business } }
+            newState.business[action.review.id] = action.review
             return newState
         case REMOVE:
-            delete newState[action.review.id]
+            newState = { business: { ...state.business }, user: { ...state.user } }
+            delete newState.business[action.reviewId]
+            delete newState.user[action.reviewId]
             return newState
         case RESET:
             return initialState

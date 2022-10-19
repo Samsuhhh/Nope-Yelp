@@ -18,7 +18,7 @@ const BusinessReview = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
-    const businessReviews = useSelector(state => state.reviews.reviews)
+    const businessReviews = useSelector(state => state.reviews.business)
     const [isLoaded, setIsLoaded] = useState(false)
 
 
@@ -43,7 +43,7 @@ const BusinessReview = () => {
                         <div id='review-card' key={review.id}>
                             <div id='review-info'>
                                 <div id='review-user-avatar-div'>
-                                    <img id='user-avatar' alt='user avatar' src={review.Owner.userAvatar}/>
+                                    <img id='user-avatar' alt='user avatar' src={review.Owner.userAvatar} />
                                 </div>
                                 <div id='user-info-div'>
                                     <div id='user-name'>{review.Owner.firstName} {review.Owner.lastName ? review.Owner.lastName.slice(0,1) + '.' : '$.'}</div>
