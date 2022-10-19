@@ -52,6 +52,7 @@ height: 480px;
     font-family: "Open Sans";
     justify-content: space-between;
     font-weight: 600;
+    z-index: 5;
     /* position: absolute;
     top: 100px;
     right: 275px; */

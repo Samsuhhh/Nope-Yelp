@@ -1,5 +1,9 @@
 .carousel {
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     
 }
 
@@ -19,10 +23,11 @@
 }
 
 .indicators {
-    display: flex;
-    justify-content: center;
+    width: 40px;
+    height: 25px;
+    border-radius: 999px;
 }
 
-.indicators > button {
-    margin: 5px;
+.indicators:hover{
+    cursor: pointer;
 }
