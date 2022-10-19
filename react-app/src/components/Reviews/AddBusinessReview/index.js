@@ -1,7 +1,7 @@
 // TODO
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
+import { NavLink, useHistory, useParams } from 'react-router-dom'
 import { createReview } from '../../../store/review'
 import nope from '../../../assets/nope.png'
 import ratingimg from '../../../assets/nopes/ratingimg.png'
@@ -76,56 +76,98 @@ const AddBusinessReview = () => {
             <div className="write-review-main">
                 <div className="write-review-nav">
                     <div className="write-review-nav-wrapper">
-                        <img id="write-review-logo" src={nope} />
+                        <NavLink to='/' exact={true} activeClassName='active'>
+                            <img id="write-review-logo" src={nope} />
+                        </NavLink>
+
                         <img id="user-avatar" src={js} />
                     </div>
                 </div>
                 <div className="review-wrapper">
-                    <div id="nope-selector" className='nopes'>
-                        <span onClick={selectedNopes(4)}><img src={ratingimg}/></span>
-                        <span onClick={selectedNopes(3)}><img src={ratingimg}/></span>
-                        <span onClick={selectedNopes(2)}><img src={ratingimg}/></span>
-                        <span onClick={selectedNopes(1)}><img src={ratingimg}/></span>
-                        <span onClick={selectedNopes(0)}><img src={ratingimg}/></span>
-                    </div>
-                    <div className="write-a-review">
-                        <form onSubmit={handleSubmit}>
-                            <div>
-                                {showErrors &&
-                                    <ul>
-                                        {validationErrors.map((e, i) => {
-                                            return <div key={i}>{e}</div>
-                                        })}
-                                    </ul>
-                                }
-                                <textarea
-                                    type='text'
-                                    placeholder=''
-                                    value={review}
+                    <div className="review-container">
+                        <div className="review-business-title">Business Name</div>
+                        <div className="nopes-and-review-wrapper">
+                            <div id="nope-selector" className='nopes'>
+                                <span
+                                    onClick={selectedNopes(4)}
+                                    value={1}
                                     required
-                                    onChange={updateReview} />
-                                <div>
-                                    <div>Nopes</div>
-                                    <input
-                                        type='number'
-                                        min='1'
-                                        max='5'
-                                        placeholder="1-5 nopes"
-                                        value={nopes}
-                                        required
-                                        onChange={updateNopes} />
-                                </div>
-                                <button
-                                    type='submit'>
-                                    Submit
-                                </button>
-                                <button
-                                    type='button'
-                                    onClick={handleCancel}>
-                                    Cancel
-                                </button>
+                                    onChange={updateNopes}
+                                >
+                                    <img src={ratingimg} />
+                                </span>
+
+                                <span
+                                    onClick={selectedNopes(3)}
+                                    value={2}
+                                    required
+                                    onChange={updateNopes}
+                                >
+                                    <img src={ratingimg} />
+                                </span>
+
+                                <span
+                                    onClick={selectedNopes(2)}
+                                    value={3}
+                                    required
+                                    onChange={updateNopes}
+                                >
+                                    <img src={ratingimg} />
+                                </span>
+
+                                <span
+                                    onClick={selectedNopes(1)}
+                                    value={4}
+                                    required
+                                    onChange={updateNopes}
+                                >
+                                    <img src={ratingimg} />
+                                </span>
+
+                                <span
+                                    onClick={selectedNopes(0)}
+                                    value={5}
+                                    required
+                                    onChange={updateNopes}
+                                >
+                                    <img src={ratingimg} />
+                                </span>
+
                             </div>
-                        </form>
+                            <div className="write-a-review">
+                                <form onSubmit={handleSubmit}>
+                                    <div>
+                                        {showErrors &&
+                                            <ul>
+                                                {validationErrors.map((e, i) => {
+                                                    return <div key={i}>{e}</div>
+                                                })}
+                                            </ul>
+                                        }
+                                        <textarea
+                                            type='text'
+                                            placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit libero volutpat. Sit amet consectetur adipiscing elit. Porttitor massa id neque aliquam vestibulum morbi blandit. Netus et malesuada fames ac turpis egestas maecenas. Urna neque viverra justo nec ultrices dui sapien eget mi. Molestie at elementum eu facilisis sed. Auctor elit sed vulputate mi sit amet mauris. Mauris nunc congue nisi vitae suscipit tellus mauris a diam. Nunc mattis enim ut tellus elementum sagittis. Donec adipiscing tristique risus nec feugiat in fermentum posuere.'
+                                            value={review}
+                                            required
+                                            onChange={updateReview} />
+                                        <div className="submit-and-cancel-review">
+                                            <button
+                                                id='submit-review'
+                                                type='submit'>
+                                                Post Review
+                                            </button>
+                                            <button
+                                                id='cancel-review'
+                                                type='button'
+                                                onClick={handleCancel}>
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

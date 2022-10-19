@@ -145,7 +145,7 @@ const businessReducer = (state = initialState, action) => {
     case LOAD_ONE:
       //   console.log('SINGLE business Reducer hitting', action.business)
       //   newState = { [action.business.id]: { ...action.business } }
-      const newState = { ...state, singleBusiness: { ...state.singleBusiness } }
+      newState = { ...state, singleBusiness: { ...state.singleBusiness } }
       newState.singleBusiness = action.business
       return newState
     default:

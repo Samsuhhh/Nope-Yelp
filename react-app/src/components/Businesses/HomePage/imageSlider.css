@@ -1,3 +1,8 @@
+#root {
+  position: absolute;
+  z-index: -6;
+}
+
 .main-home-div {
     display: flex;
     flex-direction: column;
@@ -8,6 +13,17 @@
     width: 100%;
     z-index: -1;
 }
+
+
+
+a:link { text-decoration: none; }
+
+a:visited { text-decoration: none; }
+
+a:hover { text-decoration: none; }
+
+a:active { text-decoration: none; }
+
 
 
 .home-img {
@@ -63,6 +79,7 @@
     padding-left: 40px;
     font-family: 'Open Sans', sans-serif;
     color: white;
+    margin-bottom: 50px;
 }
 
 .text-contacts-container h2 {
@@ -82,9 +99,10 @@
 .contact-buttons {
     display: flex;
     height: 48px;
+    z-index: 5;
 }
 
-.github {
+.slider-contact {
     display: flex;
     font-family: 'Open Sans', sans-serif;
     justify-content: center;
@@ -99,10 +117,11 @@
     transition: 1s;
 }
 
-.github:hover {
+.slider-contact:hover {
     background-color: #ff2323;
     cursor: pointer;
 }
+
 
 .bar-outer-container {
     display: flex;
@@ -173,6 +192,13 @@
     animation-delay: 14s;
     transform-origin: bottom;
     border-radius: 999px;
+}
+
+.nav-bar-button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  width: 500px;
 }
 
 .bar:hover {
@@ -340,7 +366,7 @@
   .field.request {
     position: relative;
     display: inline-block;
-    width: inherit;
+    width: 400px;
     box-sizing: border-box;
     font-size: 18px;
     outline: none;
@@ -405,7 +431,7 @@
 .search-button-wrapper {
     display: inline-block;
     width: 63px;
-    height: 45px;
+    height: 46.3px;
     box-sizing: border-box;
     background-color: #E00707;
     background-repeat: no-repeat;
@@ -415,10 +441,12 @@
     font-size: 0;
     vertical-align: top;
     border-radius: 0 4px 4px 0;
+    border:1px #E00707 solid;
 }
 
 .search-button-wrapper:hover {
     background-color: #ff2323;
+    cursor: pointer;
 }
 
   .left-side__sublist {
@@ -606,7 +634,7 @@
     width: 22px;
     height: 22px;
     padding-top: 17%;
-    padding-left: 30%;
+    padding-left: 25%;
     padding-right: 20%;
     padding-bottom: 30%;
 }

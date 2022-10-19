@@ -1,0 +1,33 @@
+.carousel {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.inner {
+    white-space: nowrap;
+    transition: transform 0.3s;
+    z-index: -5;
+}
+
+.carousel-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    /* background-color: red; */
+    color: white;
+}
+
+.indicators {
+    width: 40px;
+    height: 25px;
+    border-radius: 999px;
+}
+
+.indicators:hover{
+    cursor: pointer;
+}
