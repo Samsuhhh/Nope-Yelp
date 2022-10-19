@@ -1,4 +1,41 @@
 #review-card{
     border: 1px solid black;
-    margin-top: 15px;
+    margin-top: 25px;
+    font-family: "Open Sans";
+    font-size: 14px;
+}
+
+#review-info{
+    font-weight: 500;
+    display: flex;
+    
+}
+
+#user-info-div{
+    margin-left: 5px;
+}
+
+#user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 999px;
+}
+
+#user-name{
+    font-weight: 600;
+}
+
+#review-nopes-container-flex-row{
+    display: flex;
+    margin-top: 10px;
+}
+
+#review-nopes{
+    width: 108px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+#review-grumble{
+    margin-top: 10px;
 }

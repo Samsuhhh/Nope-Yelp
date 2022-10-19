@@ -157,30 +157,30 @@ const BusinessDetails = () => {
                         <div>POSSIBLY AMENITIES</div>
                     </section>
                     <section id='business-details-about-container'>
-                        <div> <h1>About the Business</h1> </div>
+                        <div style={{ fontSize: '14px', fontWeight: '600' }}> <h2>About the Business </h2></div>
                         <div id='about-owner-content'>
                             <div id='business-details-owner-avatar'>
                                 <img alt='sexy pfp' id='owner-avatar' src={business.Owner.userAvatar} />
                             </div>
                             <div id='owner-name-title-div-column'>
                                 <div id='business-details-owner-name'>
-                                    {business.Owner.firstName} {business.Owner.lastName}
+                                    {business.Owner.firstName} {business.Owner.lastName ? business.Owner.lastName.slice(0,1)+'.' : '$.'}
                                 </div>
                                 <div id='business-details-owner-title'>
                                     Business Owner
                                 </div>
                             </div>
                         </div>
-                        <div style={{ borderTop: '1px solid #ebebeb', paddingTop: '25px', marginTop: '15px' }}>{business.about}</div>
+                        <div id='business-details-about'>{business.about}</div>
                     </section>
                     <section id='reviews-business-details-container'>
                         <div id='reviews-analytics-container'>
                             <div id='overall-ratings'>
-                                <p>Overall rating</p>
+                                <div style={{fontSize: "16px", fontWeight: "700"}}>Overall rating</div>
                                 <div id='nopes-container'>
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
-                                <div><p>{business.reviewCount} reviews</p></div>
+                                <div style={{marginTop: "5px"}}>{business.reviewCount} reviews</div>
                             </div>
                             <div id='dynamic-horizontal-reviews'>
                                 <div className='dynamic-stars'>
