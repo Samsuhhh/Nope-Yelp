@@ -225,6 +225,7 @@ const CreateBusiness = () => {
                     required />
             </div>
             {/*------- TAGS -------*/}
+            {/* SOME TYPE OF MODAL HERE FOR TAGS */}
             {/*------- SUBMIT BUTTON -------*/}
             <button type='submit'>Create Your Business</button>
             {/*------- CANCEL BUTTON -------*/}

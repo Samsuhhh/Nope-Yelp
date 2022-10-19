@@ -20,7 +20,7 @@ const options = {
 const BusinessNavBar = ({ setSearch }) => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const businesses = useSelector(state => state.businesses)
+    const businesses = useSelector(state => state.businesses.allBusinesses)
     const [query, setQuery] = useState("")
 
     useEffect(() => {
