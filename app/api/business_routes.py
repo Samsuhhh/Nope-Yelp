@@ -1,10 +1,11 @@
+from crypt import methods
 import json
 from flask import Blueprint, request, jsonify
-from flask_login import login_required
-from app.models import User, Business, Review, BusinessImage, db
-from flask_login import current_user
+from flask_login import current_user, login_required
+from app.models import User, Business, Review, BusinessImage, db, Tag
 from app.forms.business_form import BusinessForm
 from app.forms.review_form import ReviewForm
+from app.forms.business_img_form import BusinessImageForm
 
 
 def validation_form_errors(validation_errors):
@@ -144,19 +145,111 @@ def delete_business(id):
   db.session.commit()
 
   return {"message":"Successfully deleted", "statusCode":200}
+# TAGS NECESSARY TO CREATE A BUSINESS
+main_tag_lst = [
+    {'title': 'Acai Bowls'},
+    {'title': 'Bagels'},
+    {'title': 'Bakeries'},
+    {'title': 'Beer, Wine & Spirits'},
+    {'title': 'Breweries'},
+    {'title': 'Bubble Tea'},
+    {'title': 'Butcher'},
+    {'title': 'Coffee & Tea'},
+    {'title': 'Convenience Stores'},
+    {'title': 'Delicatessen'},
+    {'title': 'Desserts'},
+    {'title': 'Donuts'},
+    {'title': 'Farmers Market'},
+    {'title': 'Food Delivery Services'},
+    {'title': 'Food Trucks'},
+    {'title': 'Gelato'},
+    {'title': 'Grocery'},
+    {'title': 'Honey'},
+    {'title': 'Ice Cream & Frozen Yogurt'},
+    {'title': 'Internet Cafes'},
+    {'title': 'Juice Bars & Smoothies'},
+    {'title': 'Poke'},
+    {'title': 'Shaved Ice'},
+    {'title': 'Tortillas'},
+    {'title': 'Afghan'},
+    {'title': 'African'},
+    {'title': 'American'},
+    {'title': 'Asian Fusion'},
+    {'title': 'Barbeque'},
+    {'title': 'Bistros'},
+    {'title': 'Brazilian'},
+    {'title': 'Breakfast & Brunch'},
+    {'title': 'Buffets'},
+    {'title': 'Burgers'},
+    {'title': 'Cafes'},
+    {'title': 'Cajun/Creole'},
+    {'title': 'Caribbean'},
+    {'title': 'Chicken Wings'},
+    {'title': 'Chinese'},
+    {'title': 'Comfort Food'},
+    {'title': 'Cuban'},
+    {'title': 'Danish'},
+    {'title': 'Diners'},
+    {'title': 'Dim Sum'},
+    {'title': 'Dumplings'},
+    {'title': 'Eastern European'},
+    {'title': 'Filipino'},
+    {'title': 'Fish & Chips'},
+    {'title': 'Food Court'},
+    {'title': 'French'},
+    {'title': 'Gastropubs'},
+    {'title': 'German'},
+    {'title': 'Gluten-Free'},
+    {'title': 'Greek'},
+    {'title': 'Halal'},
+    {'title': 'Hawaiian'},
+    {'title': 'Hong Kong Style Cafe'},
+    {'title': 'Fast Food'},
+    {'title': 'Hot Pot'},
+    {'title': 'Indian'},
+    {'title': 'Italian'},
+    {'title': 'Japanese'},
+    {'title': 'Kebab'},
+    {'title': 'Korean'},
+    {'title': 'Kosher'},
+    {'title': 'Raw Food'},
+    {'title': 'Mediterranean'},
+    {'title': 'Mexican'},
+    {'title': 'Middle Eastern'},
+    {'title': 'Noodles'},
+    {'title': 'Pizza'},
+    {'title': 'Salad'},
+    {'title': 'Seafood'},
+    {'title': 'Soul Food'},
+    {'title': 'Soup'},
+    {'title': 'Steakhouse'},
+    {'title': 'Sushi'},
+    {'title': 'Tapas'},
+    {'title': 'Fusion'},
+    {'title': 'Thai'},
+    {'title': 'Vegan'},
+    {'title': 'Vegetarian'},
+    {'title': 'Vietnamese'},
+]
+
+
 ## CREATE A BUSINESS
 @business_routes.route("/", methods=["POST"])
 @login_required
 def create_business():
   form = BusinessForm()
-
+  user = current_user.to_dict()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
+    tags_lst = []
+    for tag in form.tags.data:
+      add_tag = Tag(tag=tag)
+      tags_lst.append(add_tag)
     business = Business(
       business_name = form.business_name.data,
       email = form.email.data,
       phone = form.phone.data,
-      owner_id = current_user.id,
+      owner_id = user.id,
       street_address = form.street_address.data,
       city = form.city.data,
       zipcode = form.zipcode.data,
@@ -165,7 +258,8 @@ def create_business():
       longitude = form.longitude.data,
       latitude = form.latitude.data,
       price_range = form.price_range.data,
-      website = form.website.data
+      website = form.website.data,
+      tags=tags_lst
     )
     db.session.add(business)
     db.session.commit()
@@ -186,7 +280,7 @@ def create_review(id):
 
   ## CHECK IF current_user.id WORKS
   if business.owner_id == current_user.id:
-    return {"message": "Business owner cannot wrtie a review for their business", "statusCode":403}
+    return {"message": "Business owner cannot write a review for their business", "statusCode":403}
 
   form = ReviewForm()
   form['csrf_token'].data = request.cookies['csrf_token']
@@ -204,3 +298,28 @@ def create_review(id):
 
     return review.to_dict()
   return {"errors": validation_form_errors(form.errors), "statusCode":401}
+
+
+## ADD AN IMAGE TO A BUSINESS VIA ID
+@business_routes.route('/<int:id>/images', methods=["POST"])
+@login_required
+def add_image(id):
+  business = Business.query.get(id)
+
+  ## ERROR HANDLING NON-EXISTENT BUSINESS
+  if not business:
+    return {"message": "Business coulnd't be found.", "statusCode": 404}
+
+  form = BusinessImageForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    img = BusinessImage(
+      business_id = id,
+      url = form.url.data
+    )
+
+    db.session.add(img)
+    db.session.commit()
+
+    return img.to_dict()
+  return {"errors": validation_form_errors(form.errors), "statusCode": 401}

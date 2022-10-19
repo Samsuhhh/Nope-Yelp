@@ -15,8 +15,8 @@ import nopes1 from "../../../assets/nopes/1-nopes.png"
 function RecentActivity() {
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
-    const review = useSelector(state => state.reviews)
-    const business = useSelector(state => state.businesses)
+    const review = useSelector(state => state.reviews.allReviews)
+    const business = useSelector(state => state.businesses.allBusinesses)
 
     const nopeImgs = (averageNopes) => {
         if (averageNopes > 4 && averageNopes <= 5) return (nopes5)
@@ -33,233 +33,237 @@ function RecentActivity() {
 
     }, [dispatch])
 
-    console.log('ya', review?.reviews[2])
+    // console.log('ya', review?.reviews[2])
     return (
         <>
-            <div className='recent-act-wrapper'>
-                <div className='recent-act-body'>
-                    <div className='recent-act-title-wrapper'>
-                        <div className='recent-act-title'>Recent Activity</div>
-                    </div>
-                    <div className='recent-reviews-grid'>
-                        <div className='recent-act-card'>
-                            <div className='user-recent-act-grid-wrapper'>
-                                <div className='user-avi-recent-act-grid'>
-                                    <img id="grid-avi" src={docker} />
+            {isLoaded &&
+                <>
+                    <div className='recent-act-wrapper'>
+                        <div className='recent-act-body'>
+                            <div className='recent-act-title-wrapper'>
+                                <div className='recent-act-title'>Recent Activity</div>
+                            </div>
+                            <div className='recent-reviews-grid'>
+                                <div className='recent-act-card'>
+                                    <div className='user-recent-act-grid-wrapper'>
+                                        <div className='user-avi-recent-act-grid'>
+                                            <img id="grid-avi" src={docker} />
+                                        </div>
+                                        <div className='user-name-recent-act-grid-wrapper'>
+                                            <div className='user-name-recent-act-grid'>{review[1]?.user_id}</div>
+                                            <div className='user-action-recent-act-grid'>Wrote a Review</div>
+                                        </div>
+                                    </div>
+                                    <div className='business-img-recent-act-grid'>
+                                        <img id="grid-business-img" src={business?.[review[1]?.business_id]?.images?.url} />
+                                    </div>
+                                    <div className='business-name-recent-act-grid'>{business?.[review[1]?.business_id]?.business_name}</div>
+                                    <div className='nopes-recent-act-grid'>
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[1]?.nope)} />
+                                    </div>
+                                    <div className='review-recent-act-grid'>{review[1]?.review}</div>
                                 </div>
-                                <div className='user-name-recent-act-grid-wrapper'>
-                                    <div className='user-name-recent-act-grid'>{review?.reviews[1]?.user_id}</div>
-                                    <div className='user-action-recent-act-grid'>Wrote a Review</div>
-                                </div>
-                            </div>
-                            <div className='business-img-recent-act-grid'>
-                                <img id="grid-business-img" src={business?.[review?.reviews[1]?.business_id]?.images?.url} />
-                            </div>
-                            <div className='business-name-recent-act-grid'>{business?.[review?.reviews[1]?.business_id]?.business_name}</div>
-                            <div className='nopes-recent-act-grid'>
-                                <img id='nopes-grid' alt='nopes' src={nopeImgs(review?.reviews[1]?.nope)} />
-                            </div>
-                            <div className='review-recent-act-grid'>{review?.reviews[1]?.review}</div>
-                        </div>
 
-                        <div className='recent-act-card'>
-                            <div className='user-recent-act-grid-wrapper'>
-                                <div className='user-avi-recent-act-grid'>
-                                    <img id="grid-avi" src={docker} />
+                                <div className='recent-act-card'>
+                                    <div className='user-recent-act-grid-wrapper'>
+                                        <div className='user-avi-recent-act-grid'>
+                                            <img id="grid-avi" src={docker} />
+                                        </div>
+                                        <div className='user-name-recent-act-grid-wrapper'>
+                                            <div className='user-name-recent-act-grid'>{review[15]?.user_id}</div>
+                                            <div className='user-action-recent-act-grid'>Wrote a Review</div>
+                                        </div>
+                                    </div>
+                                    <div className='business-img-recent-act-grid'>
+                                        <img id="grid-business-img" src={business?.[review[15]?.business_id]?.images?.url} />
+                                    </div>
+                                    <div className='business-name-recent-act-grid'>{business?.[review[15]?.business_id]?.business_name}</div>
+                                    <div className='nopes-recent-act-grid'>
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[15]?.nope)} />
+                                    </div>
+                                    <div className='review-recent-act-grid'>{review[15]?.review}</div>
                                 </div>
-                                <div className='user-name-recent-act-grid-wrapper'>
-                                    <div className='user-name-recent-act-grid'>{review?.reviews[15]?.user_id}</div>
-                                    <div className='user-action-recent-act-grid'>Wrote a Review</div>
+
+                                <div className='recent-act-card'>
+                                    <div className='user-recent-act-grid-wrapper'>
+                                        <div className='user-avi-recent-act-grid'>
+                                            <img id="grid-avi" src={docker} />
+                                        </div>
+                                        <div className='user-name-recent-act-grid-wrapper'>
+                                            <div className='user-name-recent-act-grid'>{review[33]?.user_id}</div>
+                                            <div className='user-action-recent-act-grid'>Wrote a Review</div>
+                                        </div>
+                                    </div>
+                                    <div className='business-img-recent-act-grid'>
+                                        <img id="grid-business-img" src={business?.[review[33]?.business_id]?.images?.url} />
+                                    </div>
+                                    <div className='business-name-recent-act-grid'>{business?.[review[33]?.business_id]?.business_name}</div>
+                                    <div className='nopes-recent-act-grid'>
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[33]?.nope)} />
+                                    </div>
+                                    <div className='review-recent-act-grid'>{review[33]?.review}</div>
                                 </div>
-                            </div>
-                            <div className='business-img-recent-act-grid'>
-                                <img id="grid-business-img" src={business?.[review?.reviews[15]?.business_id]?.images?.url} />
-                            </div>
-                            <div className='business-name-recent-act-grid'>{business?.[review?.reviews[15]?.business_id]?.business_name}</div>
-                            <div className='nopes-recent-act-grid'>
-                                <img id='nopes-grid' alt='nopes' src={nopeImgs(review?.reviews[15]?.nope)} />
-                            </div>
-                            <div className='review-recent-act-grid'>{review?.reviews[15]?.review}</div>
-                        </div>
 
-                        <div className='recent-act-card'>
-                            <div className='user-recent-act-grid-wrapper'>
-                                <div className='user-avi-recent-act-grid'>
-                                    <img id="grid-avi" src={docker} />
+                                <div className='recent-act-card'>
+                                    <div className='user-recent-act-grid-wrapper'>
+                                        <div className='user-avi-recent-act-grid'>
+                                            <img id="grid-avi" src={docker} />
+                                        </div>
+                                        <div className='user-name-recent-act-grid-wrapper'>
+                                            <div className='user-name-recent-act-grid'>{review[77]?.user_id}</div>
+                                            <div className='user-action-recent-act-grid'>Wrote a Review</div>
+                                        </div>
+                                    </div>
+                                    <div className='business-img-recent-act-grid'>
+                                        <img id="grid-business-img" src={business?.[review[77]?.business_id]?.images?.url} />
+                                    </div>
+                                    <div className='business-name-recent-act-grid'>{business?.[review[77]?.business_id]?.business_name}</div>
+                                    <div className='nopes-recent-act-grid'>
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[77]?.nope)} />
+                                    </div>
+                                    <div className='review-recent-act-grid'>{review[77]?.review}</div>
                                 </div>
-                                <div className='user-name-recent-act-grid-wrapper'>
-                                    <div className='user-name-recent-act-grid'>{review?.reviews[33]?.user_id}</div>
-                                    <div className='user-action-recent-act-grid'>Wrote a Review</div>
+
+                                <div className='recent-act-card'>
+                                    <div className='user-recent-act-grid-wrapper'>
+                                        <div className='user-avi-recent-act-grid'>
+                                            <img id="grid-avi" src={docker} />
+                                        </div>
+                                        <div className='user-name-recent-act-grid-wrapper'>
+                                            <div className='user-name-recent-act-grid'>{review[98]?.user_id}</div>
+                                            <div className='user-action-recent-act-grid'>Wrote a Review</div>
+                                        </div>
+                                    </div>
+                                    <div className='business-img-recent-act-grid'>
+                                        <img id="grid-business-img" src={business?.[review[98]?.business_id]?.images?.url} />
+                                    </div>
+                                    <div className='business-name-recent-act-grid'>{business?.[review[98]?.business_id]?.business_name}</div>
+                                    <div className='nopes-recent-act-grid'>
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[98]?.nope)} />
+                                    </div>
+                                    <div className='review-recent-act-grid'>{review[98]?.review}</div>
                                 </div>
-                            </div>
-                            <div className='business-img-recent-act-grid'>
-                                <img id="grid-business-img" src={business?.[review?.reviews[33]?.business_id]?.images?.url} />
-                            </div>
-                            <div className='business-name-recent-act-grid'>{business?.[review?.reviews[33]?.business_id]?.business_name}</div>
-                            <div className='nopes-recent-act-grid'>
-                                <img id='nopes-grid' alt='nopes' src={nopeImgs(review?.reviews[33]?.nope)} />
-                            </div>
-                            <div className='review-recent-act-grid'>{review?.reviews[33]?.review}</div>
-                        </div>
 
-                        <div className='recent-act-card'>
-                            <div className='user-recent-act-grid-wrapper'>
-                                <div className='user-avi-recent-act-grid'>
-                                    <img id="grid-avi" src={docker} />
+                                <div className='recent-act-card'>
+                                    <div className='user-recent-act-grid-wrapper'>
+                                        <div className='user-avi-recent-act-grid'>
+                                            <img id="grid-avi" src={docker} />
+                                        </div>
+                                        <div className='user-name-recent-act-grid-wrapper'>
+                                            <div className='user-name-recent-act-grid'>{review[24]?.user_id}</div>
+                                            <div className='user-action-recent-act-grid'>Wrote a Review</div>
+                                        </div>
+                                    </div>
+                                    <div className='business-img-recent-act-grid'>
+                                        <img id="grid-business-img" src={business?.[review[24]?.business_id]?.images?.url} />
+                                    </div>
+                                    <div className='business-name-recent-act-grid'>{business?.[review[24]?.business_id]?.business_name}</div>
+                                    <div className='nopes-recent-act-grid'>
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[24]?.nope)} />
+                                    </div>
+                                    <div className='review-recent-act-grid'>{review[24]?.review}</div>
                                 </div>
-                                <div className='user-name-recent-act-grid-wrapper'>
-                                    <div className='user-name-recent-act-grid'>{review?.reviews[77]?.user_id}</div>
-                                    <div className='user-action-recent-act-grid'>Wrote a Review</div>
+
+                                <div className='recent-act-card'>
+                                    <div className='user-recent-act-grid-wrapper'>
+                                        <div className='user-avi-recent-act-grid'>
+                                            <img id="grid-avi" src={docker} />
+                                        </div>
+                                        <div className='user-name-recent-act-grid-wrapper'>
+                                            <div className='user-name-recent-act-grid'>{review[52]?.user_id}</div>
+                                            <div className='user-action-recent-act-grid'>Wrote a Review</div>
+                                        </div>
+                                    </div>
+                                    <div className='business-img-recent-act-grid'>
+                                        <img id="grid-business-img" src={business?.[review[52]?.business_id]?.images?.url} />
+                                    </div>
+                                    <div className='business-name-recent-act-grid'>{business?.[review[52]?.business_id]?.business_name}</div>
+                                    <div className='nopes-recent-act-grid'>
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[52]?.nope)} />
+                                    </div>
+                                    <div className='review-recent-act-grid'>{review[52]?.review}</div>
                                 </div>
-                            </div>
-                            <div className='business-img-recent-act-grid'>
-                                <img id="grid-business-img" src={business?.[review?.reviews[77]?.business_id]?.images?.url} />
-                            </div>
-                            <div className='business-name-recent-act-grid'>{business?.[review?.reviews[77]?.business_id]?.business_name}</div>
-                            <div className='nopes-recent-act-grid'>
-                                <img id='nopes-grid' alt='nopes' src={nopeImgs(review?.reviews[77]?.nope)} />
-                            </div>
-                            <div className='review-recent-act-grid'>{review?.reviews[77]?.review}</div>
-                        </div>
 
-                        <div className='recent-act-card'>
-                            <div className='user-recent-act-grid-wrapper'>
-                                <div className='user-avi-recent-act-grid'>
-                                    <img id="grid-avi" src={docker} />
+                                <div className='recent-act-card'>
+                                    <div className='user-recent-act-grid-wrapper'>
+                                        <div className='user-avi-recent-act-grid'>
+                                            <img id="grid-avi" src={docker} />
+                                        </div>
+                                        <div className='user-name-recent-act-grid-wrapper'>
+                                            <div className='user-name-recent-act-grid'>{review[7]?.user_id}</div>
+                                            <div className='user-action-recent-act-grid'>Wrote a Review</div>
+                                        </div>
+                                    </div>
+                                    <div className='business-img-recent-act-grid'>
+                                        <img id="grid-business-img" src={business?.[review[7]?.business_id]?.images?.url} />
+                                    </div>
+                                    <div className='business-name-recent-act-grid'>{business?.[review[7]?.business_id]?.business_name}</div>
+                                    <div className='nopes-recent-act-grid'>
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[7]?.nope)} />
+                                    </div>
+                                    <div className='review-recent-act-grid'>{review[7]?.review}</div>
                                 </div>
-                                <div className='user-name-recent-act-grid-wrapper'>
-                                    <div className='user-name-recent-act-grid'>{review?.reviews[98]?.user_id}</div>
-                                    <div className='user-action-recent-act-grid'>Wrote a Review</div>
+
+                                <div className='recent-act-card'>
+                                    <div className='user-recent-act-grid-wrapper'>
+                                        <div className='user-avi-recent-act-grid'>
+                                            <img id="grid-avi" src={docker} />
+                                        </div>
+                                        <div className='user-name-recent-act-grid-wrapper'>
+                                            <div className='user-name-recent-act-grid'>{review[88]?.user_id}</div>
+                                            <div className='user-action-recent-act-grid'>Wrote a Review</div>
+                                        </div>
+                                    </div>
+                                    <div className='business-img-recent-act-grid'>
+                                        <img id="grid-business-img" src={business?.[review[88]?.business_id]?.images?.url} />
+                                    </div>
+                                    <div className='business-name-recent-act-grid'>{business?.[review[88]?.business_id]?.business_name}</div>
+                                    <div className='nopes-recent-act-grid'>
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[88]?.nope)} />
+                                    </div>
+                                    <div className='review-recent-act-grid'>{review[88]?.review}</div>
                                 </div>
-                            </div>
-                            <div className='business-img-recent-act-grid'>
-                                <img id="grid-business-img" src={business?.[review?.reviews[98]?.business_id]?.images?.url} />
-                            </div>
-                            <div className='business-name-recent-act-grid'>{business?.[review?.reviews[98]?.business_id]?.business_name}</div>
-                            <div className='nopes-recent-act-grid'>
-                                <img id='nopes-grid' alt='nopes' src={nopeImgs(review?.reviews[98]?.nope)} />
-                            </div>
-                            <div className='review-recent-act-grid'>{review?.reviews[98]?.review}</div>
-                        </div>
-
-                        <div className='recent-act-card'>
-                            <div className='user-recent-act-grid-wrapper'>
-                                <div className='user-avi-recent-act-grid'>
-                                    <img id="grid-avi" src={docker} />
-                                </div>
-                                <div className='user-name-recent-act-grid-wrapper'>
-                                    <div className='user-name-recent-act-grid'>{review?.reviews[24]?.user_id}</div>
-                                    <div className='user-action-recent-act-grid'>Wrote a Review</div>
-                                </div>
-                            </div>
-                            <div className='business-img-recent-act-grid'>
-                                <img id="grid-business-img" src={business?.[review?.reviews[24]?.business_id]?.images?.url} />
-                            </div>
-                            <div className='business-name-recent-act-grid'>{business?.[review?.reviews[24]?.business_id]?.business_name}</div>
-                            <div className='nopes-recent-act-grid'>
-                                <img id='nopes-grid' alt='nopes' src={nopeImgs(review?.reviews[24]?.nope)} />
-                            </div>
-                            <div className='review-recent-act-grid'>{review?.reviews[24]?.review}</div>
-                        </div>
-
-                        <div className='recent-act-card'>
-                            <div className='user-recent-act-grid-wrapper'>
-                                <div className='user-avi-recent-act-grid'>
-                                    <img id="grid-avi" src={docker} />
-                                </div>
-                                <div className='user-name-recent-act-grid-wrapper'>
-                                    <div className='user-name-recent-act-grid'>{review?.reviews[52]?.user_id}</div>
-                                    <div className='user-action-recent-act-grid'>Wrote a Review</div>
-                                </div>
-                            </div>
-                            <div className='business-img-recent-act-grid'>
-                                <img id="grid-business-img" src={business?.[review?.reviews[52]?.business_id]?.images?.url} />
-                            </div>
-                            <div className='business-name-recent-act-grid'>{business?.[review?.reviews[52]?.business_id]?.business_name}</div>
-                            <div className='nopes-recent-act-grid'>
-                                <img id='nopes-grid' alt='nopes' src={nopeImgs(review?.reviews[52]?.nope)} />
-                            </div>
-                            <div className='review-recent-act-grid'>{review?.reviews[52]?.review}</div>
-                        </div>
-
-                        <div className='recent-act-card'>
-                            <div className='user-recent-act-grid-wrapper'>
-                                <div className='user-avi-recent-act-grid'>
-                                    <img id="grid-avi" src={docker} />
-                                </div>
-                                <div className='user-name-recent-act-grid-wrapper'>
-                                    <div className='user-name-recent-act-grid'>{review?.reviews[7]?.user_id}</div>
-                                    <div className='user-action-recent-act-grid'>Wrote a Review</div>
-                                </div>
-                            </div>
-                            <div className='business-img-recent-act-grid'>
-                                <img id="grid-business-img" src={business?.[review?.reviews[7]?.business_id]?.images?.url} />
-                            </div>
-                            <div className='business-name-recent-act-grid'>{business?.[review?.reviews[7]?.business_id]?.business_name}</div>
-                            <div className='nopes-recent-act-grid'>
-                                <img id='nopes-grid' alt='nopes' src={nopeImgs(review?.reviews[7]?.nope)} />
-                            </div>
-                            <div className='review-recent-act-grid'>{review?.reviews[7]?.review}</div>
-                        </div>
-
-                        <div className='recent-act-card'>
-                            <div className='user-recent-act-grid-wrapper'>
-                                <div className='user-avi-recent-act-grid'>
-                                    <img id="grid-avi" src={docker} />
-                                </div>
-                                <div className='user-name-recent-act-grid-wrapper'>
-                                    <div className='user-name-recent-act-grid'>{review?.reviews[88]?.user_id}</div>
-                                    <div className='user-action-recent-act-grid'>Wrote a Review</div>
-                                </div>
-                            </div>
-                            <div className='business-img-recent-act-grid'>
-                                <img id="grid-business-img" src={business?.[review?.reviews[88]?.business_id]?.images?.url} />
-                            </div>
-                            <div className='business-name-recent-act-grid'>{business?.[review?.reviews[88]?.business_id]?.business_name}</div>
-                            <div className='nopes-recent-act-grid'>
-                                <img id='nopes-grid' alt='nopes' src={nopeImgs(review?.reviews[88]?.nope)} />
-                            </div>
-                            <div className='review-recent-act-grid'>{review?.reviews[88]?.review}</div>
-                        </div>
 
 
-                        {/* <div className='recent-act-card'>
-                            {review?.reviews[2]?.review}
-                        </div>
+                                {/* <div className='recent-act-card'>
+                            {review[2]?.review}
+                            </div>
 
-                        <div className='recent-act-card'>
-                            {review?.reviews[3]?.review}
-                        </div>
+                            <div className='recent-act-card'>
+                            {review[3]?.review}
+                            </div>
 
-                        <div className='recent-act-card'>
-                            {review?.reviews[4]?.review}
-                        </div>
+                            <div className='recent-act-card'>
+                            {review[4]?.review}
+                            </div>
 
-                        <div className='recent-act-card'>
-                            {review?.reviews[5]?.review}
-                        </div>
+                            <div className='recent-act-card'>
+                            {review[5]?.review}
+                            </div>
 
-                        <div className='recent-act-card'>
-                            {review?.reviews[6]?.review}
-                        </div>
+                            <div className='recent-act-card'>
+                            {review[6]?.review}
+                            </div>
 
-                        <div className='recent-act-card'>
-                            {review?.reviews[7]?.review}
-                        </div>
+                            <div className='recent-act-card'>
+                            {review[7]?.review}
+                            </div>
 
-                        <div className='recent-act-card'>
-                            {review?.reviews[8]?.review}
-                        </div>
+                            <div className='recent-act-card'>
+                            {review[8]?.review}
+                            </div>
 
-                        <div className='recent-act-card'>
-                            {review?.reviews[9]?.review}
+                            <div className='recent-act-card'>
+                            {review[9]?.review}
                         </div> */}
 
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <br /><br /><br /><br />
-            <Footer />
+                    <br /><br /><br /><br />
+                    <Footer />
+                </>
+            }
         </>
     )
 }

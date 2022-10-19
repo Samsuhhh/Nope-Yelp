@@ -6,7 +6,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
 import './BusinessDetails.css'
-import Carousel, {CarouselItem} from './Carousel';
+import Carousel, { CarouselItem } from './Carousel';
 
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
@@ -93,9 +93,15 @@ const BusinessDetails = () => {
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
                     <Carousel>
-                        <CarouselItem>1</CarouselItem>
-                        <CarouselItem>2</CarouselItem>
-                        <CarouselItem>3</CarouselItem>
+                        <CarouselItem>
+                            {business.BusinessImages.map((image) =>
+                                <div className='carousel-images'>
+                                    <div>{image.id}</div>
+                                    {console.log(image.url)}
+                                    <img alt='yes' style={{ width: "568px", height: "426px" }} src={image.url}></img>
+                                </div>
+                            )}
+                        </CarouselItem>
                     </Carousel>
                     {/* <div id='carousel-wrapper'>
                         <div id='image-container'>
@@ -131,11 +137,11 @@ const BusinessDetails = () => {
                                 <div>{business.city}, {business.state} {business.zipcode}</div>
                             </div>
                         </div>
-                    <div id='all-photos-div'>
-                        <button id='all-photos-button'>
-                            See {business.BusinessImages.length} photos
-                        </button>
-                    </div>
+                        <div id='all-photos-div'>
+                            <button id='all-photos-button'>
+                                See {business.BusinessImages.length} photos
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -152,30 +158,30 @@ const BusinessDetails = () => {
                         <div>POSSIBLY AMENITIES</div>
                     </section>
                     <section id='business-details-about-container'>
-                        <div> <h1>About the Business</h1> </div>
+                        <div style={{ fontSize: '14px', fontWeight: '600' }}> <h2>About the Business </h2></div>
                         <div id='about-owner-content'>
                             <div id='business-details-owner-avatar'>
                                 <img alt='sexy pfp' id='owner-avatar' src={business.Owner.userAvatar} />
                             </div>
                             <div id='owner-name-title-div-column'>
                                 <div id='business-details-owner-name'>
-                                    {business.Owner.firstName} {business.Owner.lastName}
+                                    {business.Owner.firstName} {business.Owner.lastName ? business.Owner.lastName.slice(0, 1) + '.' : '$.'}
                                 </div>
                                 <div id='business-details-owner-title'>
                                     Business Owner
                                 </div>
                             </div>
                         </div>
-                        <div style={{ borderTop: '1px solid #ebebeb', paddingTop: '25px', marginTop: '15px' }}>{business.about}</div>
+                        <div id='business-details-about'>{business.about}</div>
                     </section>
                     <section id='reviews-business-details-container'>
                         <div id='reviews-analytics-container'>
                             <div id='overall-ratings'>
-                                <p>Overall rating</p>
+                                <div style={{ fontSize: "16px", fontWeight: "700" }}>Overall rating</div>
                                 <div id='nopes-container'>
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
-                                <div><p>{business.reviewCount} reviews</p></div>
+                                <div style={{ marginTop: "5px" }}>{business.reviewCount} reviews</div>
                             </div>
                             <div id='dynamic-horizontal-reviews'>
                                 <div className='dynamic-stars'>

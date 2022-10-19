@@ -15,25 +15,25 @@ const options = {
     {name:"about",weight:.5},
     {name:"city",weight:2.5}
   ],
-  includeScore:true,
+  includeScore: true,
 }
 
-const NavBar = ({setSearch}) => {
+const NavBar = ({ setSearch }) => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const businesses = useSelector(state => state.businesses)
+  const businesses = useSelector(state => state.businesses.allBusinesses)
   const [query, setQuery] = useState("")
 
   useEffect(() => {
     dispatch(getAllBusinessesThunk())
   }, [dispatch])
 
-  const fuse = new Fuse (Object.values(businesses), options)
+  const fuse = new Fuse(Object.values(businesses), options)
   const results = fuse.search(query)
   const businessResults = results.map(result => result.item)
 
-  function handleOnSearch({target = {}}) {
-    const {value} = target
+  function handleOnSearch({ target = {} }) {
+    const { value } = target
     setQuery(value)
   }
 
@@ -41,7 +41,7 @@ const NavBar = ({setSearch}) => {
     e.preventDefault()
 
 
-    const fuse = new Fuse (Object.values(businesses), options)
+    const fuse = new Fuse(Object.values(businesses), options)
     const results = fuse.search(document.getElementById("search-input-field").value)
     const businessResults = results.map(result => result.item).slice(0, 15)
     console.log("fuse results in navbar search", businessResults.includes(`${document.getElementById("search-input-field").value}`))
@@ -70,30 +70,30 @@ const NavBar = ({setSearch}) => {
   } else {
     sessionLinks = (
       <>
-      <div className="nav-bar-button-wrapper">
-        <div id="for-businesses-button">
-        <NavLink to='/login' exact={true} activeClassName='active' id='login-nav'>
-            For Businesses
-          </NavLink>
-        </div>
+        <div className="nav-bar-button-wrapper">
+          <div id="for-businesses-button">
+            <NavLink to='/login' exact={true} activeClassName='active' id='login-nav'>
+              For Businesses
+            </NavLink>
+          </div>
 
-        <div id="write-a-review-button">
-        <NavLink to='/login' exact={true} activeClassName='active' id='login-nav'>
-            Write a Review
-          </NavLink>
-        </div>
+          <div id="write-a-review-button">
+            <NavLink to='/login' exact={true} activeClassName='active' id='login-nav'>
+              Write a Review
+            </NavLink>
+          </div>
 
-        <div id="login-button">
-          <NavLink to='/login' exact={true} activeClassName='active' id='login-nav'>
-            Login
-          </NavLink>
-        </div>
+          <div id="login-button">
+            <NavLink to='/login' exact={true} activeClassName='active' id='login-nav'>
+              Login
+            </NavLink>
+          </div>
 
-        <div id="signup-button">
-          <NavLink to='/sign-up' exact={true} activeClassName='active' id='signup-nav'>
-            Sign Up
-          </NavLink>
-        </div>
+          <div id="signup-button">
+            <NavLink to='/sign-up' exact={true} activeClassName='active' id='signup-nav'>
+              Sign Up
+            </NavLink>
+          </div>
         </div>
       </>
     )
@@ -102,18 +102,18 @@ const NavBar = ({setSearch}) => {
   return (
     <nav className='navbar'>
       <div>
-      <NavLink to='/' exact={true} activeClassName='active'>
-        <img src={nope} id="logo"></img>
-      </NavLink>
-    </div>
+        <NavLink to='/' exact={true} activeClassName='active'>
+          <img src={nope} id="logo"></img>
+        </NavLink>
+      </div>
 
 
       <div className="search-wrapper">
         <div class="search">
           <div class="left-side">
-              <form onSubmit={handleSearchSubmit}>
+            <form onSubmit={handleSearchSubmit}>
 
-              <input type="search" value={query}  onChange={handleOnSearch} id="search-input-field" placeholder="tacos, cheap dinner, Max's" class="field request" />
+              <input type="search" value={query} onChange={handleOnSearch} id="search-input-field" placeholder="tacos, cheap dinner, Max's" class="field request" />
               {/* <ul class="left-side__sublist">
                 <li class="left-side__subitem" ><a  class="left-side__sublink restaraunts first">Restaurants</a></li>
                 <li class="left-side__subitem"><a  class="left-side__sublink bar">Breakfast & Brunch</a></li>
@@ -123,7 +123,7 @@ const NavBar = ({setSearch}) => {
                 <li class="left-side__subitem"><a  class="left-side__sublink reservations">Reservations</a></li>
               </ul> */}
               <button className="search-button-wrapper" type="submit" ><img id="mag" src={magglass} ></img></button>
-              </form>
+            </form>
 
           </div>
         </div>
