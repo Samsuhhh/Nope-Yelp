@@ -99,7 +99,7 @@ export const createReview = (review, businessId) => async dispatch => {
 
     if (response.ok) {
         const businessReview = await response.json()
-        dispatch(create(businessReview))
+        dispatch(create(businessReview, businessId))
         return businessReview
     }
     else {

@@ -73,10 +73,6 @@ function App() {
           <LoginForm />
         </Route>
 
-        <Route path='/writeareview' exact={true}>
-          <AddBusinessReview />
-        </Route>
-
         <Route path='/businesses/new' exact={true}>
           <AddBusiness />
         </Route>
@@ -91,6 +87,10 @@ function App() {
 
         <Route path='/businesses/:businessId' exact={true}>
           <BusinessDetails />
+        </Route>
+
+        <Route path='/businesses/:businessId/writeareview' exact={true}>
+          <AddBusinessReview />
         </Route>
 
         <Route>
