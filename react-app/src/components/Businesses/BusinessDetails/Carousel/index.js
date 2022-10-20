@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./Carousel.css";
+import prev from '../../../../assets/businessdetails/previcon.svg'
+import next from '../../../../assets/businessdetails/nexticon.svg'
 
 export const CarouselItem = ({ children, width }) => {
     return (
@@ -14,23 +16,27 @@ const Carousel = ({ children }) => {
 
     return (
         <div className="carousel">
-            <button className='indicators'
-                onClick={() => {
-                    setActiveIndex(activeIndex - 1);
-                }}>
-                Prev
-            </button>
+            <div className="image-indicator-wrapper">
+                <button className='indicators'
+                    onClick={() => {
+                        setActiveIndex(activeIndex - 1);
+                    }}>
+                    <img id="prev-button" src={prev} />
+                </button>
+            </div>
             <div className="inner" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
                 {React.Children.map(children, (child, index) => {
                     return React.cloneElement(child, { width: "100%" })
                 })}
             </div>
-            <button className='indicators'
-                onClick={() => {
-                    setActiveIndex(activeIndex + 1);
-                }}>
-                Next
-            </button>
+            <div className="image-indicator-wrapper">
+                <button className='indicators'
+                    onClick={() => {
+                        setActiveIndex(activeIndex + 1);
+                    }}>
+                    <img id="next-button" src={next} />
+                </button>
+            </div>
         </div>
 
     );

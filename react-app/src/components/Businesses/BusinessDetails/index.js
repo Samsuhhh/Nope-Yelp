@@ -9,6 +9,10 @@ import './BusinessDetails.css'
 import { deleteBusinessThunk } from '../../../store/business';
 import Carousel, { CarouselItem } from './Carousel';
 
+import linkIcon from '../../../assets/icons/external-linkicon.svg'
+import phoneIcon from '../../../assets/icons/phoneicon.svg'
+import emailIcon from '../../../assets/icons/emailicon.svg'
+
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
@@ -104,15 +108,16 @@ const BusinessDetails = () => {
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
                     <Carousel>
-                        <CarouselItem>
-                            {business.BusinessImages.map((image) =>
+                        {business.BusinessImages.map((image) =>
+                            <CarouselItem>
                                 <div className='carousel-images'>
-                                    <div>{image.id}</div>
-                                    {console.log(image.url)}
-                                    <img alt='yes' style={{ width: "568px", height: "426px" }} src={image.url}></img>
+                                    <img id="caro-img" alt='yes' src={image.url}></img>
+                                    <img id="caro-img" alt='yes' src={image.url}></img>
+                                    <img id="caro-img" alt='yes' src={image.url}></img>
                                 </div>
-                            )}
-                        </CarouselItem>
+                            </CarouselItem>
+                        )}
+
                     </Carousel>
                     {/* <div id='carousel-wrapper'>
                         <div id='image-container'>
@@ -126,24 +131,24 @@ const BusinessDetails = () => {
                     </div> */}
                     {/* <Carousel/> */}
                 </div>
-                <div id='business-details-header-content' style={{ fontFamily: 'Open Sans' }}>
+                <div id='business-details-header-content' >
                     <div id='business-details-header-info-container'>
                         <div id='business-details-info'>
-                            <h1 style={{ color: 'white', fontFamily: 'Open Sans' }}>{business.business_name}</h1>
-                            <div id='business-details-info-review-divs' style={{ display: "flex" }}>
+                            <h1>{business.business_name}</h1>
+                            <div id='business-details-info-review-divs'>
                                 <div id='nopes-container'>
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
-                                <div style={{ color: 'white', marginLeft: "10px" }}>
+                                <div id='review-count-div'>
                                     {business.reviewCount} reviews
                                 </div>
                             </div>
                             <div id='business-details-info-price-tags'>
-                                <div style={{ color: 'white' }}>
+                                <div className='info-price-tags'>
                                     {priceSetter(business.price_range)} &bull; TAGS
                                 </div>
                             </div>
-                            <div id='business-details-info-location' style={{ color: 'white' }}>
+                            <div className='info-price-tags'>
                                 <div> {business.street_address}</div>
                                 <div>{business.city}, {business.state} {business.zipcode}</div>
                             </div>
@@ -160,22 +165,31 @@ const BusinessDetails = () => {
                 <div id='details-content'>
                     <div id='business-details-action-buttons-div'>
                         <Link to={`/businesses/${business.id}/writeareview`}>
-                        <button id='write-review-button'>
-                            <img src={whiteNope} alt='white nope' style={{ width: "20px", height: "20px" }} ></img> Write a Review</button>
+                            <button id='write-review-button'>
+                                <div id='write-review-btn-content'>
+                                    <img id='white-nope-img' src={whiteNope} alt='white nope' />
+                                    <div id='write-review-font-styling'>Write a Review</div>
+                                </div>
+                            </button>
                         </Link>
-                        <button className='action-buttons'>Add a photo </button>
+                        <div id='action-buttons-div'>
+                            <button className='action-buttons'>Add a photo </button>
+                        </div>
                         {currentUser && currentUser.id === business.Owner.id && (
                             <div id='auth-action-buttons'>
                                 <button onClick={updateRedirect} className='action-buttons'>Edit your business</button>
-                                <button disabled='true' onClick={deleteHandler} className='action-buttons'>Delete your business</button>
+                                <button onClick={deleteHandler} className='action-buttons'>Delete your business</button>
                             </div>
                         )}
                     </div>
-                    <section id='business-details-amenities'>
-                        <div>POSSIBLY AMENITIES</div>
+                    <section id='business-details-amenities-container'>
+                        <div>POSSIBLY AMENITIES
+                        </div>
                     </section>
                     <section id='business-details-about-container'>
-                        <div style={{ fontSize: '14px', fontWeight: '600' }}> <h2>About the Business </h2></div>
+                        <div id='about-business-h2-div'>
+                            <h2>About the Business </h2>
+                        </div>
                         <div id='about-owner-content'>
                             <div id='business-details-owner-avatar'>
                                 <img alt='sexy pfp' id='owner-avatar' src={business.Owner.userAvatar} />
@@ -192,43 +206,57 @@ const BusinessDetails = () => {
                         <div id='business-details-about'>{business.about}</div>
                     </section>
                     <section id='reviews-business-details-container'>
+                        Current User Create Review filler
+                        <div id='current-user-review-space-between'>
+                            <div id='left-user-review-info'>
+                                {/* <img id='owner-avatar' src={currentUser.userAvatar}</img> */}
+                                <div>
+                                    <div>UserName</div>
+                                    <div>User First, Last</div>
+                                </div>
+                            </div>
+                            <div id='right-user-review-info'>
+                                <div>nopes</div>
+                                <div>Start your review of {business.business_name}</div>
+                            </div>
+                        </div>
                         <div id='reviews-analytics-container'>
                             <div id='overall-ratings'>
-                                <div style={{ fontSize: "16px", fontWeight: "700" }}>Overall rating</div>
+                                <div id='overall-ratings-div-font-styling'>Overall rating</div>
                                 <div id='nopes-container'>
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
-                                <div style={{ marginTop: "5px" }}>{business.reviewCount} reviews</div>
+                                <div id='overall-ratings-big-nopes-review-count'>{business.reviewCount} reviews</div>
                             </div>
                             <div id='dynamic-horizontal-reviews'>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>5 nopes</div>
                                     <div id='dbar-5' className='dynamic-bar'>
-                                        <div style={{ width: `${dynamicFills(fiveNopes)}%`, backgroundColor: "red", height: '100%', borderRadius: '15px' }}></div>
+                                        <div className='inner-fill' style={{ width: `${dynamicFills(fiveNopes)}%`, backgroundColor: "red"}}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>4 nopes</div>
                                     <div id='dbar-4' className='dynamic-bar'>
-                                        <div style={{ width: `${dynamicFills(fourNopes)}%`, backgroundColor: "#f73", height: '100%', borderRadius: '15px' }}></div>
+                                        <div className='inner-fill' style={{ width: `${dynamicFills(fourNopes)}%`, backgroundColor: "#f73"}}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>3 nopes</div>
                                     <div id='dbar-3' className='dynamic-bar'>
-                                        <div style={{ width: `${dynamicFills(threeNopes)}%`, backgroundColor: "#fa2", height: '100%', borderRadius: '15px' }}></div>
+                                        <div className='inner-fill' style={{ width: `${dynamicFills(threeNopes)}%`, backgroundColor: "#fa2"}}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>2 nopes</div>
                                     <div id='dbar-2' className='dynamic-bar'>
-                                        <div style={{ width: `${dynamicFills(twoNopes)}%`, backgroundColor: "#d92", height: '100%', borderRadius: '15px' }}></div>
+                                        <div className='inner-fill' style={{ width: `${dynamicFills(twoNopes)}%`, backgroundColor: "#d92"}}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>1 nope</div>
                                     <div id='dbar-1' className='dynamic-bar'>
-                                        <div style={{ width: `${dynamicFills(oneNope)}%`, backgroundColor: "#eb2", height: '100%', borderRadius: '15px' }}></div>
+                                        <div className='inner-fill' style={{ width: `${dynamicFills(oneNope)}%`, backgroundColor: "#eb2"}}></div>
                                     </div>
                                 </div>
                             </div>
@@ -241,14 +269,20 @@ const BusinessDetails = () => {
                 </div>
                 <div id='sticky-sidebar-container'>
                     <div id='sticky-sidebar-content'>
-                        <div>
+                        <div id='sticky-website-div'>
                             <a href={business.website}> {business.website}</a>
+                            <img className='icon-img-asset' alt='link icon' src={linkIcon} />
                         </div>
-                        <div>
+                        <div id='sticky-email-div'>
                             {business.email}
+                            <img className='icon-img-asset' alt='email icon' src={emailIcon} />
                         </div>
-                        <div>
+                        <div id='sticky-phone-div'>
                             {phoneStyling(business.phone)}
+                            <img className='icon-img-asset' alt='phone icon' src={phoneIcon} />
+                        </div>
+                        <div className='sticky-divs'>
+                            Message the owner
                         </div>
                     </div>
                 </div>
