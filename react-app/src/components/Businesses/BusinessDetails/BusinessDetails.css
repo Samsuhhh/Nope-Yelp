@@ -54,7 +54,6 @@
 
 
 
-
 #business-details-header-content {
     width: 100%;
     height: 100%;
@@ -62,6 +61,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: flex-end;
+    font-family: 'Open Sans'
 }
 
 #business-details-header-info-container {
@@ -88,6 +88,12 @@
     /* border: 1px solid white; */
 }
 
+#business-details-info > h1{
+    color: white;
+    font-family:"Open Sans"
+}
+
+
 #business-details-info-review-divs {
     display: flex;
     flex-direction: row;
@@ -102,6 +108,15 @@
     margin-top: 3px;
 }
 
+#review-count-div{
+    color: white;
+    margin-left:10px;
+}
+
+
+.info-price-tags{
+    color: white;
+}
 
 #all-photos-div {
     width: 20%;
@@ -175,6 +190,11 @@
     justify-content: space-around;
 }
 
+#white-nope-img{
+    width: 20px;
+    height: 20px;
+}
+
 #write-review-font-styling{
     font-family: "Open Sans";
     font-size: 16px;
@@ -213,6 +233,12 @@
     border: 1px solid blue;
     font-family: 'Open Sans';
 }
+
+#about-business-h2-div{
+    font-size: 14px;
+    font-weight: 600;
+}
+
 
 #about-owner-content {
     display: flex;
@@ -283,6 +309,14 @@
     justify-content: center;
 }
 
+#overall-ratings-div-font-styling{
+    font-size: 16px;
+    font-weight: 700;
+}
+#overall-ratings-big-nopes-review-count{
+    margin-top: 5px;
+}
+
 #dynamic-horizontal-reviews {
     display: flex;
     flex-direction: column;
@@ -303,7 +337,13 @@
     line-height: 35px;
     display: flex;
     align-items: center;
+    border-radius: 15px;
+    height: 100%;
 
+}
+.inner-fill{
+    border-radius: 15px;
+    height: 100%;
 }
 
 #dbar-5 {
@@ -397,3 +437,7 @@
     line-height: 60px;
 }
 
+.icon-img-asset{
+    width: 24px;
+    height: 24px;
+}
