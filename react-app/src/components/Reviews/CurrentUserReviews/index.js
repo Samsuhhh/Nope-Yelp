@@ -3,7 +3,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getCurrentReviews, removeReview, reset } from '../../../store/review'
 import { NavLink } from 'react-router-dom'
 import './CurrentUserReviews.css'
-
+import nopes5 from "../../../assets/nopes/5-nopes.png"
+import nopes4 from "../../../assets/nopes/4-nopes.png"
+import nopes3 from "../../../assets/nopes/3-nopes.png"
+import nopes2 from "../../../assets/nopes/2-nopes.png"
+import nopes1 from "../../../assets/nopes/1-nopes.png"
+import nopes0 from "../../../assets/nopes/0-nopes.png"
 const CurrentUserReviews = () => {
     const dispatch = useDispatch()
 
@@ -18,7 +23,14 @@ const CurrentUserReviews = () => {
         if (e === 2) return "$$"
         if (e === 1) return "$"
     }
-
+    const nopeRatingBar = (rating) => {
+        if (rating > 4 && rating <= 5) return (nopes5)
+        if (rating > 3 && rating <= 4) return (nopes4)
+        if (rating > 2 && rating <= 3) return (nopes3)
+        if (rating > 1 && rating <= 2) return (nopes2)
+        if (rating > 0 && rating <= 1) return (nopes1)
+        else return nopes0
+      }
     useEffect(() => {
         dispatch(getCurrentReviews())
         return () => dispatch(reset())
@@ -50,6 +62,10 @@ const CurrentUserReviews = () => {
                                         </div>
                                     </div>
                                     <div id="review-body-container-current-user-reviews">
+                                        <div>
+                                        <img id='nopes' alt='plsno' src={nopeRatingBar(review.nope)}/>
+                                        <span> {review.created_at.slice(8,11)}. {review.created_at.slice(5,7)}, {review.created_at.slice(12,16)}</span>
+                                        </div>
                                         <div>{review.review}</div>
                                         {(user && user.id === review.user_id) && (
                                             <button onClick={() => dispatch(removeReview(review.id))}>Delete Review</button>

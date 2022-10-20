@@ -22,7 +22,7 @@
 
 #review-body-container-current-user-reviews{
   display:flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 #review-card-current-user-reviews{
