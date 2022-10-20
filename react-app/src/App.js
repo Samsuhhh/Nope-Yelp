@@ -20,7 +20,7 @@ import AddBusiness from './components/Businesses/AddBusiness';
 import Carousel, { CarouselItem } from './components/Businesses/BusinessDetails/Carousel';
 import BusinessNavBar from './components/Businesses/BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar';
 import CreateBusiness from './components/Businesses/CreateBusiness';
-
+import UserProfile from './components/UserProfile';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -65,7 +65,9 @@ function App() {
           <RecentActivity />
           <HomeSlider />
         </Route>
-
+        <Route path='/user-profile' exact={true}>
+          <UserProfile />
+        </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
