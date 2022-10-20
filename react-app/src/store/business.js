@@ -61,15 +61,16 @@ export const getAllBusinessesThunk = () => async (dispatch) => {
 
 export const getCurrentUserBusinessesThunk = () => async (dispatch) => {
   const response = await fetch("/api/businesses/current");
-  const businessData = await response.json();
 
   if (response.ok) {
-    dispatch(loadCurrent(businessData));
+    const businessData = await response.json();
+    dispatch(loadAll(businessData));
+    return businessData
   }
   else {
     console.log("-----Get Current User Businesses Thunk Error-----");
   }
-  return businessData;
+  return;
 };
 
 export const getSingleBusinessThunk = (businessId) => async (dispatch) => {
@@ -102,7 +103,7 @@ export const createBusinessThunk = (business) => async (dispatch) => {
   }
   else {
     console.log("-----Create Business Thunk Error-----");
-    return null
+    return
   }
 }
 

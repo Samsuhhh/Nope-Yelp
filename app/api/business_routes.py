@@ -63,6 +63,7 @@ def get_business_by_id(id):
   business_dict['Reviews'] = [review.to_dict() for review in reviews]
 
   business_dict['tags'] = [tag.to_dict() for tag in business.tags]
+  # business_dict['tags'] = [tag for tag in business.tags]
 
   businessImages = BusinessImage.query.filter(BusinessImage.business_id == id)
   business_dict['BusinessImages'] = [businessImage.to_dict() for businessImage in businessImages]
@@ -116,6 +117,13 @@ def edit_a_business(id):
   form = BusinessForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
+    tags_lst = []
+    tag1 = Tag(tag=form.tag1.data)
+    tag2 = Tag(tag=form.tag2.data)
+    tag3 = Tag(tag=form.tag3.data)
+    tags_lst.append(tag1)
+    tags_lst.append(tag2)
+    tags_lst.append(tag3)
     business.business_name = form.business_name.data
     business.email = form.email.data
     business.phone = form.phone.data
@@ -129,9 +137,13 @@ def edit_a_business(id):
     business.latitude = form.latitude.data
     business.price_range = form.price_range.data
     business.website = form.website.data
+    business.tags = tags_lst
 
     db.session.commit()
-    return business.to_dict()
+
+    updated_business = business.to_dict()
+    updated_business['tags'] = tags_lst
+    return updated_business
   return {"errors": validation_form_errors(form.errors), "statusCode":401}
 
 ## DELETE A BUSINESS
@@ -148,6 +160,8 @@ def delete_business(id):
   db.session.commit()
 
   return {"message":"Successfully deleted", "statusCode":200}
+
+
 # TAGS NECESSARY TO CREATE A BUSINESS
 main_tag_lst = [
     {'title': 'Acai Bowls'},
@@ -235,20 +249,33 @@ main_tag_lst = [
     {'title': 'Vietnamese'},
 ]
 
-
 ## CREATE A BUSINESS
 @business_routes.route("/", methods=["POST"])
 @login_required
 def create_business():
+  print("--------Hello World--------")
+  print(request.data)
   form = BusinessForm()
+  print('\n\n\n\n -----form-----', form)
   # user = current_user.to_dict()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     tags_lst = []
-    for tag in form.data['tags']:
-      # valid = [tag_title for tag_title in main_tag_lst if tag_title['title'] == tag]
-      add_tag=Tag(tag=tag)
-      tags_lst.append(add_tag)
+    # for tag in form.tags.data:
+    #   # valid = [tag_title for tag_title in main_tag_lst if tag_title['title'] == tag][0]
+    #   # add_tag=Tag(tag=valid['title'])
+    #   # add_tag=Tag(tag=tag)
+    #   add_tag = Tag.query.filter(Tag.tag == tag).to_dict()
+    #   tags_lst.append(add_tag)
+    # for tag in request.data.tags:
+    #     add_tag = Tag.query.filter(Tag.tag == tag)
+    #     tags_lst.append(add_tag)
+    tag1 = Tag(tag=form.tag1.data)
+    tag2 = Tag(tag=form.tag2.data)
+    tag3 = Tag(tag=form.tag3.data)
+    tags_lst.append(tag1)
+    tags_lst.append(tag2)
+    tags_lst.append(tag3)
 
     business = Business(
       business_name = form.business_name.data,
@@ -266,10 +293,12 @@ def create_business():
       website = form.website.data,
       tags=tags_lst
     )
+    print('\n\n\n\n\n ------our new business-------', business)
     db.session.add(business)
     db.session.commit()
 
-    new_tags = [tag.to_dict() for tag in business.tags]
+    new_tags = [tag.to_dict() for tag in tags_lst]
+    # new_tags = [tag for tag in tags_lst]
 
     new_business = business.to_dict()
     new_business['tags'] = new_tags
