@@ -68,10 +68,10 @@ const CurrentUserReviews = () => {
                                                 <div>{review.created_at.slice(8, 11)}. {review.created_at.slice(5, 7)}, {review.created_at.slice(12, 16)}</div>
                                             </div>
                                         </div>
-                                        <div>{review.review}</div>
+                                        <div id="review-body-text-current-user-reviews">{review.review}</div>
                                         {(user && user.id === review.user_id) && (
                                             <div id="review-actions-current-user-reviews">
-                                                <button id="delete-review-btn-current-user-reviews" onClick={() => dispatch(removeReview(review.id))}>Edit Review</button>
+                                                <button id="edit-review-btn-current-user-reviews" onClick={() => dispatch(removeReview(review.id))}>Edit Review</button>
                                                 <button id="delete-review-btn-current-user-reviews" onClick={() => dispatch(removeReview(review.id))}>Delete Review</button>
                                             </div>
                                         )}

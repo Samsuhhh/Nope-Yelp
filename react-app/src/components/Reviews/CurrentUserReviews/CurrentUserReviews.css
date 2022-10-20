@@ -26,7 +26,7 @@
 }
 
 #review-card-current-user-reviews{
-  padding: 50px 10px;
+  margin:30px 10px 0px 10px;
   border-bottom: 1px solid lightgrey;
 }
 
@@ -44,12 +44,19 @@
   display:flex;
   align-items: flex-end;
   justify-content: flex-end;
+  margin-top:10px;
+  padding-bottom: 10px;
 }
 #delete-review-btn-current-user-reviews{
-  width:50px;
+  margin-left: 1px;
 }
 
 #nopes-date-container-container-user-reviews{
   display:flex;
   flex-direction: row;
+  padding-top: 15px;
+}
+
+#review-body-text-current-user-reviews{
+  padding-top:10px;
 }
