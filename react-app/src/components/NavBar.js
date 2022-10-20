@@ -11,10 +11,11 @@ import BusinessCard from './Businesses/BusinessCard/BusinessCard';
 const options = {
   findAllMatches: true,
   keys: [
-    "business_name",
-    "about"
+    { name: "business_name", weight: 2 },
+    { name: "about", weight: .5 },
+    { name: "city", weight: 2.5 }
   ],
-  includeScore: true
+  includeScore: true,
 }
 
 const NavBar = ({ setSearch }) => {
@@ -38,12 +39,11 @@ const NavBar = ({ setSearch }) => {
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault()
-    console.log("is this even hitting", document.getElementById("search-input-field").value)
+
 
     const fuse = new Fuse(Object.values(businesses), options)
-    const results = fuse.search(document.getElementById("search-input-field").value)
-    const businessResults = results.map(result => result.item)
-    // console.log("fuse results",businessResults)
+    const results = fuse.search(document.getElementById("search-input-field-business-list").value)
+    const businessResults = results.map(result => result.item).slice(0, 15)
     setSearch(businessResults)
     return history.push("/businesses")
   }
@@ -112,7 +112,7 @@ const NavBar = ({ setSearch }) => {
           <div class="left-side">
             <form onSubmit={handleSearchSubmit}>
 
-              <input type="search" value={query} onChange={handleOnSearch} id="search-input-field" placeholder="tacos, cheap dinner, Max's" class="field request" />
+              <input type="search" value={query} onChange={handleOnSearch} id="search-input-field-business-list" placeholder="tacos, cheap dinner, Max's" class="field request" />
               {/* <ul class="left-side__sublist">
                 <li class="left-side__subitem" ><a  class="left-side__sublink restaraunts first">Restaurants</a></li>
                 <li class="left-side__subitem"><a  class="left-side__sublink bar">Breakfast & Brunch</a></li>

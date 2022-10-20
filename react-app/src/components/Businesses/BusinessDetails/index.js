@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSingleBusinessThunk } from '../../../store/business';
+import { getSingleBusinessThunk, updateBusinessThunk } from '../../../store/business';
 import { getAllReviews } from '../../../store/review';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
 import './BusinessDetails.css'
-import Carousel, {CarouselItem} from './Carousel';
+import { deleteBusinessThunk } from '../../../store/business';
+import Carousel, { CarouselItem } from './Carousel';
 
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
@@ -19,10 +20,11 @@ import whiteNope from "../../../assets/nopes/ratingimg.png"
 
 const BusinessDetails = () => {
     const dispatch = useDispatch();
-    // const history = useHistory();
+    const history = useHistory();
     const params = useParams();
     const { businessId } = params;
     const business = useSelector(state => state.businesses.singleBusiness);
+    const currentUser = useSelector(state => state.session.user)
     const [isLoaded, setIsLoaded] = useState(false)
     // const [img, setImg] = useState()
 
@@ -79,6 +81,15 @@ const BusinessDetails = () => {
         return split.join('')
     }
 
+    const updateRedirect = () => {
+        history.push('/update')
+    }
+
+    const deleteHandler = async (businessId) => {
+        await dispatch(deleteBusinessThunk(businessId))
+        history.push('/')
+    }
+
 
     useEffect(() => {
         dispatch(getSingleBusinessThunk(businessId))
@@ -93,14 +104,15 @@ const BusinessDetails = () => {
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
                     <Carousel>
-                        {business.BusinessImages.map((image) =>
-                            <CarouselItem>
-                            <div className='carousel-images'>
-                                <div>{image.id}</div>
-                                <img alt='yes' style={{width: "568px", height: "426px"}} src={image.url}></img>
-                            </div>
-                            </CarouselItem>
-                        )}
+                        <CarouselItem>
+                            {business.BusinessImages.map((image) =>
+                                <div className='carousel-images'>
+                                    <div>{image.id}</div>
+                                    {console.log(image.url)}
+                                    <img alt='yes' style={{ width: "568px", height: "426px" }} src={image.url}></img>
+                                </div>
+                            )}
+                        </CarouselItem>
                     </Carousel>
                     {/* <div id='carousel-wrapper'>
                         <div id='image-container'>
@@ -136,22 +148,28 @@ const BusinessDetails = () => {
                                 <div>{business.city}, {business.state} {business.zipcode}</div>
                             </div>
                         </div>
-                    <div id='all-photos-div'>
-                        <button id='all-photos-button'>
-                            See {business.BusinessImages.length} photos
-                        </button>
-                    </div>
+                        <div id='all-photos-div'>
+                            <button id='all-photos-button'>
+                                See {business.BusinessImages.length} photos
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id='business-details-container'>
                 <div id='details-content'>
                     <div id='business-details-action-buttons-div'>
+                        <Link to={`/businesses/${business.id}/writeareview`}>
                         <button id='write-review-button'>
                             <img src={whiteNope} alt='white nope' style={{ width: "20px", height: "20px" }} ></img> Write a Review</button>
+                        </Link>
                         <button className='action-buttons'>Add a photo </button>
-                        <button className='action-buttons'>Share</button>
-                        <button className='action-buttons'>Save</button>
+                        {currentUser && currentUser.id === business.Owner.id && (
+                            <div id='auth-action-buttons'>
+                                <button onClick={updateRedirect} className='action-buttons'>Edit your business</button>
+                                <button disabled='true' onClick={deleteHandler} className='action-buttons'>Delete your business</button>
+                            </div>
+                        )}
                     </div>
                     <section id='business-details-amenities'>
                         <div>POSSIBLY AMENITIES</div>
@@ -164,7 +182,7 @@ const BusinessDetails = () => {
                             </div>
                             <div id='owner-name-title-div-column'>
                                 <div id='business-details-owner-name'>
-                                    {business.Owner.firstName} {business.Owner.lastName ? business.Owner.lastName.slice(0,1)+'.' : '$.'}
+                                    {business.Owner.firstName} {business.Owner.lastName ? business.Owner.lastName.slice(0, 1) + '.' : '$.'}
                                 </div>
                                 <div id='business-details-owner-title'>
                                     Business Owner
@@ -176,11 +194,11 @@ const BusinessDetails = () => {
                     <section id='reviews-business-details-container'>
                         <div id='reviews-analytics-container'>
                             <div id='overall-ratings'>
-                                <div style={{fontSize: "16px", fontWeight: "700"}}>Overall rating</div>
+                                <div style={{ fontSize: "16px", fontWeight: "700" }}>Overall rating</div>
                                 <div id='nopes-container'>
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
-                                <div style={{marginTop: "5px"}}>{business.reviewCount} reviews</div>
+                                <div style={{ marginTop: "5px" }}>{business.reviewCount} reviews</div>
                             </div>
                             <div id='dynamic-horizontal-reviews'>
                                 <div className='dynamic-stars'>

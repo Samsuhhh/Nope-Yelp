@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../../Footer/Footer'
 import './recentActivity.css'
@@ -47,17 +48,24 @@ function RecentActivity() {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={docker} />
+                                            <img id="grid-avi" src={review[1]?.owner?.userAvatar} />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[1]?.user_id}</div>
+                                            <div className='user-name-recent-act-grid'>{review[1]?.owner?.firstName} {review[1]?.owner?.lastName}</div>
                                             <div className='user-action-recent-act-grid'>Wrote a Review</div>
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
                                         <img id="grid-business-img" src={business?.[review[1]?.business_id]?.images?.url} />
                                     </div>
-                                    <div className='business-name-recent-act-grid'>{business?.[review[1]?.business_id]?.business_name}</div>
+
+
+                                        <div className='business-name-recent-act-grid'>
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[1].business_id}`}>{business?.[review[1]?.business_id]?.business_name}
+                                        </Link>
+                                        </div>
+
+
                                     <div className='nopes-recent-act-grid'>
                                         <img id='nopes-grid' alt='nopes' src={nopeImgs(review[1]?.nope)} />
                                     </div>
@@ -67,17 +75,22 @@ function RecentActivity() {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={docker} />
+                                            <img id="grid-avi" src={review[15]?.owner?.userAvatar} />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[15]?.user_id}</div>
+                                            <div className='user-name-recent-act-grid'>{review[15]?.owner?.firstName} {review[15]?.owner?.lastName}</div>
                                             <div className='user-action-recent-act-grid'>Wrote a Review</div>
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
                                         <img id="grid-business-img" src={business?.[review[15]?.business_id]?.images?.url} />
                                     </div>
-                                    <div className='business-name-recent-act-grid'>{business?.[review[15]?.business_id]?.business_name}</div>
+
+                                    <div className='business-name-recent-act-grid'>
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[15].business_id}`}>{business?.[review[15]?.business_id]?.business_name}
+                                        </Link>
+                                    </div>
+
                                     <div className='nopes-recent-act-grid'>
                                         <img id='nopes-grid' alt='nopes' src={nopeImgs(review[15]?.nope)} />
                                     </div>
@@ -87,17 +100,20 @@ function RecentActivity() {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={docker} />
+                                            <img id="grid-avi" src={review[33]?.owner?.userAvatar} />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[33]?.user_id}</div>
+                                            <div className='user-name-recent-act-grid'>{review[33]?.owner?.firstName} {review[33]?.owner?.lastName}</div>
                                             <div className='user-action-recent-act-grid'>Wrote a Review</div>
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
                                         <img id="grid-business-img" src={business?.[review[33]?.business_id]?.images?.url} />
                                     </div>
-                                    <div className='business-name-recent-act-grid'>{business?.[review[33]?.business_id]?.business_name}</div>
+                                    <div className='business-name-recent-act-grid'>
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[33].business_id}`}>{business?.[review[33]?.business_id]?.business_name}
+                                        </Link>
+                                    </div>
                                     <div className='nopes-recent-act-grid'>
                                         <img id='nopes-grid' alt='nopes' src={nopeImgs(review[33]?.nope)} />
                                     </div>
@@ -107,17 +123,20 @@ function RecentActivity() {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={docker} />
+                                            <img id="grid-avi" src={review[77]?.owner?.userAvatar} />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[77]?.user_id}</div>
+                                            <div className='user-name-recent-act-grid'>{review[77]?.owner?.firstName} {review[77]?.owner?.lastName}</div>
                                             <div className='user-action-recent-act-grid'>Wrote a Review</div>
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
                                         <img id="grid-business-img" src={business?.[review[77]?.business_id]?.images?.url} />
                                     </div>
-                                    <div className='business-name-recent-act-grid'>{business?.[review[77]?.business_id]?.business_name}</div>
+                                    <div className='business-name-recent-act-grid'>
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[77].business_id}`}>{business?.[review[77]?.business_id]?.business_name}
+                                        </Link>
+                                    </div>
                                     <div className='nopes-recent-act-grid'>
                                         <img id='nopes-grid' alt='nopes' src={nopeImgs(review[77]?.nope)} />
                                     </div>
@@ -127,17 +146,20 @@ function RecentActivity() {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={docker} />
+                                            <img id="grid-avi" src={review[98]?.owner?.userAvatar} />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[98]?.user_id}</div>
+                                            <div className='user-name-recent-act-grid'>{review[98]?.owner?.firstName} {review[98]?.owner?.lastName}</div>
                                             <div className='user-action-recent-act-grid'>Wrote a Review</div>
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
                                         <img id="grid-business-img" src={business?.[review[98]?.business_id]?.images?.url} />
                                     </div>
-                                    <div className='business-name-recent-act-grid'>{business?.[review[98]?.business_id]?.business_name}</div>
+                                    <div className='business-name-recent-act-grid'>
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[98].business_id}`}>{business?.[review[98]?.business_id]?.business_name}
+                                        </Link>
+                                    </div>
                                     <div className='nopes-recent-act-grid'>
                                         <img id='nopes-grid' alt='nopes' src={nopeImgs(review[98]?.nope)} />
                                     </div>
@@ -147,17 +169,20 @@ function RecentActivity() {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={docker} />
+                                            <img id="grid-avi" src={review[24]?.owner?.userAvatar} />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[24]?.user_id}</div>
+                                            <div className='user-name-recent-act-grid'>{review[24]?.owner?.firstName} {review[24]?.owner?.lastName}</div>
                                             <div className='user-action-recent-act-grid'>Wrote a Review</div>
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
                                         <img id="grid-business-img" src={business?.[review[24]?.business_id]?.images?.url} />
                                     </div>
-                                    <div className='business-name-recent-act-grid'>{business?.[review[24]?.business_id]?.business_name}</div>
+                                    <div className='business-name-recent-act-grid'>
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[24].business_id}`}>{business?.[review[24]?.business_id]?.business_name}
+                                        </Link>
+                                    </div>
                                     <div className='nopes-recent-act-grid'>
                                         <img id='nopes-grid' alt='nopes' src={nopeImgs(review[24]?.nope)} />
                                     </div>
@@ -167,17 +192,20 @@ function RecentActivity() {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={docker} />
+                                            <img id="grid-avi" src={review[12]?.owner?.userAvatar} />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[52]?.user_id}</div>
+                                            <div className='user-name-recent-act-grid'>{review[12]?.owner?.firstName} {review[12]?.owner?.lastName}</div>
                                             <div className='user-action-recent-act-grid'>Wrote a Review</div>
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
                                         <img id="grid-business-img" src={business?.[review[52]?.business_id]?.images?.url} />
                                     </div>
-                                    <div className='business-name-recent-act-grid'>{business?.[review[52]?.business_id]?.business_name}</div>
+                                    <div className='business-name-recent-act-grid'>
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[52].business_id}`}>{business?.[review[52]?.business_id]?.business_name}
+                                        </Link>
+                                    </div>
                                     <div className='nopes-recent-act-grid'>
                                         <img id='nopes-grid' alt='nopes' src={nopeImgs(review[52]?.nope)} />
                                     </div>
@@ -187,17 +215,20 @@ function RecentActivity() {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={docker} />
+                                            <img id="grid-avi" src={review[7]?.owner?.userAvatar} />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[7]?.user_id}</div>
+                                            <div className='user-name-recent-act-grid'>{review[7]?.owner?.firstName} {review[7]?.owner?.lastName}</div>
                                             <div className='user-action-recent-act-grid'>Wrote a Review</div>
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
                                         <img id="grid-business-img" src={business?.[review[7]?.business_id]?.images?.url} />
                                     </div>
-                                    <div className='business-name-recent-act-grid'>{business?.[review[7]?.business_id]?.business_name}</div>
+                                    <div className='business-name-recent-act-grid'>
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[7].business_id}`}>{business?.[review[7]?.business_id]?.business_name}
+                                        </Link>
+                                    </div>
                                     <div className='nopes-recent-act-grid'>
                                         <img id='nopes-grid' alt='nopes' src={nopeImgs(review[7]?.nope)} />
                                     </div>
@@ -207,17 +238,20 @@ function RecentActivity() {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={docker} />
+                                            <img id="grid-avi" src={review[88]?.owner?.userAvatar} />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[88]?.user_id}</div>
+                                            <div className='user-name-recent-act-grid'>{review[88]?.owner?.firstName} {review[88]?.owner?.lastName}</div>
                                             <div className='user-action-recent-act-grid'>Wrote a Review</div>
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
                                         <img id="grid-business-img" src={business?.[review[88]?.business_id]?.images?.url} />
                                     </div>
-                                    <div className='business-name-recent-act-grid'>{business?.[review[88]?.business_id]?.business_name}</div>
+                                    <div className='business-name-recent-act-grid'>
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[88].business_id}`}>{business?.[review[88]?.business_id]?.business_name}
+                                        </Link>
+                                    </div>
                                     <div className='nopes-recent-act-grid'>
                                         <img id='nopes-grid' alt='nopes' src={nopeImgs(review[88]?.nope)} />
                                     </div>

@@ -14,10 +14,10 @@ const AddBusinessReview = () => {
 
     const user = useSelector(state => state.session.user)
     const business = useSelector(state => state.businesses)
-    const businessId = useParams()
+    const {businessId} = useParams()
 
     const [review, setReview] = useState('')
-    const [nopes, setNopes] = useState(1)
+    const [nopes, setNopes] = useState('1')
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
     // const [selected, setSelected] = useState(false)
@@ -52,14 +52,14 @@ const AddBusinessReview = () => {
         if (!validationErrors.length) {
             const payload = {
                 review,
-                nopes
+                nope: +nopes
             }
 
             let createdReview = await dispatch(createReview(payload, businessId))
 
             if (createdReview) {
                 setShowErrors(false)
-                history.push(`/spots/${businessId}`)
+                history.push(`/businesses/${businessId}`)
             }
         }
     }
@@ -89,10 +89,10 @@ const AddBusinessReview = () => {
                         <div className="nopes-and-review-wrapper">
                             <div id="nope-selector" className='nopes'>
                                 <span
-                                    onClick={selectedNopes(4)}
-                                    value={1}
-                                    required
+                                    value={'1'}
                                     onChange={updateNopes}
+                                    required
+                                    onClick={selectedNopes(4)}
                                 >
                                     <img src={ratingimg} />
                                 </span>

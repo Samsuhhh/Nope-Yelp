@@ -60,10 +60,6 @@ function App() {
         </ProtectedRoute> */}
 
 
-        <Route path='/businesses/:businessId'>
-          <BusinessDetails />
-        </Route>
-
         <Route path='/' exact={true}>
           <NavBar setSearch={setSearch} />
           <RecentActivity />
@@ -76,10 +72,6 @@ function App() {
 
         <Route path='/login' exact={true}>
           <LoginForm />
-        </Route>
-
-        <Route path='/writeareview' exact={true}>
-          <AddBusinessReview />
         </Route>
 
         <Route path='/businesses/new' exact={true}>
@@ -100,6 +92,10 @@ function App() {
 
         <Route path='/businesses/:businessId' exact={true}>
           <BusinessDetails />
+        </Route>
+
+        <Route path='/businesses/:businessId/writeareview' exact={true}>
+          <AddBusinessReview />
         </Route>
 
         <Route>

@@ -21,6 +21,8 @@ const BusinessReview = () => {
     const businessReviews = useSelector(state => state.reviews.business)
     const [isLoaded, setIsLoaded] = useState(false)
 
+    // conditional to render edit and delete YOUR review button
+    // { user && user.id === businessReviews.Owner.id}
 
     const nopeImgs = (nopesCount) => {
         if (nopesCount > 4 && nopesCount <= 5) return (nopes5)
@@ -46,7 +48,7 @@ const BusinessReview = () => {
                                     <img id='user-avatar' alt='user avatar' src={review.Owner.userAvatar} />
                                 </div>
                                 <div id='user-info-div'>
-                                    <div id='user-name'>{review.Owner.firstName} {review.Owner.lastName ? review.Owner.lastName.slice(0, 1) + '.' : 'Bob'}</div>
+                                    <div id='user-name'>{review.Owner.firstName} {review.Owner.lastName ? review.Owner.lastName.slice(0,1) + '.' : '$.'}</div>
                                     <div>user friends/pictures/reviews</div>
                                 </div>
                             </div>
