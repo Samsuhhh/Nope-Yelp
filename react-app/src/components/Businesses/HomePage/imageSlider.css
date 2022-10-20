@@ -294,6 +294,7 @@ a:active { text-decoration: none; }
     transition: 1s;
 }
 
+
 #signup-button:hover {
     background-color: #ff2323;
     cursor: pointer;
@@ -637,4 +638,16 @@ a:active { text-decoration: none; }
     padding-left: 25%;
     padding-right: 20%;
     padding-bottom: 30%;
+}
+
+#user-avatar-img-btn{
+  height:40px;
+  width:40px;
+  border-radius: 9999px;
+}
+
+#user-avatar-img{
+  height:40px;
+  width:40px;
+  border-radius: 9999px;
 }

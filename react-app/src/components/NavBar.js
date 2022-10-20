@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { getAllBusinessesThunk } from '../store/business';
+import * as sessionActions from "../store/session"
 import nope from '../assets/nope-white.png';
 import magglass from '../assets/icons/mag-glass.png';
 import Fuse from 'fuse.js'
@@ -50,7 +51,29 @@ const NavBar = ({ setSearch }) => {
 
   const sessionUser = useSelector(state => state.session.user)
   const [showMenu, setShowMenu] = useState(false);
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true)
+  }
 
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener('click', closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
+
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+    history.push('/')
+  };
+  console.log("THIS IS user", sessionUser)
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -63,6 +86,23 @@ const NavBar = ({ setSearch }) => {
 
         <div>
           <LogoutButton />
+        </div>
+
+        <div >
+
+          <button onClick={openMenu} id="user-avatar-img-btn" style={{ backgroundImage: `url(${sessionUser.userAvatar})` }}></button>
+          {showMenu && (
+            <ul className="profile-dropdown">
+              <li>{sessionUser.username}</li>
+              <li>{sessionUser.email}</li>
+              <li>
+                <button id="logout-btn" onClick={logout}>
+                  <i class="fa-solid fa-right-from-bracket"></i>Sign out
+
+                </button>
+              </li>
+            </ul>
+          )}
         </div>
       </>
     );
