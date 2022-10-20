@@ -104,15 +104,16 @@ const BusinessDetails = () => {
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
                     <Carousel>
-                        <CarouselItem>
                             {business.BusinessImages.map((image) =>
+                        <CarouselItem>
                                 <div className='carousel-images'>
-                                    <div>{image.id}</div>
-                                    {console.log(image.url)}
-                                    <img alt='yes' style={{ width: "568px", height: "426px" }} src={image.url}></img>
+                                    <img id="caro-img" alt='yes' src={image.url}></img>
+                                    <img id="caro-img" alt='yes' src={image.url}></img>
+                                    <img id="caro-img" alt='yes' src={image.url}></img>
                                 </div>
-                            )}
                         </CarouselItem>
+                            )}
+
                     </Carousel>
                     {/* <div id='carousel-wrapper'>
                         <div id='image-container'>
