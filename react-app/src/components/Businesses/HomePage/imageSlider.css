@@ -643,7 +643,8 @@ a:active { text-decoration: none; }
 
 #menu-img-container {
   width: 60px;
-  border: 1px solid red;
+  align-items: center;
+  justify-content: center;
 }
 
 #menu-button {
@@ -692,7 +693,7 @@ a:active { text-decoration: none; }
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  padding: 10px;
+  padding: 5px 10px;
   border-bottom: 1px lightgray solid;
 }
 
@@ -700,7 +701,9 @@ a:active { text-decoration: none; }
   padding: 0px 0px 10px 5px;
   overflow: ellipsis;
 }
-
+.dropdown-top-sections{
+  padding: 5px 5px;
+}
 .dropdown-email {
   padding-top: 10px;
 }

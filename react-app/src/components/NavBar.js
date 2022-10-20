@@ -79,9 +79,7 @@ const NavBar = ({ setSearch }) => {
     sessionLinks = (
       <>
         <div>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
+          {/* <>THIS IS A SPACER</> */}
         </div>
         <div id="for-businesses-button">
             <NavLink to='/businesses/new' exact={true} activeClassName='active' id='login-nav'>
@@ -102,13 +100,13 @@ const NavBar = ({ setSearch }) => {
               <div id="dropdown-parent-container">
                 <div id="dropdown-upper-div">
                   <div id="dropdown-sections">
-                    <div className="dropdown-top-sctions" id="profile-username">
+                    <div className="dropdown-top-sections" id="profile-username">
                       {sessionUser.username}
                     </div>
-                    <div id="dropdown-username">
+                    <div className="dropdown-top-sections" id="dropdown-username">
                       {sessionUser.firstName}{" "}{sessionUser.lastName}
                     </div>
-                    <div className="dropdown-email">
+                    <div className="dropdown-top-sections" id="dropdown-email">
                       {sessionUser.email}
                     </div>
                   </div>
