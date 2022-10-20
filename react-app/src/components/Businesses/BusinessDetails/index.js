@@ -164,12 +164,16 @@ const BusinessDetails = () => {
                 <div id='details-content'>
                     <div id='business-details-action-buttons-div'>
                         <Link to={`/businesses/${business.id}/writeareview`}>
-                        <button id='write-review-button'>
-                            <img src={whiteNope} alt='white nope' style={{ width: "20px", height: "20px" }} />
-                            Write a Review
-                        </button>
+                            <button id='write-review-button'>
+                                <div id='write-review-btn-content'>
+                                    <img src={whiteNope} alt='white nope' style={{ width: "20px", height: "20px" }} />
+                                    <div id='write-review-font-styling'>Write a Review</div>
+                                </div>
+                            </button>
                         </Link>
+                        <div id='action-buttons-div'>
                         <button className='action-buttons'>Add a photo </button>
+                        </div>
                         {currentUser && currentUser.id === business.Owner.id && (
                             <div id='auth-action-buttons'>
                                 <button onClick={updateRedirect} className='action-buttons'>Edit your business</button>
@@ -178,7 +182,8 @@ const BusinessDetails = () => {
                         )}
                     </div>
                     <section id='business-details-amenities-container'>
-                        <div>POSSIBLY AMENITIES</div>
+                        <div>POSSIBLY AMENITIES
+                        </div>
                     </section>
                     <section id='business-details-about-container'>
                         <div style={{ fontSize: '14px', fontWeight: '600' }}> <h2>About the Business </h2></div>
@@ -267,8 +272,8 @@ const BusinessDetails = () => {
                         </div>
                         <div id='sticky-email-div'>
                             {business.email}
-                            <img alt='email icon' style={{ width: "24px", height: "24px" }} 
-                            src={emailIcon}/>
+                            <img alt='email icon' style={{ width: "24px", height: "24px" }}
+                                src={emailIcon} />
                         </div>
                         <div id='sticky-phone-div'>
                             {phoneStyling(business.phone)}
