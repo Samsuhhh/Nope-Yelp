@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { getAllBusinessesThunk } from '../store/business';
+import * as sessionActions from "../store/session"
 import nope from '../assets/nope-white.png';
 import magglass from '../assets/icons/mag-glass.png';
 import Fuse from 'fuse.js'
@@ -50,19 +51,75 @@ const NavBar = ({ setSearch }) => {
 
   const sessionUser = useSelector(state => state.session.user)
   const [showMenu, setShowMenu] = useState(false);
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true)
+  }
 
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener('click', closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
+
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+    history.push('/')
+  };
+  console.log("THIS IS user", sessionUser)
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <>
         <div>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
+          {/* <>THIS IS A SPACER</> */}
         </div>
+        <div id="for-businesses-button">
+            <NavLink to='/businesses/new' exact={true} activeClassName='active' id='login-nav'>
+              For Businesses
+            </NavLink>
+          </div>
+        <div >
 
-        <div>
-          <LogoutButton />
+          <>
+            <div >
+              <div id='menu-img-container'>
+                <button id='menu-button' onClick={openMenu}>
+                  <img id='user-avatar-img' src={`${sessionUser.userAvatar}`} alt='rock' />
+                </button>
+              </div>
+            </div>
+            {showMenu &&
+              <div id="dropdown-parent-container">
+                <div id="dropdown-upper-div">
+                  <div id="dropdown-sections">
+                    <div className="dropdown-top-sections" id="profile-username">
+                      {sessionUser.username}
+                    </div>
+                    <div className="dropdown-top-sections" id="dropdown-username">
+                      {sessionUser.firstName}{" "}{sessionUser.lastName}
+                    </div>
+                    <div className="dropdown-top-sections" id="dropdown-email">
+                      {sessionUser.email}
+                    </div>
+                  </div>
+                  <div id="dropdown-links-container">
+                    <div className="dropdown-links" >
+                      <div onClick={logout}>Log Out</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </>
+
         </div>
       </>
     );
