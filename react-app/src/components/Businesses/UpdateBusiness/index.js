@@ -1,28 +1,30 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { createBusinessThunk, addBusinessImage } from '../../../store/business'
-import './CreateBusiness.css'
+import { updateBusinessThunk, addBusinessImage } from '../../../store/business'
+import './UpdateBusiness.css'
 
-const CreateBusiness = () => {
+const UpdateBusiness = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
+    const existingBusiness = useSelector(state => state.businesses.singleBusiness)
 
-    const [businessName, setBusinessName] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
-    const [streetAddress, setStreetAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [zipcode, setZipcode] = useState('')
-    const [state, setState] = useState('')
-    const [about, setAbout] = useState('')
-    const [longitude, setLongitude] = useState('')
-    const [latitude, setLatitude] = useState('')
-    const [priceRange, setPriceRange] = useState('')
-    const [website, setWebsite] = useState('')
-    const [imgUrl, setImgUrl] = useState('')
+    const [businessName, setBusinessName] = useState(existingBusiness.business_name)
+    const [email, setEmail] = useState(existingBusiness.email)
+    const [phone, setPhone] = useState(existingBusiness.phone)
+    const [streetAddress, setStreetAddress] = useState(existingBusiness.street_address)
+    const [city, setCity] = useState(existingBusiness.city)
+    const [zipcode, setZipcode] = useState(existingBusiness.zipcode)
+    const [state, setState] = useState(existingBusiness.state)
+    const [about, setAbout] = useState(existingBusiness.about)
+    const [longitude, setLongitude] = useState(existingBusiness.longitude)
+    const [latitude, setLatitude] = useState(existingBusiness.latitude)
+    const [priceRange, setPriceRange] = useState(existingBusiness.price_range)
+    const [website, setWebsite] = useState(existingBusiness.website)
+    // FIX EDITING AN IMAGE AND EDITING TAGS
+    const [imgUrl, setImgUrl] = useState(existingBusiness.BusinessImages[0])
     const [tags, setTags] = useState([])
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
@@ -137,6 +139,7 @@ const CreateBusiness = () => {
         setValidationErrors(errors)
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
         about, longitude, latitude, priceRange, website, imgUrl, tags])
+        
     const handleSubmit = async (e) => {
         e.preventDefault()
         setShowErrors(true)
@@ -158,16 +161,16 @@ const CreateBusiness = () => {
                 tags
             }
             console.log('what does our business object look like?', business)
-            let createdBusiness = await dispatch(createBusinessThunk(business))
+            let updatedBusiness = await dispatch(updateBusinessThunk(business))
 
-            if (createdBusiness) {
+            if (updatedBusiness) {
                 const imgBody = ({
                     url: imgUrl
                 })
 
-                await dispatch(addBusinessImage(imgBody, createdBusiness.id))
+                await dispatch(addBusinessImage(imgBody, updatedBusiness.id))
                 setShowErrors(false)
-                history.push(`/businesses/${createdBusiness.id}`)
+                history.push(`/businesses/${updatedBusiness.id}`)
             }
         }
     }
@@ -342,7 +345,7 @@ const CreateBusiness = () => {
                 ))}
             </div>
             {/*------- SUBMIT BUTTON -------*/}
-            <button type='submit'>Create Your Business</button>
+            <button type='submit'>Edit Your Business</button>
             {/*------- CANCEL BUTTON -------*/}
             <button
                 type='button'
@@ -353,4 +356,4 @@ const CreateBusiness = () => {
     )
 }
 
-export default CreateBusiness
+export default UpdateBusiness

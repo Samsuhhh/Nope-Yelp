@@ -87,12 +87,3 @@ class TagForm(FlaskForm):
     vegetarian_tag = BooleanField('Vegetarian')
     vietnamese_tag = BooleanField('Vietnamese')
     submit = SubmitField('Submit')
-
-
-
-
-
-
-
-
-
