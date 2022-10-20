@@ -66,6 +66,7 @@ function App() {
           <HomeSlider />
         </Route>
         <Route path='/user-profile' exact={true}>
+          <BusinessNavBar setSearch={setSearch} />
           <UserProfile />
         </Route>
         <Route path='/sign-up' exact={true}>

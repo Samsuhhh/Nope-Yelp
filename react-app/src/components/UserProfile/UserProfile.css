@@ -1,0 +1,11 @@
+#entire-page-container{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 125px;
+}
+
+#user-profile-pic{
+  height:235px;
+  margin-right: 30px;
+}

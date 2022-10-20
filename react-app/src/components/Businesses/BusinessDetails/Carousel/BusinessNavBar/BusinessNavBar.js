@@ -5,18 +5,19 @@ import LogoutButton from '../../../../auth/LogoutButton';
 import { getAllBusinessesThunk } from '../../../../../store/business';
 import nope from '../../../../../assets/nope.png';
 import magglass from '../../../../../assets/icons/mag-glass.png';
+import * as sessionActions from "../../../../../store/session"
 import Fuse from 'fuse.js'
 import './BusinessNavBar.css'
 
 const options = {
     findAllMatches: true,
     keys: [
-      {name:"business_name", weight:2},
-      {name:"about",weight:.5},
-      {name:"city",weight:2.5}
+        { name: "business_name", weight: 2 },
+        { name: "about", weight: .5 },
+        { name: "city", weight: 2.5 }
     ],
     includeScore: true,
-  }
+}
 
 const BusinessNavBar = ({ setSearch }) => {
     const dispatch = useDispatch()
@@ -42,31 +43,87 @@ const BusinessNavBar = ({ setSearch }) => {
         console.log("search input value", document.getElementById("search-input-field").value)
 
         const fuse = new Fuse(Object.values(businesses), options)
-        const results = fuse.search(document.getElementById("search-input-field").value).slice(0,15)
-        console.log("fuse search results in nav bar",results)
+        const results = fuse.search(document.getElementById("search-input-field").value).slice(0, 15)
+        console.log("fuse search results in nav bar", results)
         const businessResults = results.map(result => result.item)
         return setSearch(businessResults)
-        
+
 
     }
 
     const sessionUser = useSelector(state => state.session.user)
     const [showMenu, setShowMenu] = useState(false);
 
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true)
+    }
+
+    useEffect(() => {
+        if (!showMenu) return;
+
+        const closeMenu = () => {
+            setShowMenu(false);
+        };
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
+
+    const logout = (e) => {
+        e.preventDefault();
+        dispatch(sessionActions.logout());
+        history.push('/')
+    };
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
             <>
-                <div>
-                    <NavLink to='/users' exact={true} activeClassName='active'>
-                        Users
-                    </NavLink>
-                </div>
+            <div>
+              {/* <>THIS IS A SPACER</> */}
+            </div>
+            <div id="for-businesses-button-business-navbar">
+              <NavLink to='/businesses/new' exact={true} activeClassName='active' id='login-nav-business-navbar'>
+                For Businesses
+              </NavLink>
+            </div>
+            <div >
 
-                <div>
-                    <LogoutButton />
+              <>
+                <div >
+                  <div id='menu-img-container'>
+                    <button id='menu-button' onClick={openMenu}>
+                      <img id='user-avatar-img' src={`${sessionUser.userAvatar}`} alt='rock' />
+                    </button>
+                  </div>
                 </div>
-            </>
+                {showMenu &&
+                  <div id="dropdown-parent-container">
+                    <div id="dropdown-upper-div">
+                      <div id="dropdown-sections">
+                        <div className="dropdown-top-sections" id="profile-username">
+                          {sessionUser.username}
+                        </div>
+                        <div className="dropdown-top-sections" id="dropdown-username">
+                          {sessionUser.firstName}{" "}{sessionUser.lastName}
+                        </div>
+                        <div className="dropdown-top-sections" id="dropdown-email">
+                          {sessionUser.email}
+                        </div>
+                      </div>
+                      <div id="dropdown-links-container">
+                        <div className="dropdown-links" >
+                          <div onClick={logout}>Log Out</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                }
+              </>
+
+            </div>
+          </>
         );
     } else {
         sessionLinks = (
