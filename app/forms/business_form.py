@@ -97,7 +97,7 @@ def valid_name(form, field):
 
 def valid_phone(form, field):
     phone = field.data
-    if len(phone) > 12 or len(phone) < 10:
+    if not len(phone) == 10:
         raise ValidationError('Please enter valid phone number.')
 
 def valid_address(form, field):

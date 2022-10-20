@@ -132,8 +132,17 @@ const CreateBusiness = () => {
     // NEED TO ADD MORE VALIDATION ERRORS
     useEffect(() => {
         const errors = []
+        // ADD VALIDATION ERRORS FOR EMAIL AND WEBSITE
         if (isNaN(longitude) || longitude < -180 || longitude > 180) errors.push("Longitude must be a number between -180 and 180")
         if (isNaN(latitude) || latitude < -90 || latitude > 90) errors.push("Latitude must be a number between -90 and 90")
+        if (businessName.length > 40 || businessName.length < 1) errors.push("Business name must be between 1 and 40 characters")
+        if (phone.length !== 10) errors.push("Please enter a valid phone number")
+        if (streetAddress.length > 50 || streetAddress.length < 5) errors.push("Street address must be between 5 and 50 characters.")
+        if (city.length > 20 || city.length < 2) errors.push("City must be between 2 and 20 characters.")
+        if (zipcode > 99999 || zipcode < 10000) errors.push("Please enter a valid zip code.")
+        if (state.length > 20 || state.length < 2) errors.push('State must be between 2 and 15 characters.')
+        if (about.length > 3000 || about.length < 5) errors.push('About must be between 5 and 3000 characters.')
+        if (website.length > 75 || website.length < 4) errors.push('Website url must be between 4 and 75 characters.')
         setValidationErrors(errors)
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
         about, longitude, latitude, priceRange, website, imgUrl, tags])
@@ -245,6 +254,8 @@ const CreateBusiness = () => {
                 <input
                     type='number'
                     placeholder='Zipcode'
+                    min='10000'
+                    max='99999'
                     value={zipcode}
                     onChange={updateZipcode}
                     required />
