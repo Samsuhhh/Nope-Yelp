@@ -132,7 +132,7 @@ const CreateBusiness = () => {
     // NEED TO ADD MORE VALIDATION ERRORS
     useEffect(() => {
         const errors = []
-        // ADD VALIDATION ERRORS FOR EMAIL AND WEBSITE AND TAGS
+        // ADD VALIDATION ERRORS FOR EMAIL AND WEBSITE
         if (businessName.length > 40 || businessName.length < 1) errors.push("Business name must be between 1 and 40 characters")
         if (phone.length !== 10) errors.push("Please enter a valid phone number")
         if (streetAddress.length > 50 || streetAddress.length < 5) errors.push("Street address must be between 5 and 50 characters.")
@@ -142,7 +142,9 @@ const CreateBusiness = () => {
         if (about.length > 3000 || about.length < 5) errors.push('About must be between 5 and 3000 characters.')
         if (isNaN(longitude) || longitude < -180 || longitude > 180) errors.push("Longitude must be a number between -180 and 180")
         if (isNaN(latitude) || latitude < -90 || latitude > 90) errors.push("Latitude must be a number between -90 and 90")
+        if (!priceRange.length) errors.push("Please select a valid price range")
         if (website.length > 75 || website.length < 4) errors.push('Website url must be between 4 and 75 characters.')
+        if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image(jpg/jpeg/png).')
         setValidationErrors(errors)
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
         about, longitude, latitude, priceRange, website, imgUrl])
@@ -163,7 +165,7 @@ const CreateBusiness = () => {
                 about,
                 longitude,
                 latitude,
-                price_range: priceRange,
+                price_range: +priceRange,
                 website,
                 tag1: tags[0],
                 tag2: tags[1],
@@ -297,21 +299,22 @@ const CreateBusiness = () => {
             </div>
             {/*------- PRICE RANGE -------*/}
             <div>
-                {/* <select
+                <select
                     value={priceRange}
                     onChange={updatePriceRange}
                     required>
+                    <option value=''>Select a price range</option>
                     <option value='1'>$</option>
                     <option value='2'>$$</option>
                     <option value='3'>$$$</option>
                     <option value='4'>$$$$</option>
-                </select> */}
-                <input
+                </select>
+                {/* <input
                     type='number'
                     placeholder='Price Range'
                     value={priceRange}
                     onChange={updatePriceRange}
-                    required />
+                    required /> */}
             </div>
             {/*------- WEBSITE -------*/}
             <div>

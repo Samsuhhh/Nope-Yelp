@@ -117,6 +117,13 @@ def edit_a_business(id):
   form = BusinessForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
+    tags_lst = []
+    tag1 = Tag(tag=form.tag1.data)
+    tag2 = Tag(tag=form.tag2.data)
+    tag3 = Tag(tag=form.tag3.data)
+    tags_lst.append(tag1)
+    tags_lst.append(tag2)
+    tags_lst.append(tag3)
     business.business_name = form.business_name.data
     business.email = form.email.data
     business.phone = form.phone.data
@@ -130,9 +137,13 @@ def edit_a_business(id):
     business.latitude = form.latitude.data
     business.price_range = form.price_range.data
     business.website = form.website.data
+    business.tags = tags_lst
 
     db.session.commit()
-    return business.to_dict()
+
+    updated_business = business.to_dict()
+    updated_business['tags'] = tags_lst
+    return updated_business
   return {"errors": validation_form_errors(form.errors), "statusCode":401}
 
 ## DELETE A BUSINESS
