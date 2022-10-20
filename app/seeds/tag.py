@@ -1,5 +1,6 @@
 from app.models import db, Tag
 
+# NO LONGER IN USE
 usedTags = [
     {'title': 'Acai Bowls'},
     {'title': 'Bagels'},
@@ -86,7 +87,7 @@ usedTags = [
     {'title': 'Vietnamese'},
     {'title': 'Bootcamp'}
 ]
-
+# THIS SEED FILE IS NO LONGER IN USE
 add_tag = []
 for tag in usedTags:
     tg = Tag(tag=tag['title'])

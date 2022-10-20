@@ -240,13 +240,16 @@ main_tag_lst = [
 @business_routes.route("/", methods=["POST"])
 @login_required
 def create_business():
+  print("--------Hello World--------")
   form = BusinessForm()
+  print('\n\n\n\n -----form-----', form)
   # user = current_user.to_dict()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     tags_lst = []
-    for tag in form.data['tags']:
-      # valid = [tag_title for tag_title in main_tag_lst if tag_title['title'] == tag]
+    for tag in form.tags.data:
+      # valid = [tag_title for tag_title in main_tag_lst if tag_title['title'] == tag][0]
+      # add_tag=Tag(tag=valid['title'])
       add_tag=Tag(tag=tag)
       tags_lst.append(add_tag)
 
@@ -266,6 +269,7 @@ def create_business():
       website = form.website.data,
       tags=tags_lst
     )
+    print('\n\n\n\n\n ------our new business-------', business)
     db.session.add(business)
     db.session.commit()
 

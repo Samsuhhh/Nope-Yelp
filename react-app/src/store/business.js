@@ -103,7 +103,7 @@ export const createBusinessThunk = (business) => async (dispatch) => {
   }
   else {
     console.log("-----Create Business Thunk Error-----");
-    return null
+    return
   }
 }
 

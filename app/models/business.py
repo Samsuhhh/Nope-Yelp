@@ -40,6 +40,5 @@ class Business(db.Model):
             "longitude":self.longitude,
             "latitude":self.latitude,
             "price_range":self.price_range,
-
             "website":self.website
         }

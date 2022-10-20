@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SelectMultipleField
+from wtforms import StringField, IntegerField, SelectMultipleField, SelectField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import Business
 
