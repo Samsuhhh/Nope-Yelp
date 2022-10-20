@@ -30,6 +30,7 @@ def get_all_businesses():
     images = BusinessImage.query.get(business.id)
     images_dict =images.to_dict()
     business_dict["images"] = images_dict
+    business_dict['tags'] = [tag.to_dict() for tag in business.tags]
     # print(business)
     if business.reviews:
       business_dict["review_count"] = len(business.reviews)
@@ -61,6 +62,7 @@ def get_business_by_id(id):
   reviews = Review.query.filter(Review.business_id == id)
   business_dict['Reviews'] = [review.to_dict() for review in reviews]
 
+  business_dict['tags'] = [tag.to_dict() for tag in business.tags]
 
   businessImages = BusinessImage.query.filter(BusinessImage.business_id == id)
   business_dict['BusinessImages'] = [businessImage.to_dict() for businessImage in businessImages]
@@ -243,9 +245,9 @@ def create_business():
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     tags_lst = []
-    for tag in form.tags.data:
-      valid = [tag_title for tag_title in main_tag_lst if tag_title['title'] == tag]
-      add_tag=Tag(tag=valid['title'])
+    for tag in form.data['tags']:
+      # valid = [tag_title for tag_title in main_tag_lst if tag_title['title'] == tag]
+      add_tag=Tag(tag=tag)
       tags_lst.append(add_tag)
 
     business = Business(

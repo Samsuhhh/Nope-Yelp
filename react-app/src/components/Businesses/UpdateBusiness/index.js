@@ -139,6 +139,7 @@ const UpdateBusiness = () => {
         setValidationErrors(errors)
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
         about, longitude, latitude, priceRange, website, imgUrl, tags])
+        
     const handleSubmit = async (e) => {
         e.preventDefault()
         setShowErrors(true)
@@ -344,7 +345,7 @@ const UpdateBusiness = () => {
                 ))}
             </div>
             {/*------- SUBMIT BUTTON -------*/}
-            <button type='submit'>Create Your Business</button>
+            <button type='submit'>Edit Your Business</button>
             {/*------- CANCEL BUTTON -------*/}
             <button
                 type='button'
