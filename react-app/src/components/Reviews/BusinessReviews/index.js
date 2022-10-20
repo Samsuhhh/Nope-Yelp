@@ -21,6 +21,8 @@ const BusinessReview = () => {
     const businessReviews = useSelector(state => state.reviews.business)
     const [isLoaded, setIsLoaded] = useState(false)
 
+    // conditional to render edit and delete YOUR review button
+    // { user && user.id === businessReviews.Owner.id}
 
     const nopeImgs = (nopesCount) => {
         if (nopesCount > 4 && nopesCount <= 5) return (nopes5)

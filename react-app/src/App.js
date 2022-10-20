@@ -59,10 +59,6 @@ function App() {
         </ProtectedRoute> */}
 
 
-        <Route path='/businesses/:businessId'>
-        <BusinessDetails/>
-        </Route>
-
         <Route path='/' exact={true}>
           <NavBar setSearch={setSearch}/>
           <RecentActivity />
