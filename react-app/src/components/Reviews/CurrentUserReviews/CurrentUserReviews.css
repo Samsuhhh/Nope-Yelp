@@ -1,7 +1,7 @@
 #current-user-reviews-business-img{
   height:100px;
   width:100px;
-
+  border-radius: 4px;
 }
 
 #review-list-container-current-reviews{
@@ -28,4 +28,28 @@
 #review-card-current-user-reviews{
   padding: 50px 10px;
   border-bottom: 1px solid lightgrey;
+}
+
+#business-information-container-current-user-reviews{
+  margin-left: 15px;
+}
+
+#review-date-current-user-reviews{
+  display:flex;
+  align-self: center;
+  justify-self: center;
+  margin-left: 10px;
+}
+#review-actions-current-user-reviews{
+  display:flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+#delete-review-btn-current-user-reviews{
+  width:50px;
+}
+
+#nopes-date-container-container-user-reviews{
+  display:flex;
+  flex-direction: row;
 }

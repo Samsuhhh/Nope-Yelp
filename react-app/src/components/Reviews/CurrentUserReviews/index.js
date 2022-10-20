@@ -30,7 +30,7 @@ const CurrentUserReviews = () => {
         if (rating > 1 && rating <= 2) return (nopes2)
         if (rating > 0 && rating <= 1) return (nopes1)
         else return nopes0
-      }
+    }
     useEffect(() => {
         dispatch(getCurrentReviews())
         return () => dispatch(reset())
@@ -54,7 +54,7 @@ const CurrentUserReviews = () => {
                                             {console.log(businesses[review.business_id]?.images.url)}
                                             <img id="current-user-reviews-business-img" src={businesses[review.business_id]?.images?.url}></img>
                                         </div>
-                                        <div>
+                                        <div id="business-information-container-current-user-reviews">
                                             <div>{businesses[review.business_id]?.business_name}</div>
                                             <div>{priceRange(businesses[review.business_id]?.price_range)}</div>
                                             <div>{businesses[review.business_id]?.street_address}</div>
@@ -62,13 +62,18 @@ const CurrentUserReviews = () => {
                                         </div>
                                     </div>
                                     <div id="review-body-container-current-user-reviews">
-                                        <div>
-                                        <img id='nopes' alt='plsno' src={nopeRatingBar(review.nope)}/>
-                                        <span> {review.created_at.slice(8,11)}. {review.created_at.slice(5,7)}, {review.created_at.slice(12,16)}</span>
+                                        <div id="nopes-date-container-container-user-reviews">
+                                            <img id='nopes' alt='plsno' src={nopeRatingBar(review.nope)} />
+                                            <div id="review-date-current-user-reviews">
+                                                <div>{review.created_at.slice(8, 11)}. {review.created_at.slice(5, 7)}, {review.created_at.slice(12, 16)}</div>
+                                            </div>
                                         </div>
                                         <div>{review.review}</div>
                                         {(user && user.id === review.user_id) && (
-                                            <button onClick={() => dispatch(removeReview(review.id))}>Delete Review</button>
+                                            <div id="review-actions-current-user-reviews">
+                                                <button id="delete-review-btn-current-user-reviews" onClick={() => dispatch(removeReview(review.id))}>Edit Review</button>
+                                                <button id="delete-review-btn-current-user-reviews" onClick={() => dispatch(removeReview(review.id))}>Delete Review</button>
+                                            </div>
                                         )}
                                     </div>
                                 </div>

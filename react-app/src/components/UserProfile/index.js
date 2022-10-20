@@ -10,8 +10,7 @@ const UserProfile = () => {
   console.log(reviews)
   return (
     <div id="entire-page-container">
-      <div id="left-page-container">
-      </div>
+     
       <div id="middle-page-conatiner">
         <div id="user-information-div">
           <img id="user-profile-pic" src={user.userAvatar}></img>
