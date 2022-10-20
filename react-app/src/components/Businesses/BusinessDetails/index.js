@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleBusinessThunk, updateBusinessThunk } from '../../../store/business';
 import { getAllReviews } from '../../../store/review';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
 import './BusinessDetails.css'
@@ -159,8 +159,10 @@ const BusinessDetails = () => {
             <div id='business-details-container'>
                 <div id='details-content'>
                     <div id='business-details-action-buttons-div'>
+                        <Link to={`/businesses/${business.id}/writeareview`}>
                         <button id='write-review-button'>
                             <img src={whiteNope} alt='white nope' style={{ width: "20px", height: "20px" }} ></img> Write a Review</button>
+                        </Link>
                         <button className='action-buttons'>Add a photo </button>
                         {currentUser && currentUser.id === business.Owner.id && (
                             <div id='auth-action-buttons'>

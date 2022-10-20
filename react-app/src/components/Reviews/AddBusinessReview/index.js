@@ -14,7 +14,7 @@ const AddBusinessReview = () => {
 
     const user = useSelector(state => state.session.user)
     const business = useSelector(state => state.businesses)
-    const businessId = useParams()
+    const {businessId} = useParams()
 
     const [review, setReview] = useState('')
     const [nopes, setNopes] = useState(1)
@@ -59,7 +59,7 @@ const AddBusinessReview = () => {
 
             if (createdReview) {
                 setShowErrors(false)
-                history.push(`/spots/${businessId}`)
+                history.push(`/businesses/${businessId}`)
             }
         }
     }
