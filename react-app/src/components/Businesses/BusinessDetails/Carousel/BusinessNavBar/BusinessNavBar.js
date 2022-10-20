@@ -11,11 +11,12 @@ import './BusinessNavBar.css'
 const options = {
     findAllMatches: true,
     keys: [
-        "business_name",
-        "about"
+      {name:"business_name", weight:2},
+      {name:"about",weight:.5},
+      {name:"city",weight:2.5}
     ],
-    includeScore: true
-}
+    includeScore: true,
+  }
 
 const BusinessNavBar = ({ setSearch }) => {
     const dispatch = useDispatch()
@@ -29,7 +30,7 @@ const BusinessNavBar = ({ setSearch }) => {
 
     const fuse = new Fuse(Object.values(businesses), options)
     const results = fuse.search(query)
-    const businessResults = results.map(result => result.item)
+    const businessResults = results.map(result => result.item).slice(0, 15)
 
     function handleOnSearch({ target = {} }) {
         const { value } = target
@@ -38,14 +39,15 @@ const BusinessNavBar = ({ setSearch }) => {
 
     const handleSearchSubmit = async (e) => {
         e.preventDefault()
-        console.log("is this even hitting", document.getElementById("search-input-field").value)
+        console.log("search input value", document.getElementById("search-input-field").value)
 
         const fuse = new Fuse(Object.values(businesses), options)
-        const results = fuse.search(document.getElementById("search-input-field").value)
+        const results = fuse.search(document.getElementById("search-input-field").value).slice(0,15)
+        console.log("fuse search results in nav bar",results)
         const businessResults = results.map(result => result.item)
-        // console.log("fuse results",businessResults)
-        setSearch(businessResults)
-        return history.push("/businesses")
+        return setSearch(businessResults)
+        
+
     }
 
     const sessionUser = useSelector(state => state.session.user)
