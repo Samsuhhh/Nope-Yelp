@@ -175,8 +175,9 @@ const reviewReducer = (state = initialState, action) => {
                 allReviews
             }
         case LOAD_CURRENT:
-            action.reviews.forEach(review => {
-                newState.user[review.id] = review
+            // newState = {...state}
+            action.reviews.reviews.forEach(review => {
+                user[review.id] = review
             })
             return {
                 ...state,

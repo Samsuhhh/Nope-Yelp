@@ -1,0 +1,62 @@
+#current-user-reviews-business-img{
+  height:100px;
+  width:100px;
+  border-radius: 4px;
+}
+
+#review-list-container-current-reviews{
+  display:flex;
+  flex-direction: row;
+}
+
+#text-container-current-reviews{
+  display:flex;
+  flex-direction: column;
+}
+
+#reviews-list-main-container{
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+}
+
+#review-body-container-current-user-reviews{
+  display:flex;
+  flex-direction: column;
+}
+
+#review-card-current-user-reviews{
+  margin:30px 10px 0px 10px;
+  border-bottom: 1px solid lightgrey;
+}
+
+#business-information-container-current-user-reviews{
+  margin-left: 15px;
+}
+
+#review-date-current-user-reviews{
+  display:flex;
+  align-self: center;
+  justify-self: center;
+  margin-left: 10px;
+}
+#review-actions-current-user-reviews{
+  display:flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top:10px;
+  padding-bottom: 10px;
+}
+#delete-review-btn-current-user-reviews{
+  margin-left: 1px;
+}
+
+#nopes-date-container-container-user-reviews{
+  display:flex;
+  flex-direction: row;
+  padding-top: 15px;
+}
+
+#review-body-text-current-user-reviews{
+  padding-top:10px;
+}

@@ -17,7 +17,7 @@ export default function BusinessCard({ search }) {
   console.log("businessList", businessList)
 
 
-  const nopeRatingBar = (rating) => {
+   const nopeRatingBar = (rating) => {
     if (rating > 4 && rating <= 5) return (nopes5)
     if (rating > 3 && rating <= 4) return (nopes4)
     if (rating > 2 && rating <= 3) return (nopes3)
