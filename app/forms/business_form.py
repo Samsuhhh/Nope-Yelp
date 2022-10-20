@@ -158,4 +158,7 @@ class BusinessForm(FlaskForm):
     latitude = IntegerField('Latitude', validators=[DataRequired(), valid_lat])
     price_range = IntegerField('Price Range', validators=[DataRequired(), valid_price_range])
     website = StringField('Website', validators=[DataRequired(), valid_website])
-    tags = SelectMultipleField('Tags', choices=main_tag_lst)
+    # tags = SelectMultipleField('Tags', choices=main_tag_lst)
+    tag1 = StringField('Tag1')
+    tag2 = StringField('Tag2')
+    tag3 = StringField('Tag3')

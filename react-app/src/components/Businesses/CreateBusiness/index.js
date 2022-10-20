@@ -165,17 +165,20 @@ const CreateBusiness = () => {
                 latitude,
                 price_range: priceRange,
                 website,
-                tags
+                tag1: tags[0],
+                tag2: tags[1],
+                tag3: tags[2]
             }
             console.log('what does our business object look like?', business)
             let createdBusiness = await dispatch(createBusinessThunk(business))
 
             if (createdBusiness) {
                 const imgBody = ({
+                    business_id: createdBusiness.id,
                     url: imgUrl
                 })
-
-                await dispatch(addBusinessImage(imgBody, createdBusiness.id))
+                console.log('what is being sent to the addbusinessimage thunk', imgBody, createdBusiness.id)
+                dispatch(addBusinessImage(imgBody, createdBusiness.id))
                 setShowErrors(false)
                 history.push(`/businesses/${createdBusiness.id}`)
             }
@@ -338,7 +341,6 @@ const CreateBusiness = () => {
                             onChange={(e) => {
                                 const tagsList = tags
                                 if (e.target.checked) {
-                                    console.log("adding tag to array")
                                     tagsList.push(e.target.value)
                                     console.log('current tag array', tagsList)
                                 } else {
@@ -348,8 +350,8 @@ const CreateBusiness = () => {
                                 }
                                 setTags(tagsList)
                             }}
-                            value={tag.title}
-                            name={tag.title} />
+                            name={tag.title}
+                            value={tag.title} />
                         <label>{tag.title}</label>
                     </div>
                 ))}
