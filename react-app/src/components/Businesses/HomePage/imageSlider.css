@@ -294,6 +294,7 @@ a:active { text-decoration: none; }
     transition: 1s;
 }
 
+
 #signup-button:hover {
     background-color: #ff2323;
     cursor: pointer;
@@ -637,4 +638,110 @@ a:active { text-decoration: none; }
     padding-left: 25%;
     padding-right: 20%;
     padding-bottom: 30%;
+}
+
+
+#menu-img-container {
+  width: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+#menu-button {
+  border-radius: 9999px;
+  width: 60px;
+  border:none;
+  background-color: rgba(204, 204, 204, 0);
+}
+
+#dropdown-parent-container {
+  position: relative;
+
+}
+
+#dropdown-upper-div {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  position: absolute;
+  background-color: white;
+  padding: 10px 10px;
+  border-radius: 4px;
+  right: 0px;
+  width: 240px;
+}
+
+.dropdown-links:hover {
+  background-color: rgb(231, 231, 231);
+  cursor: pointer;
+}
+
+
+
+.dropdown-links {
+  padding: 10px 10px 10px 15px;
+  /* display: block; */
+}
+
+.dropdown-button {
+  display: block;
+}
+
+#dropdown-sections {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding: 5px 10px;
+  border-bottom: 1px lightgray solid;
+}
+
+.dropdown-text-rows {
+  padding: 0px 0px 10px 5px;
+  overflow: ellipsis;
+}
+.dropdown-top-sections{
+  padding: 5px 5px;
+}
+.dropdown-email {
+  padding-top: 10px;
+}
+
+.dropdown-about-me{
+  border: none;
+  background-color: white;
+  text-align: left;
+  font-size: 16px;
+
+}
+
+.dropdown-about-me:hover{
+  background-color: rgb(231, 231, 231);
+
+}
+
+.dropdown-about-me{
+  padding-top: 10px;
+}
+
+#dropdown-links-container {
+  padding-top: 10px;
+}
+
+.your-spots {
+  padding-top: 10px;
+}
+
+#your-reviews {
+  border-bottom: 1px solid lightgray;
+}
+
+#logout-button {
+  margin-top: 10px;
+}
+#user-avatar-img{
+  height:40px;
+  width:40px;
+  border-radius: 9999px;
 }

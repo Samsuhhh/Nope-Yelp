@@ -9,6 +9,10 @@ import './BusinessDetails.css'
 import { deleteBusinessThunk } from '../../../store/business';
 import Carousel, { CarouselItem } from './Carousel';
 
+import linkIcon from '../../../assets/icons/external-linkicon.svg'
+import phoneIcon from '../../../assets/icons/phoneicon.svg'
+import emailIcon from '../../../assets/icons/emailicon.svg'
+
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
@@ -161,10 +165,16 @@ const BusinessDetails = () => {
                 <div id='details-content'>
                     <div id='business-details-action-buttons-div'>
                         <Link to={`/businesses/${business.id}/writeareview`}>
-                        <button id='write-review-button'>
-                            <img src={whiteNope} alt='white nope' style={{ width: "20px", height: "20px" }} ></img> Write a Review</button>
+                            <button id='write-review-button'>
+                                <div id='write-review-btn-content'>
+                                    <img src={whiteNope} alt='white nope' style={{ width: "20px", height: "20px" }} />
+                                    <div id='write-review-font-styling'>Write a Review</div>
+                                </div>
+                            </button>
                         </Link>
+                        <div id='action-buttons-div'>
                         <button className='action-buttons'>Add a photo </button>
+                        </div>
                         {currentUser && currentUser.id === business.Owner.id && (
                             <div id='auth-action-buttons'>
                                 <button onClick={updateRedirect} className='action-buttons'>Edit your business</button>
@@ -172,8 +182,9 @@ const BusinessDetails = () => {
                             </div>
                         )}
                     </div>
-                    <section id='business-details-amenities'>
-                        <div>POSSIBLY AMENITIES</div>
+                    <section id='business-details-amenities-container'>
+                        <div>POSSIBLY AMENITIES
+                        </div>
                     </section>
                     <section id='business-details-about-container'>
                         <div style={{ fontSize: '14px', fontWeight: '600' }}> <h2>About the Business </h2></div>
@@ -193,6 +204,20 @@ const BusinessDetails = () => {
                         <div id='business-details-about'>{business.about}</div>
                     </section>
                     <section id='reviews-business-details-container'>
+                        Current User Create Review filler
+                        <div id='current-user-review-space-between'>
+                            <div id='left-user-review-info'>
+                                {/* <img id='owner-avatar' src={currentUser.userAvatar}</img> */}
+                                <div>
+                                    <div>UserName</div>
+                                    <div>User First, Last</div>
+                                </div>
+                            </div>
+                            <div id='right-user-review-info'>
+                                <div>nopes</div>
+                                <div>Start your review of {business.business_name}</div>
+                            </div>
+                        </div>
                         <div id='reviews-analytics-container'>
                             <div id='overall-ratings'>
                                 <div style={{ fontSize: "16px", fontWeight: "700" }}>Overall rating</div>
@@ -242,14 +267,23 @@ const BusinessDetails = () => {
                 </div>
                 <div id='sticky-sidebar-container'>
                     <div id='sticky-sidebar-content'>
-                        <div>
+                        <div id='sticky-website-div'>
                             <a href={business.website}> {business.website}</a>
+                            <img alt='link icon' src={linkIcon} />
                         </div>
-                        <div>
+                        <div id='sticky-email-div'>
                             {business.email}
+                            <img alt='email icon' style={{ width: "24px", height: "24px" }}
+                                src={emailIcon} />
                         </div>
-                        <div>
+                        <div id='sticky-phone-div'>
                             {phoneStyling(business.phone)}
+                            <img alt='phone icon' style={{ width: "24px", height: "24px" }}
+                                src={phoneIcon}
+                            />
+                        </div>
+                        <div className='sticky-divs'>
+                            Message the owner
                         </div>
                     </div>
                 </div>
