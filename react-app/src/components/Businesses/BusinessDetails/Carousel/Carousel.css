@@ -2,9 +2,10 @@
     overflow: hidden;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    
+    height: 485px;
+    margin-left: 0px;
 }
 
 .inner {
@@ -15,19 +16,55 @@
 
 .carousel-item {
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    height: 500px;
+    height: 100%;
     /* background-color: red; */
     color: white;
 }
 
-.indicators {
+
+.image-indicator-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
     width: 40px;
-    height: 25px;
-    border-radius: 999px;
+    background-color: rgba(000, 000, 000, 0.7);
+}
+
+
+.indicators {
+    position: static;
+    background-color: transparent;
+    border: none;
 }
 
 .indicators:hover{
     cursor: pointer;
+    background-color: transparent;
+}
+
+#next-button {
+    height: 25px;
+    opacity: .7;
+    background-color: none;
+    transition: 1s;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(341deg) brightness(101%) contrast(102%);
+}
+
+#next-button:hover {
+    opacity: 1;
+}
+
+
+#prev-button {
+    height: 25px;
+    opacity: .7;
+    background-color: none;
+    transition: 1s;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(341deg) brightness(101%) contrast(102%);
+}
+
+#prev-button:hover {
+    opacity: 1;
 }

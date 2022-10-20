@@ -1,7 +1,7 @@
 #business-details-page {
     width: 100%;
     height: 100%;
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,13 +23,34 @@
     position: absolute;
     /* border: 1px solid purple; */
     height: 480px;
+    width: 100%;
 
+}
+
+.carousel-images {
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 100%);
+
+}
+
+
+
+
+#caro-img {
+    position: relative;
+    display:block;
+    width: 100%;
+    max-height: 550px;
+    z-index: -1;
 }
 
 #business-details-images-main>button {
     z-index: 5;
 }
-
 
 
 
@@ -40,6 +61,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: flex-end;
+    font-family: 'Open Sans'
 }
 
 #business-details-header-info-container {
@@ -66,6 +88,12 @@
     /* border: 1px solid white; */
 }
 
+#business-details-info > h1{
+    color: white;
+    font-family:"Open Sans"
+}
+
+
 #business-details-info-review-divs {
     display: flex;
     flex-direction: row;
@@ -80,6 +108,15 @@
     margin-top: 3px;
 }
 
+#review-count-div{
+    color: white;
+    margin-left:10px;
+}
+
+
+.info-price-tags{
+    color: white;
+}
 
 #all-photos-div {
     width: 20%;
@@ -129,18 +166,42 @@
     /* padding: 10px; */
 }
 
-#write-review-button:hover,
+/* #write-review-button:hover, */
 #write-review-button {
     font-family: "Open Sans";
     color: white;
     background-color: red;
     border: 1px solid lightgrey;
     border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    line-height: 25px;
+    width: 170px;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    /* text-align: center; */
+    /* line-height: 25px; */
+    /* height: 25px; */
+    /* width: 70px; */
     cursor: pointer;
+}
+
+#write-review-btn-content{
+    display: flex;
+    height: 30px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#white-nope-img{
+    width: 20px;
+    height: 20px;
+}
+
+#write-review-font-styling{
+    font-family: "Open Sans";
+    font-size: 16px;
+
+}
+#action-buttons-div{
+    height: 30px;
 }
 
 .action-buttons {
@@ -159,14 +220,25 @@
     cursor: pointer;
 }
 
-#business-details-amenities {}
+#business-details-amenities-container {
+    width: 100%;
+    height: 250px;
+    border: 1px solid red;
+
+}
 
 #business-details-about-container {
     width: 100%;
-    height: 400px;
+    height: 300px;
     border: 1px solid blue;
     font-family: 'Open Sans';
 }
+
+#about-business-h2-div{
+    font-size: 14px;
+    font-weight: 600;
+}
+
 
 #about-owner-content {
     display: flex;
@@ -208,6 +280,15 @@
     padding-bottom: 25px;
 }
 
+#current-user-review-space-between{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#left-user-review-info{
+    display: flex;
+}
 
 #reviews-analytics-container {
     display: flex;
@@ -226,6 +307,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#overall-ratings-div-font-styling{
+    font-size: 16px;
+    font-weight: 700;
+}
+#overall-ratings-big-nopes-review-count{
+    margin-top: 5px;
 }
 
 #dynamic-horizontal-reviews {
@@ -248,7 +337,13 @@
     line-height: 35px;
     display: flex;
     align-items: center;
+    border-radius: 15px;
+    height: 100%;
 
+}
+.inner-fill{
+    border-radius: 15px;
+    height: 100%;
 }
 
 #dbar-5 {
@@ -321,4 +416,28 @@
     top: 10px;
     border: 1px solid lightgrey;
     padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+}
+
+.sticky-divs{
+    display: flex;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 60px;
+}
+
+#sticky-website-div,
+#sticky-email-div,
+#sticky-phone-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgrey;
+    line-height: 60px;
+}
+
+.icon-img-asset{
+    width: 24px;
+    height: 24px;
 }

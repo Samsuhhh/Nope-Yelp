@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from app.models import Tag
+from app.models import Tag  
 
 
 tag_routes = Blueprint('tags', __name__)
@@ -13,5 +13,6 @@ def get_all_tags():
     for tag in tags:
         tags_dict = tag.to_dict()
         tag_list.append(tags_dict)
-
+    # for i, tag in enumerate(tag_list):
+    #     print ('--------------------', {i, tag})
     return {"tags": [tag for tag in tag_list]}
