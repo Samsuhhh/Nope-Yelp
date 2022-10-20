@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
-from app.models import Review, db
+from app.models import Review, db, User
 from flask_login import current_user
 from app.forms.review_form import ReviewForm
 
@@ -9,11 +9,13 @@ review_routes = Blueprint('reviews', __name__)
 ## GET ALL REVIEWS
 @review_routes.route("/", methods=["GET"])
 def get_reviews():
-  reviews = Review.query.all()
+  reviews = Review.query.order_by(Review.created_at.desc()).all()
   review_list = []
 
   for review in reviews:
+    owner = (User.query.filter(User.id == review.user_id).one()).to_dict()
     reviews_dict = review.to_dict()
+    reviews_dict['owner'] = owner
     review_list.append(reviews_dict)
 
   return {"reviews": [review for review in review_list]}
