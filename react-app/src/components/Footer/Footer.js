@@ -35,11 +35,11 @@ function Footer() {
                     </div>
                     <div className='footer-grid-comp'>
                         <ul>Discover</ul>
-                        <li>Yelp Project Cost Guides</li>
+                        <li>Nope Project Cost Guides</li>
                         <li>Collections</li>
                         <li>Talk</li>
                         <li>Events</li>
-                        <li>Yelp Blog</li>
+                        <li>Nope Blog</li>
                         <li>Support</li>
                         <li>Yelp Mobile</li>
                         <li>Developers</li>
