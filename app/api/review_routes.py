@@ -4,6 +4,13 @@ from app.models import Review, db, User
 from flask_login import current_user
 from app.forms.review_form import ReviewForm
 
+def validation_form_errors(validation_errors):
+  errors = []
+  for field in validation_errors:
+    for err in validation_errors[field]:
+      errors.append(f'{field}:{err}')
+  return errors
+
 review_routes = Blueprint('reviews', __name__)
 
 ## GET ALL REVIEWS
@@ -45,11 +52,10 @@ def edit_review(id):
     review.nope = form.nope.data
     review.review = form.review.data
 
-    db.session.add(review)
     db.session.commit()
 
     return review.to_dict()
-  pass ## TODO HANDLE VALIDATION ERRS
+  return {"errors": validation_form_errors(form.errors), "statusCode":401}
 
 
 ## DELETE A REVIEW

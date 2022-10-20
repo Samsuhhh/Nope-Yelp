@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SelectMultipleField
+from wtforms import StringField, IntegerField, SelectMultipleField, SelectField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import Business
 
@@ -97,7 +97,7 @@ def valid_name(form, field):
 
 def valid_phone(form, field):
     phone = field.data
-    if len(phone) > 12 or len(phone) < 10:
+    if not len(phone) == 10:
         raise ValidationError('Please enter valid phone number.')
 
 def valid_address(form, field):
@@ -158,4 +158,7 @@ class BusinessForm(FlaskForm):
     latitude = IntegerField('Latitude', validators=[DataRequired(), valid_lat])
     price_range = IntegerField('Price Range', validators=[DataRequired(), valid_price_range])
     website = StringField('Website', validators=[DataRequired(), valid_website])
-    tags = SelectMultipleField('Tags', choices=main_tag_lst)
+    # tags = SelectMultipleField('Tags', choices=main_tag_lst)
+    tag1 = StringField('Tag1')
+    tag2 = StringField('Tag2')
+    tag3 = StringField('Tag3')
