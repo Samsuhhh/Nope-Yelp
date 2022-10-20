@@ -83,26 +83,45 @@ const NavBar = ({ setSearch }) => {
             Users
           </NavLink>
         </div>
-
-        <div>
-          <LogoutButton />
-        </div>
-
+        <div id="for-businesses-button">
+            <NavLink to='/businesses/new' exact={true} activeClassName='active' id='login-nav'>
+              For Businesses
+            </NavLink>
+          </div>
         <div >
 
-          <button onClick={openMenu} id="user-avatar-img-btn" style={{ backgroundImage: `url(${sessionUser.userAvatar})` }}></button>
-          {showMenu && (
-            <ul className="profile-dropdown">
-              <li>{sessionUser.username}</li>
-              <li>{sessionUser.email}</li>
-              <li>
-                <button id="logout-btn" onClick={logout}>
-                  <i class="fa-solid fa-right-from-bracket"></i>Sign out
-
+          <>
+            <div >
+              <div id='menu-img-container'>
+                <button id='menu-button' onClick={openMenu}>
+                  <img id='user-avatar-img' src={`${sessionUser.userAvatar}`} alt='rock' />
                 </button>
-              </li>
-            </ul>
-          )}
+              </div>
+            </div>
+            {showMenu &&
+              <div id="dropdown-parent-container">
+                <div id="dropdown-upper-div">
+                  <div id="dropdown-sections">
+                    <div className="dropdown-top-sctions" id="profile-username">
+                      {sessionUser.username}
+                    </div>
+                    <div id="dropdown-username">
+                      {sessionUser.firstName}{" "}{sessionUser.lastName}
+                    </div>
+                    <div className="dropdown-email">
+                      {sessionUser.email}
+                    </div>
+                  </div>
+                  <div id="dropdown-links-container">
+                    <div className="dropdown-links" >
+                      <div onClick={logout}>Log Out</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </>
+
         </div>
       </>
     );
