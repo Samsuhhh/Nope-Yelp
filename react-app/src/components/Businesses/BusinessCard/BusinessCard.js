@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 import './BusinessCard.css'
-
+import Fuse from 'fuse.js'
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
@@ -9,7 +10,12 @@ import nopes1 from "../../../assets/nopes/1-nopes.png"
 import nopes0 from "../../../assets/nopes/0-nopes.png"
 
 export default function BusinessCard({ search }) {
-  console.log("Search working in business card", Object.values(search))
+  const [businessList, setBusinessList] = useState(search)
+
+
+  console.log("Search working in business card", search)
+  console.log("businessList", businessList)
+
 
   const nopeRatingBar = (rating) => {
     if (rating > 4 && rating <= 5) return (nopes5)
@@ -26,6 +32,27 @@ export default function BusinessCard({ search }) {
     if (e === 1) return "$"
   }
 
+  let priceRange1 = Object.values(search).filter(business => {
+    return business.price_range === 1
+  })
+  let priceRange2 = Object.values(search).filter(business => {
+    return business.price_range === 2
+  })
+  let priceRange3 = Object.values(search).filter(business => {
+    return business.price_range === 3
+  })
+  let priceRange4 = Object.values(search).filter(business => {
+    return business.price_range === 4
+  })
+  // console.log("filter 1 hitting ", priceRange1)
+  // console.log("filter 2 hitting ", priceRange2)
+  // console.log("filter 3 hitting ", priceRange3)
+  // console.log("filter 4 hitting ", priceRange4)
+  useEffect(()=> {
+    for (let i = 0; i<1000000; i++) {
+
+    }
+  }, [businessList,])
   if (!search.length) return (<h1>No results for this search</h1>)
   return (
     <div id="main-div-business-card">
@@ -33,10 +60,42 @@ export default function BusinessCard({ search }) {
       <div id="left-div-business-card">
         <h3>Filters</h3>
         <div id="price-range-container">
-          <button className="price-range-btn" id="price-range-btn-one">$</button>
-          <button className="price-range-btn" id="price-range-btn-two">$$</button>
-          <button className="price-range-btn" id="price-range-btn-three">$$$</button>
-          <button className="price-range-btn" id="price-range-btn-four">$$$$</button>
+          <button
+            className="price-range-btn"
+            id="price-range-btn-one"
+            onClick={(e)=>{
+              e.preventDefault()
+              setBusinessList(priceRange1)
+            }}
+          >$
+          </button>
+          <button
+            className="price-range-btn"
+            id="price-range-btn-two"
+            onClick={(e)=>{
+              e.preventDefault()
+              setBusinessList(priceRange2)
+            }}
+          >$$
+          </button>
+          <button
+            className="price-range-btn"
+            id="price-range-btn-three"
+            onClick={(e)=>{
+              e.preventDefault()
+              setBusinessList(priceRange3)
+            }}
+          >$$$
+          </button>
+          <button
+            className="price-range-btn"
+            id="price-range-btn-four"
+            onClick={(e)=>{
+              e.preventDefault()
+              setBusinessList(priceRange4)
+            }}
+          >$$$$
+          </button>
         </div>
         <div id="checkbox-container">
           <h3>Suggested</h3>

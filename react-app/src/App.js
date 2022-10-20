@@ -17,8 +17,9 @@ import BusinessReview from './components/Reviews/BusinessReviews';
 
 import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
 import AddBusiness from './components/Businesses/AddBusiness';
-import Carousel, {CarouselItem} from './components/Businesses/BusinessDetails/Carousel';
+import Carousel, { CarouselItem } from './components/Businesses/BusinessDetails/Carousel';
 import BusinessNavBar from './components/Businesses/BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar';
+import CreateBusiness from './components/Businesses/CreateBusiness';
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-      {/* <NavBar setSearch={setSearch}/>
+        {/* <NavBar setSearch={setSearch}/>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -59,12 +60,8 @@ function App() {
         </ProtectedRoute> */}
 
 
-        <Route path='/businesses/:businessId'>
-        <BusinessDetails/>
-        </Route>
-
         <Route path='/' exact={true}>
-          <NavBar setSearch={setSearch}/>
+          <NavBar setSearch={setSearch} />
           <RecentActivity />
           <HomeSlider />
         </Route>
@@ -77,12 +74,12 @@ function App() {
           <LoginForm />
         </Route>
 
-        <Route path='/writeareview' exact={true}>
-          <AddBusinessReview />
-        </Route>
-
         <Route path='/businesses/new' exact={true}>
           <AddBusiness />
+        </Route>
+
+        <Route path='/createabusiness' exact={true}>
+          <CreateBusiness />
         </Route>
 
         <Route path='/caro' exact={true}>
@@ -97,9 +94,13 @@ function App() {
           <BusinessDetails />
         </Route>
 
+        <Route path='/businesses/:businessId/writeareview' exact={true}>
+          <AddBusinessReview />
+        </Route>
+
         <Route>
           <BusinessNavBar setSearch={setSearch} />
-          <BusinessCard search={search} path='/businesses' exact={true}/>
+          <BusinessCard search={search} path='/businesses' exact={true} />
         </Route>
 
 

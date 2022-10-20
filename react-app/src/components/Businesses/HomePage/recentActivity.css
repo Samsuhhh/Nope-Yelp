@@ -67,7 +67,12 @@
     height: 90px;
 }
 
+.user-name-recent-act-grid {
+    font-weight: 700;
+}
+
 .user-name-recent-act-grid-wrapper {
+
     margin-left: 10px;
 }
 
@@ -84,4 +89,33 @@
 
 #nopes-grid {
     height: 20px;
+}
+
+.user-action-recent-act-grid {
+    color: rgb(173, 173, 173);
+}
+
+.business-name-recent-act-grid {
+    font-weight: 700;
+    color: #008EA7;
+}
+
+.business-name-recent-act-grid:link {
+    text-decoration: none;
+    color: #008EA7;
+}
+
+.business-name-recent-act-grid:active {
+    text-decoration: none;
+    color: #008EA7;
+}
+
+.business-name-recent-act-grid:visited {
+    text-decoration: none;
+    color: #008EA7;
+}
+
+.business-name-recent-act-grid:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }

@@ -87,6 +87,7 @@ main_tag_lst = [
     'Vegan',
     'Vegetarian',
     'Vietnamese',
+    'Bootcamp'
 ]
 
 def valid_name(form, field):
@@ -131,7 +132,7 @@ def valid_lng(form, field):
 
 def valid_lat(form, field):
     lat = field.data
-    if lat > 90 or lat < 90:
+    if lat > 90 or lat < -90:
         raise ValidationError('Latitude must be between 90 and -90.')
 
 def valid_price_range(form, field):
@@ -157,5 +158,4 @@ class BusinessForm(FlaskForm):
     latitude = IntegerField('Latitude', validators=[DataRequired(), valid_lat])
     price_range = IntegerField('Price Range', validators=[DataRequired(), valid_price_range])
     website = StringField('Website', validators=[DataRequired(), valid_website])
-
-    tags = SelectMultipleField('Tags', validators=[DataRequired()])
+    tags = SelectMultipleField('Tags', choices=main_tag_lst)
