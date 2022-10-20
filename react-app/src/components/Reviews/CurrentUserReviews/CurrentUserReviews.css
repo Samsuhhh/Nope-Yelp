@@ -1,0 +1,31 @@
+#current-user-reviews-business-img{
+  height:100px;
+  width:100px;
+
+}
+
+#review-list-container-current-reviews{
+  display:flex;
+  flex-direction: row;
+}
+
+#text-container-current-reviews{
+  display:flex;
+  flex-direction: column;
+}
+
+#reviews-list-main-container{
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+}
+
+#review-body-container-current-user-reviews{
+  display:flex;
+  flex-direction: row;
+}
+
+#review-card-current-user-reviews{
+  padding: 50px 10px;
+  border-bottom: 1px solid lightgrey;
+}

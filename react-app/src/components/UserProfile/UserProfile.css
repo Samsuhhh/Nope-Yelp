@@ -9,3 +9,15 @@
   height:235px;
   margin-right: 30px;
 }
+
+#middle-page-conatiner{
+  display:flex;
+  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#user-information-div{
+  display:flex;
+}
