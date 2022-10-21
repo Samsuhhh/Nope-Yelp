@@ -61,7 +61,7 @@ export default function BusinessCard({ search }) {
     <div id="main-div-business-card">
       {/* LEFT DIV START */}
       <div id="left-div-business-card">
-        <h3>Filters</h3>
+        {/* <h3>Filters</h3>
         <div id="price-range-container">
           <button
             className="price-range-btn"
@@ -118,7 +118,7 @@ export default function BusinessCard({ search }) {
             <input type="checkbox"></input> Tag 4
             <span className='checkmark'></span>
           </label>
-        </div>
+        </div> */}
       </div>
       {/* MIDDLE DIV START */}
 
