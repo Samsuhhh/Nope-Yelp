@@ -91,7 +91,8 @@ def get_review_by_business(id):
 
   ## FILTERING REVIEWS BY BUSINESS ID
   reviews_lst = []
-  reviews = Review.query.filter(Review.business_id == id).all()
+  reviews = Review.query.filter(Review.business_id == id).order_by(Review.created_at.desc()).all()
+  print('\n\n\n\n\n\n ----reviews----', reviews)
   for review in reviews:
     review_dict = review.to_dict()
 
@@ -116,6 +117,7 @@ def edit_a_business(id):
 
   form = BusinessForm()
   form['csrf_token'].data = request.cookies['csrf_token']
+  print('\n\n\n\n\n\n\n form data', form.data)
   if form.validate_on_submit():
     tags_lst = []
     tag1 = Tag(tag=form.tag1.data)
@@ -141,8 +143,10 @@ def edit_a_business(id):
 
     db.session.commit()
 
+    new_tags = [tag.to_dict() for tag in tags_lst]
+
     updated_business = business.to_dict()
-    updated_business['tags'] = tags_lst
+    updated_business['tags'] = new_tags
     return updated_business
   return {"errors": validation_form_errors(form.errors), "statusCode":401}
 

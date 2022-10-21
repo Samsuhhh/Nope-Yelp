@@ -20,7 +20,7 @@ export default function BusinessImages() {
                             <img id="modal-image" alt='yes' src={image.url}></img>
                             <div>{(user && user.id === business.owner_id) && (
                                 <button id="modal-delete-img" onClick={() =>
-                                dispatch(removeBusinessImage(image.id))}>
+                                    dispatch(removeBusinessImage(image.id))}>
                                     <img id="modal-trash-icon" src={trash} />
 
                                 </button>

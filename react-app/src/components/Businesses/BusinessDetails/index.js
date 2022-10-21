@@ -171,18 +171,17 @@ const BusinessDetails = ({ search, onClose }) => {
     }
 
 
-    const reviews = useSelector(state => state.reviews.business)
-
-
-    const currentUserReview = Object.values(reviews).filter(review => review.user_id === currentUser.id)
-    console.log("test", currentUserReview)
+    let currentUserReview;
+    if (currentUser) {
+        currentUserReview = Object.values(reviewsObj).filter(review => review.user_id === currentUser.id)
+    }
 
     useEffect(() => {
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })
 
 
-    }, [dispatch, businessId, existingReviews.length, showPhotosModal, reviews,])
+    }, [dispatch, businessId, existingReviews.length, showPhotosModal, reviewsObj])
 
     let numReviews = business.reviewCount === 1 ? "Review" : "Reviews"
     let numPhotos = business?.BusinessImages?.length === 1 ? "Photo" : "Photos"
