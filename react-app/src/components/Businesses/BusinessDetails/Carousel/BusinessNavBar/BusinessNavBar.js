@@ -45,6 +45,7 @@ const BusinessNavBar = ({ setSearch }) => {
     e.preventDefault()
     console.log("search input value", document.getElementById("search-input-field").value)
 
+
     const fuse = new Fuse(Object.values(businesses), options)
     const results = fuse.search(document.getElementById("search-input-field").value).slice(0, 15)
     console.log("fuse search results in nav bar", results)

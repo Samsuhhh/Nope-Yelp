@@ -36,7 +36,7 @@ const CurrentUserReviews = () => {
     }
     useEffect(() => {
         dispatch(getCurrentReviews())
-        return () => dispatch(reset())
+        // return () => dispatch(reset())
     }, [dispatch])
     if (reviews === undefined || !Object.values(reviews).length) {
         return (

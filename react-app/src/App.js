@@ -102,11 +102,14 @@ function App() {
           </Carousel>
         </Route>
 
+
+        <Route search={search} path='/businesses/:businessId' exact={true}>
+          <BusinessNavBar setSearch={setSearch} />
+          <BusinessDetails />
+        </Route>
+
         <Route path='/reviews/:reviewId/edit' exact={true}>
           <UpdateBusinessReview />
-        </Route>
-        <Route path='/businesses/:businessId' exact={true}>
-          <BusinessDetails />
         </Route>
 
         <Route path='/businesses/:businessId/writeareview' exact={true}>
@@ -117,17 +120,18 @@ function App() {
           <UpdateBusiness/>
         </Route>
 
-
         <Route exact path='/user-profile/businesses' >
           <BusinessNavBar setSearch={setSearch} />
           <UserProfile />
           <CurrentUserBusinesses />
         </Route>
+
         <Route exact path='/user-profile/reviews' >
           <BusinessNavBar setSearch={setSearch} />
           <UserProfile />
           <CurrentUserReviews />
         </Route>
+
         <Route path='/businesses'>
           <BusinessNavBar setSearch={setSearch} />
           <BusinessCard search={search}  exact={true} />
