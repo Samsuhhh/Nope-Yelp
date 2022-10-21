@@ -11,6 +11,8 @@ const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -42,22 +44,28 @@ const LoginForm = () => {
       <div className="sign-up-form-wrapper">
         <div className="login-and-image">
           <form onSubmit={onLogin}>
-            <div>
-              {errors.map((error, ind) => (
+            <div>* These are required fields
+              {/* {errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
-              ))}
+              ))} */}
             </div>
             <div id="input-space">
+              <div className='signup-error-text'>
+              {errors.filter(error => error.includes("email"))+"*"}
+              </div>
               <input
                 id="login-email-input"
                 name='email'
-                type='text'
+                type='email'
                 placeholder='Email'
                 value={email}
                 onChange={updateEmail}
               />
             </div>
             <div id="input-space">
+            <div className='signup-error-text'>
+              {errors.filter(error => error.includes("password"))+"*"}
+              </div>
               <input
                 id="login-password-input"
                 name='password'
