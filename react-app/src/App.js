@@ -14,14 +14,14 @@ import HomeSlider from './components/Businesses/HomePage/imageSlider';
 import RecentActivity from './components/Businesses/HomePage/recentActivity';
 import UpdateBusinessReview from './components/Reviews/UpdateBusinessReview';
 import BusinessReview from './components/Reviews/BusinessReviews';
-
+import CurrentUserReviews from './components/Reviews/CurrentUserReviews';
 import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
 import AddBusiness from './components/Businesses/AddBusiness';
 import Carousel, { CarouselItem } from './components/Businesses/BusinessDetails/Carousel';
 import BusinessNavBar from './components/Businesses/BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar';
 import CreateBusiness from './components/Businesses/CreateBusiness';
 import UserProfile from './components/UserProfile';
-
+import CurrentUserBusinesses from './components/Businesses/CurrentUserBusinesses';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [search, setSearch] = useState([])
@@ -101,9 +101,15 @@ function App() {
         </Route>
 
 
-        <Route path='/user-profile' exact={true}>
+        <Route exact path='/user-profile/businesses' >
           <BusinessNavBar setSearch={setSearch} />
           <UserProfile />
+          <CurrentUserBusinesses />
+        </Route>
+        <Route exact path='/user-profile/reviews' >
+          <BusinessNavBar setSearch={setSearch} />
+          <UserProfile />
+          <CurrentUserReviews />
         </Route>
         <Route path='/businesses'>
           <BusinessNavBar setSearch={setSearch} />

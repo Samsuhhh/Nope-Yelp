@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { useLocation } from "react-router-dom"
 import React from 'react'
 import './UserProfile.css'
 import CurrentUserReviews from "../Reviews/CurrentUserReviews"
@@ -8,8 +9,15 @@ const UserProfile = () => {
   const user = useSelector(state => state.session.user)
   const reviews = useSelector(state => state.reviews.user)
   const businesses = useSelector(state => state.businesses.allBusinesses)
-  const currUserBiz = Object.values(businesses)
-  console.log("hi", businesses[businesses.owner_id]===user.id)
+  const path = useLocation().pathname
+  console.log(path)
+  let businessCount = 0
+
+  Object.values(businesses).map(business =>{
+    if (business.owner_id === user.id) businessCount++
+    return businessCount
+  })
+
 
 
   return (
@@ -22,16 +30,19 @@ const UserProfile = () => {
             <div>
               <h1>{user.firstName} {user.lastName}</h1>
               <h4>{user.email}</h4>
-              <h4>{Object.values(reviews).length} reviews {Object.values(businesses).length}</h4>
+              <h4>{Object.values(reviews).length} Reviews | {businessCount} Businesses</h4>
               <div>
-                <span>My Reviews</span>
-                <span>My Businesses</span>
+                <span>
+                  <button>My Reviews</button>
+                  </span>
+                <span>
+                  <button>My Businesses</button>
+                </span>
               </div>
             </div>
           </div>
 
-          <CurrentUserReviews />
-          <CurrentUserBusinesses businesses={businesses}/>
+
         </div>
 
       </div>

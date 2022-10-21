@@ -77,14 +77,14 @@ const CurrentUserReviews = () => {
                                                 <div>
                                                     <NavLink to="/businesses/edit">
 
-                                                        <button  id="edit-review-btn-current-user-reviews" >
-                                                            <img className="current-user-review-action-btns"alt='edit me' src={editicon}>
+                                                        <button id="edit-review-btn-current-user-reviews" >
+                                                            <img className="current-user-review-action-btns" alt='edit me' src={editicon}>
                                                             </img>
                                                         </button>
                                                     </NavLink>
                                                 </div>
                                                 <div>
-                                                    <button  id="delete-review-btn-current-user-reviews" onClick={() => dispatch(removeReview(review.id))}>
+                                                    <button id="delete-review-btn-current-user-reviews" onClick={() => dispatch(removeReview(review.id))}>
                                                         <img className="current-user-review-action-btns" alt='eviscerate me' src={trashcan}>
                                                         </img>
                                                     </button>

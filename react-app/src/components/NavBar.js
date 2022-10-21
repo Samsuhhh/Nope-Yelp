@@ -115,7 +115,7 @@ const NavBar = ({ setSearch }) => {
                     </div> */}
                   </div>
                   <div id="dropdown-links-container">
-                    <Link id="about-link" to={`/user-profile`}>
+                    <Link id="about-link" to={`/user-profile/reviews`}>
                       <div className="dropdown-links" id="dropdown-links-business-navbar">
                         <img className='icon-img-asset' id="icon-img-business-navbar" alt='abt me' src={userprofileicon} />
                         <div>About Me</div>
