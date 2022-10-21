@@ -27,17 +27,19 @@ import info from "../../../assets/addbusiness/featureicons/info-icon.svg"
 import defpp from "../../../assets/businessdetails/defaultprofile.jpg"
 
 
-const BusinessDetails = () => {
+const BusinessDetails = ({onClose}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const params = useParams();
     const { businessId } = params;
     const business = useSelector(state => state.businesses.singleBusiness);
-    const currentUser = useSelector(state => state.session.user)
-    const reviewsObj = useSelector(state => state?.reviews.business)
-    let existingReview
-    const existingReviews = Object.values(reviewsObj)
-    const [isLoaded, setIsLoaded] = useState(false)
+    const currentUser = useSelector(state => state.session.user);
+    const reviewsObj = useSelector(state => state?.reviews.business);
+    let existingReview;
+    const existingReviews = Object.values(reviewsObj);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [showPhotosModal, setShowPhotosModal] = useState(false);
+
     // const [img, setImg] = useState()
     // console.log('user', currentUser)
     // console.log('busi', business)
@@ -165,7 +167,7 @@ const BusinessDetails = () => {
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })
 
-    }, [dispatch, businessId, existingReviews.length])
+    }, [dispatch, businessId, existingReviews.length, showPhotosModal])
 
     let numReviews = business.reviewCount === 1 ? "Review" : "Reviews"
     let numPhotos = business?.BusinessImages?.length === 1 ? "Photo" : "Photos"
@@ -214,7 +216,9 @@ const BusinessDetails = () => {
                             </div>
                             <div id='business-details-info-price-tags'>
                                 <div className='info-price-tags'>
-                                    {priceSetter(business.price_range)} &bull; {`${business.tags[0].tag}, ${business.tags[1].tag}, ${business.tags[2].tag}`}
+                                    <div id='claimed'></div>
+                                    {/* Claimed div not done just leaving as a reminder */}
+                                    Claimed &bull; {priceSetter(business.price_range)} &bull; {`${business.tags[0].tag}, ${business.tags[1].tag}, ${business.tags[2].tag}`}
                                 </div>
                             </div>
                             <div className='info-price-tags'>
