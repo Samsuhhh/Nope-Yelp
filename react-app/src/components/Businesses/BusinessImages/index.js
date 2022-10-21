@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { removeBusinessImage } from '../../../store/business'
+import trash from '../../../assets/icons/trash-can.svg'
 import './BusinessImages.css'
 
 export default function BusinessImages() {
@@ -11,16 +12,16 @@ export default function BusinessImages() {
 
 
     return (
-        <div>
+        <div id="modal-children-wrapper">
             {business.BusinessImages && (
-                <div>
+                <div id="modal-children">
                     {business.BusinessImages.map(image => (
-                        <div key={image.id}>
-                            <img alt='yes' src={image.url}></img>
+                        <div id="gridded-modal-item" key={image.id}>
+                            <img id="modal-image" alt='yes' src={image.url}></img>
                             <div>{(user && user.id === business.owner_id) && (
-                                <button onClick={() =>
+                                <button id="modal-delete-img" onClick={() =>
                                 dispatch(removeBusinessImage(image.id))}>
-                                    Delete Image
+                                    <img id="modal-trash-icon" src={trash} />
                                 </button>
                             )}</div>
                         </div>

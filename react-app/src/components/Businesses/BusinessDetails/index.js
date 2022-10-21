@@ -15,6 +15,7 @@ import { Modal } from '../../../context/Modal';
 import linkIcon from '../../../assets/icons/external-linkicon.svg'
 import phoneIcon from '../../../assets/icons/phoneicon.svg'
 import emailIcon from '../../../assets/icons/emailicon.svg'
+import xicon from '../../../assets/icons/x-icon.svg'
 
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
@@ -178,9 +179,21 @@ const BusinessDetails = ({ search, onClose }) => {
     let numPhotos = business?.BusinessImages?.length === 1 ? "Photo" : "Photos"
 
     return isLoaded && (
+        <>
+        {showPhotosModal && (
+                <Modal id='photo-modal' onClose={() => setShowPhotosModal(false)}>
+                    <div id="close-modal" onClick={() => setShowPhotosModal(false)}>
+                        Close <img id="close-modal-icon" src={xicon} />
+                    </div>
+                    <div>
+                        <BusinessImages></BusinessImages>
+                    </div>
+                </Modal>
+            )}
+
         <div id='business-details-page'>
             <div id='whitespacetop'></div>
-            {showPhotosModal && (
+            {/* {showPhotosModal && (
                 <Modal id='photo-modal' onClose={() => setShowPhotosModal(false)}>
                     <div onClick={() => setShowPhotosModal(false)}>
                         Insert X here
@@ -189,7 +202,7 @@ const BusinessDetails = ({ search, onClose }) => {
                         <BusinessImages></BusinessImages>
                     </div>
                 </Modal>
-            )}
+            )} */}
             {/* <BusinessNavBar /> */}
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
@@ -443,6 +456,7 @@ const BusinessDetails = ({ search, onClose }) => {
             <div id="whitespacetop"></div>
             <Footer />
         </div>
+        </>
     )
 
 }

@@ -32,6 +32,7 @@ const BusinessNavBar = ({ setSearch }) => {
     dispatch(getAllBusinessesThunk())
   }, [dispatch])
 
+
   const fuse = new Fuse(Object.values(businesses), options)
   const results = fuse.search(query)
   const businessResults = results.map(result => result.item).slice(0, 15)
