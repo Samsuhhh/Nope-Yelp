@@ -44,7 +44,7 @@ const LoginForm = () => {
       <div className="sign-up-form-wrapper">
         <div className="login-and-image">
           <form onSubmit={onLogin}>
-            <div>* These are required fields
+            <div className="required-fields-text">* These fields are required
               {/* {errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
               ))} */}
