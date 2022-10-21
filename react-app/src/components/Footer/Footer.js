@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import css from '../../assets/icons/CSS.svg';
+// import css from '../../assets/icons/CSS.svg';
 import py from '../../assets/icons/Python.svg';
 import docker from '../../assets/icons/Docker.svg';
 import flask from '../../assets/icons/Flask.svg';
@@ -47,14 +47,14 @@ function Footer() {
                     </div>
                     <div className='footer-grid-comp'>
                         <ul>Technologies Used</ul>
-                        <li><img src={py}/>Python</li>
-                        <li><img src={flask}/>Flask</li>
-                        <li><img src={js}/>JavaScript</li>
-                        <li><img src={rct}/>React</li>
-                        <li><img src={rdx}/>Redux</li>
-                        <li><img src={postg}/>Postgres</li>
-                        <li><img src={sql}/>SQLite</li>
-                        <li><img src={docker}/>Docker</li>
+                        <li><img alt='tech icon' src={py}/>Python</li>
+                        <li><img alt='tech icon' src={flask}/>Flask</li>
+                        <li><img alt='tech icon' src={js}/>JavaScript</li>
+                        <li><img alt='tech icon' src={rct}/>React</li>
+                        <li><img alt='tech icon' src={rdx}/>Redux</li>
+                        <li><img alt='tech icon' src={postg}/>Postgres</li>
+                        <li><img alt='tech icon' src={sql}/>SQLite</li>
+                        <li><img alt='tech icon' src={docker}/>Docker</li>
                     </div>
                     <div className='footer-grid-comp'>
                     <ul>Languages</ul>
@@ -65,9 +65,9 @@ function Footer() {
                 </div>
                 <div className='footer-copyright'>
                 Copyright © 2004-2022 Nope Inc. Nope,
-                <img id="footer-logo" src={nope}/>
+                <img id="footer-logo" src={nope} alt='foot logo'/>
                 ,
-                <img id="footer-logo" src={logo16}/>
+                <img id="footer-logo" src={logo16} alt='foot logo'/>
                 , and related marks are registered trademarks of Nope.
                 </div>
             </div>
