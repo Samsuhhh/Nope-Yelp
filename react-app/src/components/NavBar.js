@@ -121,9 +121,9 @@ const NavBar = ({ setSearch }) => {
                         <div>About Me</div>
                       </div>
                     </Link>
-                    <div className="dropdown-links" id="dropdown-links-business-navbar">
+                    <div onClick={logout} className="dropdown-links" id="dropdown-links-business-navbar">
                       <img className='icon-img-asset' id="icon-img-business-navbar" alt='logout icon' src={logouticon} />
-                      <div onClick={logout}>Log Out</div>
+                      <div >Log Out</div>
                     </div>
                   </div>
                 </div>

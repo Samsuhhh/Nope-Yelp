@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { useLocation } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import React from 'react'
 import './UserProfile.css'
 import CurrentUserReviews from "../Reviews/CurrentUserReviews"
@@ -9,8 +9,7 @@ const UserProfile = () => {
   const user = useSelector(state => state.session.user)
   const reviews = useSelector(state => state.reviews.user)
   const businesses = useSelector(state => state.businesses.allBusinesses)
-  const path = useLocation().pathname
-  console.log(path)
+
   let businessCount = 0
 
   Object.values(businesses).map(business =>{
@@ -33,10 +32,16 @@ const UserProfile = () => {
               <h4>{Object.values(reviews).length} Reviews | {businessCount} Businesses</h4>
               <div>
                 <span>
+                  <NavLink to={`/user-profile/reviews`}>
+
                   <button>My Reviews</button>
+                  </NavLink >
                   </span>
                 <span>
+                  <NavLink to={`/user-profile/businesses`}>
+
                   <button>My Businesses</button>
+                  </NavLink>
                 </span>
               </div>
             </div>
