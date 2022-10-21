@@ -26,9 +26,11 @@
   flex-direction: column;
 }
 #review-card-current-user-reviews{
-  margin:50px 10px 0px 10px;
+  position: relative;
+  bottom: 100px;
   width: 700px;
-
+  
+  left: 170px;
   border-bottom: 1px solid lightgrey;
 }
 
@@ -51,6 +53,7 @@
 }
 #delete-review-btn-current-user-reviews{
   margin-left: 1px;
+  cursor: pointer;
 }
 
 #nopes-date-container-container-user-reviews{
@@ -66,4 +69,5 @@
 .current-user-review-action-btns{
   height:25px;
   width:20px;
+  cursor: pointer;
 }

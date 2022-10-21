@@ -75,7 +75,7 @@ const CurrentUserReviews = () => {
                                         {(user && user.id === review.user_id) && (
                                             <div id="review-actions-current-user-reviews">
                                                 <div>
-                                                    <NavLink to="/businesses/edit">
+                                                    <NavLink to={`/reviews/${review.id}/edit`}>
 
                                                         <button id="edit-review-btn-current-user-reviews" >
                                                             <img className="current-user-review-action-btns" alt='edit me' src={editicon}>

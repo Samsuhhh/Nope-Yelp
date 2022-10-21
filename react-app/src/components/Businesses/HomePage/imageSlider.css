@@ -213,15 +213,15 @@ a:active { text-decoration: none; }
 
 .navbar {
     font-family: 'Open-Sans', sans-serif;
-    display: flex;
+    display: flex;background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgb(13, 0, 255) 0%, rgb(77, 255, 0) 42%, rgb(255, 16, 219) 100%);
+
     justify-content: space-between;
     align-items: center;
     height: 50px;
     margin-top: 1%;
     margin-left: 5%;
     margin-right: 5%;
-    /* background: rgb(2,0,36);
-    background: linear-gradient(180deg, rgba(2,0,36,.2) 0%, rgba(64,64,66,.4) 42%, rgba(255,255,255,.2) 100%); */
 
 
 }
@@ -341,6 +341,7 @@ a:active { text-decoration: none; }
     width: 960px;
     font-size: 0;
     line-height: normal;
+
   }
 
   .left-side {
