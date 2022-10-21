@@ -14,10 +14,10 @@ const AddBusinessReview = () => {
 
     const user = useSelector(state => state.session.user)
     const business = useSelector(state => state.businesses)
-    const {businessId} = useParams()
+    const { businessId } = useParams()
 
     const [review, setReview] = useState('')
-    const [nopes, setNopes] = useState('1')
+    const [nopes, setNopes] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
     // const [selected, setSelected] = useState(false)
@@ -34,7 +34,10 @@ const AddBusinessReview = () => {
     ]
 
     const selectedNopes = (n) => {
-        return () => document.getElementById('nope-selector').className = nopeClass[n]
+        return () => {
+            document.getElementById('nope-selector').className = nopeClass[n]
+            setNopes(n + 1)
+        }
     }
 
 
@@ -42,6 +45,7 @@ const AddBusinessReview = () => {
     useEffect(() => {
         const errors = []
         if (review.length < 4 || review.length > 3000) errors.push("Review must be between 4 and 3000 characters")
+        if (nopes < 1) errors.push("Please select a rating")
         setValidationErrors(errors)
     }, [review, nopes])
 
@@ -52,7 +56,7 @@ const AddBusinessReview = () => {
         if (!validationErrors.length) {
             const payload = {
                 review,
-                nope: +nopes
+                nope: nopes
             }
 
             let createdReview = await dispatch(createReview(payload, businessId))
@@ -89,8 +93,8 @@ const AddBusinessReview = () => {
                         <div className="nopes-and-review-wrapper">
                             <div id="nope-selector" className='nopes'>
                                 <span
-                                    value={'1'}
-                                    onChange={updateNopes}
+                                    value='5'
+                                    // onChange={updateNopes}
                                     required
                                     onClick={selectedNopes(4)}
                                 >
@@ -99,16 +103,16 @@ const AddBusinessReview = () => {
 
                                 <span
                                     onClick={selectedNopes(3)}
-                                    value={2}
+                                    value='4'
                                     required
-                                    onChange={updateNopes}
+                                    // onChange={updateNopes}
                                 >
                                     <img src={ratingimg} />
                                 </span>
 
                                 <span
                                     onClick={selectedNopes(2)}
-                                    value={3}
+                                    value='3'
                                     required
                                     onChange={updateNopes}
                                 >
@@ -117,18 +121,18 @@ const AddBusinessReview = () => {
 
                                 <span
                                     onClick={selectedNopes(1)}
-                                    value={4}
+                                    value='2'
                                     required
-                                    onChange={updateNopes}
+                                    // onChange={updateNopes}
                                 >
                                     <img src={ratingimg} />
                                 </span>
 
                                 <span
                                     onClick={selectedNopes(0)}
-                                    value={5}
+                                    value='1'
                                     required
-                                    onChange={updateNopes}
+                                    // onChange={updateNopes}
                                 >
                                     <img src={ratingimg} />
                                 </span>

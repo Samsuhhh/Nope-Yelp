@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -21,12 +21,16 @@ import Carousel, { CarouselItem } from './components/Businesses/BusinessDetails/
 import BusinessNavBar from './components/Businesses/BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar';
 import CreateBusiness from './components/Businesses/CreateBusiness';
 import UpdateBusiness from './components/Businesses/UpdateBusiness';
-
+import UserProfile from './components/UserProfile';
+import BusinessImages from './components/Businesses/BusinessImages';
+import AddBusinessImage from './components/Businesses/AddBusinessImage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [search, setSearch] = useState([])
+  const singleBusiness = useSelector(state => state.businesses.singleBusiness)
   const dispatch = useDispatch();
+  // const reviews = useSelector(state => state.reviews.business)
 
   useEffect(() => {
     (async () => {
@@ -66,7 +70,10 @@ function App() {
           <RecentActivity />
           <HomeSlider />
         </Route>
-
+        <Route path='/user-profile' exact={true}>
+          <BusinessNavBar setSearch={setSearch} />
+          <UserProfile />
+        </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
@@ -77,6 +84,14 @@ function App() {
 
         <Route path='/businesses/new' exact={true}>
           <AddBusiness />
+        </Route>
+
+        <Route path='/businesses/:businessId/images' exact={true}>
+          <BusinessImages></BusinessImages>
+        </Route>
+
+        <Route path='/businesses/:businessId/images/new' exact={true}>
+          <AddBusinessImage></AddBusinessImage>
         </Route>
 
         <Route path='/createabusiness' exact={true}>
