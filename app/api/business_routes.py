@@ -27,7 +27,8 @@ def get_all_businesses():
   business_lst = [{"placeholder":"placehodor"}]
   for business in businesses:
     business_dict = business.to_dict()
-    images = BusinessImage.query.get(business.id)
+    images = BusinessImage.query.filter(BusinessImage.business_id == business.id).first()
+    print('\n\n\n\n\ images', images)
     images_dict =images.to_dict()
     business_dict["images"] = images_dict
     business_dict['tags'] = [tag.to_dict() for tag in business.tags]

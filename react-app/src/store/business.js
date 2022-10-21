@@ -53,16 +53,18 @@ const removeImage = imageId => ({
 // THUNK action creators
 export const getAllBusinessesThunk = () => async (dispatch) => {
   const response = await fetch("/api/businesses/");
-  const businessData = await response.json();
+  console.log('response in get all business thunk', response)
 
   if (response.ok) {
+    const businessData = await response.json();
     console.log('Get All businesses Thunk data', businessData)
     await dispatch(loadAll(businessData));
+    return businessData
   }
   else {
     console.log("-----Get All Business Thunk Error-----");
   }
-  return businessData;
+  return;
 };
 
 export const getCurrentUserBusinessesThunk = () => async (dispatch) => {
