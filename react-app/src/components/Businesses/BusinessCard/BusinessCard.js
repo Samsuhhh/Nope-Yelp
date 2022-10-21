@@ -127,12 +127,12 @@ export default function BusinessCard({ search }) {
 
         <div id="center-div-container">
           <div id="middle-div-list-container" >
-            {!businessList.length && (
+            {!businessList?.length && (
               <div id="no-results-message">
                 <h2>Looks like no businesses match your search</h2>
               </div>
             )}
-            {!!businessList.length && Object.values(businessList || search).map((business, i) => {
+            {!!businessList?.length && Object.values(businessList || search).map((business, i) => {
               let about = business.about
               business.about.length > 180 ? about = business.about.slice(0, 180) + "..." : about = business.about
               return (
