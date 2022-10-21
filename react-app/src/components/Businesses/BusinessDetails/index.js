@@ -24,6 +24,7 @@ import nope from "../../../assets/nopes/0-nopes.png"
 import whiteNope from "../../../assets/nopes/ratingimg.png"
 import camera from "../../../assets/addbusiness/featureicons/camera-icon.svg"
 import info from "../../../assets/addbusiness/featureicons/info-icon.svg"
+import defpp from "../../../assets/businessdetails/defaultprofile.jpg"
 
 
 const BusinessDetails = () => {
@@ -278,17 +279,53 @@ const BusinessDetails = () => {
 
                         </div>
                         <div id='current-user-review-space-between'>
-                            <div id='left-user-review-info'>
-                                {/* <img id='owner-avatar' src={currentUser.userAvatar}</img> */}
-                                <div>
-                                    <div>{currentUser?.username}</div>
-                                    <div>{currentUser?.firstName} {currentUser?.lastName}</div>
+                        {currentUser && currentUser.id === business.owner_id && (
+                                <div id='left-user-review-info'>
+
+                                    <img id='owner-avatar' src={currentUser.userAvatar}></img>
+                                    <div>
+                                        <div id="left-user-name-styling">{currentUser.username}</div>
+                                        <div>{currentUser.firstName} {currentUser.lastName}</div>
+                                    </div>
+
+                                    <div id='right-user-review-info'>
+                                        <div><img id="review-info-nope" src={nope} /></div>
+                                        <div>You cannot review your own business, {business.business_name}</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id='right-user-review-info'>
-                                <div>nopes</div>
-                                <div>Start your review of {business.business_name}</div>
-                            </div>
+                            )}
+
+                            {currentUser && currentUser.id !== business.owner_id && (
+                                <div id='left-user-review-info'>
+
+                                    <img id='owner-avatar' src={currentUser.userAvatar}></img>
+                                    <div>
+                                        <div id="left-user-name-styling">{currentUser.username}</div>
+                                        <div>{currentUser.firstName} {currentUser.lastName}</div>
+                                    </div>
+
+                                    <div id='right-user-review-info'>
+                                        <div><img id="review-info-nope" src={nope} /></div>
+                                        <div>Your current review of {business.business_name}</div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {!currentUser && (
+                                <div id='left-user-review-info'>
+
+                                    <img id='owner-avatar' src={defpp}></img>
+                                    <div>
+                                        <div id="left-user-username-styling">Username</div>
+                                        <div>First name Last name</div>
+                                    </div>
+
+                                    <div id='right-user-review-info'>
+                                        <div><img id="review-info-nope" src={nope} /></div>
+                                        <div>You must sign in to review {business.business_name}</div>
+                                    </div>
+                                </div>)}
+
                         </div>
                         <div id='reviews-analytics-container'>
                             <div id='overall-ratings'>
@@ -359,7 +396,6 @@ const BusinessDetails = () => {
                     </div>
                 </div>
             </div>
-            <div id="whitespacetop"></div>
             <div id="whitespacetop"></div>
             <Footer />
         </div>

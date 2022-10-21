@@ -15,7 +15,6 @@
 #business-details-header-images {
     width: 100%;
     height: 460px;
-    border: 5px solid black;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -164,7 +163,6 @@
 #details-content {
     width: 45%;
     height: 100%;
-    border: 1px solid red;
 }
 
 
@@ -174,7 +172,6 @@
     height: 50px;
     font-family: "Open Sans";
     align-items: center;
-    border: red 1px solid;
 
     /* padding: 10px; */
 }
@@ -254,14 +251,12 @@
 #business-details-amenities-container {
     width: 100%;
     height: 250px;
-    border: 1px solid red;
 
 }
 
 #business-details-about-container {
     width: 100%;
     height: 230px;
-    border: 1px solid blue;
     font-family: 'Open Sans';
 }
 
@@ -318,9 +313,9 @@
 }
 
 #owner-avatar {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+    width: 60px;
+    border-radius: 9999px;
+    margin-right: 10px;
 }
 
 #business-details-owner-name {
@@ -351,26 +346,41 @@
 
 #current-user-review-space-between {
     display: flex;
+    align-items: center;
+    width: 100%;
+    height: 115px;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+#review-info-nope {
+    height: 32px;
 }
 
 #left-user-review-info {
     display: flex;
+    align-items: center;
+}
+
+#left-user-username-styling {
+    font-weight: 700;
 }
 
 #reviews-analytics-container {
     display: flex;
     width: 100%;
     height: 100%;
-    border: 1px solid purple;
     font-family: 'Open Sans';
     /* justify-content: space-between; */
 }
 
 
 #overall-ratings {
-    border: 1px solid red;
+    font-size: 15px;
     justify-self: flex-end;
     margin-right: 120px;
     display: flex;
@@ -385,6 +395,7 @@
 
 #overall-ratings-big-nopes-review-count {
     margin-top: 5px;
+    color: gray;
 }
 
 #dynamic-horizontal-reviews {
@@ -396,6 +407,7 @@
 
 
 .star-tag-div {
+    font-size: 14px;
     width: 15%;
     display: flex;
     justify-content: center;
@@ -418,7 +430,7 @@
 }
 
 #dbar-5 {
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
     height: 30%;
     width: 100%;
     border: none;
@@ -426,7 +438,7 @@
 }
 
 #dbar-4 {
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
     height: 30%;
     width: 100%;
     border: none;
@@ -434,7 +446,7 @@
 }
 
 #dbar-3 {
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
     height: 30%;
     width: 100%;
     border: none;
@@ -442,7 +454,7 @@
 }
 
 #dbar-2 {
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
     height: 30%;
     width: 100%;
     border: none;
@@ -450,7 +462,7 @@
 }
 
 #dbar-1 {
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
     height: 30%;
     width: 100%;
     border: none;
@@ -461,7 +473,6 @@
 
 .dynamic-stars {
     width: 100%;
-    border: 1px solid green;
     display: flex;
     height: 30px;
     align-items: center;
