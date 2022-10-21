@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import './BusinessCard.css'
+import BusinessNavBar from "../BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar"
 import Fuse from 'fuse.js'
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
@@ -55,6 +56,8 @@ export default function BusinessCard({ search }) {
   }, [businessList,])
   if (!search.length) return (<h1>No results for this search</h1>)
   return (
+    <>
+      
     <div id="main-div-business-card">
       {/* LEFT DIV START */}
       <div id="left-div-business-card">
@@ -154,7 +157,6 @@ export default function BusinessCard({ search }) {
                   </div>
                 </div>
               </Link>
-
             )
           })}
         </div>
@@ -164,5 +166,7 @@ export default function BusinessCard({ search }) {
       {/* RIGHT DIV START */}
       <div>Map Will Go Here...eventually</div>
     </div>
+          </>
+
   )
 }

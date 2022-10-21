@@ -49,8 +49,8 @@ const BusinessNavBar = ({ setSearch }) => {
     const results = fuse.search(document.getElementById("search-input-field").value).slice(0, 15)
     console.log("fuse search results in nav bar", results)
     const businessResults = results.map(result => result.item)
-    return setSearch(businessResults)
-
+    setSearch(businessResults)
+    return history.push("/businesses")
 
   }
 
@@ -117,12 +117,12 @@ const BusinessNavBar = ({ setSearch }) => {
                     </div> */}
                   </div>
                   <div id="dropdown-links-container">
-                    <div className="dropdown-links" id="dropdown-links-business-navbar">
-                      <img className='icon-img-asset' id="icon-img-business-navbar" alt='abt me' src={userprofileicon} />
-                      <Link id="about-link" to={`/user-profile`}>
+                    <Link id="about-link" to={`/user-profile`}>
+                      <div className="dropdown-links" id="dropdown-links-business-navbar">
+                        <img className='icon-img-asset' id="icon-img-business-navbar" alt='abt me' src={userprofileicon} />
                         <div>About Me</div>
-                      </Link>
-                    </div>
+                      </div>
+                    </Link>
                     <div className="dropdown-links" id="dropdown-links-business-navbar">
                       <img className='icon-img-asset' id="icon-img-business-navbar" alt='logout icon' src={logouticon} />
                       <div onClick={logout}>Log Out</div>

@@ -12,7 +12,7 @@ import BusinessDetails from './components/Businesses/BusinessDetails';
 import AddBusinessReview from './components/Reviews/AddBusinessReview'
 import HomeSlider from './components/Businesses/HomePage/imageSlider';
 import RecentActivity from './components/Businesses/HomePage/recentActivity';
-
+import UpdateBusinessReview from './components/Reviews/UpdateBusinessReview';
 import BusinessReview from './components/Reviews/BusinessReviews';
 
 import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
@@ -65,10 +65,6 @@ function App() {
           <RecentActivity />
           <HomeSlider />
         </Route>
-        <Route path='/user-profile' exact={true}>
-          <BusinessNavBar setSearch={setSearch} />
-          <UserProfile />
-        </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
@@ -93,6 +89,9 @@ function App() {
           </Carousel>
         </Route>
 
+        <Route path='/businesses/edit' exact={true}>
+          <UpdateBusinessReview />
+        </Route>
         <Route path='/businesses/:businessId' exact={true}>
           <BusinessDetails />
         </Route>
@@ -101,9 +100,14 @@ function App() {
           <AddBusinessReview />
         </Route>
 
-        <Route>
+
+        <Route path='/user-profile' exact={true}>
           <BusinessNavBar setSearch={setSearch} />
-          <BusinessCard search={search} path='/businesses' exact={true} />
+          <UserProfile />
+        </Route>
+        <Route path='/businesses'>
+          <BusinessNavBar setSearch={setSearch} />
+          <BusinessCard search={search}  exact={true} />
         </Route>
 
 

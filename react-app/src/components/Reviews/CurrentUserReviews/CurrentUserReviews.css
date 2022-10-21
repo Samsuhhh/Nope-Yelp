@@ -59,3 +59,8 @@
 #review-body-text-current-user-reviews{
   padding-top:10px;
 }
+
+.current-user-review-action-btns{
+  height:25px;
+  width:20px;
+}

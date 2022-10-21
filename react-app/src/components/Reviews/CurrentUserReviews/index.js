@@ -2,13 +2,16 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCurrentReviews, removeReview, reset } from '../../../store/review'
 import { NavLink } from 'react-router-dom'
-import './CurrentUserReviews.css'
+import editicon from '../../../assets/icons/edit-pen.svg'
+import trashcan from '../../../assets/icons/trash-can.svg'
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
 import nopes2 from "../../../assets/nopes/2-nopes.png"
 import nopes1 from "../../../assets/nopes/1-nopes.png"
 import nopes0 from "../../../assets/nopes/0-nopes.png"
+import './CurrentUserReviews.css'
+
 const CurrentUserReviews = () => {
     const dispatch = useDispatch()
 
@@ -44,7 +47,7 @@ const CurrentUserReviews = () => {
             <div>
                 {reviews && Object.values(reviews)?.length &&
                     <div id="reviews-list-main-container">
-                        <h2>Your Reviews</h2>
+
 
                         <div>
                             {Object.values(reviews)?.map(review => (
@@ -71,8 +74,21 @@ const CurrentUserReviews = () => {
                                         <div id="review-body-text-current-user-reviews">{review.review}</div>
                                         {(user && user.id === review.user_id) && (
                                             <div id="review-actions-current-user-reviews">
-                                                <button id="edit-review-btn-current-user-reviews" onClick={() => dispatch(removeReview(review.id))}>Edit Review</button>
-                                                <button id="delete-review-btn-current-user-reviews" onClick={() => dispatch(removeReview(review.id))}>Delete Review</button>
+                                                <div>
+                                                    <NavLink to="/businesses/edit">
+
+                                                        <button  id="edit-review-btn-current-user-reviews" >
+                                                            <img className="current-user-review-action-btns"alt='edit me' src={editicon}>
+                                                            </img>
+                                                        </button>
+                                                    </NavLink>
+                                                </div>
+                                                <div>
+                                                    <button  id="delete-review-btn-current-user-reviews" onClick={() => dispatch(removeReview(review.id))}>
+                                                        <img className="current-user-review-action-btns" alt='eviscerate me' src={trashcan}>
+                                                        </img>
+                                                    </button>
+                                                </div>
                                             </div>
                                         )}
                                     </div>

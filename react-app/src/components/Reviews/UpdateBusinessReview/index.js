@@ -41,7 +41,7 @@ const UpdateBusinessReview = () => {
 
             if (updatedReview) {
                 setShowErrors(false)
-                history.push(`/spots/${businessId}`)
+                history.push(`/businesses/${businessId}`)
             }
         }
     }
