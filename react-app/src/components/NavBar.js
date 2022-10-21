@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, Link } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { getAllBusinessesThunk } from '../store/business';
 import * as sessionActions from "../store/session"
@@ -10,6 +10,8 @@ import magglass from '../assets/icons/mag-glass.png';
 import Fuse from 'fuse.js'
 import BusinessCard from './Businesses/BusinessCard/BusinessCard';
 import emailIcon from '../assets/icons/emailicon.svg'
+import userprofileicon from '../assets/icons/userprofile.svg'
+import logouticon from '../assets/icons/logout.svg'
 const options = {
   findAllMatches: true,
   keys: [
@@ -102,18 +104,25 @@ const NavBar = ({ setSearch }) => {
                 <div id="dropdown-upper-div">
                   <div id="dropdown-sections">
                     <div className="dropdown-top-sections" id="profile-username">
-                      {sessionUser.username}
+                      Hello, {sessionUser.username}!
                     </div>
-                    <div className="dropdown-top-sections" id="dropdown-username">
+                    {/* <div className="dropdown-top-sections" id="dropdown-username">
                       {sessionUser.firstName}{" "}{sessionUser.lastName}
                     </div>
                     <div className="dropdown-top-sections" id="dropdown-email">
-                    <img className='icon-img-asset' alt='email icon' src={emailIcon} />
+                      <img className='icon-img-asset' alt='email icon' src={emailicon} />
                       {sessionUser.email}
-                    </div>
+                    </div> */}
                   </div>
                   <div id="dropdown-links-container">
-                    <div className="dropdown-links" >
+                    <div className="dropdown-links" id="dropdown-links-business-navbar">
+                      <img className='icon-img-asset' id="icon-img-business-navbar" alt='abt me' src={userprofileicon} />
+                      <Link id="about-link" to={`/user-profile`}>
+                        <div>About Me</div>
+                      </Link>
+                    </div>
+                    <div className="dropdown-links" id="dropdown-links-business-navbar">
+                      <img className='icon-img-asset' id="icon-img-business-navbar" alt='logout icon' src={logouticon} />
                       <div onClick={logout}>Log Out</div>
                     </div>
                   </div>
