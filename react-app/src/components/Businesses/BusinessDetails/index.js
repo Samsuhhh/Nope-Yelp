@@ -17,7 +17,6 @@ import phoneIcon from '../../../assets/icons/phoneicon.svg'
 import emailIcon from '../../../assets/icons/emailicon.svg'
 import editpen from '../../../assets/icons/edit-pen.svg'
 import trashcan from '../../../assets/icons/trash-can.svg'
-import { Modal } from '../../../context/Modal';
 
 import xicon from '../../../assets/icons/x-icon.svg'
 
