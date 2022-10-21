@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { createBusinessThunk, addBusinessImage } from '../../../store/business'
 import { Modal } from '../../../context/Modal'
 import './CreateBusiness.css'
+import xicon from '../../../assets/icons/x-icon.svg'
 
 const CreateBusiness = () => {
     const dispatch = useDispatch()
@@ -434,10 +435,12 @@ const CreateBusiness = () => {
 
                                 <Modal onClose={() => setShowTagModal(false)}>
                                     <div id='modal-header'>
-                                        <img alt='close-button' id='close-modal' onClick={exitModal}
-                                            src='https://cdn-icons-png.flaticon.com/512/2723/2723639.png' />
+                                        <div id="close-modal" onClick={exitModal}>
+                                            Close 
+                                            <img id="close-modal-icon" src={xicon} alt='close icon' />
+                                        </div>
                                         <div id='header-div'>
-                                            Select your tags
+                                            Select three tags
                                         </div>
                                     </div>
                                     <div id='modal-children-wrapper' className='grid-container'>
@@ -449,7 +452,9 @@ const CreateBusiness = () => {
                                                         type="checkbox"
                                                         onChange={handleCheck}
                                                         name={tag.title}
-                                                        value={tag.title} />
+                                                        value={tag.title}
+                                                        disabled={tagsList.length >= 3 }
+                                                        />
                                                     <label id='text-align-center'>{tag.title}</label>
                                                 </div>
                                             })}
