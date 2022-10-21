@@ -1,6 +1,6 @@
 import React from "react";
 import nope from '../../../assets/nope.png'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import Footer from '../../Footer/Footer'
 import './AddBusiness.css'
 import as1 from '../../../assets/addbusiness/add-business-asset-1.png'
@@ -42,7 +42,7 @@ function AddBusiness() {
                         <div className="create-business-ad-card-paragraph">
                             Explore free page features to connect with more customers
                         </div>
-                        <div className="create-business-ad-card-create-button">Manage my free listing</div>
+                        <NavLink to={'/createabusiness'} className="create-business-ad-card-create-button">Manage my free listing</NavLink>
                     </div>
                     <img src={as1} />
                 </div>
@@ -105,9 +105,9 @@ function AddBusiness() {
                                     Listing
                                 </div>
                                 <div className="item-unordered-list">
-                                    <br/>• 3 business tags
-                                    <br/>• Listing on Nope
-                                    <br/>• Search for listing
+                                    <br />• 3 business tags
+                                    <br />• Listing on Nope
+                                    <br />• Search for listing
                                 </div>
                             </div>
                             <div className="add-business-mid-features-trio-item">
@@ -116,9 +116,9 @@ function AddBusiness() {
                                     Contact
                                 </div>
                                 <div className="item-unordered-list">
-                                    <br/>• Phone number
-                                    <br/>• Address
-                                    <br/>• Map & directions
+                                    <br />• Phone number
+                                    <br />• Address
+                                    <br />• Map & directions
                                 </div>
                             </div>
                             <div className="add-business-mid-features-trio-item">
@@ -127,9 +127,9 @@ function AddBusiness() {
                                     Availability
                                 </div>
                                 <div className="item-unordered-list">
-                                    <br/>• Address
-                                    <br/>• About your business
-                                    <br/>• Service area
+                                    <br />• Address
+                                    <br />• About your business
+                                    <br />• Service area
                                 </div>
                             </div>
                         </div>
@@ -141,9 +141,9 @@ function AddBusiness() {
                                     Offerings
                                 </div>
                                 <div className="item-unordered-list">
-                                    <br/>• Services
-                                    <br/>• Website link
-                                    <br/>• Menu link
+                                    <br />• Services
+                                    <br />• Website link
+                                    <br />• Menu link
                                 </div>
                             </div>
                             <div className="add-business-mid-features-trio-item">
@@ -152,9 +152,9 @@ function AddBusiness() {
                                     Personal
                                 </div>
                                 <div className="item-unordered-list">
-                                    <br/>• History section
-                                    <br/>• About section
-                                    <br/>• Specialties
+                                    <br />• History section
+                                    <br />• About section
+                                    <br />• Specialties
                                 </div>
                             </div>
                             <div className="add-business-mid-features-trio-item">
@@ -163,9 +163,9 @@ function AddBusiness() {
                                     Attract
                                 </div>
                                 <div className="item-unordered-list">
-                                    <br/>• Unlimited photos with captions
-                                    <br/>• Deals & certificates
-                                    <br/>• Tags
+                                    <br />• Unlimited photos with captions
+                                    <br />• Deals & certificates
+                                    <br />• Tags
                                 </div>
                             </div>
                         </div>
@@ -177,9 +177,9 @@ function AddBusiness() {
                                     Connect
                                 </div>
                                 <div className="item-unordered-list">
-                                    <br/>• Phone calls
-                                    <br/>• Review messages
-                                    <br/>• Page visits & more
+                                    <br />• Phone calls
+                                    <br />• Review messages
+                                    <br />• Page visits & more
                                 </div>
                             </div>
                             <div className="add-business-mid-features-trio-item">
@@ -188,9 +188,9 @@ function AddBusiness() {
                                     Interactions
                                 </div>
                                 <div className="item-unordered-list">
-                                    <br/>• Receive customer reviews
-                                    <br/>• Respond to reviews
-                                    <br/>• Recent reviews
+                                    <br />• Receive customer reviews
+                                    <br />• Respond to reviews
+                                    <br />• Recent reviews
                                 </div>
                             </div>
                             <div className="add-business-mid-features-trio-item">
@@ -199,9 +199,9 @@ function AddBusiness() {
                                     Performance
                                 </div>
                                 <div className="item-unordered-list">
-                                    <br/>• Track page leads & more
-                                    <br/>• Tips, news, & trends
-                                    <br/>• Audience insights
+                                    <br />• Track page leads & more
+                                    <br />• Tips, news, & trends
+                                    <br />• Audience insights
                                 </div>
                             </div>
                         </div>
