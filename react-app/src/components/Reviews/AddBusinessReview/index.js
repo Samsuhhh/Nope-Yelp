@@ -43,9 +43,9 @@ const AddBusinessReview = () => {
 
 
     useEffect(() => {
-        console.log('nopes rating', nopes)
         const errors = []
         if (review.length < 4 || review.length > 3000) errors.push("Review must be between 4 and 3000 characters")
+        if (nopes < 1) errors.push("Please select a rating")
         setValidationErrors(errors)
     }, [review, nopes])
 

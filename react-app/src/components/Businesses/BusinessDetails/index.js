@@ -33,6 +33,8 @@ const BusinessDetails = () => {
     const { businessId } = params;
     const business = useSelector(state => state.businesses.singleBusiness);
     const currentUser = useSelector(state => state.session.user)
+    const existingReviews = useSelector(state => state?.reviews.business)
+    console.log('existing reviews', Object.values(existingReviews))
     const [isLoaded, setIsLoaded] = useState(false)
     // const [img, setImg] = useState()
 
@@ -150,7 +152,7 @@ const BusinessDetails = () => {
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })
 
-    }, [dispatch, businessId])
+    }, [dispatch, businessId, Object.values(existingReviews).length])
 
 
     return isLoaded && (
