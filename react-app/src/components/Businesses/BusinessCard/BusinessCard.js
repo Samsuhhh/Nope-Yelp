@@ -57,7 +57,7 @@ export default function BusinessCard({ search }) {
   if (!search.length) return (<h1>No results for this search</h1>)
   return (
     <>
-      
+
     <div id="main-div-business-card">
       {/* LEFT DIV START */}
       <div id="left-div-business-card">
@@ -147,8 +147,8 @@ export default function BusinessCard({ search }) {
                       </div>
                       <div id="business-card-grumble-count-div">({business.review_count} {" "}{business.review_count > 1 ? "Grumbles" : "Grumble"})</div>
                     </div>
-                    <div><button className="tag-button">Tag1</button>{" "}<button className="tag-button">Tag2</button>{" "}
-                      <button className="tag-button">Tag3</button>{" "}<span>{priceRange(business.price_range)} &#x2022;
+                    <div><button className="tag-button">{business.tags[0].tag}</button>{" "}<button className="tag-button">{business.tags[1].tag}</button>{" "}
+                      <button className="tag-button">{business.tags[2].tag}</button>{" "}<span>{priceRange(business.price_range)} &#x2022;
                       </span>{" "}<span>{business.city}</span></div>
                     <br></br>
 

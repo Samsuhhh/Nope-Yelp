@@ -180,7 +180,7 @@ const NavBar = ({ setSearch }) => {
           <div class="left-side">
             <form onSubmit={handleSearchSubmit}>
 
-              <input type="search" value={query} onChange={handleOnSearch} id="search-input-field-business-list" placeholder="tacos, cheap dinner, Max's" class="field request" />
+              <input type="search" value={query} onChange={handleOnSearch} id="search-input-field-business-list" placeholder="tacos, cheap dinner, Max's" className="field request" />
               {/* <ul class="left-side__sublist">
                 <li class="left-side__subitem" ><a  class="left-side__sublink restaraunts first">Restaurants</a></li>
                 <li class="left-side__subitem"><a  class="left-side__sublink bar">Breakfast & Brunch</a></li>
