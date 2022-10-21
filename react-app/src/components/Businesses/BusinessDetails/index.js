@@ -182,14 +182,14 @@ const BusinessDetails = ({ search, onClose }) => {
             .then(() => { setIsLoaded(true) })
 
 
-    }, [dispatch, businessId, existingReviews.length, showPhotosModal, reviews, ])
+    }, [dispatch, businessId, existingReviews.length, showPhotosModal, reviews,])
 
     let numReviews = business.reviewCount === 1 ? "Review" : "Reviews"
     let numPhotos = business?.BusinessImages?.length === 1 ? "Photo" : "Photos"
 
     return isLoaded && (
         <>
-        {showPhotosModal && (
+            {showPhotosModal && (
                 <Modal id='photo-modal' onClose={() => setShowPhotosModal(false)}>
                     <div id="close-modal" onClick={() => setShowPhotosModal(false)}>
                         Close <img id="close-modal-icon" src={xicon} />
@@ -200,9 +200,9 @@ const BusinessDetails = ({ search, onClose }) => {
                 </Modal>
             )}
 
-        <div id='business-details-page'>
-            <div id='whitespacetop'></div>
-            {/* {showPhotosModal && (
+            <div id='business-details-page'>
+                <div id='whitespacetop'></div>
+                {/* {showPhotosModal && (
                 <Modal id='photo-modal' onClose={() => setShowPhotosModal(false)}>
                     <div onClick={() => setShowPhotosModal(false)}>
                         Insert X here
@@ -212,22 +212,22 @@ const BusinessDetails = ({ search, onClose }) => {
                     </div>
                 </Modal>
             )} */}
-            {/* <BusinessNavBar /> */}
-            <div id='business-details-header-images'>
-                <div id='business-details-images-main'>
-                    <Carousel>
-                        {business.BusinessImages.map((image) =>
-                            <CarouselItem>
-                                <div className='carousel-images'>
-                                    <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
-                                    <img id="caro-img" alt='yes' src={image.url}></img>
-                                    <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
-                                </div>
-                            </CarouselItem>
-                        )}
+                {/* <BusinessNavBar /> */}
+                <div id='business-details-header-images'>
+                    <div id='business-details-images-main'>
+                        <Carousel>
+                            {business.BusinessImages.map((image) =>
+                                <CarouselItem>
+                                    <div className='carousel-images'>
+                                        <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
+                                        <img id="caro-img" alt='yes' src={image.url}></img>
+                                        <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
+                                    </div>
+                                </CarouselItem>
+                            )}
 
-                    </Carousel>
-                    {/* <div id='carousel-wrapper'>
+                        </Carousel>
+                        {/* <div id='carousel-wrapper'>
                         <div id='image-container'>
                             {business.businessImages.map((image) =>
                                 <div className='carousel-images'>
@@ -237,255 +237,255 @@ const BusinessDetails = ({ search, onClose }) => {
                             )}
                         </div>
                     </div> */}
-                    {/* <Carousel/> */}
-                </div>
-                <div id='business-details-header-content' >
-                    <div id='business-details-header-info-container'>
-                        <div id='business-details-info'>
-                            <div id='business-details-info-name'>{business.business_name}</div>
-                            <div id='business-details-info-review-divs'>
-                                <div id='nopes-container'>
-                                    <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
+                        {/* <Carousel/> */}
+                    </div>
+                    <div id='business-details-header-content' >
+                        <div id='business-details-header-info-container'>
+                            <div id='business-details-info'>
+                                <div id='business-details-info-name'>{business.business_name}</div>
+                                <div id='business-details-info-review-divs'>
+                                    <div id='nopes-container'>
+                                        <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
+                                    </div>
+                                    <div id='review-count-div'>
+                                        {business.reviewCount} {numReviews}
+                                    </div>
                                 </div>
-                                <div id='review-count-div'>
-                                    {business.reviewCount} {numReviews}
+                                <div id='business-details-info-price-tags'>
+                                    <div className='info-price-tags'>
+                                        <div id='claimed'></div>
+                                        {/* Claimed div not done just leaving as a reminder */}
+                                        Claimed &bull; {priceSetter(business.price_range)} &bull; {`${business.tags[0].tag}, ${business.tags[1].tag}, ${business.tags[2].tag}`}
+                                    </div>
                                 </div>
-                            </div>
-                            <div id='business-details-info-price-tags'>
                                 <div className='info-price-tags'>
-                                    <div id='claimed'></div>
-                                    {/* Claimed div not done just leaving as a reminder */}
-                                    Claimed &bull; {priceSetter(business.price_range)} &bull; {`${business.tags[0].tag}, ${business.tags[1].tag}, ${business.tags[2].tag}`}
+                                    <div> {business.street_address}</div>
+                                    <div>{business.city}, {business.state} {business.zipcode}</div>
                                 </div>
                             </div>
-                            <div className='info-price-tags'>
-                                <div> {business.street_address}</div>
-                                <div>{business.city}, {business.state} {business.zipcode}</div>
+                            <div id='all-photos-div' onClick={() => setShowPhotosModal(true)}>
+                                {/* <NavLink to={`/businesses/${businessId}/images`} id='all-photos-button'> */}
+                                <div id='all-photos-button'>
+                                    See {business.BusinessImages.length} {numPhotos}
+                                </div>
+                                {/* </NavLink> */}
                             </div>
-                        </div>
-                        <div id='all-photos-div' onClick={() => setShowPhotosModal(true)}>
-                            {/* <NavLink to={`/businesses/${businessId}/images`} id='all-photos-button'> */}
-                            <div id='all-photos-button'>
-                                See {business.BusinessImages.length} {numPhotos}
-                            </div>
-                            {/* </NavLink> */}
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id='business-details-container'>
-                <div id='details-content'>
-                    <div id='business-details-action-buttons-div'>
-                        {(currentUser && currentUser.id !== business.Owner.id && existingReview) &&
-                            <Link to={`/businesses/${business.id}/writeareview`}>
-                                <button id='write-review-button'>
-                                    <div id='write-review-btn-content'>
-                                        <img id='white-nope-img' src={whiteNope} alt='white nope' />
-                                        <div id='write-review-font-styling'>Write a Review</div>
-                                    </div>
-                                </button>
-                            </Link>
-                        }
-                        {currentUser && currentUser.id === business.Owner.id && (
-                            <>
-                                <div id='action-buttons-div'>
-                                    <NavLink to={`/businesses/${business.id}/images/new`} className='action-buttons'>
-                                        <img id="add-photo-icon" src={camera} />
-                                        Add photo
-                                    </NavLink>
-                                </div>
-
-                                <div id='auth-action-buttons'>
-                                    <button onClick={updateRedirect} className='action-buttons'>Edit Business</button>
-                                </div>
-                                <div id='auth-action-buttons'>
-                                    <button onClick={deleteHandler} className='action-buttons'>Delete Business</button>
-                                </div>
-                            </>
-                        )}
-                    </div>
-                    <section id='business-details-about-container'>
-                        <div id='about-business-h2-div'>
-                            <h2>About the Business </h2>
-                        </div>
-                        <div id='about-owner-content'>
-                            <div id='business-details-owner-avatar'>
-                                <img alt='sexy pfp' id='owner-avatar' src={business.Owner.userAvatar} />
-                            </div>
-                            <div id='owner-name-title-div-column'>
-                                <div id='business-details-owner-name'>
-                                    {business.Owner.firstName} {business.Owner.lastName ? business.Owner.lastName.slice(0, 1) + '.' : '$.'}
-                                </div>
-                                <div id='business-details-owner-title'>
-                                    Business Owner
-                                </div>
-                            </div>
-                        </div>
-                        <div id='business-details-about'>{business.about}</div>
-                    </section>
-
-                    <section id='reviews-business-details-container'>
-                        <div id='about-business-h2-div'>
-                            <h2>Reviews</h2>
-
-                            <div id="review-trust-banner">
-                                <div id="review-trust-lining"></div>
-                                <img id="info-img" src={info} />
-                                <div id="review-trust-message">
-                                    <b>Your trust is of inconsequential concern,</b> so businesses can pay large amounts to alter or remove their reviews. Thank you for understanding.
-                                </div>
-                                <div id="blankleft"></div>
-                            </div>
-
-                        </div>
-                        <div id='current-user-review-space-between'>
-                            {currentUser && currentUser.id === business.owner_id && (
-                                <div id='left-user-review-info'>
-                                    <div id="current-user-review-record">
-                                        <img id='owner-avatar' src={currentUser.userAvatar}></img>
-                                        <div>
-                                            <div id="left-user-name-styling">{currentUser.username}</div>
-                                            <div id="left-user-fullname-styling">{currentUser.firstName} {currentUser.lastName}</div>
+                <div id='business-details-container'>
+                    <div id='details-content'>
+                        <div id='business-details-action-buttons-div'>
+                            {(currentUser && currentUser.id !== business.Owner.id && existingReview) &&
+                                <Link to={`/businesses/${business.id}/writeareview`}>
+                                    <button id='write-review-button'>
+                                        <div id='write-review-btn-content'>
+                                            <img id='white-nope-img' src={whiteNope} alt='white nope' />
+                                            <div id='write-review-font-styling'>Write a Review</div>
                                         </div>
+                                    </button>
+                                </Link>
+                            }
+                            {currentUser && currentUser.id === business.Owner.id && (
+                                <>
+                                    <div id='action-buttons-div'>
+                                        <NavLink to={`/businesses/${business.id}/images/new`} className='action-buttons'>
+                                            <img id="add-photo-icon" src={camera} />
+                                            Add photo
+                                        </NavLink>
                                     </div>
 
-                                    <div id="current-user-review-record">
-                                        <div id='right-user-review-info'>
-                                            <div><img id="review-info-nope" src={nopes1} /></div>
-                                            <div>You cannot review your own business, {business.business_name}</div>
-                                        </div>
+                                    <div id='auth-action-buttons'>
+                                        <button onClick={updateRedirect} className='action-buttons'>Edit Business</button>
                                     </div>
-                                </div>
+                                    <div id='auth-action-buttons'>
+                                        <button onClick={deleteHandler} className='action-buttons'>Delete Business</button>
+                                    </div>
+                                </>
                             )}
+                        </div>
+                        <section id='business-details-about-container'>
+                            <div id='about-business-h2-div'>
+                                <h2>About the Business </h2>
+                            </div>
+                            <div id='about-owner-content'>
+                                <div id='business-details-owner-avatar'>
+                                    <img alt='sexy pfp' id='owner-avatar' src={business.Owner.userAvatar} />
+                                </div>
+                                <div id='owner-name-title-div-column'>
+                                    <div id='business-details-owner-name'>
+                                        {business.Owner.firstName} {business.Owner.lastName ? business.Owner.lastName.slice(0, 1) + '.' : '$.'}
+                                    </div>
+                                    <div id='business-details-owner-title'>
+                                        Business Owner
+                                    </div>
+                                </div>
+                            </div>
+                            <div id='business-details-about'>{business.about}</div>
+                        </section>
 
-                            {currentUser && currentUser.id !== business.owner_id && (
-                                <div id='left-user-review-info'>
-                                    <div id="current-user-review-record">
-                                        <img id='owner-avatar' src={currentUser.userAvatar}></img>
-                                        <div>
-                                            <div id="left-user-name-styling">{currentUser.username}</div>
-                                            <div id="left-user-fullname-styling">{currentUser.firstName} {currentUser.lastName}</div>
+                        <section id='reviews-business-details-container'>
+                            <div id='about-business-h2-div'>
+                                <h2>Reviews</h2>
+
+                                <div id="review-trust-banner">
+                                    <div id="review-trust-lining"></div>
+                                    <img id="info-img" src={info} />
+                                    <div id="review-trust-message">
+                                        <b>Your trust is of inconsequential concern,</b> so businesses can pay large amounts to alter or remove their reviews. Thank you for understanding.
+                                    </div>
+                                    <div id="blankleft"></div>
+                                </div>
+
+                            </div>
+                            <div id='current-user-review-space-between'>
+                                {currentUser && currentUser.id === business.owner_id && (
+                                    <div id='left-user-review-info'>
+                                        <div id="current-user-review-record">
+                                            <img id='owner-avatar' src={currentUser.userAvatar}></img>
+                                            <div>
+                                                <div id="left-user-name-styling">{currentUser.username}</div>
+                                                <div id="left-user-fullname-styling">{currentUser.firstName} {currentUser.lastName}</div>
+                                            </div>
+                                        </div>
+
+                                        <div id="current-user-review-record">
+                                            <div id='right-user-review-info'>
+                                                <div><img id="review-info-nope" src={nope} /></div>
+                                                <div>You cannot review your own business, {business.business_name}</div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div id="current-user-review-record">
-                                        <div id='right-user-review-info'>
-                                            <div id="review-actions-container">
-                                                <img id="review-info-nope" src={nopeImgs(currentUserReview[0]?.nope)} />
-                                                {currentUserReview.length !== 0 && (
-                                                    <>
-                                                        <NavLink to={`/reviews/${currentUserReview[0]?.id}/edit`}>
-                                                            <button className="current-user-review-actions-btn">
-                                                                <img className="current-user-review-actions-img" src={editpen}></img>
+                                )}
+
+                                {currentUser && currentUser.id !== business.owner_id && (
+                                    <div id='left-user-review-info'>
+                                        <div id="current-user-review-record">
+                                            <img id='owner-avatar' src={currentUser.userAvatar}></img>
+                                            <div>
+                                                <div id="left-user-name-styling">{currentUser.username}</div>
+                                                <div id="left-user-fullname-styling">{currentUser.firstName} {currentUser.lastName}</div>
+                                            </div>
+                                        </div>
+                                        <div id="current-user-review-record">
+                                            <div id='right-user-review-info'>
+                                                <div id="review-actions-container">
+                                                    <img id="review-info-nope" src={nopeImgs(currentUserReview[0]?.nope)} />
+                                                    {currentUserReview.length !== 0 && (
+                                                        <>
+                                                            <NavLink to={`/reviews/${currentUserReview[0]?.id}/edit`}>
+                                                                <button className="current-user-review-actions-btn">
+                                                                    <img className="current-user-review-actions-img" src={editpen}></img>
+                                                                </button>
+                                                            </NavLink>
+
+                                                            <button onClick={() => dispatch(removeReview(currentUserReview[0]?.id))} className="current-user-review-actions-btn">
+                                                                <img className="current-user-review-actions-img" src={trashcan}></img>
                                                             </button>
-                                                        </NavLink>
 
-                                                        <button onClick={() => dispatch(removeReview(currentUserReview[0]?.id))} className="current-user-review-actions-btn">
-                                                            <img className="current-user-review-actions-img" src={trashcan}></img>
-                                                        </button>
-
-                                                    </>
+                                                        </>
+                                                    )}
+                                                </div>
+                                                {currentUserReview.length !== 0 && (
+                                                    <div>Your current review of {business.business_name}</div>
+                                                )}
+                                                {currentUserReview.length === 0 && (
+                                                    <div>You haven't reviewed {business.business_name}</div>
                                                 )}
                                             </div>
-                                            {currentUserReview.length !== 0 && (
-                                            <div>Your current review of {business.business_name}</div>
-                                            )}
-                                            {currentUserReview.length === 0 && (
-                                            <div>You haven't reviewed {business.business_name}</div>
-                                            )}
                                         </div>
                                     </div>
-                                </div>
-                            )}
+                                )}
 
-                            {!currentUser && (
-                                <div id='left-user-review-info'>
-                                    <div id="current-user-review-record">
-                                        <img id='owner-avatar' src={defpp}></img>
-                                        <div>
-                                            <div id="left-user-username-styling">Username</div>
-                                            <div id="left-user-name-styling">First name Last name</div>
+                                {!currentUser && (
+                                    <div id='left-user-review-info'>
+                                        <div id="current-user-review-record">
+                                            <img id='owner-avatar' src={defpp}></img>
+                                            <div>
+                                                <div id="left-user-username-styling">Username</div>
+                                                <div id="left-user-name-styling">First name Last name</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="current-user-review-record">
-                                        <div id='right-user-review-info'>
-                                            <div><img id="review-info-nope" src={nope} /></div>
-                                            <div>You must sign in to review {business.business_name}</div>
+                                        <div id="current-user-review-record">
+                                            <div id='right-user-review-info'>
+                                                <div><img id="review-info-nope" src={nope} /></div>
+                                                <div>You must sign in to review {business.business_name}</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>)}
+                                    </div>)}
 
-                        </div>
-                        <div id='reviews-analytics-container'>
-                            <div id='overall-ratings'>
-                                <div id='overall-ratings-div-font-styling'>Overall rating</div>
-                                <div id='nopes-container'>
-                                    <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
-                                </div>
-                                <div id='overall-ratings-big-nopes-review-count'>{business.reviewCount} {numReviews}</div>
                             </div>
-                            <div id='dynamic-horizontal-reviews'>
-                                <div className='dynamic-stars'>
-                                    <div className='star-tag-div'>5 nopes</div>
-                                    <div id='dbar-5' className='dynamic-bar'>
-                                        <div className='inner-fill' style={{ width: `${dynamicFills(fiveNopes)}%`, backgroundColor: "red" }}></div>
+                            <div id='reviews-analytics-container'>
+                                <div id='overall-ratings'>
+                                    <div id='overall-ratings-div-font-styling'>Overall rating</div>
+                                    <div id='nopes-container'>
+                                        <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                     </div>
+                                    <div id='overall-ratings-big-nopes-review-count'>{business.reviewCount} {numReviews}</div>
                                 </div>
-                                <div className='dynamic-stars'>
-                                    <div className='star-tag-div'>4 nopes</div>
-                                    <div id='dbar-4' className='dynamic-bar'>
-                                        <div className='inner-fill' style={{ width: `${dynamicFills(fourNopes)}%`, backgroundColor: "#f73" }}></div>
+                                <div id='dynamic-horizontal-reviews'>
+                                    <div className='dynamic-stars'>
+                                        <div className='star-tag-div'>5 nopes</div>
+                                        <div id='dbar-5' className='dynamic-bar'>
+                                            <div className='inner-fill' style={{ width: `${dynamicFills(fiveNopes)}%`, backgroundColor: "red" }}></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='dynamic-stars'>
-                                    <div className='star-tag-div'>3 nopes</div>
-                                    <div id='dbar-3' className='dynamic-bar'>
-                                        <div className='inner-fill' style={{ width: `${dynamicFills(threeNopes)}%`, backgroundColor: "#fa2" }}></div>
+                                    <div className='dynamic-stars'>
+                                        <div className='star-tag-div'>4 nopes</div>
+                                        <div id='dbar-4' className='dynamic-bar'>
+                                            <div className='inner-fill' style={{ width: `${dynamicFills(fourNopes)}%`, backgroundColor: "#f73" }}></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='dynamic-stars'>
-                                    <div className='star-tag-div'>2 nopes</div>
-                                    <div id='dbar-2' className='dynamic-bar'>
-                                        <div className='inner-fill' style={{ width: `${dynamicFills(twoNopes)}%`, backgroundColor: "#d92" }}></div>
+                                    <div className='dynamic-stars'>
+                                        <div className='star-tag-div'>3 nopes</div>
+                                        <div id='dbar-3' className='dynamic-bar'>
+                                            <div className='inner-fill' style={{ width: `${dynamicFills(threeNopes)}%`, backgroundColor: "#fa2" }}></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='dynamic-stars'>
-                                    <div className='star-tag-div'>1 nope</div>
-                                    <div id='dbar-1' className='dynamic-bar'>
-                                        <div className='inner-fill' style={{ width: `${dynamicFills(oneNope)}%`, backgroundColor: "#eb2" }}></div>
+                                    <div className='dynamic-stars'>
+                                        <div className='star-tag-div'>2 nopes</div>
+                                        <div id='dbar-2' className='dynamic-bar'>
+                                            <div className='inner-fill' style={{ width: `${dynamicFills(twoNopes)}%`, backgroundColor: "#d92" }}></div>
+                                        </div>
+                                    </div>
+                                    <div className='dynamic-stars'>
+                                        <div className='star-tag-div'>1 nope</div>
+                                        <div id='dbar-1' className='dynamic-bar'>
+                                            <div className='inner-fill' style={{ width: `${dynamicFills(oneNope)}%`, backgroundColor: "#eb2" }}></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <BusinessReview></BusinessReview>
-                        </div>
-                    </section>
-                </div>
-                <div id='sticky-sidebar-container'>
-                    <div id='sticky-sidebar-content'>
-                        <div id='sticky-website-div'>
-                            <a href={business.website}>
-                                <p>{business.website}</p>
-                            </a>
-                            <img className='icon-img-asset' alt='link icon' src={linkIcon} />
-                        </div>
-                        <div id='sticky-email-div'>
-                            <a href={`mailto:${business.email}`}>
-                                <p>{business.email}</p>
-                            </a>
-                            <img className='icon-img-asset' alt='email icon' src={emailIcon} />
-                        </div>
-                        <div id='sticky-phone-div'>
-                            {phoneStyling(business.phone)}
-                            <img className='icon-img-asset' alt='phone icon' src={phoneIcon} />
-                        </div>
+                            <div>
+                                <BusinessReview></BusinessReview>
+                            </div>
+                        </section>
+                    </div>
+                    <div id='sticky-sidebar-container'>
+                        <div id='sticky-sidebar-content'>
+                            <div id='sticky-website-div'>
+                                <a href={business.website}>
+                                    <p>{business.website}</p>
+                                </a>
+                                <img className='icon-img-asset' alt='link icon' src={linkIcon} />
+                            </div>
+                            <div id='sticky-email-div'>
+                                <a href={`mailto:${business.email}`}>
+                                    <p>{business.email}</p>
+                                </a>
+                                <img className='icon-img-asset' alt='email icon' src={emailIcon} />
+                            </div>
+                            <div id='sticky-phone-div'>
+                                {phoneStyling(business.phone)}
+                                <img className='icon-img-asset' alt='phone icon' src={phoneIcon} />
+                            </div>
 
+                        </div>
                     </div>
                 </div>
+                <div id="whitespacetop"></div>
+                <Footer />
             </div>
-            <div id="whitespacetop"></div>
-            <Footer />
-        </div>
         </>
     )
 
