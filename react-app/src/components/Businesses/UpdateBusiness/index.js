@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { updateBusinessThunk, addBusinessImage } from '../../../store/business'
 import './UpdateBusiness.css'
+import { Modal } from '../../../context/Modal'
+
 
 const UpdateBusiness = () => {
     const dispatch = useDispatch()
     const history = useHistory()
+    const params = useParams()
+    const { businessId } = params;
 
-    const user = useSelector(state => state.session.user)
-    const existingBusiness = useSelector(state => state.businesses.singleBusiness )
+    // const user = useSelector(state => state.session.user)
+    const existingBusiness = useSelector(state => state.businesses.singleBusiness)
 
     const [businessName, setBusinessName] = useState(existingBusiness.business_name)
     const [email, setEmail] = useState(existingBusiness.email)
@@ -24,10 +28,11 @@ const UpdateBusiness = () => {
     const [priceRange, setPriceRange] = useState(existingBusiness.price_range)
     const [website, setWebsite] = useState(existingBusiness.website)
     // FIX EDITING AN IMAGE AND EDITING TAGS
-    // const [imgUrl, setImgUrl] = useState('')
+    // const [imgUrl, setImgUrl] = useState(existingBusiness?.BusinessImages[0].url)
     const [tags, setTags] = useState([])
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
+    const [showTagModal, setShowTagModal] = useState(false);
 
     const updateBusinessName = (e) => setBusinessName(e.target.value)
     const updateEmail = (e) => setEmail(e.target.value)
@@ -64,6 +69,15 @@ const UpdateBusiness = () => {
         setHelper(!helper)
         // setTags(tagsList)
         // setTags(tags)
+    }
+    const confirmModal = () => {
+        setTags(tagsList)
+        setHelper(!helper)
+        setShowTagModal(false)
+    }
+    const exitModal = () => {
+        tagsList.splice(0, tagsList.length)
+        setShowTagModal(false)
     }
 
     const mainTagsList = [
@@ -156,21 +170,21 @@ const UpdateBusiness = () => {
     // NEED TO ADD MORE VALIDATION ERRORS
     useEffect(() => {
         const errors = []
-        if (businessName?.length > 40 || businessName.length < 1) errors.push("Business name must be between 1 and 40 characters")
-        if (!email.match(/^\S+@\S+\.\S+$/)) errors.push('Please enter a valid email address')
-        if (phone.length !== 10) errors.push("Please enter a valid phone number")
-        if (streetAddress.length > 50 || streetAddress.length < 5) errors.push("Street address must be between 5 and 50 characters.")
-        if (city.length > 20 || city.length < 2) errors.push("City must be between 2 and 20 characters.")
+        if (businessName?.length > 40 || businessName?.length < 1) errors.push("Business name must be between 1 and 40 characters")
+        if (!email?.match(/^\S+@\S+\.\S+$/)) errors.push('Please enter a valid email address')
+        if (phone?.length !== 10) errors.push("Please enter a valid phone number")
+        if (streetAddress?.length > 50 || streetAddress?.length < 5) errors.push("Street address must be between 5 and 50 characters.")
+        if (city?.length > 20 || city?.length < 2) errors.push("City must be between 2 and 20 characters.")
         if (zipcode > 99999 || zipcode < 10000) errors.push("Please enter a valid zip code.")
-        if (state.length > 20 || state.length < 2) errors.push('State must be between 2 and 15 characters.')
-        if (about.length > 3000 || about.length < 5) errors.push('About must be between 5 and 3000 characters.')
+        if (state?.length > 20 || state?.length < 2) errors.push('State must be between 2 and 15 characters.')
+        if (about?.length > 3000 || about?.length < 5) errors.push('About must be between 5 and 3000 characters.')
         if (isNaN(longitude) || longitude < -180 || longitude > 180) errors.push("Longitude must be a number between -180 and 180")
         if (isNaN(latitude) || latitude < -90 || latitude > 90) errors.push("Latitude must be a number between -90 and 90")
-        if (!priceRange.length) errors.push("Please select a valid price range")
-        if (website.length > 75 || website.length < 4) errors.push('Website url must be between 4 and 75 characters.')
-        if (!website.match(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi)) errors.push("Please enter a valid website")
+        if (!priceRange?.length) errors.push("Please select a valid price range")
+        if (website?.length > 75 || website?.length < 4) errors.push('Website url must be between 4 and 75 characters.')
+        if (!website?.match(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi)) errors.push("Please enter a valid website")
         // if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image(jpg/jpeg/png).')
-        if (tags.length !== 3) errors.push('Please select 3 tags for your business')
+        if (tags?.length !== 3) errors.push('Please select 3 tags for your business')
         // console.log(tags.length)
         setValidationErrors(errors)
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
@@ -190,15 +204,15 @@ const UpdateBusiness = () => {
                 zipcode,
                 state,
                 about,
-                longitude,
-                latitude,
-                price_range: priceRange,
+                longitude: +longitude,
+                latitude: +latitude,
+                price_range: +priceRange,
                 website,
                 tag1: tags[0],
                 tag2: tags[1],
                 tag3: tags[2]
             }
-            let updatedBusiness = await dispatch(updateBusinessThunk(business))
+            let updatedBusiness = await dispatch(updateBusinessThunk(business, businessId))
 
             if (updatedBusiness) {
                 setShowErrors(false)
@@ -209,189 +223,245 @@ const UpdateBusiness = () => {
 
     const handleCancel = async (e) => {
         e.preventDefault()
-        history.push('/')
+        history.push(`/businesses/${businessId}`)
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            {showErrors &&
-                <ul>
-                    {validationErrors.map((e, i) => {
-                        return <div key={i}>{e}</div>
-                    })}
-                </ul>
-            }
-            {/*------- BUSINESS NAME  -------*/}
-            <div>
-                <input
-                    type='text'
-                    placeholder='Business Name'
-                    value={businessName}
-                    onChange={updateBusinessName}
-                    required />
-            </div>
-            {/*------ EMAIL ------*/}
-            <div>
-                <input
-                    type='text'
-                    placeholder='Email'
-                    value={email}
-                    onChange={updateEmail}
-                    required />
-            </div>
-            {/*------ PHONE ------*/}
-            <div>
-                <input
-                    type='text'
-                    placeholder='Phone'
-                    value={phone}
-                    onChange={updatePhone}
-                    required />
-            </div>
-            {/* ------ STREET ADDRESS ------ */}
-            <div>
-                <input
-                    type='text'
-                    placeholder='Address'
-                    value={streetAddress}
-                    onChange={updateStreetAddress}
-                    required />
-            </div>
-            {/*------ CITY ------*/}
-            <div>
-                <input
-                    type='text'
-                    placeholder='City'
-                    value={city}
-                    onChange={updateCity}
-                    required />
-            </div>
-            {/*------- STATE -------*/}
-            <div>
-                <input
-                    type='text'
-                    placeholder='State'
-                    value={state}
-                    onChange={updateState}
-                    required />
-            </div>
-            {/*------- ZIPCODE -------*/}
-            <div>
-                <input
-                    type='number'
-                    placeholder='Zipcode'
-                    value={zipcode}
-                    onChange={updateZipcode}
-                    required />
-            </div>
-            {/*------- ABOUT -------*/}
-            <div>
-                <textarea
-                    type='text'
-                    placeholder='About'
-                    value={about}
-                    onChange={updateAbout}
-                    required />
-            </div>
-            {/*------- LONGITUDE -------*/}
-            <div>
-                <input
-                    type='number'
-                    placeholder='Longitude'
-                    value={longitude}
-                    onChange={updateLongitude}
-                    min='-180'
-                    max='180'
-                    required />
-            </div>
-            {/*------- LATITUDE -------*/}
-            <div>
-                <input
-                    type='number'
-                    placeholder='Latitude'
-                    value={latitude}
-                    onChange={updateLatitude}
-                    min='-90'
-                    max='90'
-                    required />
-            </div>
-            {/*------- PRICE RANGE -------*/}
-            <div>
-                <select
-                    value={priceRange}
-                    onChange={updatePriceRange}
-                    required>
-                    <option value=''>Select a price range</option>
-                    <option value='1'>$</option>
-                    <option value='2'>$$</option>
-                    <option value='3'>$$$</option>
-                    <option value='4'>$$$$</option>
-                </select>
-                {/* <input
-                    type='number'
-                    placeholder='Price Range'
-                    value={priceRange}
-                    onChange={updatePriceRange}
-                    required /> */}
-            </div>
-            {/*------- WEBSITE -------*/}
-            <div>
-                <input
-                    type='text'
-                    placeholder='WebsiteURL'
-                    value={website}
-                    onChange={updateWebsite}
-                    required />
-            </div>
-            {/*------- IMG URL -------*/}
-            {/* <div>
-                <input
-                    type='text'
-                    placeholder='IMG URL'
-                    value={imgUrl}
-                    onChange={updateImgUrl}
-                />
-            </div> */}
-            {/*------- TAGS -------*/}
-            {/* SOME TYPE OF MODAL HERE FOR TAGS */}
-            <div>
-                {mainTagsList.map(tag => (
-                    <div key={tag.title}>
-                        <input
-                            type="checkbox"
-                            // onChange={(e) => {
-                            //     const tagsList = tags
-                            //     if (e.target.checked) {
-                            //         tagsList.push(e.target.value)
-                            //         // tags.push(e.target.value)
-                            //         console.log('current tag array', tagsList)
-                            //         console.log('tag array that we are sending', tags)
-                            //     } else {
-                            //         const index = tagsList.indexOf(e.target.value)
-                            //         tagsList.splice(index, 1)
-                            //         // const index = tags.indexOf(e.target.value)
-                            //         // tags.splice(index, 1)
-                            //         console.log('current array after removing a tag', tagsList)
-                            //         console.log('tag array that we are sending', tags)
-                            //     }
-                            //     setTags(tagsList)
-                            // }}
-                            onChange={handleCheck}
-                            name={tag.title}
-                            value={tag.title} />
-                        <label>{tag.title}</label>
+        <div id='create-business-form-page'>
+
+            <div id='create-form-container'>
+                <div id='create-form-header'>
+                    <div>
+                        <h1>Hello again ! What would you like to change?</h1>
                     </div>
-                ))}
-            </div>
-            {/*------- SUBMIT BUTTON -------*/}
-            <button type='submit'>Edit Your Business</button>
-            {/*------- CANCEL BUTTON -------*/}
-            <button
-                type='button'
-                onClick={handleCancel}>
-                Cancel
-            </button>
-        </form>
+                    <div>
+                        We'll use this information to help you update your Nope page.
+                        Your existing business information will come up automatically, just change what you need to and submit.
+                    </div>
+                </div>
+
+                <div id='form-content'>
+                    <form onSubmit={handleSubmit}>
+                        {showErrors &&
+                            <ul>
+                                {validationErrors.map((e, i) => {
+                                    return <div key={i}>{e}</div>
+                                })}
+                            </ul>
+                        }
+                        {/*------- BUSINESS NAME  -------*/}
+                        <div className='create-input-divs'>
+                            <input
+                                type='text'
+                                placeholder='Business Name'
+                                value={businessName}
+                                onChange={updateBusinessName}
+                                required />
+                        </div>
+                        <div className='fragmented-divs-container-address-LL-url'>
+                            {/*------ EMAIL ------*/}
+                            <div className='fragmented-div-styling'>
+                                <input
+                                    type='text'
+                                    placeholder='Email'
+                                    value={email}
+                                    onChange={updateEmail}
+                                    required />
+                            </div>
+                            {/*------ PHONE ------*/}
+                            <div className='fragmented-div-styling'>
+                                <input
+                                    type='text'
+                                    placeholder='Phone'
+                                    value={phone}
+                                    onChange={updatePhone}
+                                    required />
+                            </div>
+                        </div>
+                        <div className='fragmented-container' >
+                            {/* ------ STREET ADDRESS ------ */}
+                            <div id='address-input-div'>
+                                <input
+                                    type='text'
+                                    placeholder='Address'
+                                    value={streetAddress}
+                                    onChange={updateStreetAddress}
+                                    required />
+                            </div>
+                            <div className='fragmented-divs-container-address-LL-url'>
+                                {/*------ CITY ------*/}
+                                <div className='fragmented-address-div'>
+                                    <input
+                                        type='text'
+                                        placeholder='City'
+                                        value={city}
+                                        onChange={updateCity}
+                                        required />
+                                </div>
+                                {/*------- STATE -------*/}
+                                <div className='fragmented-address-div'>
+                                    <input
+                                        type='text'
+                                        placeholder='State'
+                                        value={state}
+                                        onChange={updateState}
+                                        required />
+                                </div>
+                                {/*------- ZIPCODE -------*/}
+                                <div className='fragmented-address-div'>
+                                    <input
+                                        type='number'
+                                        placeholder='Zipcode'
+                                        min='10000'
+                                        max='99999'
+                                        value={zipcode}
+                                        onChange={updateZipcode}
+                                        required />
+                                </div>
+                            </div>
+                        </div>
+                        <div className='fragmented-container'>
+                            <div className='fragmented-divs-container-address-LL-url'>
+                                {/*------- LONGITUDE -------*/}
+                                <div className='fragmented-div-styling'>
+                                    <input
+                                        type='text'
+                                        placeholder='Longitude'
+                                        value={longitude}
+                                        onChange={updateLongitude}
+                                        min='-180'
+                                        max='180'
+                                        required />
+                                </div>
+                                {/*------- LATITUDE -------*/}
+                                <div className='fragmented-div-styling'>
+                                    <input
+                                        type='text'
+                                        placeholder='Latitude'
+                                        value={latitude}
+                                        onChange={updateLatitude}
+                                        min='-90'
+                                        max='90'
+                                        required />
+                                </div>
+                            </div>
+                            {/*------- WEBSITE URL -------*/}
+
+                            <div className='create-input-divs'>
+                                <input
+                                    type='text'
+                                    placeholder='WebsiteURL'
+                                    value={website}
+                                    onChange={updateWebsite}
+                                    required />
+                            </div>
+                        </div>
+                        {/*------- ABOUT -------*/}
+                        <div id='about-textarea-div'>
+                            <textarea
+                                id='create-text-area'
+                                type='text'
+                                placeholder='About'
+                                value={about}
+                                onChange={updateAbout}
+                                required />
+
+                        </div>
+                        {/*------- PRICE RANGE -------*/}
+                        <div id='tags-price-inputs'>
+                            <div id='price-select-div-hover'>
+                                {/* <select
+                                value={priceRange}
+                                onChange={updatePriceRange}
+                                required>
+                                <option value=''>Select a price range</option>
+                                <option value='1'>$</option>
+                                <option value='2'>$$</option>
+                                <option value='3'>$$$</option>
+                                <option value='4'>$$$$</option>
+                            </select> */}
+                                <div id='priceHeading'>What is the price range of your business?</div>
+                                <div id='price-setter-container'>
+                                    <fieldset id='fieldset-price' class="rate" value={priceRange} onChange={updatePriceRange}>
+                                        {/* <input className="priceInput" type="radio" id="rating10" name="rating" value="5" /><label for="rating10" title="5 stars"></label> */}
+                                        <input className="priceInput" type="radio" id="rating8" name="rating" value="4" /><label for="rating8" title="4 stars"></label>
+                                        <input className="priceInput" type="radio" id="rating6" name="rating" value="3" /><label for="rating6" title="3 stars"></label>
+                                        <input className="priceInput" type="radio" id="rating4" name="rating" value="2" /><label for="rating4" title="2 stars"></label>
+                                        <input className="priceInput" type="radio" id="rating2" name="rating" value="1" /><label for="rating2" title="1 star"></label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            {/*------- TAGS -------*/}
+                            <div id='click-me'>
+                                <div id='open-tags-modal'>Click here to set your tags</div>
+                                <div>
+                                    <div id='tags-button' onClick={() => setShowTagModal(true)}>
+                                        Tags
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {showTagModal && (
+                            <div id='modal-wrapper'>
+
+                                <Modal onClose={() => setShowTagModal(false)}>
+                                    <div id='modal-header'>
+                                        <img alt='close-button' id='close-modal' onClick={exitModal}
+                                            src='https://cdn-icons-png.flaticon.com/512/2723/2723639.png' />
+
+                                        <div id='header-div'>
+                                            Select your tags
+                                        </div>
+                                    </div>
+                                    <div id='modal-children-wrapper' className='grid-container'>
+                                        <div id='tags-grid'>
+                                            {mainTagsList.map(tag => {
+                                                return <div id='input-styling-grid' key={tag.title}>
+
+                                                    <input
+                                                        id='checkbox-input'
+                                                        type="checkbox"
+                                                        onChange={handleCheck}
+                                                        name={tag.title}
+                                                        value={tag.title} />
+
+                                                    <label id='text-align-center'>{tag.title}</label>
+                                                </div>
+                                            })}
+                                        </div>
+                                    </div>
+                                    <div
+                                        id='tag-confirm-button'
+                                        onClick={confirmModal}>
+                                        Confirm
+                                    </div>
+                                </Modal>
+                            </div>
+
+                        )}
+                        <div id='button-width'>
+                            <div id='button-container'>
+                                {/*------- SUBMIT BUTTON -------*/}
+                                <div >
+                                    <button id='submit-button' type='submit'>Update</button>
+
+                                </div>
+                                <div >
+                                    {/*------- CANCEL BUTTON -------*/}
+                                    <button
+                                        id='cancel-button'
+                                        type='button'
+                                        onClick={handleCancel}>
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div >
+        </div >
     )
 }
 

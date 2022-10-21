@@ -5,7 +5,7 @@ import { createBusinessThunk, addBusinessImage } from '../../../store/business'
 import { Modal } from '../../../context/Modal'
 import './CreateBusiness.css'
 
-const CreateBusiness = ({ onClose }) => {
+const CreateBusiness = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -239,11 +239,11 @@ const CreateBusiness = ({ onClose }) => {
             <div id='create-form-container'>
                 <div id='create-form-header'>
                     <div>
-                        <h1>Hello! Let's start with your business name</h1>
+                        <h1>Hello! Let's start with your business information</h1>
                     </div>
                     <div>
                         We'll use this information to help you claim your Nope page.
-                        Your business will come up automatically if it is already listed.
+                        Your new business will load automatically once you submit.
                     </div>
                 </div>
 
@@ -441,7 +441,7 @@ const CreateBusiness = ({ onClose }) => {
                                             Select your tags
                                         </div>
                                     </div>
-                                    <div id='grid-container'>
+                                    <div id='modal-children-wrapper' className='grid-container'>
                                         <div id='tags-grid'>
                                             {mainTagsList.map(tag => {
                                                 return <div id='input-styling-grid' key={tag.title}>

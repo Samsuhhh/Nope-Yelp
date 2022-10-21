@@ -136,6 +136,7 @@
 
 }
 
+#all-photos-button:hover,
 #all-photos-button {
     width: 175px;
     height: 35px;
@@ -145,6 +146,10 @@
     background-color: transparent;
     font-family: "Open Sans";
     font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 

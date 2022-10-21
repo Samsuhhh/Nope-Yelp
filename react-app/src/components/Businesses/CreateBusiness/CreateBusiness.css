@@ -206,7 +206,7 @@
     height: 0;
 } */
 
-#grid-container {
+.grid-container {
     border: 1px solid #ebebeb;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
@@ -215,8 +215,15 @@
 
 #tags-grid {
     display: grid;
-    grid-template-columns: repeat(10, 90px);
+    grid-template-columns: repeat(9, 90px);
     grid-template-rows: repeat(8, 80px);
+    /* position: absolute; */
+    /* top: 50px; */
+    padding-right: 50px;
+    display: grid;
+    column-gap: 20px;
+    row-gap: 10px;
+    overflow: auto;
 }
 
 
