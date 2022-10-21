@@ -116,8 +116,6 @@ const BusinessDetails = ({search, onClose}) => {
         return Math.floor(Math.random() * 35);
     }
 
-    console.log(restaurantArray.length)
-
 
     // const [current, setCurrent] = useState(0);
 
@@ -170,6 +168,7 @@ const BusinessDetails = ({search, onClose}) => {
     useEffect(() => {
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })
+
 
     }, [dispatch, businessId, existingReviews.length, showPhotosModal])
 
