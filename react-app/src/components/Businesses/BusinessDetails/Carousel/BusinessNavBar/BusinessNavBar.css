@@ -150,6 +150,15 @@
     text-decoration: none;
 }
 
+#dropdown-links-business-navbar{
+    display:flex;
+    flex-direction: row;
+
+}
+
+#icon-img-business-navbar{
+    margin-right: 10px;
+}
 .business-nav-search-wrapper {
     display: flex;
     align-items: center;
@@ -232,4 +241,13 @@
 #login-nav-business-navbar:hover{
     background-color: rgba(214, 214, 214, 0.757);
     cursor: pointer;
+}
+
+#about-link{
+    text-decoration: none;
+    color: black;
+}
+
+#about-link:focus{
+    color:black
 }

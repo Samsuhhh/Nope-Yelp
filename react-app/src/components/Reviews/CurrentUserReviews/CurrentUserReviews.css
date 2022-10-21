@@ -24,7 +24,6 @@
   display:flex;
   flex-direction: column;
 }
-
 #review-card-current-user-reviews{
   margin:30px 10px 0px 10px;
   border-bottom: 1px solid lightgrey;

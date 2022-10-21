@@ -9,6 +9,7 @@ import nope from '../assets/nope-white.png';
 import magglass from '../assets/icons/mag-glass.png';
 import Fuse from 'fuse.js'
 import BusinessCard from './Businesses/BusinessCard/BusinessCard';
+import emailIcon from '../assets/icons/emailicon.svg'
 const options = {
   findAllMatches: true,
   keys: [
@@ -107,6 +108,7 @@ const NavBar = ({ setSearch }) => {
                       {sessionUser.firstName}{" "}{sessionUser.lastName}
                     </div>
                     <div className="dropdown-top-sections" id="dropdown-email">
+                    <img className='icon-img-asset' alt='email icon' src={emailIcon} />
                       {sessionUser.email}
                     </div>
                   </div>
