@@ -10,11 +10,12 @@ const UpdateBusinessReview = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
-    const business = useSelector(state => state.businesses)
-    const businessId = useParams()
+    const existingReviewsObj = useSelector(state => state.reviews.business)
+    const existingReview = Object.values(existingReviewsObj).filter(review => review?.user_id === user.id)[0]
+    console.log('the existing reivew', existingReview)
 
-    const [review, setReview] = useState('')
-    const [nopes, setNopes] = useState(1)
+    const [review, setReview] = useState(existingReview.review)
+    const [nopes, setNopes] = useState(existingReview.nope)
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
 
@@ -34,14 +35,14 @@ const UpdateBusinessReview = () => {
         if (!validationErrors.length) {
             const payload = {
                 review,
-                nopes
+                nope: +nopes
             }
 
-            let updatedReview = await dispatch(updateReview(payload, businessId))
+            let updatedReview = await dispatch(updateReview(payload, existingReview.id))
 
             if (updatedReview) {
                 setShowErrors(false)
-                history.push(`/businesses/${businessId}`)
+                history.push(`/businesses/${existingReview.business_id}`)
             }
         }
     }
@@ -50,7 +51,7 @@ const UpdateBusinessReview = () => {
         e.preventDefault()
         // not sure if i use should businessId from useparams or business.id from state.
         // really depends on our reducer
-        history.push(`/businesses/${businessId}`)
+        history.push(`/businesses/${existingReview.business_id}`)
     }
     return (
         <>
