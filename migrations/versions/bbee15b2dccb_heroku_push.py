@@ -1,8 +1,8 @@
-"""merge conflict
+"""heroku push
 
-Revision ID: d85d233b0376
+Revision ID: bbee15b2dccb
 Revises: 
-Create Date: 2022-10-21 16:16:50.086279
+Create Date: 2022-10-21 16:38:13.551498
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd85d233b0376'
+revision = 'bbee15b2dccb'
 down_revision = None
 branch_labels = None
 depends_on = None
