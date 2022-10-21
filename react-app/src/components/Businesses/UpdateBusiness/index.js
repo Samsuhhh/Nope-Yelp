@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
-import { updateBusinessThunk, addBusinessImage } from '../../../store/business'
+import { updateBusinessThunk } from '../../../store/business'
 import './UpdateBusiness.css'
 import { Modal } from '../../../context/Modal'
+import xicon from '../../../assets/icons/x-icon.svg'
 
 
 const UpdateBusiness = () => {
@@ -411,8 +412,10 @@ const UpdateBusiness = () => {
 
                                 <Modal onClose={() => setShowTagModal(false)}>
                                     <div id='modal-header'>
-                                        <img alt='close-button' id='close-modal' onClick={exitModal}
-                                            src='https://cdn-icons-png.flaticon.com/512/2723/2723639.png' />
+                                        <div id="close-modal" onClick={exitModal}>
+                                            Close
+                                            <img id="close-modal-icon" src={xicon} alt='close icon' />
+                                        </div>
 
                                         <div id='header-div'>
                                             Select your tags
@@ -428,7 +431,9 @@ const UpdateBusiness = () => {
                                                         type="checkbox"
                                                         onChange={handleCheck}
                                                         name={tag.title}
-                                                        value={tag.title} />
+                                                        value={tag.title}
+                                                        disabled={tagsList.length >= 3}
+                                                    />
 
                                                     <label id='text-align-center'>{tag.title}</label>
                                                 </div>

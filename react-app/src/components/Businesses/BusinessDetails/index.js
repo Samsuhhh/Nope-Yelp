@@ -191,7 +191,7 @@ const BusinessDetails = ({ search, onClose }) => {
             {showPhotosModal && (
                 <Modal id='photo-modal' onClose={() => setShowPhotosModal(false)}>
                     <div id="close-modal" onClick={() => setShowPhotosModal(false)}>
-                        Close <img id="close-modal-icon" src={xicon} />
+                        Close <img id="close-modal-icon" src={xicon} alt='close icon'/>
                     </div>
                     <div>
                         <BusinessImages></BusinessImages>
@@ -215,7 +215,7 @@ const BusinessDetails = ({ search, onClose }) => {
                 <div id='business-details-header-images'>
                     <div id='business-details-images-main'>
                         <Carousel>
-                            {business.BusinessImages.map((image) =>
+                            {business?.BusinessImages?.map((image) =>
                                 <CarouselItem>
                                     <div className='carousel-images'>
                                         <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
@@ -289,7 +289,7 @@ const BusinessDetails = ({ search, onClose }) => {
                                 <>
                                     <div id='action-buttons-div'>
                                         <NavLink to={`/businesses/${business.id}/images/new`} className='action-buttons'>
-                                            <img id="add-photo-icon" src={camera} />
+                                            <img id="add-photo-icon" src={camera} alt='camera icon'/>
                                             Add photo
                                         </NavLink>
                                     </div>
@@ -329,7 +329,7 @@ const BusinessDetails = ({ search, onClose }) => {
 
                                 <div id="review-trust-banner">
                                     <div id="review-trust-lining"></div>
-                                    <img id="info-img" src={info} />
+                                    <img id="info-img" src={info} alt='info img'/>
                                     <div id="review-trust-message">
                                         <b>Your trust is of inconsequential concern,</b> so businesses can pay large amounts to alter or remove their reviews. Thank you for understanding.
                                     </div>
@@ -341,7 +341,7 @@ const BusinessDetails = ({ search, onClose }) => {
                                 {currentUser && currentUser.id === business.owner_id && (
                                     <div id='left-user-review-info'>
                                         <div id="current-user-review-record">
-                                            <img id='owner-avatar' src={currentUser.userAvatar}></img>
+                                            <img alt='owner avatar' id='owner-avatar' src={currentUser.userAvatar}></img>
                                             <div>
                                                 <div id="left-user-name-styling">{currentUser.username}</div>
                                                 <div id="left-user-fullname-styling">{currentUser.firstName} {currentUser.lastName}</div>
@@ -350,7 +350,7 @@ const BusinessDetails = ({ search, onClose }) => {
 
                                         <div id="current-user-review-record">
                                             <div id='right-user-review-info'>
-                                                <div><img id="review-info-nope" src={nope} /></div>
+                                                <div><img alt='nopes' id="review-info-nope" src={nope} /></div>
                                                 <div>You cannot review your own business, {business.business_name}</div>
                                             </div>
                                         </div>
@@ -360,7 +360,7 @@ const BusinessDetails = ({ search, onClose }) => {
                                 {currentUser && currentUser.id !== business.owner_id && (
                                     <div id='left-user-review-info'>
                                         <div id="current-user-review-record">
-                                            <img id='owner-avatar' src={currentUser.userAvatar}></img>
+                                            <img alt='owner avatar' id='owner-avatar' src={currentUser.userAvatar}></img>
                                             <div>
                                                 <div id="left-user-name-styling">{currentUser.username}</div>
                                                 <div id="left-user-fullname-styling">{currentUser.firstName} {currentUser.lastName}</div>
@@ -369,17 +369,17 @@ const BusinessDetails = ({ search, onClose }) => {
                                         <div id="current-user-review-record">
                                             <div id='right-user-review-info'>
                                                 <div id="review-actions-container">
-                                                    <img id="review-info-nope" src={nopeImgs(currentUserReview[0]?.nope)} />
+                                                    <img id="review-info-nope" src={nopeImgs(currentUserReview[0]?.nope)} alt='nope images' />
                                                     {currentUserReview.length !== 0 && (
                                                         <>
                                                             <NavLink to={`/reviews/${currentUserReview[0]?.id}/edit`}>
                                                                 <button className="current-user-review-actions-btn">
-                                                                    <img className="current-user-review-actions-img" src={editpen}></img>
+                                                                    <img className="current-user-review-actions-img" src={editpen} alt='nope images'></img>
                                                                 </button>
                                                             </NavLink>
 
                                                             <button onClick={() => dispatch(removeReview(currentUserReview[0]?.id))} className="current-user-review-actions-btn">
-                                                                <img className="current-user-review-actions-img" src={trashcan}></img>
+                                                                <img className="current-user-review-actions-img" src={trashcan} alt='trash can icon'></img>
                                                             </button>
 
                                                         </>
@@ -399,7 +399,7 @@ const BusinessDetails = ({ search, onClose }) => {
                                 {!currentUser && (
                                     <div id='left-user-review-info'>
                                         <div id="current-user-review-record">
-                                            <img id='owner-avatar' src={defpp}></img>
+                                            <img id='owner-avatar' src={defpp} alt='owner avatar'></img>
                                             <div>
                                                 <div id="left-user-username-styling">Username</div>
                                                 <div id="left-user-name-styling">First name Last name</div>
@@ -407,7 +407,7 @@ const BusinessDetails = ({ search, onClose }) => {
                                         </div>
                                         <div id="current-user-review-record">
                                             <div id='right-user-review-info'>
-                                                <div><img id="review-info-nope" src={nope} /></div>
+                                                <div><img id="review-info-nope" alt='nope' src={nope} /></div>
                                                 <div>You must sign in to review {business.business_name}</div>
                                             </div>
                                         </div>
