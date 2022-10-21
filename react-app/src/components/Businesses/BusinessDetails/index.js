@@ -6,7 +6,7 @@ import { useParams, useHistory, Link, NavLink } from 'react-router-dom';
 import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
 import './BusinessDetails.css'
-import { deleteBusinessThunk } from '../../../store/business';
+import { deleteBusinessThunk, addBusinessImage } from '../../../store/business';
 import Carousel, { CarouselItem } from './Carousel';
 import BusinessNavBar from './Carousel/BusinessNavBar/BusinessNavBar'
 import Footer from '../../Footer/Footer'
@@ -167,6 +167,7 @@ const BusinessDetails = () => {
     }, [dispatch, businessId, existingReviews.length])
 
     let numReviews = business.reviewCount === 1 ? "Review" : "Reviews"
+    let numPhotos = business?.BusinessImages?.length === 1 ? "Photo" : "Photos"
 
     return isLoaded && (
         <div id='business-details-page'>
@@ -222,7 +223,7 @@ const BusinessDetails = () => {
                         </div>
                         <div id='all-photos-div'>
                             <NavLink to={`/businesses/${businessId}/images`} id='all-photos-button'>
-                                See {business.BusinessImages.length} photos
+                                See {business.BusinessImages.length} {numPhotos}
                             </NavLink>
                         </div>
                     </div>
@@ -244,10 +245,10 @@ const BusinessDetails = () => {
                         {currentUser && currentUser.id === business.Owner.id && (
                             <>
                                 <div id='action-buttons-div'>
-                                    <button className='action-buttons'>
+                                    <NavLink to={`/businesses/${business.id}/images/new`} className='action-buttons'>
                                         <img id="add-photo-icon" src={camera} />
                                         Add photo
-                                    </button>
+                                    </NavLink>
                                 </div>
 
                                 <div id='auth-action-buttons'>

@@ -202,16 +202,16 @@ const businessReducer = (state = initialState, action) => {
     case CREATE:
       newState = { allBusinesses: { ...state.allBusinesses } }
       newState.singleBusiness = action.business
-      newState.singleBusiness.Images = []
+      newState.singleBusiness.BusinessImages = []
       return newState
     case ADD_IMAGE:
       newState = { singleBusiness: { ...state.singleBusiness } }
-      newState.singleBusiness.Images = [...state.singleBusiness.Images, action.businessId.url]
+      newState.singleBusiness.BusinessImages = [...state.singleBusiness.BusinessImages, action.businessId.url]
       return newState
     case UPDATE:
       newState = { allBusinesses: { ...state.allBusinesses } }
       newState.singleBusiness = action.business
-      newState.singleBusiness.Images = [...state.singleSpot.Images]
+      newState.singleBusiness.BusinessImages = [...state.singleSpot.BusinessImages]
       return newState
     case REMOVE:
       newState = {
