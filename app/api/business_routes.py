@@ -91,7 +91,8 @@ def get_review_by_business(id):
 
   ## FILTERING REVIEWS BY BUSINESS ID
   reviews_lst = []
-  reviews = Review.query.filter(Review.business_id == id).all()
+  reviews = Review.query.filter(Review.business_id == id).order_by(Review.created_at.desc()).all()
+  print('\n\n\n\n\n\n ----reviews----', reviews)
   for review in reviews:
     review_dict = review.to_dict()
 
