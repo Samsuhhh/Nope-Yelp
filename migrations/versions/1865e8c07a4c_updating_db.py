@@ -1,8 +1,8 @@
-"""lex god
+"""updating db
 
-Revision ID: a7b414a1ec3f
+Revision ID: 1865e8c07a4c
 Revises: 
-Create Date: 2022-10-20 14:23:32.312284
+Create Date: 2022-10-21 11:48:37.366816
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a7b414a1ec3f'
+revision = '1865e8c07a4c'
 down_revision = None
 branch_labels = None
 depends_on = None

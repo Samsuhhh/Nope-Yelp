@@ -61,7 +61,7 @@ function RecentActivity() {
 
 
                                         <div className='business-name-recent-act-grid'>
-                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[1].business_id}`}>{business?.[review[1]?.business_id]?.business_name}
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[1]?.business_id}`}>{business?.[review[1]?.business_id]?.business_name}
                                         </Link>
                                         </div>
 
@@ -87,7 +87,7 @@ function RecentActivity() {
                                     </div>
 
                                     <div className='business-name-recent-act-grid'>
-                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[15].business_id}`}>{business?.[review[15]?.business_id]?.business_name}
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[15]?.business_id}`}>{business?.[review[15]?.business_id]?.business_name}
                                         </Link>
                                     </div>
 
@@ -111,7 +111,7 @@ function RecentActivity() {
                                         <img id="grid-business-img" src={business?.[review[33]?.business_id]?.images?.url} />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
-                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[33].business_id}`}>{business?.[review[33]?.business_id]?.business_name}
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[33]?.business_id}`}>{business?.[review[33]?.business_id]?.business_name}
                                         </Link>
                                     </div>
                                     <div className='nopes-recent-act-grid'>
@@ -134,7 +134,7 @@ function RecentActivity() {
                                         <img id="grid-business-img" src={business?.[review[77]?.business_id]?.images?.url} />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
-                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[77].business_id}`}>{business?.[review[77]?.business_id]?.business_name}
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[77]?.business_id}`}>{business?.[review[77]?.business_id]?.business_name}
                                         </Link>
                                     </div>
                                     <div className='nopes-recent-act-grid'>
@@ -157,7 +157,7 @@ function RecentActivity() {
                                         <img id="grid-business-img" src={business?.[review[98]?.business_id]?.images?.url} />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
-                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[98].business_id}`}>{business?.[review[98]?.business_id]?.business_name}
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[98]?.business_id}`}>{business?.[review[98]?.business_id]?.business_name}
                                         </Link>
                                     </div>
                                     <div className='nopes-recent-act-grid'>
@@ -180,7 +180,7 @@ function RecentActivity() {
                                         <img id="grid-business-img" src={business?.[review[24]?.business_id]?.images?.url} />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
-                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[24].business_id}`}>{business?.[review[24]?.business_id]?.business_name}
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[24]?.business_id}`}>{business?.[review[24]?.business_id]?.business_name}
                                         </Link>
                                     </div>
                                     <div className='nopes-recent-act-grid'>
@@ -203,7 +203,7 @@ function RecentActivity() {
                                         <img id="grid-business-img" src={business?.[review[52]?.business_id]?.images?.url} />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
-                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[52].business_id}`}>{business?.[review[52]?.business_id]?.business_name}
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[52]?.business_id}`}>{business?.[review[52]?.business_id]?.business_name}
                                         </Link>
                                     </div>
                                     <div className='nopes-recent-act-grid'>
