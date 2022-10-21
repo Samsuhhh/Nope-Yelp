@@ -213,8 +213,9 @@ a:active { text-decoration: none; }
 
 .navbar {
     font-family: 'Open-Sans', sans-serif;
-    display: flex;background: rgb(2,0,36);
-    background: linear-gradient(180deg, rgb(13, 0, 255) 0%, rgb(77, 255, 0) 42%, rgb(255, 16, 219) 100%);
+    display: flex;
+    /* background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgb(13, 0, 255) 0%, rgb(77, 255, 0) 42%, rgb(255, 16, 219) 100%); */
 
     justify-content: space-between;
     align-items: center;
