@@ -177,7 +177,7 @@ const BusinessDetails = ({ search, onClose }) => {
             .then(() => { setIsLoaded(true) })
 
 
-    }, [dispatch, businessId, existingReviews.length, showPhotosModal])
+    }, [dispatch, businessId, existingReviews.length, showPhotosModal, reviews, ])
 
     let numReviews = business.reviewCount === 1 ? "Review" : "Reviews"
     let numPhotos = business?.BusinessImages?.length === 1 ? "Photo" : "Photos"
@@ -342,7 +342,7 @@ const BusinessDetails = ({ search, onClose }) => {
                                         <div id='right-user-review-info'>
                                             <div id="review-actions-container">
                                                 <img id="review-info-nope" src={nopeImgs(currentUserReview[0]?.nope)} />
-                                                {currentUserReview && currentUserReview === [] && (
+                                                {currentUserReview.length !== 0 && (
                                                     <>
                                                         <NavLink to={`/reviews/${currentUserReview[0]?.id}/edit`}>
                                                             <button className="current-user-review-actions-btn">
@@ -357,10 +357,10 @@ const BusinessDetails = ({ search, onClose }) => {
                                                     </>
                                                 )}
                                             </div>
-                                            {currentUserReview && currentUserReview === [] && (
+                                            {currentUserReview.length !== 0 && (
                                             <div>Your current review of {business.business_name}</div>
                                             )}
-                                            {currentUserReview && currentUserReview !== [] && (
+                                            {currentUserReview.length === 0 && (
                                             <div>You haven't reviewed {business.business_name}</div>
                                             )}
                                         </div>
