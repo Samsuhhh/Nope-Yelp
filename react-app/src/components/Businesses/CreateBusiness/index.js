@@ -50,7 +50,7 @@ const CreateBusiness = ({ onClose }) => {
         if (e.target.checked) {
             tagsList.push(e.target.value)
             // tags.push(e.target.value)
-            setTags(tagsList)
+            // setTags(tagsList)
             console.log('current tag array', tagsList)
             console.log('tag array that we are sending', tags)
         } else {
@@ -58,13 +58,22 @@ const CreateBusiness = ({ onClose }) => {
             tagsList.splice(index, 1)
             // const index = tags.indexOf(e.target.value)
             // tags.splice(index, 1)
-            setTags(tagsList)
+            // setTags(tagsList)
             console.log('current array after removing a tag', tagsList)
             console.log('tag array that we are sending', tags)
         }
         setHelper(!helper)
         // setTags(tagsList)
         // setTags(tags)
+    }
+    const confirmModal = () => {
+        setTags(tagsList)
+        setHelper(!helper)
+        setShowTagModal(false)
+    }
+    const exitModal = () => {
+        tagsList.splice(0, tagsList.length)
+        setShowTagModal(false)
     }
 
     const mainTagsList = [
@@ -246,6 +255,7 @@ const CreateBusiness = ({ onClose }) => {
                         {/*------- BUSINESS NAME  -------*/}
                         <div className='create-input-divs'>
                             <input
+                                className='create-business-input'
                                 type='text'
                                 placeholder='Business Name'
                                 value={businessName}
@@ -256,6 +266,7 @@ const CreateBusiness = ({ onClose }) => {
                             {/*------ EMAIL ------*/}
                             <div className='fragmented-div-styling'>
                                 <input
+                                    className='create-business-input'
                                     type='text'
                                     placeholder='Email'
                                     value={email}
@@ -265,6 +276,7 @@ const CreateBusiness = ({ onClose }) => {
                             {/*------ PHONE ------*/}
                             <div className='fragmented-div-styling'>
                                 <input
+                                    className='create-business-input'
                                     type='text'
                                     placeholder='Phone'
                                     value={phone}
@@ -276,6 +288,7 @@ const CreateBusiness = ({ onClose }) => {
                             {/* ------ STREET ADDRESS ------ */}
                             <div id='address-input-div'>
                                 <input
+                                    className='create-business-input'
                                     type='text'
                                     placeholder='Address'
                                     value={streetAddress}
@@ -286,6 +299,7 @@ const CreateBusiness = ({ onClose }) => {
                                 {/*------ CITY ------*/}
                                 <div className='fragmented-address-div'>
                                     <input
+                                        className='create-business-input'
                                         type='text'
                                         placeholder='City'
                                         value={city}
@@ -295,6 +309,7 @@ const CreateBusiness = ({ onClose }) => {
                                 {/*------- STATE -------*/}
                                 <div className='fragmented-address-div'>
                                     <input
+                                        className='create-business-input'
                                         type='text'
                                         placeholder='State'
                                         value={state}
@@ -304,6 +319,7 @@ const CreateBusiness = ({ onClose }) => {
                                 {/*------- ZIPCODE -------*/}
                                 <div className='fragmented-address-div'>
                                     <input
+                                        className='create-business-input'
                                         type='number'
                                         placeholder='Zipcode'
                                         min='10000'
@@ -319,6 +335,7 @@ const CreateBusiness = ({ onClose }) => {
                                 {/*------- LONGITUDE -------*/}
                                 <div className='fragmented-div-styling'>
                                     <input
+                                        className='create-business-input'
                                         type='text'
                                         placeholder='Longitude'
                                         value={longitude}
@@ -330,6 +347,7 @@ const CreateBusiness = ({ onClose }) => {
                                 {/*------- LATITUDE -------*/}
                                 <div className='fragmented-div-styling'>
                                     <input
+                                        className='create-business-input'
                                         type='text'
                                         placeholder='Latitude'
                                         value={latitude}
@@ -343,6 +361,7 @@ const CreateBusiness = ({ onClose }) => {
                                 {/*------- WEBSITE -------*/}
                                 <div className='fragmented-div-styling'>
                                     <input
+                                        className='create-business-input'
                                         type='text'
                                         placeholder='WebsiteURL'
                                         value={website}
@@ -352,6 +371,7 @@ const CreateBusiness = ({ onClose }) => {
                                 {/*------- IMG URL -------*/}
                                 <div className='fragmented-div-styling'>
                                     <input
+                                        className='create-business-input'
                                         type='text'
                                         placeholder='IMG URL'
                                         value={imgUrl}
@@ -363,6 +383,7 @@ const CreateBusiness = ({ onClose }) => {
                         {/*------- ABOUT -------*/}
                         <div id='about-textarea-div'>
                             <textarea
+                                className='create-business-input'
                                 id='create-text-area'
                                 type='text'
                                 placeholder='About'
@@ -401,19 +422,17 @@ const CreateBusiness = ({ onClose }) => {
                                 <div>
                                     <div id='tags-button' onClick={() => setShowTagModal(true)}>
                                         Tags
-                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                         {showTagModal && (
                             <div id='modal-wrapper'>
 
                                 <Modal onClose={() => setShowTagModal(false)}>
                                     <div id='modal-header'>
-                                        <img alt='close-button' id='close-modal' onClick={onClose}
+                                        <img alt='close-button' id='close-modal' onClick={exitModal}
                                             src='https://cdn-icons-png.flaticon.com/512/2723/2723639.png' />
-
                                         <div id='header-div'>
                                             Select your tags
                                         </div>
@@ -422,20 +441,22 @@ const CreateBusiness = ({ onClose }) => {
                                         <div id='tags-grid'>
                                             {mainTagsList.map(tag => {
                                                 return <div id='input-styling-grid' key={tag.title}>
-
                                                     <input
                                                         id='checkbox-input'
                                                         type="checkbox"
                                                         onChange={handleCheck}
                                                         name={tag.title}
                                                         value={tag.title} />
-
                                                     <label id='text-align-center'>{tag.title}</label>
                                                 </div>
                                             })}
                                         </div>
                                     </div>
-                                    <div onClick={() => setShowTagModal(false)}>Test</div>
+                                    <div
+                                    id='tag-confirm-button'
+                                    onClick={confirmModal}>
+                                        Confirm
+                                        </div>
                                 </Modal>
                             </div>
 

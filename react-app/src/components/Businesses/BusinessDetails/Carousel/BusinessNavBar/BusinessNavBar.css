@@ -216,6 +216,22 @@
     border-radius: 5px;
 }
 
+#for-businesses-button-business-navbar-logged {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    width: 140px;
+    border-radius: 5px;
+    margin-left: 270px;
+    margin-right: 0px;
+}
+
+#for-businesses-button-logged:hover {
+    background-color: rgba(225, 225, 225, 0.3);
+}
+
+
 #for-businesses-button:hover {
     background-color: rgba(225, 225, 225, 0.3);
 }

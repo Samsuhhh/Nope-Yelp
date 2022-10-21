@@ -124,7 +124,7 @@ export const updateReview = (review, reviewId) => async dispatch => {
     else {
         console.log("-------Update Review Thunk Error-------")
     }
-    return null
+    return
 }
 
 export const removeReview = (reviewId) => async dispatch => {

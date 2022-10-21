@@ -13,7 +13,7 @@ const UpdateBusiness = ({onClose}) => {
     const {businessId} = params;
 
     const user = useSelector(state => state.session.user)
-    const existingBusiness = useSelector(state => state.businesses.singleBusiness)
+    const existingBusiness = useSelector(state => state.businesses.singleBusiness )
 
     const [businessName, setBusinessName] = useState(existingBusiness.business_name)
     const [email, setEmail] = useState(existingBusiness.email)
