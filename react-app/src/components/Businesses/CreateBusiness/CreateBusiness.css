@@ -336,3 +336,24 @@ label:hover~.priceInput:checked~label {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.create-business-input {
+    font-size: 16;
+}
+
+#tag-confirm-button {
+    height: 40px;
+    width: 175px;
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 15px;
+    color: white;
+    background-color: #E00707;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
