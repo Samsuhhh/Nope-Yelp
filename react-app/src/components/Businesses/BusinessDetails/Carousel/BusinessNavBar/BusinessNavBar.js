@@ -27,6 +27,7 @@ const BusinessNavBar = ({ setSearch }) => {
   const history = useHistory()
   const businesses = useSelector(state => state.businesses.allBusinesses)
   const [query, setQuery] = useState("")
+  console.log('--------businesses--------', businesses)
 
   useEffect(() => {
     dispatch(getAllBusinessesThunk())

@@ -28,7 +28,6 @@ def get_all_businesses():
   for business in businesses:
     business_dict = business.to_dict()
     images = BusinessImage.query.filter(BusinessImage.business_id == business.id).first()
-    print('\n\n\n\n\ images', images)
     images_dict =images.to_dict()
     business_dict["images"] = images_dict
     business_dict['tags'] = [tag.to_dict() for tag in business.tags]
@@ -151,6 +150,7 @@ def edit_a_business(id):
 @business_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_business(id):
+  print('\n\n\n\n\n\n\n DELETE A BUSINESS RUNNING')
   business = Business.query.get(id)
   if not business:
     return {"message":"Business couldn't be found", "statusCode":404}
