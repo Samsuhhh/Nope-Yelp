@@ -216,6 +216,8 @@
     border-radius: 5px;
 }
 
+
+
 #for-businesses-button-business-navbar-logged {
     display: flex;
     align-items: center;
@@ -225,6 +227,7 @@
     border-radius: 5px;
     margin-left: 270px;
     margin-right: 0px;
+
 }
 
 #for-businesses-button-logged:hover {
