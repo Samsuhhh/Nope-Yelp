@@ -193,7 +193,7 @@ const CreateBusiness = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setShowErrors(true)
-        console.log('--------VALIDATION ERRORS-------', validationErrors)
+        
         if (!validationErrors.length) {
             const business = {
                 business_name: businessName,
@@ -220,7 +220,6 @@ const CreateBusiness = () => {
                     business_id: createdBusiness.id,
                     url: imgUrl
                 })
-                console.log('what is being sent to the addbusinessimage thunk', imgBody, createdBusiness.id)
                 dispatch(addBusinessImage(imgBody, createdBusiness.id))
                 setShowErrors(false)
                 history.push(`/businesses/${createdBusiness.id}`)
