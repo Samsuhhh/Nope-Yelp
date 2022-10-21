@@ -68,7 +68,7 @@ export default function AddBusinessImage() {
                         {showErrors &&
                             <ul>
                                 {validationErrors.map((e, i) => {
-                                    return <div key={i}>{e}</div>
+                                    return <div id="add-photo-error" key={i}>{e}</div>
                                 })}
                             </ul>
                         }
