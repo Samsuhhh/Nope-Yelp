@@ -27,7 +27,7 @@ import info from "../../../assets/addbusiness/featureicons/info-icon.svg"
 import defpp from "../../../assets/businessdetails/defaultprofile.jpg"
 
 
-const BusinessDetails = () => {
+const BusinessDetails = ({search}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const params = useParams();
@@ -95,8 +95,10 @@ const BusinessDetails = () => {
     ]
 
     function randomNum() {
-        return Math.floor(Math.random() * restaurantArray.length - 1);
+        return Math.floor(Math.random() * 35);
     }
+
+    console.log(restaurantArray.length)
 
 
     // const [current, setCurrent] = useState(0);
@@ -157,7 +159,7 @@ const BusinessDetails = () => {
     return isLoaded && (
         <div id='business-details-page'>
             <div id='whitespacetop'></div>
-            <BusinessNavBar />
+            {/* <BusinessNavBar /> */}
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
                     <Carousel>
@@ -279,50 +281,57 @@ const BusinessDetails = () => {
 
                         </div>
                         <div id='current-user-review-space-between'>
-                        {currentUser && currentUser.id === business.owner_id && (
+                            {currentUser && currentUser.id === business.owner_id && (
                                 <div id='left-user-review-info'>
-
-                                    <img id='owner-avatar' src={currentUser.userAvatar}></img>
-                                    <div>
-                                        <div id="left-user-name-styling">{currentUser.username}</div>
-                                        <div>{currentUser.firstName} {currentUser.lastName}</div>
+                                    <div id="current-user-review-record">
+                                        <img id='owner-avatar' src={currentUser.userAvatar}></img>
+                                        <div>
+                                            <div id="left-user-name-styling">{currentUser.username}</div>
+                                            <div id="left-user-fullname-styling">{currentUser.firstName} {currentUser.lastName}</div>
+                                        </div>
                                     </div>
 
-                                    <div id='right-user-review-info'>
-                                        <div><img id="review-info-nope" src={nope} /></div>
-                                        <div>You cannot review your own business, {business.business_name}</div>
+                                    <div id="current-user-review-record">
+                                        <div id='right-user-review-info'>
+                                            <div><img id="review-info-nope" src={nope} /></div>
+                                            <div>You cannot review your own business, {business.business_name}</div>
+                                        </div>
                                     </div>
                                 </div>
                             )}
 
                             {currentUser && currentUser.id !== business.owner_id && (
                                 <div id='left-user-review-info'>
-
-                                    <img id='owner-avatar' src={currentUser.userAvatar}></img>
-                                    <div>
-                                        <div id="left-user-name-styling">{currentUser.username}</div>
-                                        <div>{currentUser.firstName} {currentUser.lastName}</div>
+                                    <div id="current-user-review-record">
+                                        <img id='owner-avatar' src={currentUser.userAvatar}></img>
+                                        <div>
+                                            <div id="left-user-name-styling">{currentUser.username}</div>
+                                            <div id="left-user-fullname-styling">{currentUser.firstName} {currentUser.lastName}</div>
+                                        </div>
                                     </div>
-
-                                    <div id='right-user-review-info'>
-                                        <div><img id="review-info-nope" src={nope} /></div>
-                                        <div>Your current review of {business.business_name}</div>
+                                    <div id="current-user-review-record">
+                                        <div id='right-user-review-info'>
+                                            <div><img id="review-info-nope" src={nope} /></div>
+                                            <div>Your current review of {business.business_name}</div>
+                                        </div>
                                     </div>
                                 </div>
                             )}
 
                             {!currentUser && (
                                 <div id='left-user-review-info'>
-
-                                    <img id='owner-avatar' src={defpp}></img>
-                                    <div>
-                                        <div id="left-user-username-styling">Username</div>
-                                        <div>First name Last name</div>
+                                    <div id="current-user-review-record">
+                                        <img id='owner-avatar' src={defpp}></img>
+                                        <div>
+                                            <div id="left-user-username-styling">Username</div>
+                                            <div id="left-user-name-styling">First name Last name</div>
+                                        </div>
                                     </div>
-
-                                    <div id='right-user-review-info'>
-                                        <div><img id="review-info-nope" src={nope} /></div>
-                                        <div>You must sign in to review {business.business_name}</div>
+                                    <div id="current-user-review-record">
+                                        <div id='right-user-review-info'>
+                                            <div><img id="review-info-nope" src={nope} /></div>
+                                            <div>You must sign in to review {business.business_name}</div>
+                                        </div>
                                     </div>
                                 </div>)}
 

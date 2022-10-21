@@ -337,6 +337,10 @@
 
 }
 
+#current-user-review-record {
+    display: flex;
+    align-items: center;
+}
 
 #business-details-about {
     margin-top: 15px;
@@ -363,11 +367,17 @@
 
 #left-user-review-info {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    width: 80%;
 }
 
-#left-user-username-styling {
+#left-user-name-styling {
     font-weight: 700;
+}
+
+#left-user-fullname-styling {
+    color: gray;
 }
 
 #reviews-analytics-container {
