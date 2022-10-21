@@ -12,6 +12,7 @@ from .api.business_routes import business_routes
 from .api.review_routes import review_routes
 from .api.tag_routes import tag_routes
 
+
 from .seeds import seed_commands
 
 from .config import Config
