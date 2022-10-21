@@ -20,6 +20,7 @@ import AddBusiness from './components/Businesses/AddBusiness';
 import Carousel, { CarouselItem } from './components/Businesses/BusinessDetails/Carousel';
 import BusinessNavBar from './components/Businesses/BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar';
 import CreateBusiness from './components/Businesses/CreateBusiness';
+import UpdateBusiness from './components/Businesses/UpdateBusiness';
 import UserProfile from './components/UserProfile';
 import BusinessImages from './components/Businesses/BusinessImages';
 import AddBusinessImage from './components/Businesses/AddBusinessImage';
@@ -111,6 +112,10 @@ function App() {
 
         <Route path='/businesses/:businessId/writeareview' exact={true}>
           <AddBusinessReview />
+        </Route>
+
+        <Route path='/businesses/:businessId/updatebusiness' exact={true}>
+          <UpdateBusiness/>
         </Route>
 
         <Route>
