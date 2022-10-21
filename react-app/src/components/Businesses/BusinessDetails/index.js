@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleBusinessThunk, updateBusinessThunk } from '../../../store/business';
 import { getAllReviews } from '../../../store/review';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, useHistory, Link, NavLink } from 'react-router-dom';
 import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
 import './BusinessDetails.css'
@@ -221,9 +221,9 @@ const BusinessDetails = () => {
                             </div>
                         </div>
                         <div id='all-photos-div'>
-                            <button id='all-photos-button'>
+                            <NavLink to={`/businesses/${businessId}/images`} id='all-photos-button'>
                                 See {business.BusinessImages.length} photos
-                            </button>
+                            </NavLink>
                         </div>
                     </div>
                 </div>

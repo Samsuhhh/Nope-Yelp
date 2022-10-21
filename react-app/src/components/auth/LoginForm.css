@@ -55,3 +55,7 @@
     color: white;
     margin-top: 12px;
 }
+
+#login-submit-button:hover {
+    cursor: pointer;
+}

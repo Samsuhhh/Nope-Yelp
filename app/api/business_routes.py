@@ -357,3 +357,17 @@ def add_image(id):
 
     return img.to_dict()
   return {"errors": validation_form_errors(form.errors), "statusCode": 401}
+
+# DELETE AN IMAGE FROM A BUSINESS VIA ID
+@business_routes.route('/images/<int:id>', methods=["DELETE"])
+@login_required
+def delete_business_image(id):
+  business_image = BusinessImage.query.get(id)
+  # ERROR HANDLING NONEXISTENT IMAGE
+  if not business_image:
+    return {"message": "Review couldn't be found", "statusCode":404}
+
+  db.session.delete(business_image)
+  db.session.commit()
+
+  return {"message": "Successfully delete", "statusCode": 200}

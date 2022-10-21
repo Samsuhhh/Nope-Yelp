@@ -196,7 +196,7 @@ const CreateBusiness = () => {
                 tag2: tags[1],
                 tag3: tags[2]
             }
-            // console.log('what does our business object look like?', business)
+
             let createdBusiness = await dispatch(createBusinessThunk(business))
 
             if (createdBusiness) {
@@ -366,23 +366,6 @@ const CreateBusiness = () => {
                     <div key={tag.title}>
                         <input
                             type="checkbox"
-                            // onChange={(e) => {
-                            //     const tagsList = tags
-                            //     if (e.target.checked) {
-                            //         tagsList.push(e.target.value)
-                            //         // tags.push(e.target.value)
-                            //         console.log('current tag array', tagsList)
-                            //         console.log('tag array that we are sending', tags)
-                            //     } else {
-                            //         const index = tagsList.indexOf(e.target.value)
-                            //         tagsList.splice(index, 1)
-                            //         // const index = tags.indexOf(e.target.value)
-                            //         // tags.splice(index, 1)
-                            //         console.log('current array after removing a tag', tagsList)
-                            //         console.log('tag array that we are sending', tags)
-                            //     }
-                            //     setTags(tagsList)
-                            // }}
                             onChange={handleCheck}
                             name={tag.title}
                             value={tag.title} />

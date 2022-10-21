@@ -21,10 +21,12 @@ import Carousel, { CarouselItem } from './components/Businesses/BusinessDetails/
 import BusinessNavBar from './components/Businesses/BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar';
 import CreateBusiness from './components/Businesses/CreateBusiness';
 import UserProfile from './components/UserProfile';
+import BusinessImages from './components/Businesses/BusinessImages';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [search, setSearch] = useState([])
+  const singleBusiness = useSelector(state => state.businesses.singleBusiness)
   const dispatch = useDispatch();
   // const reviews = useSelector(state => state.reviews.business)
 
@@ -80,6 +82,10 @@ function App() {
 
         <Route path='/businesses/new' exact={true}>
           <AddBusiness />
+        </Route>
+
+        <Route path='/businesses/:businessId/images' exact={true}>
+          <BusinessImages></BusinessImages>
         </Route>
 
         <Route path='/createabusiness' exact={true}>

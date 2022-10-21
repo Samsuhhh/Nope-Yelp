@@ -7,6 +7,7 @@ const CREATE = "businesses/CREATE";
 const UPDATE = "businesses/UPDATE";
 const REMOVE = "businesses/DELETE";
 const ADD_IMAGE = "businesses/IMAGE"
+const REMOVE_IMAGE = "images/DELETE"
 
 //Action Creators
 const loadAll = (businesses) => ({
@@ -42,6 +43,11 @@ const remove = businessId => ({
 const addImage = businessId => ({
   type: ADD_IMAGE,
   businessId
+})
+
+const removeImage = imageId => ({
+  type: REMOVE_IMAGE,
+  imageId
 })
 
 // THUNK action creators
@@ -157,6 +163,20 @@ export const addBusinessImage = (data, businessId) => async (dispatch) => {
   }
 }
 
+export const removeBusinessImage = (imageId) => async (dispatch) => {
+  const response = await fetch(`/api/businesses/images/${imageId}`, {
+    method: "DELETE"
+  })
+
+  if (response.ok) {
+    dispatch(removeImage(imageId))
+    return
+  } else {
+    console.log("----Delete Business Image Thunk Error----")
+    return
+  }
+}
+
 let initialState = {
   allBusinesses: {},
   singleBusiness: {}
@@ -202,6 +222,22 @@ const businessReducer = (state = initialState, action) => {
       if (newState.singleBusiness.id === action.businessId) {
         newState.singleBusiness = {}
       }
+      return newState
+    case REMOVE_IMAGE:
+      newState = {
+        ...state,
+        allBusinesses: { ...state.allBusinesses },
+        singleBusiness: { ...state.singleBusiness }
+      }
+      const businessImages = newState.singleBusiness.BusinessImages
+      for (let i = 0; i < businessImages.length; i++) {
+        console.log('this is the action', action)
+        console.log('this is the image id in the action', action.imageId)
+        if (businessImages[i].id === action.imageId) {
+          businessImages.splice(i, 1)
+        }
+      }
+      // return {...newState} should we spread the new state?
       return newState
     default:
       return state
