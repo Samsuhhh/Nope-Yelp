@@ -175,6 +175,14 @@ const businessReducer = (state = initialState, action) => {
         ...state,
         allBusinesses
       }
+    case LOAD_CURRENT:
+      action.bussinesses.forEach(business => {
+        allBusinesses[business.id] = business;
+      })
+      return {
+        ...state,
+        allBusinesses
+      }
     case LOAD_ONE:
       //   console.log('SINGLE business Reducer hitting', action.business)
       //   newState = { [action.business.id]: { ...action.business } }
