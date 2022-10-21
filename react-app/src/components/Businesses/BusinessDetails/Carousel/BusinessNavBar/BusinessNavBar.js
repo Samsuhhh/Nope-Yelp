@@ -89,7 +89,8 @@ const BusinessNavBar = ({ setSearch }) => {
         <div>
           {/* <>THIS IS A SPACER</> */}
         </div>
-
+        <div></div>
+        <div></div>
         <div id="for-businesses-button-business-navbar-logged">
           <NavLink to='/businesses/new' exact={true} activeClassName='active' id='login-nav-business-navbar'>
             For Businesses
@@ -98,7 +99,7 @@ const BusinessNavBar = ({ setSearch }) => {
         <div >
 
           <>
-            <div >
+            <div>
               <div id='menu-img-container'>
                 <button id='menu-button' onClick={openMenu}>
                   <img id='user-avatar-img' src={`${sessionUser.userAvatar}`} alt='rock' />

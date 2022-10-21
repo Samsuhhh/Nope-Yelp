@@ -267,7 +267,8 @@ a:active { text-decoration: none; }
   height: 36px;
   width: 140px;
   border-radius: 5px;
-  margin-left: 260px;
+  margin-left: 210px;
+  margin-right: 60px;
 }
 
 #for-businesses-button-logged:hover {
@@ -779,4 +780,8 @@ a:active { text-decoration: none; }
   height:40px;
   width:40px;
   border-radius: 9999px;
+}
+
+#user-avatar-img:hover {
+  cursor: pointer;
 }
