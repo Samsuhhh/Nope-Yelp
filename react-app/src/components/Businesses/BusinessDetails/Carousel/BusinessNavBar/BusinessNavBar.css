@@ -197,3 +197,39 @@
     padding-right: 20%;
     padding-bottom: 30%;
 }
+
+#for-businesses-button-business-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    width: 140px;
+    border-radius: 5px;
+}
+
+#for-businesses-button:hover {
+    background-color: rgba(225, 225, 225, 0.3);
+}
+
+#login-nav-business-navbar{
+    color: black;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    width: 140px;
+    border-radius: 5px;
+}
+
+#login-nav-business-navbar:link { text-decoration: none; }
+#login-nav-business-navbar:visited { text-decoration: none; }
+#login-nav-business-navbar:active { text-decoration: none; }
+
+#login-nav-business-navbar:hover {
+    text-decoration: none;
+}
+#login-nav-business-navbar:hover{
+    background-color: rgba(214, 214, 214, 0.757);
+    cursor: pointer;
+}

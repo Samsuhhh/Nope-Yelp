@@ -82,10 +82,10 @@ const NavBar = ({ setSearch }) => {
           {/* <>THIS IS A SPACER</> */}
         </div>
         <div id="for-businesses-button">
-            <NavLink to='/businesses/new' exact={true} activeClassName='active' id='login-nav'>
-              For Businesses
-            </NavLink>
-          </div>
+          <NavLink to='/businesses/new' exact={true} activeClassName='active' id='login-nav'>
+            For Businesses
+          </NavLink>
+        </div>
         <div >
 
           <>

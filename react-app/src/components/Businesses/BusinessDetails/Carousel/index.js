@@ -34,7 +34,8 @@ const Carousel = ({ children }) => {
                     onClick={() => {
                         setActiveIndex(activeIndex + 1);
                     }}>
-                    <img id="next-button" src={next} />
+
+                    <img id="next-button" src={activeIndex < 2 ? next : ''} />
                 </button>
             </div>
         </div>
