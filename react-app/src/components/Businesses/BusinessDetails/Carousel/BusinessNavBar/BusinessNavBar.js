@@ -36,6 +36,11 @@ const BusinessNavBar = ({ setSearch }) => {
   const results = fuse.search(query)
   const businessResults = results.map(result => result.item).slice(0, 15)
 
+
+
+        setSearch(businessResults)
+        return history.push('/businesses')
+
   function handleOnSearch({ target = {} }) {
     const { value } = target
     setQuery(value)
@@ -44,6 +49,7 @@ const BusinessNavBar = ({ setSearch }) => {
   const handleSearchSubmit = async (e) => {
     e.preventDefault()
     console.log("search input value", document.getElementById("search-input-field").value)
+
 
     const fuse = new Fuse(Object.values(businesses), options)
     const results = fuse.search(document.getElementById("search-input-field").value).slice(0, 15)

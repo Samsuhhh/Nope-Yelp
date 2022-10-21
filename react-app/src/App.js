@@ -102,10 +102,15 @@ function App() {
           </Carousel>
         </Route>
 
+
+        <Route search={search} path='/businesses/:businessId' exact={true}>
+          <BusinessNavBar setSearch={setSearch} />
+
         <Route path='/businesses/edit' exact={true}>
           <UpdateBusinessReview />
         </Route>
         <Route path='/businesses/:businessId' exact={true}>
+
           <BusinessDetails />
         </Route>
 
