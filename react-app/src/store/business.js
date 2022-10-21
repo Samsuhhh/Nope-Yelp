@@ -133,18 +133,21 @@ export const updateBusinessThunk = (business) => async (dispatch) => {
 }
 
 export const deleteBusinessThunk = (businessId) => async (dispatch) => {
-  const response = await fetch(`/api/businesses/${businessId}`,
-    { method: "DELETE" });
+  const response = await fetch(`/api/businesses/${businessId}`, {
+    method: "DELETE"
+  });
 
-  const deletedBusinessData = await response.json();
+  console.log('response from deleting a business', response)
 
   if (response.ok) {
+    const deletedBusinessData = await response.json();
     dispatch(remove(deletedBusinessData));
+    return
   }
   else {
     console.log("------Delete Business Thunk Error-----");
   }
-  return deletedBusinessData;
+  return;
 }
 
 export const addBusinessImage = (data, businessId) => async (dispatch) => {
@@ -215,7 +218,7 @@ const businessReducer = (state = initialState, action) => {
       newState.singleBusiness.BusinessImages = []
       return newState
     case ADD_IMAGE:
-      newState = { singleBusiness: { ...state.singleBusiness } }
+      newState = { allBusinesses: { ...state.allBusinesses }, singleBusiness: { ...state.singleBusiness } }
       newState.singleBusiness.BusinessImages = [...state.singleBusiness.BusinessImages, action.businessId.url]
       return newState
     case UPDATE:

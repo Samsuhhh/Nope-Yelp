@@ -162,7 +162,7 @@ const BusinessDetails = ({ search, onClose }) => {
         history.push('/update')
     }
 
-    const deleteHandler = async (businessId) => {
+    const deleteHandler = async () => {
         await dispatch(deleteBusinessThunk(businessId))
         history.push('/')
     }

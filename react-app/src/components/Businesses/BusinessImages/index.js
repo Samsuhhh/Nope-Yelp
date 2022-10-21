@@ -19,9 +19,16 @@ export default function BusinessImages() {
                         <div id="gridded-modal-item" key={image.id}>
                             <img id="modal-image" alt='yes' src={image.url}></img>
                             <div>{(user && user.id === business.owner_id) && (
+<<<<<<< HEAD
                                 <button id="modal-delete-img" onClick={() =>
                                 dispatch(removeBusinessImage(image.id))}>
                                     <img id="modal-trash-icon" src={trash} />
+=======
+                                <button
+                                disabled={!(business.BusinessImages.length - 1)}
+                                onClick={() => dispatch(removeBusinessImage(image.id))}>
+                                    Delete Image
+>>>>>>> main
                                 </button>
                             )}</div>
                         </div>
