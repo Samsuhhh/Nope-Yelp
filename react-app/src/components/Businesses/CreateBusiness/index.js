@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { createBusinessThunk, addBusinessImage } from '../../../store/business'
+import { Modal } from '../../../context/Modal'
 import './CreateBusiness.css'
 
-const CreateBusiness = () => {
+const CreateBusiness = ({ onClose }) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const user = useSelector(state => state.session.user)
+    // const user = useSelector(state => state.session.user)
 
     const [businessName, setBusinessName] = useState('')
     const [email, setEmail] = useState('')
@@ -25,7 +26,9 @@ const CreateBusiness = () => {
     const [imgUrl, setImgUrl] = useState('')
     const [tags, setTags] = useState([])
     const [validationErrors, setValidationErrors] = useState([])
-    const [showErrors, setShowErrors] = useState(false)
+    const [showErrors, setShowErrors] = useState(false);
+
+    const [showTagModal, setShowTagModal] = useState(false)
 
     const updateBusinessName = (e) => setBusinessName(e.target.value)
     const updateEmail = (e) => setEmail(e.target.value)
@@ -345,7 +348,7 @@ const CreateBusiness = () => {
                         </div>
                         {/*------- PRICE RANGE -------*/}
                         <div id='price-select-div-hover'>
-                            <select
+                            {/* <select
                                 value={priceRange}
                                 onChange={updatePriceRange}
                                 required>
@@ -354,7 +357,19 @@ const CreateBusiness = () => {
                                 <option value='2'>$$</option>
                                 <option value='3'>$$$</option>
                                 <option value='4'>$$$$</option>
-                            </select>
+                            </select> */}
+                            <div id='priceHeading'>What is the price range of your business?</div>
+                            <div id='price-setter-container'>
+                                <fieldset id='fieldset-price' class="rate" value={priceRange} onChange={updatePriceRange}>
+                                    {/* <input className="priceInput" type="radio" id="rating10" name="rating" value="5" /><label for="rating10" title="5 stars"></label> */}
+                                    <input className="priceInput" type="radio" id="rating8" name="rating" value="4" /><label for="rating8" title="4 stars"></label>
+                                    <input className="priceInput" type="radio" id="rating6" name="rating" value="3" /><label for="rating6" title="3 stars"></label>
+                                    <input className="priceInput" type="radio" id="rating4" name="rating" value="2" /><label for="rating4" title="2 stars"></label>
+                                    <input className="priceInput" type="radio" id="rating2" name="rating" value="1" /><label for="rating2" title="1 star"></label>
+                                </fieldset>
+                            </div>
+
+
                             {/* <input
                     type='number'
                     placeholder='Price Range'
@@ -365,41 +380,74 @@ const CreateBusiness = () => {
 
                         {/*------- TAGS -------*/}
                         {/* SOME TYPE OF MODAL HERE FOR TAGS */}
-                        <div>
-                            {mainTagsList.map(tag => (
-                                <div key={tag.title}>
-                                    <input
-                                        type="checkbox"
-                                        onChange={(e) => {
-                                            const tagsList = tags
-                                            if (e.target.checked) {
-                                                tagsList.push(e.target.value)
-                                                console.log('current tag array', tagsList)
-                                            } else {
-                                                const index = tagsList.indexOf(e.target.value)
-                                                tagsList.splice(index, 1)
-                                                console.log('current array after removing a tag', tagsList)
-                                            }
-                                            setTags(tagsList)
-                                        }}
-                                        name={tag.title}
-                                        value={tag.title} />
-                                    <label>{tag.title}</label>
+                        {/* <button onClick={() => setShowTagModal(true)}>TAGS :(</button> */}
+
+                        <div id='click-me' onClick={() => setShowTagModal(true)}> Click here to set your tags</div>
+                        {showTagModal && (
+                            <div id='modal-wrapper'>
+
+                                <Modal onClose={() => setShowTagModal(false)}>
+                                    <div id='modal-header'>
+                                        <img alt='close-button' id='close-modal' onClick={onClose}
+                                            src='https://cdn-icons-png.flaticon.com/512/2723/2723639.png' />
+
+                                        <div id='header-div'>
+                                            Select your tags
+                                        </div>
+                                    </div>
+                                    <div id='grid-container'>
+                                        <div id='tags-grid'>
+                                            {mainTagsList.map(tag => {
+                                                return <div id='input-styling-grid' key={tag.title}>
+
+                                                    <input
+                                                        id='checkbox-input'
+                                                        type="checkbox"
+                                                        onChange={(e) => {
+                                                            const tagsList = tags
+                                                            if (e.target.checked) {
+                                                                tagsList.push(e.target.value)
+                                                                console.log('current tag array', tagsList)
+                                                            } else {
+                                                                const index = tagsList.indexOf(e.target.value)
+                                                                tagsList.splice(index, 1)
+                                                                console.log('current array after removing a tag', tagsList)
+                                                            }
+                                                            setTags(tagsList)
+                                                        }}
+                                                        name={tag.title}
+                                                        value={tag.title} />
+
+                                                    <label id='text-align-center'>{tag.title}</label>
+                                                </div>
+                                            })}
+                                        </div>
+                                    </div>
+                                </Modal>
+                            </div>
+
+                        )}
+                        <div id='button-width'>
+                            <div id='button-container'>
+                                {/*------- SUBMIT BUTTON -------*/}
+                                <div id='submit-button'>
+                                    <button type='submit'>Create Your Business</button>
+
                                 </div>
-                            ))}
+                                <div id='cancel-button'>
+                                    {/*------- CANCEL BUTTON -------*/}
+                                    <button
+                                        type='button'
+                                        onClick={handleCancel}>
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        {/*------- SUBMIT BUTTON -------*/}
-                        <button type='submit'>Create Your Business</button>
-                        {/*------- CANCEL BUTTON -------*/}
-                        <button
-                            type='button'
-                            onClick={handleCancel}>
-                            Cancel
-                        </button>
                     </form>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 
