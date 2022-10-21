@@ -26,6 +26,7 @@
 
 .image-indicator-wrapper {
     display: flex;
+    position: static;
     align-items: center;
     height: 100%;
     width: 40px;
