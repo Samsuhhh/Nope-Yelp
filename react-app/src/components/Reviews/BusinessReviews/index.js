@@ -1,7 +1,7 @@
 //  empty for now TODO
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getAllReviews, removeReview } from '../../../store/review'
 import './BusinessReviews.css'
 
@@ -15,7 +15,6 @@ import nope from "../../../assets/nopes/0-nopes.png"
 const BusinessReview = () => {
     const { businessId } = useParams()
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const user = useSelector(state => state.session.user)
     const businessReviews = useSelector(state => state.reviews.business)
