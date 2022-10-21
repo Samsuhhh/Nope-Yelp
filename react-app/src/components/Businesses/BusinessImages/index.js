@@ -18,8 +18,9 @@ export default function BusinessImages() {
                         <div key={image.id}>
                             <img alt='yes' src={image.url}></img>
                             <div>{(user && user.id === business.owner_id) && (
-                                <button onClick={() =>
-                                dispatch(removeBusinessImage(image.id))}>
+                                <button
+                                disabled={!(business.BusinessImages.length - 1)}
+                                onClick={() => dispatch(removeBusinessImage(image.id))}>
                                     Delete Image
                                 </button>
                             )}</div>
