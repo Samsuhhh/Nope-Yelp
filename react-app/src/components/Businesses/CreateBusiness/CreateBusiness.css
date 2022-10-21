@@ -156,10 +156,21 @@
     font-family: "Open Sans"
 }
 
+#tags-price-inputs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 #click-me {
-    cursor: pointer
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+
 
 #modal-header {
     width: 100%;
@@ -210,6 +221,7 @@
 
 
 /* price setter */
+
 #fieldset-price {
     border: 1px solid lightgrey;
     border-radius: 15px;
@@ -224,11 +236,19 @@
     justify-content: center;
 }
 
+#open-tags-modal {
+    margin-top: 18px;
+    margin-bottom: 22px;
+    font-size: 18px;
+    font: "Open Sans";
+    font-weight: 400px;
+}
+
 #priceHeading {
     font-size: 18px;
     margin-top: 28px;
     margin-bottom: 10px;
-    font: system-ui;
+    font: "Open Sans";
     font-weight: 400;
 }
 
@@ -281,13 +301,35 @@ label:hover~.priceInput:checked~label {
     width: 400px;
     justify-content: center;
     justify-content: space-around;
-
+    margin-top: 25px;
 }
 
-#submit-button {
+#tags-button,
+#tags-button:hover {
+    width: 147.5px;
+    height: 55px;
+    cursor: pointer;
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 6px 16px 0px;
+    background-color: white;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: "Open Sans";
+}
+
+#cancel-button,
+#cancel-button:hover,
+#submit-button,
+#submit-button:hover {
     height: 40px;
-    width: 100%;
-
+    width: 175px;
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 15px;
+    color: white;
+    background-color: #E00707;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    cursor: pointer;
 }
-
-#cancel-button {}

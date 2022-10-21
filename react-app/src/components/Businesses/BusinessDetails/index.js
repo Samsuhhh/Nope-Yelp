@@ -384,7 +384,6 @@ const BusinessDetails = () => {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div>
                             <BusinessReview></BusinessReview>

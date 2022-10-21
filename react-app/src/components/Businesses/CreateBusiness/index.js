@@ -372,8 +372,9 @@ const CreateBusiness = ({ onClose }) => {
 
                         </div>
                         {/*------- PRICE RANGE -------*/}
-                        <div id='price-select-div-hover'>
-                            {/* <select
+                        <div id='tags-price-inputs'>
+                            <div id='price-select-div-hover'>
+                                {/* <select
                                 value={priceRange}
                                 onChange={updatePriceRange}
                                 required>
@@ -383,31 +384,26 @@ const CreateBusiness = ({ onClose }) => {
                                 <option value='3'>$$$</option>
                                 <option value='4'>$$$$</option>
                             </select> */}
-                            <div id='priceHeading'>What is the price range of your business?</div>
-                            <div id='price-setter-container'>
-                                <fieldset id='fieldset-price' class="rate" value={priceRange} onChange={updatePriceRange}>
-                                    {/* <input className="priceInput" type="radio" id="rating10" name="rating" value="5" /><label for="rating10" title="5 stars"></label> */}
-                                    <input className="priceInput" type="radio" id="rating8" name="rating" value="4" /><label for="rating8" title="4 stars"></label>
-                                    <input className="priceInput" type="radio" id="rating6" name="rating" value="3" /><label for="rating6" title="3 stars"></label>
-                                    <input className="priceInput" type="radio" id="rating4" name="rating" value="2" /><label for="rating4" title="2 stars"></label>
-                                    <input className="priceInput" type="radio" id="rating2" name="rating" value="1" /><label for="rating2" title="1 star"></label>
-                                </fieldset>
+                                <div id='priceHeading'>What is the price range of your business?</div>
+                                <div id='price-setter-container'>
+                                    <fieldset id='fieldset-price' class="rate" value={priceRange} onChange={updatePriceRange}>
+                                        {/* <input className="priceInput" type="radio" id="rating10" name="rating" value="5" /><label for="rating10" title="5 stars"></label> */}
+                                        <input className="priceInput" type="radio" id="rating8" name="rating" value="4" /><label for="rating8" title="4 stars"></label>
+                                        <input className="priceInput" type="radio" id="rating6" name="rating" value="3" /><label for="rating6" title="3 stars"></label>
+                                        <input className="priceInput" type="radio" id="rating4" name="rating" value="2" /><label for="rating4" title="2 stars"></label>
+                                        <input className="priceInput" type="radio" id="rating2" name="rating" value="1" /><label for="rating2" title="1 star"></label>
+                                    </fieldset>
+                                </div>
                             </div>
-
-
-                            {/* <input
-                    type='number'
-                    placeholder='Price Range'
-                    value={priceRange}
-                    onChange={updatePriceRange}
-                    required /> */}
+                            {/*------- TAGS -------*/}
+                            <div id='click-me'>
+                                <div id='open-tags-modal'>Click here to set your tags</div>
+                                <div>
+                                    <button id='tags-button' onClick={() => setShowTagModal(true)}>Tags</button>
+                                </div>
+                            </div>
                         </div>
 
-                        {/*------- TAGS -------*/}
-                        {/* SOME TYPE OF MODAL HERE FOR TAGS */}
-                        {/* <button onClick={() => setShowTagModal(true)}>TAGS :(</button> */}
-
-                        <div id='click-me' onClick={() => setShowTagModal(true)}> Click here to set your tags</div>
                         {showTagModal && (
                             <div id='modal-wrapper'>
 
@@ -455,13 +451,14 @@ const CreateBusiness = ({ onClose }) => {
                         <div id='button-width'>
                             <div id='button-container'>
                                 {/*------- SUBMIT BUTTON -------*/}
-                                <div id='submit-button'>
-                                    <button type='submit'>Create Your Business</button>
+                                <div >
+                                    <button id='submit-button' type='submit'>Create Your Business</button>
 
                                 </div>
-                                <div id='cancel-button'>
+                                <div >
                                     {/*------- CANCEL BUTTON -------*/}
                                     <button
+                                        id='cancel-button'
                                         type='button'
                                         onClick={handleCancel}>
                                         Cancel
