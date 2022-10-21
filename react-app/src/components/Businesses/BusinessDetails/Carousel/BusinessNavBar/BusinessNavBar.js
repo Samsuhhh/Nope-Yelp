@@ -36,11 +36,6 @@ const BusinessNavBar = ({ setSearch }) => {
   const results = fuse.search(query)
   const businessResults = results.map(result => result.item).slice(0, 15)
 
-
-
-        setSearch(businessResults)
-        return history.push('/businesses')
-
   function handleOnSearch({ target = {} }) {
     const { value } = target
     setQuery(value)
