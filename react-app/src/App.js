@@ -108,7 +108,7 @@ function App() {
           <BusinessDetails />
         </Route>
 
-        <Route path='/businesses/edit' exact={true}>
+        <Route path='/reviews/:reviewId/edit' exact={true}>
           <UpdateBusinessReview />
         </Route>
 

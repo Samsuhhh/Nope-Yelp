@@ -10,9 +10,21 @@ const UserProfile = () => {
   const reviews = useSelector(state => state.reviews.user)
   const businesses = useSelector(state => state.businesses.allBusinesses)
 
-  let businessCount = 0
+  const randomGreeting = [
+    "Hangry?",
+    "Food is easier to flirt with than people",
+    "Hungry is an emotion and we understand that",
+    "Not a morning person? We'll find a coffee shop near you",
+    "What did the hungry computer eat? Chips. One byte at a time.",
+    "What do you call a fake noodle. An impasta?",
+    "What's orange and sounds like a parrot? A carrot.",
+    "What do you call cheese that isn't yours? Nacho cheese."
+  ]
 
-  Object.values(businesses).map(business =>{
+  console.log(randomGreeting[Math.floor(Math.random()*(randomGreeting.length-1))])
+  let businessCount = 0
+  console.log(Math.floor(Math.random()*(randomGreeting.length-1)))
+  Object.values(businesses).map(business => {
     if (business.owner_id === user.id) businessCount++
     return businessCount
   })
@@ -29,20 +41,23 @@ const UserProfile = () => {
             <div>
               <h1>{user.firstName} {user.lastName}</h1>
               <h4>{user.email}</h4>
-              <h4>{Object.values(reviews).length} Reviews | {businessCount} Businesses</h4>
-              <div>
-                <span>
-                  <NavLink to={`/user-profile/reviews`}>
-
-                  <button>My Reviews</button>
-                  </NavLink >
-                  </span>
-                <span>
-                  <NavLink to={`/user-profile/businesses`}>
-
-                  <button>My Businesses</button>
+              <h4>{randomGreeting[Math.floor(Math.random()*(randomGreeting.length-1))]}</h4>
+              <div id="user-actions-btn-container">
+                <div className="dropdown-links">
+                  <NavLink className="user-profile-navlink" to='/'>
+                    <div className="user-action-btn home-btn-user-profile">Home</div>
                   </NavLink>
-                </span>
+                </div>
+                <div className="dropdown-links">
+                  <NavLink className="user-profile-navlink" to={`/user-profile/reviews`}>
+                    <div className="user-action-btn">My Reviews</div>
+                  </NavLink >
+                </div>
+                <div className="dropdown-links">
+                  <NavLink className="user-profile-navlink" to={`/user-profile/businesses`}>
+                    <div className="user-action-btn">My Businesses</div>
+                  </NavLink>
+                </div>
               </div>
             </div>
           </div>

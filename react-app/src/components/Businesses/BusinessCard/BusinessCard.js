@@ -45,19 +45,19 @@ export default function BusinessCard({ search }) {
   let priceRange4 = Object.values(search).filter(business => {
     return business.price_range === 4
   })
-  // console.log("filter 1 hitting ", priceRange1)
-  // console.log("filter 2 hitting ", priceRange2)
-  // console.log("filter 3 hitting ", priceRange3)
-  // console.log("filter 4 hitting ", priceRange4)
+  console.log("filter 1 hitting ", priceRange1)
+  console.log("filter 2 hitting ", priceRange2)
+  console.log("filter 3 hitting ", priceRange3)
+  console.log("filter 4 hitting ", priceRange4)
   useEffect(()=> {
     for (let i = 0; i<1000000; i++) {
 
     }
-  }, [businessList,])
+  }, [search])
   if (!search.length) return (<h1>No results for this search</h1>)
   return (
     <>
-      
+
     <div id="main-div-business-card">
       {/* LEFT DIV START */}
       <div id="left-div-business-card">
@@ -126,7 +126,7 @@ export default function BusinessCard({ search }) {
 
         <h3 style={{ paddingLeft: "20px" }}>All Results</h3>
         <div id="middle-div-list-container">
-          {Object.values(search).map((business, i) => {
+          {Object.values(businessList||search).map((business, i) => {
             let about = business.about
             business.about.length > 180 ? about = business.about.slice(0, 180) + "..." : about = business.about
             return (

@@ -65,7 +65,7 @@ const CurrentUserBusinesses = () => {
 
               <div id="review-actions-current-user-reviews">
                 <div>
-                  <NavLink to="/businesses/edit">
+                  <NavLink to={`/businesses/${business?.id}/updatebusiness`}>
 
                     <button id="edit-review-btn-current-user-reviews" >
                       <img className="current-user-review-action-btns" alt='edit me' src={editicon}>
