@@ -6,14 +6,14 @@ import './UpdateBusiness.css'
 import { Modal } from '../../../context/Modal'
 
 
-const UpdateBusiness = ({onClose}) => {
+const UpdateBusiness = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const params = useParams()
-    const {businessId} = params;
+    const { businessId } = params;
 
-    const user = useSelector(state => state.session.user)
-    const existingBusiness = useSelector(state => state.businesses.singleBusiness )
+    // const user = useSelector(state => state.session.user)
+    const existingBusiness = useSelector(state => state.businesses.singleBusiness)
 
     const [businessName, setBusinessName] = useState(existingBusiness.business_name)
     const [email, setEmail] = useState(existingBusiness.email)
@@ -28,7 +28,7 @@ const UpdateBusiness = ({onClose}) => {
     const [priceRange, setPriceRange] = useState(existingBusiness.price_range)
     const [website, setWebsite] = useState(existingBusiness.website)
     // FIX EDITING AN IMAGE AND EDITING TAGS
-    const [imgUrl, setImgUrl] = useState(existingBusiness?.BusinessImages[0].url)
+    // const [imgUrl, setImgUrl] = useState(existingBusiness?.BusinessImages[0].url)
     const [tags, setTags] = useState([])
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
@@ -46,7 +46,7 @@ const UpdateBusiness = ({onClose}) => {
     const updateLatitude = (e) => setLatitude(e.target.value)
     const updatePriceRange = (e) => setPriceRange(e.target.value)
     const updateWebsite = (e) => setWebsite(e.target.value)
-    const updateImgUrl = (e) => setImgUrl(e.target.value)
+    // const updateImgUrl = (e) => setImgUrl(e.target.value)
     const [helper, setHelper] = useState(false)
     const tagsList = tags
     const handleCheck = (e) => {
@@ -69,6 +69,15 @@ const UpdateBusiness = ({onClose}) => {
         setHelper(!helper)
         // setTags(tagsList)
         // setTags(tags)
+    }
+    const confirmModal = () => {
+        setTags(tagsList)
+        setHelper(!helper)
+        setShowTagModal(false)
+    }
+    const exitModal = () => {
+        tagsList.splice(0, tagsList.length)
+        setShowTagModal(false)
     }
 
     const mainTagsList = [
@@ -195,15 +204,15 @@ const UpdateBusiness = ({onClose}) => {
                 zipcode,
                 state,
                 about,
-                longitude,
-                latitude,
-                price_range: priceRange,
+                longitude: +longitude,
+                latitude: +latitude,
+                price_range: +priceRange,
                 website,
                 tag1: tags[0],
                 tag2: tags[1],
                 tag3: tags[2]
             }
-            let updatedBusiness = await dispatch(updateBusinessThunk(business))
+            let updatedBusiness = await dispatch(updateBusinessThunk(business, businessId))
 
             if (updatedBusiness) {
                 setShowErrors(false)
@@ -336,25 +345,15 @@ const UpdateBusiness = ({onClose}) => {
                                         required />
                                 </div>
                             </div>
-                            <div className='fragmented-divs-container-address-LL-url'>
-                                {/*------- WEBSITE -------*/}
-                                <div className='fragmented-div-styling'>
-                                    <input
-                                        type='text'
-                                        placeholder='WebsiteURL'
-                                        value={website}
-                                        onChange={updateWebsite}
-                                        required />
-                                </div>
-                                {/*------- IMG URL -------*/}
-                                <div className='fragmented-div-styling'>
-                                    <input
-                                        type='text'
-                                        placeholder='IMG URL'
-                                        value={imgUrl}
-                                        onChange={updateImgUrl}
-                                        required />
-                                </div>
+                            {/*------- WEBSITE URL -------*/}
+
+                            <div className='create-input-divs'>
+                                <input
+                                    type='text'
+                                    placeholder='WebsiteURL'
+                                    value={website}
+                                    onChange={updateWebsite}
+                                    required />
                             </div>
                         </div>
                         {/*------- ABOUT -------*/}
@@ -408,7 +407,7 @@ const UpdateBusiness = ({onClose}) => {
 
                                 <Modal onClose={() => setShowTagModal(false)}>
                                     <div id='modal-header'>
-                                        <img alt='close-button' id='close-modal' onClick={onClose}
+                                        <img alt='close-button' id='close-modal' onClick={exitModal}
                                             src='https://cdn-icons-png.flaticon.com/512/2723/2723639.png' />
 
                                         <div id='header-div'>
@@ -432,7 +431,11 @@ const UpdateBusiness = ({onClose}) => {
                                             })}
                                         </div>
                                     </div>
-                                    <div onClick={() => setShowTagModal(false)}>Test</div>
+                                    <div
+                                        id='tag-confirm-button'
+                                        onClick={confirmModal}>
+                                        Confirm
+                                    </div>
                                 </Modal>
                             </div>
 

@@ -5,7 +5,7 @@ import { createBusinessThunk, addBusinessImage } from '../../../store/business'
 import { Modal } from '../../../context/Modal'
 import './CreateBusiness.css'
 
-const CreateBusiness = ({ onClose }) => {
+const CreateBusiness = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 

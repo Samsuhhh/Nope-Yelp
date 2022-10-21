@@ -115,21 +115,23 @@ export const createBusinessThunk = (business) => async (dispatch) => {
   }
 }
 
-export const updateBusinessThunk = (business) => async (dispatch) => {
-  const response = await fetch(`/api/businesses/${business.id}`, {
+export const updateBusinessThunk = (business, businessId) => async (dispatch) => {
+  const response = await fetch(`/api/businesses/${businessId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(business)
   });
-  const updatedBusinessData = await response.json();
 
+  console.log('what is the response', response)
+  
   if (response.ok) {
+    const updatedBusinessData = await response.json();
     dispatch(update(updatedBusinessData));
   }
   else {
     console.log("-----Updated Business Thunk Error-----");
   }
-  return updateBusinessThunk;
+  return 
 }
 
 export const deleteBusinessThunk = (businessId) => async (dispatch) => {
