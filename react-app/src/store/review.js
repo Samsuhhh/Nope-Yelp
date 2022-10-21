@@ -51,7 +51,6 @@ export const getAllReviews = (businessId) => async dispatch => {
 
     if (response.ok) {
         const reviews = await response.json()
-        // console.log('reviews in thunk action creator', reviews)
         dispatch(load(reviews, businessId))
         return reviews
     } else {
@@ -175,7 +174,6 @@ const reviewReducer = (state = initialState, action) => {
                 allReviews
             }
         case LOAD_CURRENT:
-            // newState = {...state}
             action.reviews.reviews.forEach(review => {
                 user[review.id] = review
             })
