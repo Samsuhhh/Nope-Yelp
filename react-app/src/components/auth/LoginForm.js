@@ -67,6 +67,14 @@ const LoginForm = () => {
                 onChange={updatePassword}
               />
               <button id="login-submit-button" type='submit'>Login</button>
+              <button
+                id='login-submit-button'
+                type='submit'
+                onClick={() => {
+                  setEmail('CarlMaki@email.com')
+                  setPassword('password')
+                }}
+              >Login as Demo User</button>
             </div>
           </form>
           <img id="unhappy-img" src={unhappy} />

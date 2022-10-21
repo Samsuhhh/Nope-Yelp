@@ -1,0 +1,335 @@
+#create-business-form-page {
+    border: 1px solid red;
+    /* display: flex; */
+    /* justify-content: center; */
+    font-family: "Open Sans"
+
+}
+
+#create-form-container {
+    border: 1px dashed blue;
+    width: 50%;
+    padding: 25px;
+}
+
+#create-form-header {
+    width: 100%;
+    height: 100%;
+    margin-top: 26px;
+}
+
+#create-form-header>h1 {
+    line-height: 36px;
+    overflow-wrap: break-word;
+}
+
+#form-content {
+    margin-top: 36px;
+    border: 1px solid #ebebeb;
+    border-radius: 15px;
+    padding: 10px 20px 20px 20px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px 0px;
+
+}
+
+.create-input-divs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    margin-top: 20px;
+    /* margin-bottom: 10px; */
+    border: none;
+}
+
+.create-input-divs>input {
+    padding-left: 15px;
+    font-size: 15px;
+    font-family: "Open Sans";
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    border: 1px solid black;
+}
+
+#address-input-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+}
+
+#address-input-div>input {
+    padding-left: 15px;
+    font-size: 15px;
+    font-family: "Open Sans";
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+
+
+
+.fragmented-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.fragmented-divs-container-address-LL-url {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    /* margin-bottom: 10px; */
+
+}
+
+.fragmented-address-div {
+    width: 31%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border: none;
+}
+
+.fragmented-address-div>input {
+    padding-left: 15px;
+    font-size: 15px;
+    font-family: "Open Sans";
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.fragmented-div-styling {
+    width: 48.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border: none;
+
+}
+
+.fragmented-div-styling>input {
+    padding-left: 15px;
+    font-size: 15px;
+    font-family: "Open Sans";
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+
+#about-textarea-div {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border: none;
+    /* -webkit-appearance: none; */
+}
+
+#create-text-area {
+    /* border-left: 1px solid black;
+    border-right: 1px solid black; */
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+    font-size: 15px;
+    font-family: "Open Sans"
+}
+
+#tags-price-inputs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#click-me {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+#modal-header {
+    width: 100%;
+    height: 75px;
+}
+
+#header-div {
+    font-size: 24px;
+    font-weight: 700;
+    padding-bottom: 8px;
+}
+
+#input-styling-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13.5px;
+}
+
+#checkbox-input {
+    width: 20px;
+    height: 20px;
+}
+
+#text-align-center {
+    text-align: center;
+}
+
+/* [type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+} */
+
+#grid-container {
+    border: 1px solid #ebebeb;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
+    padding: 10px;
+}
+
+#tags-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 90px);
+    grid-template-rows: repeat(8, 80px);
+}
+
+
+/* price setter */
+
+#fieldset-price {
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 6px 16px 0px;
+}
+
+
+#price-select-div-hover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#open-tags-modal {
+    margin-top: 18px;
+    margin-bottom: 22px;
+    font-size: 18px;
+    font: "Open Sans";
+    font-weight: 400px;
+}
+
+#priceHeading {
+    font-size: 18px;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    font: "Open Sans";
+    font-weight: 400;
+}
+
+.rate {
+    display: inline-block;
+    border: 0;
+}
+
+.rate>input {
+    display: none;
+}
+
+.rate>label {
+    float: right;
+}
+
+.rate>label:before {
+    display: inline-block;
+    font-size: 2rem;
+    padding: .3rem .2rem;
+    margin: 0;
+    cursor: pointer;
+    font-family: system-ui;
+    content: "$";
+    /* position: relative; */
+    /* color: lightgrey; */
+}
+
+.priceInput:checked~label,
+label:hover,
+label:hover~label {
+    color: #FFD700
+}
+
+.priceInput:checked+label:hover,
+.priceInput:checked~label:hover,
+input:checked~label:hover~label,
+label:hover~.priceInput:checked~label {
+    color: #FFD700;
+}
+
+#button-width {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#button-container {
+    display: flex;
+    width: 400px;
+    justify-content: center;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+#tags-button,
+#tags-button:hover {
+    width: 147.5px;
+    height: 55px;
+    cursor: pointer;
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 6px 16px 0px;
+    background-color: white;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: "Open Sans";
+}
+
+#cancel-button,
+#cancel-button:hover,
+#submit-button,
+#submit-button:hover {
+    height: 40px;
+    width: 175px;
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 15px;
+    color: white;
+    background-color: #E00707;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    cursor: pointer;
+}

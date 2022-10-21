@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleBusinessThunk, updateBusinessThunk } from '../../../store/business';
 import { getAllReviews } from '../../../store/review';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, useHistory, Link, NavLink } from 'react-router-dom';
 import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
 import './BusinessDetails.css'
-import { deleteBusinessThunk } from '../../../store/business';
+import { deleteBusinessThunk, addBusinessImage } from '../../../store/business';
 import Carousel, { CarouselItem } from './Carousel';
+import BusinessNavBar from './Carousel/BusinessNavBar/BusinessNavBar'
+import Footer from '../../Footer/Footer'
 
 import linkIcon from '../../../assets/icons/external-linkicon.svg'
 import phoneIcon from '../../../assets/icons/phoneicon.svg'
@@ -20,17 +22,39 @@ import nopes2 from "../../../assets/nopes/2-nopes.png"
 import nopes1 from "../../../assets/nopes/1-nopes.png"
 import nope from "../../../assets/nopes/0-nopes.png"
 import whiteNope from "../../../assets/nopes/ratingimg.png"
+import camera from "../../../assets/addbusiness/featureicons/camera-icon.svg"
+import info from "../../../assets/addbusiness/featureicons/info-icon.svg"
+import defpp from "../../../assets/businessdetails/defaultprofile.jpg"
 
 
-const BusinessDetails = () => {
+const BusinessDetails = ({onClose}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const params = useParams();
     const { businessId } = params;
     const business = useSelector(state => state.businesses.singleBusiness);
-    const currentUser = useSelector(state => state.session.user)
-    const [isLoaded, setIsLoaded] = useState(false)
+    const currentUser = useSelector(state => state.session.user);
+    const reviewsObj = useSelector(state => state?.reviews.business);
+    let existingReview;
+    const existingReviews = Object.values(reviewsObj);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [showPhotosModal, setShowPhotosModal] = useState(false);
+
     // const [img, setImg] = useState()
+    // console.log('user', currentUser)
+    // console.log('busi', business)
+
+    if (!existingReviews.length) {
+        existingReview = true
+    } else {
+        for (let i = 0; i < existingReviews.length; i++) {
+            if (existingReviews[i]?.user_id === currentUser.id) {
+                existingReview = false
+            } else {
+                existingReview = true
+            }
+        }
+    }
 
     const allReviews = business?.Reviews?.length
     const fiveNopes = business?.Reviews?.filter(review => review.nope === 5).length
@@ -46,6 +70,50 @@ const BusinessDetails = () => {
         }
         return qmaths * 100
     }
+
+
+    const restaurantArray = [
+        'https://i.imgur.com/6NCXvwd.png',
+        'https://i.imgur.com/OCpfvCF.png',
+        'https://i.imgur.com/ndhmitw.png',
+        'https://i.imgur.com/YgqGyfY.png',
+        'https://i.imgur.com/h5fLvE5.jpg',
+        'https://i.imgur.com/ZQG8Rd7.jpg',
+        'https://i.imgur.com/WpNfj61.jpg',
+        'https://i.imgur.com/vK29O5v.png',
+        'https://i.imgur.com/F4tl2wu.png',
+        'https://i.imgur.com/Qj7qhTO.png',
+        'https://i.imgur.com/cXi292q.jpg',
+        'https://i.imgur.com/3nIF2go.png',
+        'https://i.imgur.com/pit6hLw.png',
+        'https://i.imgur.com/mExiuvL.jpg',
+        'https://i.imgur.com/25vA8Fi.png',
+        'https://i.imgur.com/MwYw75l.png',
+        'https://i.imgur.com/GZxXSN7.png',
+        'https://i.imgur.com/dNPX6ul.jpg',
+        'https://i.imgur.com/Z3mbjAw.jpg',
+        'https://i.imgur.com/BOXFqW4.png',
+        'https://i.imgur.com/Xhq4vtH.png',
+        'https://i.imgur.com/XGre7Oc.png',
+        'https://i.imgur.com/THmjJdy.jpg',
+        'https://i.imgur.com/eDvUj0j.jpg',
+        'https://i.imgur.com/EjFLLtT.png',
+        'https://i.imgur.com/Hjh8Soh.png',
+        'https://i.imgur.com/DDWMY35.jpg',
+        'https://i.imgur.com/qSbLDEc.png',
+        'https://i.imgur.com/yw7i6e9.png',
+        'https://i.imgur.com/S5x2Kud.png',
+        'https://i.imgur.com/mfgOsMm.jpg',
+        'https://i.imgur.com/rOgGckr.png',
+        'https://i.imgur.com/mT7Fdrc.png',
+        'https://i.imgur.com/FGtBIcX.png',
+        'https://i.imgur.com/ZzK4fJf.png'
+    ]
+
+    function randomNum() {
+        return Math.floor(Math.random() * restaurantArray.length - 1);
+    }
+
 
     // const [current, setCurrent] = useState(0);
 
@@ -99,21 +167,24 @@ const BusinessDetails = () => {
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })
 
-    }, [dispatch, businessId])
+    }, [dispatch, businessId, existingReviews.length, showPhotosModal])
 
-
+    let numReviews = business.reviewCount === 1 ? "Review" : "Reviews"
+    let numPhotos = business?.BusinessImages?.length === 1 ? "Photo" : "Photos"
 
     return isLoaded && (
         <div id='business-details-page'>
+            <div id='whitespacetop'></div>
+            <BusinessNavBar />
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
                     <Carousel>
                         {business.BusinessImages.map((image) =>
                             <CarouselItem>
                                 <div className='carousel-images'>
+                                    <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
                                     <img id="caro-img" alt='yes' src={image.url}></img>
-                                    <img id="caro-img" alt='yes' src={image.url}></img>
-                                    <img id="caro-img" alt='yes' src={image.url}></img>
+                                    <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
                                 </div>
                             </CarouselItem>
                         )}
@@ -134,18 +205,20 @@ const BusinessDetails = () => {
                 <div id='business-details-header-content' >
                     <div id='business-details-header-info-container'>
                         <div id='business-details-info'>
-                            <h1>{business.business_name}</h1>
+                            <div id='business-details-info-name'>{business.business_name}</div>
                             <div id='business-details-info-review-divs'>
                                 <div id='nopes-container'>
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
                                 <div id='review-count-div'>
-                                    {business.reviewCount} reviews
+                                    {business.reviewCount} {numReviews}
                                 </div>
                             </div>
                             <div id='business-details-info-price-tags'>
                                 <div className='info-price-tags'>
-                                    {priceSetter(business.price_range)} &bull; TAGS
+                                    <div id='claimed'></div>
+                                    {/* Claimed div not done just leaving as a reminder */}
+                                    Claimed &bull; {priceSetter(business.price_range)} &bull; {`${business.tags[0].tag}, ${business.tags[1].tag}, ${business.tags[2].tag}`}
                                 </div>
                             </div>
                             <div className='info-price-tags'>
@@ -154,9 +227,9 @@ const BusinessDetails = () => {
                             </div>
                         </div>
                         <div id='all-photos-div'>
-                            <button id='all-photos-button'>
-                                See {business.BusinessImages.length} photos
-                            </button>
+                            <NavLink to={`/businesses/${businessId}/images`} id='all-photos-button'>
+                                See {business.BusinessImages.length} {numPhotos}
+                            </NavLink>
                         </div>
                     </div>
                 </div>
@@ -164,28 +237,34 @@ const BusinessDetails = () => {
             <div id='business-details-container'>
                 <div id='details-content'>
                     <div id='business-details-action-buttons-div'>
-                        <Link to={`/businesses/${business.id}/writeareview`}>
-                            <button id='write-review-button'>
-                                <div id='write-review-btn-content'>
-                                    <img id='white-nope-img' src={whiteNope} alt='white nope' />
-                                    <div id='write-review-font-styling'>Write a Review</div>
-                                </div>
-                            </button>
-                        </Link>
-                        <div id='action-buttons-div'>
-                            <button className='action-buttons'>Add a photo </button>
-                        </div>
+                        {(currentUser && currentUser.id !== business.Owner.id && existingReview) &&
+                            <Link to={`/businesses/${business.id}/writeareview`}>
+                                <button id='write-review-button'>
+                                    <div id='write-review-btn-content'>
+                                        <img id='white-nope-img' src={whiteNope} alt='white nope' />
+                                        <div id='write-review-font-styling'>Write a Review</div>
+                                    </div>
+                                </button>
+                            </Link>
+                        }
                         {currentUser && currentUser.id === business.Owner.id && (
-                            <div id='auth-action-buttons'>
-                                <button onClick={updateRedirect} className='action-buttons'>Edit your business</button>
-                                <button onClick={deleteHandler} className='action-buttons'>Delete your business</button>
-                            </div>
+                            <>
+                                <div id='action-buttons-div'>
+                                    <NavLink to={`/businesses/${business.id}/images/new`} className='action-buttons'>
+                                        <img id="add-photo-icon" src={camera} />
+                                        Add photo
+                                    </NavLink>
+                                </div>
+
+                                <div id='auth-action-buttons'>
+                                    <button onClick={updateRedirect} className='action-buttons'>Edit Business</button>
+                                </div>
+                                <div id='auth-action-buttons'>
+                                    <button onClick={deleteHandler} className='action-buttons'>Delete Business</button>
+                                </div>
+                            </>
                         )}
                     </div>
-                    <section id='business-details-amenities-container'>
-                        <div>POSSIBLY AMENITIES
-                        </div>
-                    </section>
                     <section id='business-details-about-container'>
                         <div id='about-business-h2-div'>
                             <h2>About the Business </h2>
@@ -205,20 +284,69 @@ const BusinessDetails = () => {
                         </div>
                         <div id='business-details-about'>{business.about}</div>
                     </section>
+
                     <section id='reviews-business-details-container'>
-                        Current User Create Review filler
-                        <div id='current-user-review-space-between'>
-                            <div id='left-user-review-info'>
-                                {/* <img id='owner-avatar' src={currentUser.userAvatar}</img> */}
-                                <div>
-                                    <div>UserName</div>
-                                    <div>User First, Last</div>
+                        <div id='about-business-h2-div'>
+                            <h2>Reviews</h2>
+
+                            <div id="review-trust-banner">
+                                <div id="review-trust-lining"></div>
+                                <img id="info-img" src={info} />
+                                <div id="review-trust-message">
+                                    <b>Your trust is of inconsequential concern,</b> so businesses can pay large amounts to alter or remove their reviews. Thank you for understanding.
                                 </div>
+                                <div id="blankleft"></div>
                             </div>
-                            <div id='right-user-review-info'>
-                                <div>nopes</div>
-                                <div>Start your review of {business.business_name}</div>
-                            </div>
+
+                        </div>
+                        <div id='current-user-review-space-between'>
+                        {currentUser && currentUser.id === business.owner_id && (
+                                <div id='left-user-review-info'>
+
+                                    <img id='owner-avatar' src={currentUser.userAvatar}></img>
+                                    <div>
+                                        <div id="left-user-name-styling">{currentUser.username}</div>
+                                        <div>{currentUser.firstName} {currentUser.lastName}</div>
+                                    </div>
+
+                                    <div id='right-user-review-info'>
+                                        <div><img id="review-info-nope" src={nope} /></div>
+                                        <div>You cannot review your own business, {business.business_name}</div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {currentUser && currentUser.id !== business.owner_id && (
+                                <div id='left-user-review-info'>
+
+                                    <img id='owner-avatar' src={currentUser.userAvatar}></img>
+                                    <div>
+                                        <div id="left-user-name-styling">{currentUser.username}</div>
+                                        <div>{currentUser.firstName} {currentUser.lastName}</div>
+                                    </div>
+
+                                    <div id='right-user-review-info'>
+                                        <div><img id="review-info-nope" src={nope} /></div>
+                                        <div>Your current review of {business.business_name}</div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {!currentUser && (
+                                <div id='left-user-review-info'>
+
+                                    <img id='owner-avatar' src={defpp}></img>
+                                    <div>
+                                        <div id="left-user-username-styling">Username</div>
+                                        <div>First name Last name</div>
+                                    </div>
+
+                                    <div id='right-user-review-info'>
+                                        <div><img id="review-info-nope" src={nope} /></div>
+                                        <div>You must sign in to review {business.business_name}</div>
+                                    </div>
+                                </div>)}
+
                         </div>
                         <div id='reviews-analytics-container'>
                             <div id='overall-ratings'>
@@ -226,41 +354,40 @@ const BusinessDetails = () => {
                                 <div id='nopes-container'>
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
-                                <div id='overall-ratings-big-nopes-review-count'>{business.reviewCount} reviews</div>
+                                <div id='overall-ratings-big-nopes-review-count'>{business.reviewCount} {numReviews}</div>
                             </div>
                             <div id='dynamic-horizontal-reviews'>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>5 nopes</div>
                                     <div id='dbar-5' className='dynamic-bar'>
-                                        <div className='inner-fill' style={{ width: `${dynamicFills(fiveNopes)}%`, backgroundColor: "red"}}></div>
+                                        <div className='inner-fill' style={{ width: `${dynamicFills(fiveNopes)}%`, backgroundColor: "red" }}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>4 nopes</div>
                                     <div id='dbar-4' className='dynamic-bar'>
-                                        <div className='inner-fill' style={{ width: `${dynamicFills(fourNopes)}%`, backgroundColor: "#f73"}}></div>
+                                        <div className='inner-fill' style={{ width: `${dynamicFills(fourNopes)}%`, backgroundColor: "#f73" }}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>3 nopes</div>
                                     <div id='dbar-3' className='dynamic-bar'>
-                                        <div className='inner-fill' style={{ width: `${dynamicFills(threeNopes)}%`, backgroundColor: "#fa2"}}></div>
+                                        <div className='inner-fill' style={{ width: `${dynamicFills(threeNopes)}%`, backgroundColor: "#fa2" }}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>2 nopes</div>
                                     <div id='dbar-2' className='dynamic-bar'>
-                                        <div className='inner-fill' style={{ width: `${dynamicFills(twoNopes)}%`, backgroundColor: "#d92"}}></div>
+                                        <div className='inner-fill' style={{ width: `${dynamicFills(twoNopes)}%`, backgroundColor: "#d92" }}></div>
                                     </div>
                                 </div>
                                 <div className='dynamic-stars'>
                                     <div className='star-tag-div'>1 nope</div>
                                     <div id='dbar-1' className='dynamic-bar'>
-                                        <div className='inner-fill' style={{ width: `${dynamicFills(oneNope)}%`, backgroundColor: "#eb2"}}></div>
+                                        <div className='inner-fill' style={{ width: `${dynamicFills(oneNope)}%`, backgroundColor: "#eb2" }}></div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div>
                             <BusinessReview></BusinessReview>
@@ -270,23 +397,27 @@ const BusinessDetails = () => {
                 <div id='sticky-sidebar-container'>
                     <div id='sticky-sidebar-content'>
                         <div id='sticky-website-div'>
-                            <a href={business.website}> {business.website}</a>
+                            <a href={business.website}>
+                                <p>{business.website}</p>
+                            </a>
                             <img className='icon-img-asset' alt='link icon' src={linkIcon} />
                         </div>
                         <div id='sticky-email-div'>
-                            {business.email}
+                            <a href={`mailto:${business.email}`}>
+                                <p>{business.email}</p>
+                            </a>
                             <img className='icon-img-asset' alt='email icon' src={emailIcon} />
                         </div>
                         <div id='sticky-phone-div'>
                             {phoneStyling(business.phone)}
                             <img className='icon-img-asset' alt='phone icon' src={phoneIcon} />
                         </div>
-                        <div className='sticky-divs'>
-                            Message the owner
-                        </div>
+
                     </div>
                 </div>
             </div>
+            <div id="whitespacetop"></div>
+            <Footer />
         </div>
     )
 

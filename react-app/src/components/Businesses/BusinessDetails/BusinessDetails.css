@@ -1,3 +1,8 @@
+#whitespacetop {
+    width: 100%;
+    height: 100px;
+}
+
 #business-details-page {
     width: 100%;
     height: 100%;
@@ -10,7 +15,6 @@
 #business-details-header-images {
     width: 100%;
     height: 460px;
-    border: 5px solid black;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -33,16 +37,20 @@
     height: 100%;
     width: 100%;
 
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,.7) 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .7) 100%);
 
 }
 
-
+#business-details-info-name {
+    font-weight: 700;
+    color: white;
+    font-size: 50px;
+}
 
 
 #caro-img {
     position: relative;
-    display:block;
+    display: block;
     width: 100%;
     max-height: 550px;
     z-index: -1;
@@ -83,14 +91,15 @@
 #business-details-info {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     height: 40%;
     /* border: 1px solid white; */
 }
 
-#business-details-info > h1{
+#business-details-info>h1 {
     color: white;
-    font-family:"Open Sans"
+    font-family: "Open Sans"
 }
 
 
@@ -101,6 +110,10 @@
 
 }
 
+#nopes-container {
+    margin-bottom: 5px;
+}
+
 #nopes-container,
 #nopes {
     width: 175px;
@@ -108,13 +121,13 @@
     margin-top: 3px;
 }
 
-#review-count-div{
+#review-count-div {
     color: white;
-    margin-left:10px;
+    margin-left: 10px;
 }
 
 
-.info-price-tags{
+.info-price-tags {
     color: white;
 }
 
@@ -137,7 +150,6 @@
 
 
 #business-details-container {
-    border: 2px solid green;
     width: 100%;
     height: 100%;
     display: flex;
@@ -151,15 +163,13 @@
 #details-content {
     width: 45%;
     height: 100%;
-    border: 3px solid red;
 }
 
 
 #business-details-action-buttons-div {
     display: flex;
-    border: 1px solid purple;
     width: 100%;
-    height: 35px;
+    height: 50px;
     font-family: "Open Sans";
     align-items: center;
 
@@ -169,11 +179,15 @@
 /* #write-review-button:hover, */
 #write-review-button {
     font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 15px;
     color: white;
-    background-color: red;
+    background-color: #E00707;
     border: 1px solid lightgrey;
     border-radius: 5px;
-    width: 170px;
+    width: 175px;
+    height: 40px;
+    transition: 1s;
     /* align-items: center; */
     /* justify-content: space-between; */
     /* text-align: center; */
@@ -183,60 +197,107 @@
     cursor: pointer;
 }
 
-#write-review-btn-content{
+#write-review-button:hover {
+    background-color: #ff2323;
+}
+
+#write-review-btn-content {
     display: flex;
     height: 30px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
-#white-nope-img{
+#white-nope-img {
     width: 20px;
     height: 20px;
+    margin-right: 5px;
 }
 
-#write-review-font-styling{
+#write-review-font-styling {
     font-family: "Open Sans";
     font-size: 16px;
+}
 
+#add-photo-icon {
+    height: 20px;
+    margin-right: 5px;
 }
-#action-buttons-div{
-    height: 30px;
-}
+
 
 .action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #2D2E2F;
     background-color: transparent;
     border: 1px solid lightgrey;
     border-radius: 5px;
     font-family: 'Open Sans';
     margin-left: 16px;
-    font-weight: 500;
+    font-weight: 700;
     text-align: center;
-    line-height: 25px;
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    transition: 1s;
 }
 
-.action-buttons:hover{
+.action-buttons:hover {
     cursor: pointer;
+    background-color: rgb(230, 230, 230);
 }
 
 #business-details-amenities-container {
     width: 100%;
     height: 250px;
-    border: 1px solid red;
 
 }
 
 #business-details-about-container {
     width: 100%;
-    height: 300px;
-    border: 1px solid blue;
+    height: 230px;
     font-family: 'Open Sans';
 }
 
-#about-business-h2-div{
+#about-business-h2-div {
     font-size: 14px;
     font-weight: 600;
+}
+
+#review-trust-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+    width: 100%;
+    background-color: #EBF6FF;
+    border-radius: 5px;
+}
+
+#info-img {
+    height: 20px;
+    filter: invert(49%) sepia(39%) saturate(5615%) hue-rotate(193deg) brightness(101%) contrast(102%);
+}
+
+#review-trust-message {
+    font-size: 17px;
+    font-weight: 500;
+    height: 50px;
+    width: 80%;
+}
+
+#blankleft {
+    height: 100%;
+    width: 60px;
+}
+
+#review-trust-lining {
+    background-color: #1f8eff;
+    height: 100%;
+    width: 8px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 
@@ -250,9 +311,9 @@
 
 
 #owner-avatar {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+    width: 60px;
+    border-radius: 9999px;
+    margin-right: 10px;
 }
 
 #business-details-owner-name {
@@ -260,7 +321,8 @@
     font-size: 18px;
     font-weight: 700;
 }
-#business-details-owner-title{
+
+#business-details-owner-title {
     font-size: 14px;
     color: grey;
 }
@@ -280,28 +342,43 @@
     padding-bottom: 25px;
 }
 
-#current-user-review-space-between{
+#current-user-review-space-between {
     display: flex;
+    align-items: center;
+    width: 100%;
+    height: 115px;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
-#left-user-review-info{
+#review-info-nope {
+    height: 32px;
+}
+
+#left-user-review-info {
     display: flex;
+    align-items: center;
+}
+
+#left-user-username-styling {
+    font-weight: 700;
 }
 
 #reviews-analytics-container {
     display: flex;
     width: 100%;
     height: 100%;
-    border: 1px solid purple;
     font-family: 'Open Sans';
     /* justify-content: space-between; */
 }
 
 
 #overall-ratings {
-    border: 1px solid red;
+    font-size: 15px;
     justify-self: flex-end;
     margin-right: 120px;
     display: flex;
@@ -309,12 +386,14 @@
     justify-content: center;
 }
 
-#overall-ratings-div-font-styling{
+#overall-ratings-div-font-styling {
     font-size: 16px;
     font-weight: 700;
 }
-#overall-ratings-big-nopes-review-count{
+
+#overall-ratings-big-nopes-review-count {
     margin-top: 5px;
+    color: gray;
 }
 
 #dynamic-horizontal-reviews {
@@ -326,6 +405,7 @@
 
 
 .star-tag-div {
+    font-size: 14px;
     width: 15%;
     display: flex;
     justify-content: center;
@@ -341,13 +421,14 @@
     height: 100%;
 
 }
-.inner-fill{
+
+.inner-fill {
     border-radius: 15px;
     height: 100%;
 }
 
 #dbar-5 {
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
     height: 30%;
     width: 100%;
     border: none;
@@ -355,7 +436,7 @@
 }
 
 #dbar-4 {
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
     height: 30%;
     width: 100%;
     border: none;
@@ -363,7 +444,7 @@
 }
 
 #dbar-3 {
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
     height: 30%;
     width: 100%;
     border: none;
@@ -371,7 +452,7 @@
 }
 
 #dbar-2 {
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
     height: 30%;
     width: 100%;
     border: none;
@@ -379,7 +460,7 @@
 }
 
 #dbar-1 {
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
     height: 30%;
     width: 100%;
     border: none;
@@ -390,7 +471,6 @@
 
 .dynamic-stars {
     width: 100%;
-    border: 1px solid green;
     display: flex;
     height: 30px;
     align-items: center;
@@ -403,7 +483,6 @@
 #sticky-sidebar-container {
     width: 425px;
     height: 900px;
-    border: 1px solid pink;
     font-family: 'Open Sans';
     font-size: 16px;
     font-weight: 600;
@@ -413,31 +492,105 @@
 
 #sticky-sidebar-content {
     position: sticky;
-    top: 10px;
+    top: 105px;
     border: 1px solid lightgrey;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 5px;
 }
 
-.sticky-divs{
+.sticky-divs {
     display: flex;
-        justify-content: space-between;
-        align-items: center;
-        line-height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 60px;
 }
 
-#sticky-website-div,
-#sticky-email-div,
-#sticky-phone-div{
+#sticky-website-div {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid lightgrey;
     line-height: 60px;
+
 }
 
-.icon-img-asset{
+#sticky-website-div p {
+    width: 300px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0;
+    white-space: nowrap;
+}
+
+#sticky-email-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgrey;
+    line-height: 60px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#sticky-email-div p {
+    width: 300px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0;
+}
+
+
+#sticky-phone-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.icon-img-asset {
     width: 24px;
     height: 24px;
+}
+
+
+#sticky-email-div a:link {
+    text-decoration: none;
+    color: #008EA7;
+}
+
+#sticky-email-div a:active {
+    text-decoration: none;
+    color: #008EA7;
+}
+
+#sticky-email-div a:visited {
+    text-decoration: none;
+    color: #008EA7;
+}
+
+#sticky-email-div a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#sticky-website-div a:link {
+    text-decoration: none;
+    color: #008EA7;
+}
+
+#sticky-website-div a:active {
+    text-decoration: none;
+    color: #008EA7;
+}
+
+#sticky-website-div a:visited {
+    text-decoration: none;
+    color: #008EA7;
+}
+
+#sticky-website-div a:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
