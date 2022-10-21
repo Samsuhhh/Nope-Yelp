@@ -10,6 +10,7 @@ import { deleteBusinessThunk, addBusinessImage } from '../../../store/business';
 import Carousel, { CarouselItem } from './Carousel';
 import BusinessNavBar from './Carousel/BusinessNavBar/BusinessNavBar'
 import Footer from '../../Footer/Footer'
+import { Modal } from '../../../context/Modal';
 
 import linkIcon from '../../../assets/icons/external-linkicon.svg'
 import phoneIcon from '../../../assets/icons/phoneicon.svg'
@@ -25,10 +26,11 @@ import whiteNope from "../../../assets/nopes/ratingimg.png"
 import camera from "../../../assets/addbusiness/featureicons/camera-icon.svg"
 import info from "../../../assets/addbusiness/featureicons/info-icon.svg"
 import defpp from "../../../assets/businessdetails/defaultprofile.jpg"
+import BusinessImages from '../BusinessImages';
 
 
 
-const BusinessDetails = ({search, onClose}) => {
+const BusinessDetails = ({ search, onClose }) => {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -178,6 +180,16 @@ const BusinessDetails = ({search, onClose}) => {
     return isLoaded && (
         <div id='business-details-page'>
             <div id='whitespacetop'></div>
+            {showPhotosModal && (
+                <Modal id='photo-modal' onClose={() => setShowPhotosModal(false)}>
+                    <div onClick={() => setShowPhotosModal(false)}>
+                        Insert X here
+                    </div>
+                    <div>
+                        <BusinessImages></BusinessImages>
+                    </div>
+                </Modal>
+            )}
             {/* <BusinessNavBar /> */}
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
@@ -229,10 +241,12 @@ const BusinessDetails = ({search, onClose}) => {
                                 <div>{business.city}, {business.state} {business.zipcode}</div>
                             </div>
                         </div>
-                        <div id='all-photos-div'>
-                            <NavLink to={`/businesses/${businessId}/images`} id='all-photos-button'>
+                        <div id='all-photos-div' onClick={() => setShowPhotosModal(true)}>
+                            {/* <NavLink to={`/businesses/${businessId}/images`} id='all-photos-button'> */}
+                            <div id='all-photos-button'>
                                 See {business.BusinessImages.length} {numPhotos}
-                            </NavLink>
+                            </div>
+                            {/* </NavLink> */}
                         </div>
                     </div>
                 </div>

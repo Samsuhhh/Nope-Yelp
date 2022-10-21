@@ -604,3 +604,7 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+#photo-modal{
+    z-index: 2147483647;
+}

@@ -424,18 +424,7 @@ const CreateBusiness = ({ onClose }) => {
                                                     <input
                                                         id='checkbox-input'
                                                         type="checkbox"
-                                                        onChange={(e) => {
-                                                            const tagsList = tags
-                                                            if (e.target.checked) {
-                                                                tagsList.push(e.target.value)
-                                                                console.log('current tag array', tagsList)
-                                                            } else {
-                                                                const index = tagsList.indexOf(e.target.value)
-                                                                tagsList.splice(index, 1)
-                                                                console.log('current array after removing a tag', tagsList)
-                                                            }
-                                                            setTags(tagsList)
-                                                        }}
+                                                        onChange={handleCheck}
                                                         name={tag.title}
                                                         value={tag.title} />
 
