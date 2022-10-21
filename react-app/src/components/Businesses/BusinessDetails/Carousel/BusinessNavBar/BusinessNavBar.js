@@ -27,10 +27,12 @@ const BusinessNavBar = ({ setSearch }) => {
   const history = useHistory()
   const businesses = useSelector(state => state.businesses.allBusinesses)
   const [query, setQuery] = useState("")
+  console.log('--------businesses--------', businesses)
 
   useEffect(() => {
     dispatch(getAllBusinessesThunk())
   }, [dispatch])
+
 
   const fuse = new Fuse(Object.values(businesses), options)
   const results = fuse.search(query)

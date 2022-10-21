@@ -345,6 +345,10 @@ a:active { text-decoration: none; }
 
   }
 
+  #search-input-field-business-list {
+    padding-right: 10px;
+  }
+
   .left-side {
     font-family: 'Open-Sans', sans-serif;
     position: relative;

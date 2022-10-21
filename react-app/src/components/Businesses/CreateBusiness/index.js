@@ -191,8 +191,8 @@ const CreateBusiness = ({ onClose }) => {
                 zipcode,
                 state,
                 about,
-                longitude,
-                latitude,
+                longitude: +longitude,
+                latitude: +latitude,
                 price_range: +priceRange,
                 website,
                 tag1: tags[0],
@@ -319,7 +319,7 @@ const CreateBusiness = ({ onClose }) => {
                                 {/*------- LONGITUDE -------*/}
                                 <div className='fragmented-div-styling'>
                                     <input
-                                        type='number'
+                                        type='text'
                                         placeholder='Longitude'
                                         value={longitude}
                                         onChange={updateLongitude}
@@ -330,7 +330,7 @@ const CreateBusiness = ({ onClose }) => {
                                 {/*------- LATITUDE -------*/}
                                 <div className='fragmented-div-styling'>
                                     <input
-                                        type='number'
+                                        type='text'
                                         placeholder='Latitude'
                                         value={latitude}
                                         onChange={updateLatitude}
@@ -399,7 +399,9 @@ const CreateBusiness = ({ onClose }) => {
                             <div id='click-me'>
                                 <div id='open-tags-modal'>Click here to set your tags</div>
                                 <div>
-                                    <button id='tags-button' onClick={() => setShowTagModal(true)}>Tags</button>
+                                    <div id='tags-button' onClick={() => setShowTagModal(true)}>
+                                        Tags
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -424,18 +426,7 @@ const CreateBusiness = ({ onClose }) => {
                                                     <input
                                                         id='checkbox-input'
                                                         type="checkbox"
-                                                        onChange={(e) => {
-                                                            const tagsList = tags
-                                                            if (e.target.checked) {
-                                                                tagsList.push(e.target.value)
-                                                                console.log('current tag array', tagsList)
-                                                            } else {
-                                                                const index = tagsList.indexOf(e.target.value)
-                                                                tagsList.splice(index, 1)
-                                                                console.log('current array after removing a tag', tagsList)
-                                                            }
-                                                            setTags(tagsList)
-                                                        }}
+                                                        onChange={handleCheck}
                                                         name={tag.title}
                                                         value={tag.title} />
 
@@ -444,6 +435,7 @@ const CreateBusiness = ({ onClose }) => {
                                             })}
                                         </div>
                                     </div>
+                                    <div onClick={() => setShowTagModal(false)}>Test</div>
                                 </Modal>
                             </div>
 

@@ -10,12 +10,17 @@ import { deleteBusinessThunk, addBusinessImage } from '../../../store/business';
 import Carousel, { CarouselItem } from './Carousel';
 import BusinessNavBar from './Carousel/BusinessNavBar/BusinessNavBar'
 import Footer from '../../Footer/Footer'
+import { Modal } from '../../../context/Modal';
 import { removeReview } from '../../../store/review';
 import linkIcon from '../../../assets/icons/external-linkicon.svg'
 import phoneIcon from '../../../assets/icons/phoneicon.svg'
 import emailIcon from '../../../assets/icons/emailicon.svg'
 import editpen from '../../../assets/icons/edit-pen.svg'
 import trashcan from '../../../assets/icons/trash-can.svg'
+import { Modal } from '../../../context/Modal';
+
+import xicon from '../../../assets/icons/x-icon.svg'
+
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
@@ -26,6 +31,7 @@ import whiteNope from "../../../assets/nopes/ratingimg.png"
 import camera from "../../../assets/addbusiness/featureicons/camera-icon.svg"
 import info from "../../../assets/addbusiness/featureicons/info-icon.svg"
 import defpp from "../../../assets/businessdetails/defaultprofile.jpg"
+import BusinessImages from '../BusinessImages';
 
 
 
@@ -160,7 +166,7 @@ const BusinessDetails = ({ search, onClose }) => {
         history.push(`/businesses/${business.id}/updatebusiness`)
     }
 
-    const deleteHandler = async (businessId) => {
+    const deleteHandler = async () => {
         await dispatch(deleteBusinessThunk(businessId))
         history.push('/')
     }
@@ -183,8 +189,30 @@ const BusinessDetails = ({ search, onClose }) => {
     let numPhotos = business?.BusinessImages?.length === 1 ? "Photo" : "Photos"
 
     return isLoaded && (
+        <>
+        {showPhotosModal && (
+                <Modal id='photo-modal' onClose={() => setShowPhotosModal(false)}>
+                    <div id="close-modal" onClick={() => setShowPhotosModal(false)}>
+                        Close <img id="close-modal-icon" src={xicon} />
+                    </div>
+                    <div>
+                        <BusinessImages></BusinessImages>
+                    </div>
+                </Modal>
+            )}
+
         <div id='business-details-page'>
             <div id='whitespacetop'></div>
+            {/* {showPhotosModal && (
+                <Modal id='photo-modal' onClose={() => setShowPhotosModal(false)}>
+                    <div onClick={() => setShowPhotosModal(false)}>
+                        Insert X here
+                    </div>
+                    <div>
+                        <BusinessImages></BusinessImages>
+                    </div>
+                </Modal>
+            )} */}
             {/* <BusinessNavBar /> */}
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
@@ -236,10 +264,12 @@ const BusinessDetails = ({ search, onClose }) => {
                                 <div>{business.city}, {business.state} {business.zipcode}</div>
                             </div>
                         </div>
-                        <div id='all-photos-div'>
-                            <NavLink to={`/businesses/${businessId}/images`} id='all-photos-button'>
+                        <div id='all-photos-div' onClick={() => setShowPhotosModal(true)}>
+                            {/* <NavLink to={`/businesses/${businessId}/images`} id='all-photos-button'> */}
+                            <div id='all-photos-button'>
                                 See {business.BusinessImages.length} {numPhotos}
-                            </NavLink>
+                            </div>
+                            {/* </NavLink> */}
                         </div>
                     </div>
                 </div>
@@ -457,6 +487,7 @@ const BusinessDetails = ({ search, onClose }) => {
             <div id="whitespacetop"></div>
             <Footer />
         </div>
+        </>
     )
 
 }

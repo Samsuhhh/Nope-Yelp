@@ -388,6 +388,7 @@
 }
 
 
+
 #overall-ratings {
     font-size: 15px;
     justify-self: flex-end;
@@ -624,5 +625,4 @@
 #review-actions-container{
     display: flex;
     justify-content: center;
-
 }

@@ -17,7 +17,7 @@ class Review(db.Model):
                            onupdate=func.current_timestamp())
 
     user = db.relationship("User", back_populates="reviews")
-    businesses = db.relationship("Business", back_populates="reviews")
+    businesses = db.relationship("Business", back_populates="reviews", cascade='all, delete')
 
     def to_dict(self):
         return {
@@ -29,4 +29,3 @@ class Review(db.Model):
             "created_at":self.created_at,
             "updated_at":self.updated_at,
         }
-

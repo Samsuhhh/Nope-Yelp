@@ -20,7 +20,7 @@ class Business(db.Model):
     website = db.Column(db.String(75), nullable=False)
 
     owner = db.relationship("User", back_populates="businesses")
-    reviews = db.relationship("Review", back_populates="businesses")
+    reviews = db.relationship("Review", back_populates="businesses", cascade='all, delete')
     tags = db.relationship("Tag", secondary=business_tags, back_populates="businesses")
     business_images = db.relationship(
         "BusinessImage", back_populates="businesses")
