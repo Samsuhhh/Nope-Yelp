@@ -33,13 +33,25 @@ const BusinessDetails = () => {
     const { businessId } = params;
     const business = useSelector(state => state.businesses.singleBusiness);
     const currentUser = useSelector(state => state.session.user)
-    const existingReviews = useSelector(state => state?.reviews.business)
-    console.log('existing reviews', Object.values(existingReviews))
+    const reviewsObj = useSelector(state => state?.reviews.business)
+    let existingReview
+    const existingReviews = Object.values(reviewsObj)
     const [isLoaded, setIsLoaded] = useState(false)
     // const [img, setImg] = useState()
+    // console.log('user', currentUser)
+    // console.log('busi', business)
 
-    console.log('user', currentUser)
-    console.log('busi', business)
+    if (!existingReviews.length) {
+        existingReview = true
+    } else {
+        for (let i = 0; i < existingReviews.length; i++) {
+            if (existingReviews[i]?.user_id === currentUser.id) {
+                existingReview = false
+            } else {
+                existingReview = true
+            }
+        }
+    }
 
     const allReviews = business?.Reviews?.length
     const fiveNopes = business?.Reviews?.filter(review => review.nope === 5).length
@@ -152,8 +164,9 @@ const BusinessDetails = () => {
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })
 
-    }, [dispatch, businessId, Object.values(existingReviews).length])
+    }, [dispatch, businessId, existingReviews.length])
 
+    let numReviews = business.reviewCount === 1 ? "Review" : "Reviews"
 
     return isLoaded && (
         <div id='business-details-page'>
@@ -194,7 +207,7 @@ const BusinessDetails = () => {
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
                                 <div id='review-count-div'>
-                                    {business.reviewCount} reviews
+                                    {business.reviewCount} {numReviews}
                                 </div>
                             </div>
                             <div id='business-details-info-price-tags'>
@@ -218,15 +231,16 @@ const BusinessDetails = () => {
             <div id='business-details-container'>
                 <div id='details-content'>
                     <div id='business-details-action-buttons-div'>
-                        <Link to={`/businesses/${business.id}/writeareview`}>
-                            <button id='write-review-button'>
-                                <div id='write-review-btn-content'>
-                                    <img id='white-nope-img' src={whiteNope} alt='white nope' />
-                                    <div id='write-review-font-styling'>Write a Review</div>
-                                </div>
-                            </button>
-                        </Link>
-
+                        {(currentUser && currentUser.id !== business.Owner.id && existingReview) &&
+                            <Link to={`/businesses/${business.id}/writeareview`}>
+                                <button id='write-review-button'>
+                                    <div id='write-review-btn-content'>
+                                        <img id='white-nope-img' src={whiteNope} alt='white nope' />
+                                        <div id='write-review-font-styling'>Write a Review</div>
+                                    </div>
+                                </button>
+                            </Link>
+                        }
                         {currentUser && currentUser.id === business.Owner.id && (
                             <>
                                 <div id='action-buttons-div'>
@@ -298,7 +312,7 @@ const BusinessDetails = () => {
                                 <div id='nopes-container'>
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
-                                <div id='overall-ratings-big-nopes-review-count'>{business.reviewCount} reviews</div>
+                                <div id='overall-ratings-big-nopes-review-count'>{business.reviewCount} {numReviews}</div>
                             </div>
                             <div id='dynamic-horizontal-reviews'>
                                 <div className='dynamic-stars'>
