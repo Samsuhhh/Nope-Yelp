@@ -10,11 +10,12 @@ import { deleteBusinessThunk, addBusinessImage } from '../../../store/business';
 import Carousel, { CarouselItem } from './Carousel';
 import BusinessNavBar from './Carousel/BusinessNavBar/BusinessNavBar'
 import Footer from '../../Footer/Footer'
-
+import { removeReview } from '../../../store/review';
 import linkIcon from '../../../assets/icons/external-linkicon.svg'
 import phoneIcon from '../../../assets/icons/phoneicon.svg'
 import emailIcon from '../../../assets/icons/emailicon.svg'
-
+import editpen from '../../../assets/icons/edit-pen.svg'
+import trashcan from '../../../assets/icons/trash-can.svg'
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
@@ -28,7 +29,7 @@ import defpp from "../../../assets/businessdetails/defaultprofile.jpg"
 
 
 
-const BusinessDetails = ({search, onClose}) => {
+const BusinessDetails = ({ search, onClose }) => {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -164,6 +165,12 @@ const BusinessDetails = ({search, onClose}) => {
         history.push('/')
     }
 
+
+    const reviews = useSelector(state => state.reviews.business)
+
+
+    const currentUserReview = Object.values(reviews).filter(review => review.user_id === currentUser.id)
+    console.log("test", currentUserReview)
 
     useEffect(() => {
         dispatch(getSingleBusinessThunk(businessId))
@@ -315,7 +322,7 @@ const BusinessDetails = ({search, onClose}) => {
 
                                     <div id="current-user-review-record">
                                         <div id='right-user-review-info'>
-                                            <div><img id="review-info-nope" src={nope} /></div>
+                                            <div><img id="review-info-nope" src={nopes1} /></div>
                                             <div>You cannot review your own business, {business.business_name}</div>
                                         </div>
                                     </div>
@@ -333,8 +340,29 @@ const BusinessDetails = ({search, onClose}) => {
                                     </div>
                                     <div id="current-user-review-record">
                                         <div id='right-user-review-info'>
-                                            <div><img id="review-info-nope" src={nope} /></div>
+                                            <div id="review-actions-container">
+                                                <img id="review-info-nope" src={nopeImgs(currentUserReview[0]?.nope)} />
+                                                {currentUserReview && currentUserReview === [] && (
+                                                    <>
+                                                        <NavLink to={`/reviews/${currentUserReview[0]?.id}/edit`}>
+                                                            <button className="current-user-review-actions-btn">
+                                                                <img className="current-user-review-actions-img" src={editpen}></img>
+                                                            </button>
+                                                        </NavLink>
+
+                                                        <button onClick={() => dispatch(removeReview(currentUserReview[0]?.id))} className="current-user-review-actions-btn">
+                                                            <img className="current-user-review-actions-img" src={trashcan}></img>
+                                                        </button>
+
+                                                    </>
+                                                )}
+                                            </div>
+                                            {currentUserReview && currentUserReview === [] && (
                                             <div>Your current review of {business.business_name}</div>
+                                            )}
+                                            {currentUserReview && currentUserReview !== [] && (
+                                            <div>You haven't reviewed {business.business_name}</div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
