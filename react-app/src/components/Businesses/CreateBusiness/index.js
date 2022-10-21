@@ -75,6 +75,10 @@ const CreateBusiness = ({ onClose }) => {
         tagsList.splice(0, tagsList.length)
         setShowTagModal(false)
     }
+    const clearTags = () => {
+        tagsList.splice(0, tagsList.length)
+        setShowTagModal(true)
+    }
 
     const mainTagsList = [
         { 'title': 'Acai Bowls' },
@@ -420,7 +424,7 @@ const CreateBusiness = ({ onClose }) => {
                             <div id='click-me'>
                                 <div id='open-tags-modal'>Click here to set your tags</div>
                                 <div>
-                                    <div id='tags-button' onClick={() => setShowTagModal(true)}>
+                                    <div id='tags-button' onClick={clearTags}>
                                         Tags
                                     </div>
                                 </div>
@@ -453,10 +457,10 @@ const CreateBusiness = ({ onClose }) => {
                                         </div>
                                     </div>
                                     <div
-                                    id='tag-confirm-button'
-                                    onClick={confirmModal}>
+                                        id='tag-confirm-button'
+                                        onClick={confirmModal}>
                                         Confirm
-                                        </div>
+                                    </div>
                                 </Modal>
                             </div>
 
