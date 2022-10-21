@@ -156,7 +156,7 @@ const BusinessDetails = ({search, onClose}) => {
     }
 
     const updateRedirect = () => {
-        history.push('/update')
+        history.push(`/businesses/${business.id}/updatebusiness`)
     }
 
     const deleteHandler = async (businessId) => {
