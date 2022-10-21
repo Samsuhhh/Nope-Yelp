@@ -48,7 +48,7 @@ const BusinessDetails = ({onClose}) => {
         existingReview = true
     } else {
         for (let i = 0; i < existingReviews.length; i++) {
-            if (existingReviews[i]?.user_id === currentUser.id) {
+            if (existingReviews[i]?.user_id === currentUser?.id) {
                 existingReview = false
             } else {
                 existingReview = true
