@@ -12,9 +12,9 @@ import BusinessDetails from './components/Businesses/BusinessDetails';
 import AddBusinessReview from './components/Reviews/AddBusinessReview'
 import HomeSlider from './components/Businesses/HomePage/imageSlider';
 import RecentActivity from './components/Businesses/HomePage/recentActivity';
-
+import UpdateBusinessReview from './components/Reviews/UpdateBusinessReview';
 import BusinessReview from './components/Reviews/BusinessReviews';
-
+import CurrentUserReviews from './components/Reviews/CurrentUserReviews';
 import BusinessCard from './components/Businesses/BusinessCard/BusinessCard';
 import AddBusiness from './components/Businesses/AddBusiness';
 import Carousel, { CarouselItem } from './components/Businesses/BusinessDetails/Carousel';
@@ -24,7 +24,7 @@ import UpdateBusiness from './components/Businesses/UpdateBusiness';
 import UserProfile from './components/UserProfile';
 import BusinessImages from './components/Businesses/BusinessImages';
 import AddBusinessImage from './components/Businesses/AddBusinessImage';
-
+import CurrentUserBusinesses from './components/Businesses/CurrentUserBusinesses';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [search, setSearch] = useState([])
@@ -70,10 +70,6 @@ function App() {
           <RecentActivity />
           <HomeSlider />
         </Route>
-        <Route path='/user-profile' exact={true}>
-          <BusinessNavBar setSearch={setSearch} />
-          <UserProfile />
-        </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
@@ -106,6 +102,9 @@ function App() {
           </Carousel>
         </Route>
 
+        <Route path='/businesses/edit' exact={true}>
+          <UpdateBusinessReview />
+        </Route>
         <Route path='/businesses/:businessId' exact={true}>
           <BusinessDetails />
         </Route>
@@ -118,9 +117,20 @@ function App() {
           <UpdateBusiness/>
         </Route>
 
-        <Route>
+
+        <Route exact path='/user-profile/businesses' >
           <BusinessNavBar setSearch={setSearch} />
-          <BusinessCard search={search} path='/businesses' exact={true} />
+          <UserProfile />
+          <CurrentUserBusinesses />
+        </Route>
+        <Route exact path='/user-profile/reviews' >
+          <BusinessNavBar setSearch={setSearch} />
+          <UserProfile />
+          <CurrentUserReviews />
+        </Route>
+        <Route path='/businesses'>
+          <BusinessNavBar setSearch={setSearch} />
+          <BusinessCard search={search}  exact={true} />
         </Route>
 
 

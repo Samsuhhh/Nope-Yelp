@@ -197,6 +197,14 @@ const businessReducer = (state = initialState, action) => {
         ...state,
         allBusinesses
       }
+    case LOAD_CURRENT:
+      action.bussinesses.forEach(business => {
+        allBusinesses[business.id] = business;
+      })
+      return {
+        ...state,
+        allBusinesses
+      }
     case LOAD_ONE:
       newState = { ...state, allBusinesses: { ...state.allBusinesses }, singleBusiness: { ...state.singleBusiness } }
       newState.singleBusiness = action.business
