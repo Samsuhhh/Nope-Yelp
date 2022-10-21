@@ -29,9 +29,14 @@
   position: relative;
   bottom: 100px;
   width: 700px;
-  
+
   left: 170px;
+  padding:10px 20px;
   border-bottom: 1px solid lightgrey;
+}
+
+#review-card-current-user-reviews:hover{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 #business-information-container-current-user-reviews{
@@ -70,4 +75,15 @@
   height:25px;
   width:20px;
   cursor: pointer;
+}
+
+#no-reviews-message{
+  width:100%;
+  color: #E00707;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  position: relative;
+  bottom:100px;
+  right: 20px;
 }

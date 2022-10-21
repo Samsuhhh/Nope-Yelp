@@ -40,7 +40,7 @@ const CurrentUserReviews = () => {
     }, [dispatch])
     if (reviews === undefined || !Object.values(reviews).length) {
         return (
-            <div>Looks like you dont have any Reviews!</div>
+            <div id="no-reviews-message">You haven't left any reviews yet. </div>
         )
     } else {
         return (
@@ -52,13 +52,16 @@ const CurrentUserReviews = () => {
                         <div>
                             {Object.values(reviews)?.map(review => (
                                 <div id="review-card-current-user-reviews" key={review.id}>
+                                    <NavLink id="business-navlink-card" to={`/businesses/${businesses[review.business_id]?.id}`}>
                                     <div id="review-list-container-current-reviews">
                                         <div id="text-container-current-reviews">
                                             {console.log(businesses[review.business_id]?.images.url)}
                                             <img id="current-user-reviews-business-img" src={businesses[review.business_id]?.images?.url}></img>
                                         </div>
                                         <div id="business-information-container-current-user-reviews">
-                                            <div>{businesses[review.business_id]?.business_name}</div>
+                                            <NavLink id="business-name-navlink-current-user-businesses" to={`/businesses/${businesses[review.business_id]?.id}`}>
+                                                <div id="business-name-current-user-businesses">{businesses[review.business_id]?.business_name}</div>
+                                            </NavLink>
                                             <div>{priceRange(businesses[review.business_id]?.price_range)}</div>
                                             <div>{businesses[review.business_id]?.street_address}</div>
                                             <div>{businesses[review.business_id]?.city}, {businesses[review.business_id]?.state}{" "}{businesses[review.business_id]?.zipcode}</div>
@@ -92,6 +95,7 @@ const CurrentUserReviews = () => {
                                             </div>
                                         )}
                                     </div>
+                                    </NavLink>
                                 </div>
                             ))}
                         </div>

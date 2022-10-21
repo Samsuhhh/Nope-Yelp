@@ -11,10 +11,15 @@ import Carousel, { CarouselItem } from './Carousel';
 import BusinessNavBar from './Carousel/BusinessNavBar/BusinessNavBar'
 import Footer from '../../Footer/Footer'
 import { Modal } from '../../../context/Modal';
-
+import { removeReview } from '../../../store/review';
 import linkIcon from '../../../assets/icons/external-linkicon.svg'
 import phoneIcon from '../../../assets/icons/phoneicon.svg'
 import emailIcon from '../../../assets/icons/emailicon.svg'
+import editpen from '../../../assets/icons/edit-pen.svg'
+import trashcan from '../../../assets/icons/trash-can.svg'
+import { Modal } from '../../../context/Modal';
+
+import xicon from '../../../assets/icons/x-icon.svg'
 
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
@@ -158,7 +163,7 @@ const BusinessDetails = ({ search, onClose }) => {
     }
 
     const updateRedirect = () => {
-        history.push('/update')
+        history.push(`/businesses/${business.id}/updatebusiness`)
     }
 
     const deleteHandler = async () => {
@@ -167,20 +172,38 @@ const BusinessDetails = ({ search, onClose }) => {
     }
 
 
+    const reviews = useSelector(state => state.reviews.business)
+
+
+    const currentUserReview = Object.values(reviews).filter(review => review.user_id === currentUser.id)
+    console.log("test", currentUserReview)
+
     useEffect(() => {
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })
 
 
-    }, [dispatch, businessId, existingReviews.length, showPhotosModal])
+    }, [dispatch, businessId, existingReviews.length, showPhotosModal, reviews, ])
 
     let numReviews = business.reviewCount === 1 ? "Review" : "Reviews"
     let numPhotos = business?.BusinessImages?.length === 1 ? "Photo" : "Photos"
 
     return isLoaded && (
+        <>
+        {showPhotosModal && (
+                <Modal id='photo-modal' onClose={() => setShowPhotosModal(false)}>
+                    <div id="close-modal" onClick={() => setShowPhotosModal(false)}>
+                        Close <img id="close-modal-icon" src={xicon} />
+                    </div>
+                    <div>
+                        <BusinessImages></BusinessImages>
+                    </div>
+                </Modal>
+            )}
+
         <div id='business-details-page'>
             <div id='whitespacetop'></div>
-            {showPhotosModal && (
+            {/* {showPhotosModal && (
                 <Modal id='photo-modal' onClose={() => setShowPhotosModal(false)}>
                     <div onClick={() => setShowPhotosModal(false)}>
                         Insert X here
@@ -189,7 +212,7 @@ const BusinessDetails = ({ search, onClose }) => {
                         <BusinessImages></BusinessImages>
                     </div>
                 </Modal>
-            )}
+            )} */}
             {/* <BusinessNavBar /> */}
             <div id='business-details-header-images'>
                 <div id='business-details-images-main'>
@@ -329,7 +352,7 @@ const BusinessDetails = ({ search, onClose }) => {
 
                                     <div id="current-user-review-record">
                                         <div id='right-user-review-info'>
-                                            <div><img id="review-info-nope" src={nope} /></div>
+                                            <div><img id="review-info-nope" src={nopes1} /></div>
                                             <div>You cannot review your own business, {business.business_name}</div>
                                         </div>
                                     </div>
@@ -347,8 +370,29 @@ const BusinessDetails = ({ search, onClose }) => {
                                     </div>
                                     <div id="current-user-review-record">
                                         <div id='right-user-review-info'>
-                                            <div><img id="review-info-nope" src={nope} /></div>
+                                            <div id="review-actions-container">
+                                                <img id="review-info-nope" src={nopeImgs(currentUserReview[0]?.nope)} />
+                                                {currentUserReview.length !== 0 && (
+                                                    <>
+                                                        <NavLink to={`/reviews/${currentUserReview[0]?.id}/edit`}>
+                                                            <button className="current-user-review-actions-btn">
+                                                                <img className="current-user-review-actions-img" src={editpen}></img>
+                                                            </button>
+                                                        </NavLink>
+
+                                                        <button onClick={() => dispatch(removeReview(currentUserReview[0]?.id))} className="current-user-review-actions-btn">
+                                                            <img className="current-user-review-actions-img" src={trashcan}></img>
+                                                        </button>
+
+                                                    </>
+                                                )}
+                                            </div>
+                                            {currentUserReview.length !== 0 && (
                                             <div>Your current review of {business.business_name}</div>
+                                            )}
+                                            {currentUserReview.length === 0 && (
+                                            <div>You haven't reviewed {business.business_name}</div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -443,6 +487,7 @@ const BusinessDetails = ({ search, onClose }) => {
             <div id="whitespacetop"></div>
             <Footer />
         </div>
+        </>
     )
 
 }

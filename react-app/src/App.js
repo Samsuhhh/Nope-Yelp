@@ -94,15 +94,6 @@ function App() {
           <CreateBusiness />
         </Route>
 
-        <Route path='/caro' exact={true}>
-          <Carousel>
-            <CarouselItem>Item1</CarouselItem>
-            <CarouselItem>Item2</CarouselItem>
-            <CarouselItem>Item3</CarouselItem>
-          </Carousel>
-        </Route>
-
-
         <Route search={search} path='/businesses/:businessId' exact={true}>
           <BusinessNavBar setSearch={setSearch} />
           <BusinessDetails />

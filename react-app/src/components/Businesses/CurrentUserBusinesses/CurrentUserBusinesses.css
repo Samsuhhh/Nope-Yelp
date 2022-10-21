@@ -8,7 +8,11 @@
   position: relative;
   bottom: 100px;
   justify-self: center;
+  padding:10px 20px;
+}
 
+#business-card-current-user-reviews:hover{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 #business-list-curr-user-master-container{
   display:flex;
@@ -17,4 +21,30 @@
   align-items: center;
   position: relative;
   left: 170px;
+}
+
+#business-name-current-user-businesses{
+  color: #008EA7;
+  font-weight: bold;
+}
+
+#business-name-navlink-current-user-businesses:hover{
+  text-decoration: underline;
+  color:#008EA7;
+}
+
+#business-navlink-card{
+  text-decoration: none;
+  color: black;
+}
+
+#no-listings-message{
+  width:100%;
+  color: #E00707;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  position: relative;
+  bottom:100px;
+  right: 20px;
 }

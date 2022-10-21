@@ -361,6 +361,7 @@
 
 #review-info-nope {
     height: 32px;
+    margin-bottom: 10px;
 }
 
 #left-user-review-info {
@@ -385,6 +386,7 @@
     font-family: 'Open Sans';
     /* justify-content: space-between; */
 }
+
 
 
 #overall-ratings {
@@ -604,3 +606,24 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+.current-user-review-actions-img{
+    height:25px;
+    width:20px
+
+}
+.current-user-review-actions-btn{
+    position: relative;
+    left: 15px;
+    margin: 0px 0px 5px 5px;
+    border-radius: 4px;
+    border: 1px solid rgb(146, 146, 146);
+    height: fit-content;
+    width: fit-content;
+}
+
+#review-actions-container{
+    display: flex;
+    justify-content: center;
+}
+

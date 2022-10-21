@@ -33,8 +33,11 @@ const CurrentUserBusinesses = () => {
     dispatch(getAllBusinessesThunk())
   }, [dispatch])
   const businesses = useSelector(state=> state.businesses.allBusinesses)
-  console.log(businesses)
-  return (
+  const userBusinesses =Object.values(businesses).filter(business=> business.owner_id===user.id)
+
+  if (userBusinesses === undefined || !Object.values(userBusinesses).length){
+    return <div id="no-listings-message">You haven't hosted any listings yet</div>
+  } else return (
     <>
     <div id="business-list-curr-user-master-container">
 
@@ -44,13 +47,16 @@ const CurrentUserBusinesses = () => {
         if (business.owner_id === user.id) return (
 
           <div id="business-card-current-user-reviews" key={business.id}>
+            <NavLink id="business-navlink-card" to={`/businesses/${business?.id}`}>
             <div id="review-list-container-current-reviews">
               <div id="text-container-current-reviews">
 
                 <img id="current-user-reviews-business-img" src={business?.images?.url}></img>
               </div>
               <div id="business-information-container-current-user-reviews">
-                <div>{business?.business_name}</div>
+              <NavLink id="business-name-navlink-current-user-businesses"to={`/businesses/${business?.id}`}>
+                <div id="business-name-current-user-businesses">{business?.business_name}</div>
+                </NavLink>
                 <div>{priceRange(business?.price_range)}</div>
                 <div>{business?.street_address}</div>
                 <div>{business?.city}, {business?.state}{" "}{business?.zipcode}</div>
@@ -65,7 +71,7 @@ const CurrentUserBusinesses = () => {
 
               <div id="review-actions-current-user-reviews">
                 <div>
-                  <NavLink to={`/businesses/${business?.id}/updatebusiness`}>
+                  <NavLink to={`/businesses/${business?.id}`}>
 
                     <button id="edit-review-btn-current-user-reviews" >
                       <img className="current-user-review-action-btns" alt='edit me' src={editicon}>
@@ -73,9 +79,11 @@ const CurrentUserBusinesses = () => {
                     </button>
                   </NavLink>
                 </div>
+
               </div>
 
             </div>
+            </NavLink>
           </div>
         )
       })}
