@@ -24,7 +24,7 @@ const UpdateBusiness = () => {
     const [priceRange, setPriceRange] = useState(existingBusiness.price_range)
     const [website, setWebsite] = useState(existingBusiness.website)
     // FIX EDITING AN IMAGE AND EDITING TAGS
-    const [imgUrl, setImgUrl] = useState('')
+    // const [imgUrl, setImgUrl] = useState('')
     const [tags, setTags] = useState([])
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
@@ -41,7 +41,7 @@ const UpdateBusiness = () => {
     const updateLatitude = (e) => setLatitude(e.target.value)
     const updatePriceRange = (e) => setPriceRange(e.target.value)
     const updateWebsite = (e) => setWebsite(e.target.value)
-    const updateImgUrl = (e) => setImgUrl(e.target.value)
+    // const updateImgUrl = (e) => setImgUrl(e.target.value)
     const [helper, setHelper] = useState(false)
     const tagsList = tags
     const handleCheck = (e) => {
@@ -169,12 +169,12 @@ const UpdateBusiness = () => {
         if (!priceRange.length) errors.push("Please select a valid price range")
         if (website.length > 75 || website.length < 4) errors.push('Website url must be between 4 and 75 characters.')
         if (!website.match(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi)) errors.push("Please enter a valid website")
-        if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image(jpg/jpeg/png).')
+        // if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image(jpg/jpeg/png).')
         if (tags.length !== 3) errors.push('Please select 3 tags for your business')
         // console.log(tags.length)
         setValidationErrors(errors)
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
-        about, longitude, latitude, priceRange, website, imgUrl, tags, tagsList, helper])
+        about, longitude, latitude, priceRange, website, tags, tagsList, helper])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -201,12 +201,6 @@ const UpdateBusiness = () => {
             let updatedBusiness = await dispatch(updateBusinessThunk(business))
 
             if (updatedBusiness) {
-                if (imgUrl) {
-                    const imgBody = ({
-                        url: imgUrl
-                    })
-                    await dispatch(addBusinessImage(imgBody, updatedBusiness.id))
-                }
                 setShowErrors(false)
                 history.push(`/businesses/${updatedBusiness.id}`)
             }
@@ -350,14 +344,14 @@ const UpdateBusiness = () => {
                     required />
             </div>
             {/*------- IMG URL -------*/}
-            <div>
+            {/* <div>
                 <input
                     type='text'
                     placeholder='IMG URL'
                     value={imgUrl}
                     onChange={updateImgUrl}
                 />
-            </div>
+            </div> */}
             {/*------- TAGS -------*/}
             {/* SOME TYPE OF MODAL HERE FOR TAGS */}
             <div>

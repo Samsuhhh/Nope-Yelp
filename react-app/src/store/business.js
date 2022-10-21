@@ -46,7 +46,7 @@ const addImage = businessId => ({
 
 // THUNK action creators
 export const getAllBusinessesThunk = () => async (dispatch) => {
-  const response = await fetch("/api/businesses");
+  const response = await fetch("/api/businesses/");
   const businessData = await response.json();
 
   if (response.ok) {
@@ -176,8 +176,6 @@ const businessReducer = (state = initialState, action) => {
         allBusinesses
       }
     case LOAD_ONE:
-      //   console.log('SINGLE business Reducer hitting', action.business)
-      //   newState = { [action.business.id]: { ...action.business } }
       newState = { ...state, allBusinesses: { ...state.allBusinesses }, singleBusiness: { ...state.singleBusiness } }
       newState.singleBusiness = action.business
       return { ...newState }

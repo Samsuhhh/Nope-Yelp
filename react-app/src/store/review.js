@@ -61,7 +61,7 @@ export const getAllReviews = (businessId) => async dispatch => {
 }
 
 export const getAllBusinessesReviews = () => async (dispatch) => {
-    const response = await fetch('/api/reviews')
+    const response = await fetch('/api/reviews/')
 
     if (response.ok) {
         const reviewData = await response.json()
