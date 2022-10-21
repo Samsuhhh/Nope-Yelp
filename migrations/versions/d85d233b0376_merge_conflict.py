@@ -1,8 +1,8 @@
-"""updating db
+"""merge conflict
 
-Revision ID: 1865e8c07a4c
+Revision ID: d85d233b0376
 Revises: 
-Create Date: 2022-10-21 11:48:37.366816
+Create Date: 2022-10-21 16:16:50.086279
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1865e8c07a4c'
+revision = 'd85d233b0376'
 down_revision = None
 branch_labels = None
 depends_on = None

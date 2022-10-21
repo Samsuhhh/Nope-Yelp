@@ -215,7 +215,7 @@ const BusinessDetails = ({ search, onClose }) => {
                 <div id='business-details-header-images'>
                     <div id='business-details-images-main'>
                         <Carousel>
-                            {business.BusinessImages.map((image) =>
+                            {business?.BusinessImages?.map((image) =>
                                 <CarouselItem>
                                     <div className='carousel-images'>
                                         <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
