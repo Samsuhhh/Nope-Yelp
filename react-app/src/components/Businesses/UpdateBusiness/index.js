@@ -24,7 +24,7 @@ const UpdateBusiness = () => {
     const [priceRange, setPriceRange] = useState(existingBusiness.price_range)
     const [website, setWebsite] = useState(existingBusiness.website)
     // FIX EDITING AN IMAGE AND EDITING TAGS
-    const [imgUrl, setImgUrl] = useState('')
+    // const [imgUrl, setImgUrl] = useState('')
     const [tags, setTags] = useState([])
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
@@ -41,9 +41,31 @@ const UpdateBusiness = () => {
     const updateLatitude = (e) => setLatitude(e.target.value)
     const updatePriceRange = (e) => setPriceRange(e.target.value)
     const updateWebsite = (e) => setWebsite(e.target.value)
-    const updateImgUrl = (e) => setImgUrl(e.target.value)
-    // MIGHT NEED ONE FOR TAGS? NOT SURE YET
-    // const updateTags = (e) => setTags(e.target.value)
+    // const updateImgUrl = (e) => setImgUrl(e.target.value)
+    const [helper, setHelper] = useState(false)
+    const tagsList = tags
+    const handleCheck = (e) => {
+        // const tagsList = tags
+        if (e.target.checked) {
+            tagsList.push(e.target.value)
+            // tags.push(e.target.value)
+            setTags(tagsList)
+            console.log('current tag array', tagsList)
+            console.log('tag array that we are sending', tags)
+        } else {
+            const index = tagsList.indexOf(e.target.value)
+            tagsList.splice(index, 1)
+            // const index = tags.indexOf(e.target.value)
+            // tags.splice(index, 1)
+            setTags(tagsList)
+            console.log('current array after removing a tag', tagsList)
+            console.log('tag array that we are sending', tags)
+        }
+        setHelper(!helper)
+        // setTags(tagsList)
+        // setTags(tags)
+    }
+
     const mainTagsList = [
         { 'title': 'Acai Bowls' },
         { 'title': 'Bagels' },
@@ -135,6 +157,7 @@ const UpdateBusiness = () => {
     useEffect(() => {
         const errors = []
         if (businessName.length > 40 || businessName.length < 1) errors.push("Business name must be between 1 and 40 characters")
+        if (!email.match(/^\S+@\S+\.\S+$/)) errors.push('Please enter a valid email address')
         if (phone.length !== 10) errors.push("Please enter a valid phone number")
         if (streetAddress.length > 50 || streetAddress.length < 5) errors.push("Street address must be between 5 and 50 characters.")
         if (city.length > 20 || city.length < 2) errors.push("City must be between 2 and 20 characters.")
@@ -145,9 +168,13 @@ const UpdateBusiness = () => {
         if (isNaN(latitude) || latitude < -90 || latitude > 90) errors.push("Latitude must be a number between -90 and 90")
         if (!priceRange.length) errors.push("Please select a valid price range")
         if (website.length > 75 || website.length < 4) errors.push('Website url must be between 4 and 75 characters.')
+        if (!website.match(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi)) errors.push("Please enter a valid website")
+        // if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image(jpg/jpeg/png).')
+        if (tags.length !== 3) errors.push('Please select 3 tags for your business')
+        // console.log(tags.length)
         setValidationErrors(errors)
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
-        about, longitude, latitude, priceRange, website, imgUrl, tags])
+        about, longitude, latitude, priceRange, website, tags, tagsList, helper])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -174,12 +201,6 @@ const UpdateBusiness = () => {
             let updatedBusiness = await dispatch(updateBusinessThunk(business))
 
             if (updatedBusiness) {
-                if (imgUrl) {
-                    const imgBody = ({
-                        url: imgUrl
-                    })
-                    await dispatch(addBusinessImage(imgBody, updatedBusiness.id))
-                }
                 setShowErrors(false)
                 history.push(`/businesses/${updatedBusiness.id}`)
             }
@@ -323,14 +344,14 @@ const UpdateBusiness = () => {
                     required />
             </div>
             {/*------- IMG URL -------*/}
-            <div>
+            {/* <div>
                 <input
                     type='text'
                     placeholder='IMG URL'
                     value={imgUrl}
                     onChange={updateImgUrl}
                 />
-            </div>
+            </div> */}
             {/*------- TAGS -------*/}
             {/* SOME TYPE OF MODAL HERE FOR TAGS */}
             <div>
@@ -338,19 +359,26 @@ const UpdateBusiness = () => {
                     <div key={tag.title}>
                         <input
                             type="checkbox"
-                            onChange={(e) => {
-                                const tagsList = tags
-                                if (e.target.checked) {
-                                    tagsList.push(e.target.value)
-                                    console.log('current tag array', tagsList)
-                                } else {
-                                    const index = tagsList.indexOf(e.target.value)
-                                    tagsList.splice(index, 1)
-                                }
-                                setTags(tagsList)
-                            }}
-                            value={tag.title}
-                            name={tag.title} />
+                            // onChange={(e) => {
+                            //     const tagsList = tags
+                            //     if (e.target.checked) {
+                            //         tagsList.push(e.target.value)
+                            //         // tags.push(e.target.value)
+                            //         console.log('current tag array', tagsList)
+                            //         console.log('tag array that we are sending', tags)
+                            //     } else {
+                            //         const index = tagsList.indexOf(e.target.value)
+                            //         tagsList.splice(index, 1)
+                            //         // const index = tags.indexOf(e.target.value)
+                            //         // tags.splice(index, 1)
+                            //         console.log('current array after removing a tag', tagsList)
+                            //         console.log('tag array that we are sending', tags)
+                            //     }
+                            //     setTags(tagsList)
+                            // }}
+                            onChange={handleCheck}
+                            name={tag.title}
+                            value={tag.title} />
                         <label>{tag.title}</label>
                     </div>
                 ))}
