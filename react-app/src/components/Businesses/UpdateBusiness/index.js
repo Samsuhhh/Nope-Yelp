@@ -79,6 +79,10 @@ const UpdateBusiness = () => {
         tagsList.splice(0, tagsList.length)
         setShowTagModal(false)
     }
+    const clearTags = () => {
+        tagsList.splice(0, tagsList.length)
+        setShowTagModal(true)
+    }
 
     const mainTagsList = [
         { 'title': 'Acai Bowls' },
@@ -216,7 +220,7 @@ const UpdateBusiness = () => {
 
             if (updatedBusiness) {
                 setShowErrors(false)
-                history.push(`/businesses/${updatedBusiness.id}`)
+                history.push(`/businesses/${businessId}`)
             }
         }
     }
@@ -395,7 +399,7 @@ const UpdateBusiness = () => {
                             <div id='click-me'>
                                 <div id='open-tags-modal'>Click here to set your tags</div>
                                 <div>
-                                    <div id='tags-button' onClick={() => setShowTagModal(true)}>
+                                    <div id='tags-button' onClick={clearTags}>
                                         Tags
                                     </div>
                                 </div>
@@ -438,14 +442,12 @@ const UpdateBusiness = () => {
                                     </div>
                                 </Modal>
                             </div>
-
                         )}
                         <div id='button-width'>
                             <div id='button-container'>
                                 {/*------- SUBMIT BUTTON -------*/}
                                 <div >
                                     <button id='submit-button' type='submit'>Update</button>
-
                                 </div>
                                 <div >
                                     {/*------- CANCEL BUTTON -------*/}
