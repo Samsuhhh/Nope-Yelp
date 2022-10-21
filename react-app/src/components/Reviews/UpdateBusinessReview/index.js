@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { updateReview } from '../../../store/review'
+import nope from '../../../assets/nope.png'
+import ratingimg from '../../../assets/nopes/ratingimg.png'
+import js from '../../../assets/icons/JavaScript.svg'
 import './UpdateBusinessReview.css'
 
 const UpdateBusinessReview = () => {
@@ -10,20 +13,35 @@ const UpdateBusinessReview = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
-    const business = useSelector(state => state.businesses)
-    const businessId = useParams()
+    const existingReviewsObj = useSelector(state => state.reviews.business)
+    const existingReview = Object.values(existingReviewsObj).filter(review => review?.user_id === user.id)[0]
 
-    const [review, setReview] = useState('')
-    const [nopes, setNopes] = useState(1)
+    const [review, setReview] = useState(existingReview.review)
+    const [nopes, setNopes] = useState(existingReview.nope)
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
 
-    // const updateReview = (e) => setReview(e.target.value)
     const updateNopes = (e) => setNopes(e.target.value)
+
+    const nopeClass = [
+        'nopes-selected-1',
+        'nopes-selected-2',
+        'nopes-selected-3',
+        'nopes-selected-4',
+        'nopes-selected-5'
+    ]
+
+    const selectedNopes = (n) => {
+        return () => {
+            document.getElementById('nope-selector').className = nopeClass[n]
+            setNopes(n + 1)
+        }
+    }
 
     useEffect(() => {
         const errors = []
         if (review.length < 4 || review.length > 3000) errors.push("Review must be between 4 and 3000 characters")
+        if (nopes < 1) errors.push("Please select a rating")
         setValidationErrors(errors)
     }, [review, nopes])
 
@@ -34,14 +52,14 @@ const UpdateBusinessReview = () => {
         if (!validationErrors.length) {
             const payload = {
                 review,
-                nopes
+                nope: +nopes
             }
 
-            let updatedReview = await dispatch(updateReview(payload, businessId))
+            let updatedReview = await dispatch(updateReview(payload, existingReview.id))
 
             if (updatedReview) {
                 setShowErrors(false)
-                history.push(`/businesses/${businessId}`)
+                history.push(`/businesses/${existingReview.business_id}`)
             }
         }
     }
@@ -50,7 +68,7 @@ const UpdateBusinessReview = () => {
         e.preventDefault()
         // not sure if i use should businessId from useparams or business.id from state.
         // really depends on our reducer
-        history.push(`/businesses/${businessId}`)
+        history.push(`/businesses/${existingReview.business_id}`)
     }
     return (
         <>
@@ -65,23 +83,60 @@ const UpdateBusinessReview = () => {
                                     })}
                                 </ul>
                             }
+                            <div id="nope-selector" className='nopes'>
+                                <span
+                                    value='5'
+                                    // onChange={updateNopes}
+                                    required
+                                    onClick={selectedNopes(4)}
+                                >
+                                    <img src={ratingimg} />
+                                </span>
+
+                                <span
+                                    onClick={selectedNopes(3)}
+                                    value='4'
+                                    required
+                                // onChange={updateNopes}
+                                >
+                                    <img src={ratingimg} />
+                                </span>
+
+                                <span
+                                    onClick={selectedNopes(2)}
+                                    value='3'
+                                    required
+                                    onChange={updateNopes}
+                                >
+                                    <img src={ratingimg} />
+                                </span>
+
+                                <span
+                                    onClick={selectedNopes(1)}
+                                    value='2'
+                                    required
+                                // onChange={updateNopes}
+                                >
+                                    <img src={ratingimg} />
+                                </span>
+
+                                <span
+                                    onClick={selectedNopes(0)}
+                                    value='1'
+                                    required
+                                // onChange={updateNopes}
+                                >
+                                    <img src={ratingimg} />
+                                </span>
+
+                            </div>
                             <textarea
                                 type='text'
                                 placeholder=''
                                 value={review}
                                 required
                                 onChange={(e) => setReview(e.target.value)} />
-                            <div>
-                                <div>Nopes</div>
-                                <input
-                                    type='number'
-                                    min='1'
-                                    max='5'
-                                    placeholder="1-5 nopes"
-                                    value={nopes}
-                                    required
-                                    onChange={updateNopes} />
-                            </div>
+
                             <button
                                 type='submit'>
                                 Submit

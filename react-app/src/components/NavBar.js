@@ -84,7 +84,7 @@ const NavBar = ({ setSearch }) => {
         <div>
           {/* <>THIS IS A SPACER</> */}
         </div>
-        <div id="for-businesses-button">
+        <div id="for-businesses-button-logged">
           <NavLink to='/businesses/new' exact={true} activeClassName='active' id='login-nav'>
             For Businesses
           </NavLink>
@@ -167,6 +167,8 @@ const NavBar = ({ setSearch }) => {
 
   }
   return (
+    <>
+    <div className="gradient-nav"></div>
     <nav className='navbar'>
       <div>
         <NavLink to='/' exact={true} activeClassName='active'>
@@ -202,6 +204,7 @@ const NavBar = ({ setSearch }) => {
 
       </div>
     </nav>
+    </>
   );
 }
 

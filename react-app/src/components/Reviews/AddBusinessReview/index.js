@@ -56,7 +56,7 @@ const AddBusinessReview = () => {
         if (!validationErrors.length) {
             const payload = {
                 review,
-                nope: nopes
+                nope: +nopes
             }
 
             let createdReview = await dispatch(createReview(payload, businessId))
