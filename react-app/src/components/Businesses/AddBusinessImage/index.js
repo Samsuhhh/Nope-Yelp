@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addBusinessImage } from "../../../store/business";
 import './AddBusinessImage.css'
+import nope from '../../../assets/nope.png'
+import add from '../../../assets/icons/add-icon.svg'
+import Footer from '../../Footer/Footer'
+
 
 
 export default function AddBusinessImage() {
@@ -46,32 +50,58 @@ export default function AddBusinessImage() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            {/* ----DISPLAY VALIDATION ERRORS---- */}
-            {showErrors &&
-                <ul>
-                    {validationErrors.map((e, i) => {
-                        return <div key={i}>{e}</div>
-                    })}
-                </ul>
-            }
-            {/* ----IMAGE URL---- */}
-            <div>
-                <input
-                    type='text'
-                    placeholder="Image URL"
-                    value={imgUrl}
-                    onChange={(e) => setImgUrl(e.target.value)}
-                    required />
+        <>
+            <div className="add-business-nav-bar">
+                <div className="add-business-nav-bar-content-wrapper">
+                    <img id="add-business-nav-bar-logo" src={nope} />
+                    <Link to={`/businesses/${businessId}`}>
+                        <div className="add-business-nav-bar-back-to-nope">Back to your page</div></Link>
+                </div>
             </div>
-            {/* ----SUBMIT BUTTON---- */}
-            <button type="submit">Add Photo</button>
-            {/* ----CANCEL BUTTON---- */}
-            <button
-                type='button'
-                onClick={handleCancel}>
-                Cancel
-            </button>
-        </form>
+            <div className="add-photo-main-wrapper">
+                <div className="add-photo-container">
+                    <div className="add-photo-icon-graphic">
+                        <img id="add-photo-icon" src={add} />
+                    </div>
+                    <form onSubmit={handleSubmit}>
+                        {/* ----DISPLAY VALIDATION ERRORS---- */}
+                        {showErrors &&
+                            <ul>
+                                {validationErrors.map((e, i) => {
+                                    return <div key={i}>{e}</div>
+                                })}
+                            </ul>
+                        }
+                        {/* ----IMAGE URL---- */}
+                        <div>
+                            <input
+                                id="add-photo-input-field"
+                                type='text'
+                                placeholder="Image URL"
+                                value={imgUrl}
+                                onChange={(e) => setImgUrl(e.target.value)}
+                                required />
+                        </div>
+                        <div className="add-photo-button-container">
+                        {/* ----SUBMIT BUTTON---- */}
+                        <button
+                        id="add-photo-submit"
+                        type="submit">
+                            Add Photo
+                            </button>
+                        {/* ----CANCEL BUTTON---- */}
+                        <button
+                            id="add-photo-cancel"
+                            type='button'
+                            onClick={handleCancel}>
+                            Cancel
+                        </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div className="whitespace-footer"></div>
+            <Footer />
+        </>
     )
 }
