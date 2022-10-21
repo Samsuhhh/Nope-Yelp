@@ -9,7 +9,7 @@ const UpdateBusiness = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
-    const existingBusiness = useSelector(state => state.businesses.singleBusiness)
+    const existingBusiness = useSelector(state => state.businesses.singleBusiness )
 
     const [businessName, setBusinessName] = useState(existingBusiness.business_name)
     const [email, setEmail] = useState(existingBusiness.email)
@@ -156,7 +156,7 @@ const UpdateBusiness = () => {
     // NEED TO ADD MORE VALIDATION ERRORS
     useEffect(() => {
         const errors = []
-        if (businessName.length > 40 || businessName.length < 1) errors.push("Business name must be between 1 and 40 characters")
+        if (businessName?.length > 40 || businessName.length < 1) errors.push("Business name must be between 1 and 40 characters")
         if (!email.match(/^\S+@\S+\.\S+$/)) errors.push('Please enter a valid email address')
         if (phone.length !== 10) errors.push("Please enter a valid phone number")
         if (streetAddress.length > 50 || streetAddress.length < 5) errors.push("Street address must be between 5 and 50 characters.")

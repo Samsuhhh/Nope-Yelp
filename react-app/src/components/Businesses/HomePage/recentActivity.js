@@ -39,6 +39,7 @@ function RecentActivity() {
         <>
             {isLoaded &&
                 <>
+                <div className="whitespace-top-recent-act"></div>
                     <div className='recent-act-wrapper'>
                         <div className='recent-act-body'>
                             <div className='recent-act-title-wrapper'>

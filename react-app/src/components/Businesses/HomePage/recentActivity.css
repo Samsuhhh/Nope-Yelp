@@ -120,3 +120,8 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+.whitespace-top-recent-act {
+    width: 100%;
+    height: 60px;
+}
