@@ -308,9 +308,7 @@
     align-items: center;
 }
 
-#business-details-owner-avatar {
 
-}
 
 #owner-avatar {
     width: 60px;
@@ -565,6 +563,7 @@
     width: 24px;
     height: 24px;
 }
+
 
 #sticky-email-div a:link {
     text-decoration: none;

@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleBusinessThunk, updateBusinessThunk } from '../../../store/business';
 import { getAllReviews } from '../../../store/review';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, useHistory, Link, NavLink } from 'react-router-dom';
 import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
 import './BusinessDetails.css'
-import { deleteBusinessThunk } from '../../../store/business';
+import { deleteBusinessThunk, addBusinessImage } from '../../../store/business';
 import Carousel, { CarouselItem } from './Carousel';
 import BusinessNavBar from './Carousel/BusinessNavBar/BusinessNavBar'
 import Footer from '../../Footer/Footer'
@@ -27,18 +27,36 @@ import info from "../../../assets/addbusiness/featureicons/info-icon.svg"
 import defpp from "../../../assets/businessdetails/defaultprofile.jpg"
 
 
-const BusinessDetails = ({search}) => {
+
+const BusinessDetails = ({search, onClose}) => {
+
     const dispatch = useDispatch();
     const history = useHistory();
     const params = useParams();
     const { businessId } = params;
     const business = useSelector(state => state.businesses.singleBusiness);
-    const currentUser = useSelector(state => state.session.user)
-    const [isLoaded, setIsLoaded] = useState(false)
-    // const [img, setImg] = useState()
+    const currentUser = useSelector(state => state.session.user);
+    const reviewsObj = useSelector(state => state?.reviews.business);
+    let existingReview;
+    const existingReviews = Object.values(reviewsObj);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [showPhotosModal, setShowPhotosModal] = useState(false);
 
-    console.log('user', currentUser)
-    console.log('busi', business)
+    // const [img, setImg] = useState()
+    // console.log('user', currentUser)
+    // console.log('busi', business)
+
+    if (!existingReviews.length) {
+        existingReview = true
+    } else {
+        for (let i = 0; i < existingReviews.length; i++) {
+            if (existingReviews[i]?.user_id === currentUser.id) {
+                existingReview = false
+            } else {
+                existingReview = true
+            }
+        }
+    }
 
     const allReviews = business?.Reviews?.length
     const fiveNopes = business?.Reviews?.filter(review => review.nope === 5).length
@@ -153,8 +171,10 @@ const BusinessDetails = ({search}) => {
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })
 
-    }, [dispatch, businessId])
+    }, [dispatch, businessId, existingReviews.length, showPhotosModal])
 
+    let numReviews = business.reviewCount === 1 ? "Review" : "Reviews"
+    let numPhotos = business?.BusinessImages?.length === 1 ? "Photo" : "Photos"
 
     return isLoaded && (
         <div id='business-details-page'>
@@ -195,12 +215,14 @@ const BusinessDetails = ({search}) => {
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
                                 <div id='review-count-div'>
-                                    {business.reviewCount} reviews
+                                    {business.reviewCount} {numReviews}
                                 </div>
                             </div>
                             <div id='business-details-info-price-tags'>
                                 <div className='info-price-tags'>
-                                    {priceSetter(business.price_range)} &bull; {`${business.tags[0].tag}, ${business.tags[1].tag}, ${business.tags[2].tag}`}
+                                    <div id='claimed'></div>
+                                    {/* Claimed div not done just leaving as a reminder */}
+                                    Claimed &bull; {priceSetter(business.price_range)} &bull; {`${business.tags[0].tag}, ${business.tags[1].tag}, ${business.tags[2].tag}`}
                                 </div>
                             </div>
                             <div className='info-price-tags'>
@@ -209,9 +231,9 @@ const BusinessDetails = ({search}) => {
                             </div>
                         </div>
                         <div id='all-photos-div'>
-                            <button id='all-photos-button'>
-                                See {business.BusinessImages.length} photos
-                            </button>
+                            <NavLink to={`/businesses/${businessId}/images`} id='all-photos-button'>
+                                See {business.BusinessImages.length} {numPhotos}
+                            </NavLink>
                         </div>
                     </div>
                 </div>
@@ -219,22 +241,23 @@ const BusinessDetails = ({search}) => {
             <div id='business-details-container'>
                 <div id='details-content'>
                     <div id='business-details-action-buttons-div'>
-                        <Link to={`/businesses/${business.id}/writeareview`}>
-                            <button id='write-review-button'>
-                                <div id='write-review-btn-content'>
-                                    <img id='white-nope-img' src={whiteNope} alt='white nope' />
-                                    <div id='write-review-font-styling'>Write a Review</div>
-                                </div>
-                            </button>
-                        </Link>
-
+                        {(currentUser && currentUser.id !== business.Owner.id && existingReview) &&
+                            <Link to={`/businesses/${business.id}/writeareview`}>
+                                <button id='write-review-button'>
+                                    <div id='write-review-btn-content'>
+                                        <img id='white-nope-img' src={whiteNope} alt='white nope' />
+                                        <div id='write-review-font-styling'>Write a Review</div>
+                                    </div>
+                                </button>
+                            </Link>
+                        }
                         {currentUser && currentUser.id === business.Owner.id && (
                             <>
                                 <div id='action-buttons-div'>
-                                    <button className='action-buttons'>
+                                    <NavLink to={`/businesses/${business.id}/images/new`} className='action-buttons'>
                                         <img id="add-photo-icon" src={camera} />
                                         Add photo
-                                    </button>
+                                    </NavLink>
                                 </div>
 
                                 <div id='auth-action-buttons'>
@@ -342,7 +365,7 @@ const BusinessDetails = ({search}) => {
                                 <div id='nopes-container'>
                                     <img id='nopes' alt='nopes' src={nopeImgs(business.reviewAverage)} />
                                 </div>
-                                <div id='overall-ratings-big-nopes-review-count'>{business.reviewCount} reviews</div>
+                                <div id='overall-ratings-big-nopes-review-count'>{business.reviewCount} {numReviews}</div>
                             </div>
                             <div id='dynamic-horizontal-reviews'>
                                 <div className='dynamic-stars'>
@@ -376,7 +399,6 @@ const BusinessDetails = ({search}) => {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div>
                             <BusinessReview></BusinessReview>

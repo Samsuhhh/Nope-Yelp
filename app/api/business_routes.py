@@ -27,7 +27,8 @@ def get_all_businesses():
   business_lst = [{"placeholder":"placehodor"}]
   for business in businesses:
     business_dict = business.to_dict()
-    images = BusinessImage.query.get(business.id)
+    images = BusinessImage.query.filter(BusinessImage.business_id == business.id).first()
+    print('\n\n\n\n\ images', images)
     images_dict =images.to_dict()
     business_dict["images"] = images_dict
     business_dict['tags'] = [tag.to_dict() for tag in business.tags]
@@ -253,11 +254,7 @@ main_tag_lst = [
 @business_routes.route("/", methods=["POST"])
 @login_required
 def create_business():
-  print("--------Hello World--------")
-  print(request.data)
   form = BusinessForm()
-  print('\n\n\n\n -----form-----', form)
-  # user = current_user.to_dict()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     tags_lst = []
@@ -293,12 +290,10 @@ def create_business():
       website = form.website.data,
       tags=tags_lst
     )
-    print('\n\n\n\n\n ------our new business-------', business)
     db.session.add(business)
     db.session.commit()
 
     new_tags = [tag.to_dict() for tag in tags_lst]
-    # new_tags = [tag for tag in tags_lst]
 
     new_business = business.to_dict()
     new_business['tags'] = new_tags
@@ -363,3 +358,17 @@ def add_image(id):
 
     return img.to_dict()
   return {"errors": validation_form_errors(form.errors), "statusCode": 401}
+
+# DELETE AN IMAGE FROM A BUSINESS VIA ID
+@business_routes.route('/images/<int:id>', methods=["DELETE"])
+@login_required
+def delete_business_image(id):
+  business_image = BusinessImage.query.get(id)
+  # ERROR HANDLING NONEXISTENT IMAGE
+  if not business_image:
+    return {"message": "Review couldn't be found", "statusCode":404}
+
+  db.session.delete(business_image)
+  db.session.commit()
+
+  return {"message": "Successfully delete", "statusCode": 200}

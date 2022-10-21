@@ -17,16 +17,18 @@
 #reviews-list-main-container{
   align-items: center;
   justify-content: center;
-  width: 700px;
+  display: flex;
+  flex-direction: column;
 }
 
 #review-body-container-current-user-reviews{
   display:flex;
   flex-direction: column;
 }
-
 #review-card-current-user-reviews{
-  margin:30px 10px 0px 10px;
+  margin:50px 10px 0px 10px;
+  width: 700px;
+
   border-bottom: 1px solid lightgrey;
 }
 
@@ -59,4 +61,9 @@
 
 #review-body-text-current-user-reviews{
   padding-top:10px;
+}
+
+.current-user-review-action-btns{
+  height:25px;
+  width:20px;
 }
