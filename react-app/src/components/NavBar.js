@@ -35,7 +35,15 @@ const NavBar = ({ setSearch }) => {
   const fuse = new Fuse(Object.values(businesses), options)
   const results = fuse.search(query)
   const businessResults = results.map(result => result.item)
-
+  const imgOnLoadHandler = e => {
+    console.log("loaded")
+    if(e.currentTarget.className !=="error") {
+      console.log("success")
+    }
+  }
+  const imageOnErrorHandler = (event) => {
+    event.currentTarget.src = userprofileicon;
+  };
   function handleOnSearch({ target = {} }) {
     const { value } = target
     setQuery(value)
@@ -95,7 +103,11 @@ const NavBar = ({ setSearch }) => {
             <div >
               <div id='menu-img-container'>
                 <button id='menu-button' onClick={openMenu}>
-                  <img id='user-avatar-img' src={`${sessionUser.userAvatar}`} alt='rock' />
+                  <img id='user-avatar-img'
+                    src={`${sessionUser.userAvatar}`}
+                    alt='avatar'
+                    onLoad={imgOnLoadHandler}
+                    onError={imageOnErrorHandler} />
                 </button>
               </div>
             </div>

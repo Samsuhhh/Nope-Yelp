@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getAllReviews, removeReview } from '../../../store/review'
 import './BusinessReviews.css'
-
+import userprofileicon from '../../../assets/icons/userprofile.svg'
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
@@ -19,6 +19,16 @@ const BusinessReview = () => {
     const user = useSelector(state => state.session.user)
     const businessReviews = useSelector(state => state.reviews.business)
     const [isLoaded, setIsLoaded] = useState(false)
+
+    const imgOnLoadHandler = e => {
+        console.log("loaded")
+        if(e.currentTarget.className !=="error") {
+          console.log("success")
+        }
+      }
+      const imageOnErrorHandler = (event) => {
+        event.currentTarget.src = userprofileicon;
+      };
 
     // conditional to render edit and delete YOUR review button
     // { user && user.id === businessReviews.Owner.id}
@@ -44,10 +54,16 @@ const BusinessReview = () => {
                         <div id='review-card' key={review.id}>
                             <div id='review-info'>
                                 <div id='review-user-avatar-div'>
-                                    <img id='user-avatar' alt='user avatar' src={review.Owner.userAvatar} />
+                                    <img
+                                        id='user-avatar'
+                                        alt='user avatar'
+                                        src={review.Owner.userAvatar}
+                                        onLoad={imgOnLoadHandler}
+                                        onError={imageOnErrorHandler}
+                                    />
                                 </div>
                                 <div id='user-info-div'>
-                                    <div id='user-name'>{review.Owner.firstName} {review.Owner.lastName ? review.Owner.lastName.slice(0,1) + '.' : '$.'}</div>
+                                    <div id='user-name'>{review.Owner.firstName} {review.Owner.lastName ? review.Owner.lastName.slice(0, 1) + '.' : '$.'}</div>
                                     <div>user friends/pictures/reviews</div>
                                 </div>
                             </div>
