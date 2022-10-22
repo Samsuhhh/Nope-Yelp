@@ -84,7 +84,7 @@ const AddBusinessReview = () => {
                             <img id="write-review-logo" src={nope} />
                         </NavLink>
 
-                        <img id="user-avatar" src={js} />
+                        <img id="user-avatar" src={user.userAvatar} />
                     </div>
                 </div>
                 <div className="review-wrapper">
@@ -144,7 +144,7 @@ const AddBusinessReview = () => {
                                         {showErrors &&
                                             <ul>
                                                 {validationErrors.map((e, i) => {
-                                                    return <div key={i}>{e}</div>
+                                                    return <div id="write-review-error" key={i}>{e}</div>
                                                 })}
                                             </ul>
                                         }
