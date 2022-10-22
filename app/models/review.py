@@ -17,7 +17,7 @@ class Review(db.Model):
                            onupdate=func.current_timestamp())
 
     user = db.relationship("User", back_populates="reviews")
-    businesses = db.relationship("Business", back_populates="reviews", cascade='all, delete')
+    businesses = db.relationship("Business", back_populates="reviews")
 
     def to_dict(self):
         return {
