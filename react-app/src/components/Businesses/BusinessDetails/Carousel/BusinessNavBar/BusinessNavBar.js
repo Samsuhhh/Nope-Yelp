@@ -15,6 +15,7 @@ import './BusinessNavBar.css'
 const options = {
   findAllMatches: true,
   keys: [
+    'tags.tag',
     { name: "business_name", weight: 2 },
     { name: "about", weight: .5 },
     { name: "city", weight: 2.5 }

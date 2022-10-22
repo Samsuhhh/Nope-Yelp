@@ -15,9 +15,11 @@ import logouticon from '../assets/icons/logout.svg'
 const options = {
   findAllMatches: true,
   keys: [
+    'tags.tag',
     { name: "business_name", weight: 2 },
     { name: "about", weight: .5 },
-    { name: "city", weight: 2.5 }
+    { name: "city", weight: 2.5 },
+
   ],
   includeScore: true,
 }
@@ -54,7 +56,7 @@ const NavBar = ({ setSearch }) => {
 
 
     const fuse = new Fuse(Object.values(businesses), options)
-    const results = fuse.search(document.getElementById("search-input-field-business-list").value)
+    const results = fuse.search(document.getElementById("search-input-field-business-list").value===""? "restaurant" :document.getElementById("search-input-field-business-list").value)
     const businessResults = results.map(result => result.item).slice(0, 15)
     setSearch(businessResults)
     return history.push("/businesses")
