@@ -25,6 +25,7 @@ import UserProfile from './components/UserProfile';
 import BusinessImages from './components/Businesses/BusinessImages';
 import AddBusinessImage from './components/Businesses/AddBusinessImage';
 import CurrentUserBusinesses from './components/Businesses/CurrentUserBusinesses';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [search, setSearch] = useState([])
@@ -127,8 +128,6 @@ function App() {
           <BusinessNavBar setSearch={setSearch} />
           <BusinessCard search={search}  exact={true} />
         </Route>
-
-
 
       </Switch>
 
