@@ -83,15 +83,17 @@ export const getCurrentUserBusinessesThunk = () => async (dispatch) => {
 
 export const getSingleBusinessThunk = (businessId) => async (dispatch) => {
   const response = await fetch(`/api/businesses/${businessId}`);
-  const singleBusinessData = await response.json();
+  console.log('response from get single business', response)
 
   if (response.ok) {
+    const singleBusinessData = await response.json();
     dispatch(loadOne(singleBusinessData));
+    return
   }
   else {
     console.log("-----Get Single Business Thunk Error-----");
+    return
   }
-  return singleBusinessData;
 }
 
 export const createBusinessThunk = (business) => async (dispatch) => {

@@ -188,7 +188,6 @@ const BusinessDetails = ({ search, onClose }) => {
         history.push('/')
     }
 
-
     let currentUserReview;
     if (currentUser) {
         currentUserReview = Object.values(reviewsObj).filter(review => review.user_id === currentUser.id)
@@ -197,7 +196,6 @@ const BusinessDetails = ({ search, onClose }) => {
     useEffect(() => {
         dispatch(getSingleBusinessThunk(businessId))
             .then(() => { setIsLoaded(true) })
-
 
     }, [dispatch, businessId, existingReviews.length, showPhotosModal, reviewsObj])
 
@@ -278,7 +276,7 @@ const BusinessDetails = ({ search, onClose }) => {
                                     <div className='info-price-tags'>
                                         <div id='claimed'></div>
                                         {/* Claimed div not done just leaving as a reminder */}
-                                        Claimed &bull; {priceSetter(business.price_range)} &bull; {`${business.tags[0].tag}, ${business.tags[1].tag}, ${business.tags[2].tag}`}
+                                        Claimed &bull; {priceSetter(business.price_range)} &bull; {`${business?.tags[0]?.tag}, ${business?.tags[1]?.tag}, ${business.tags[2].tag}`}
                                     </div>
                                 </div>
                                 <div className='info-price-tags'>

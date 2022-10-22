@@ -13,7 +13,7 @@ const AddBusinessReview = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
-    const business = useSelector(state => state.businesses)
+    const business = useSelector(state => state.businesses.singleBusiness)
     const { businessId } = useParams()
 
     const [review, setReview] = useState('')
@@ -41,10 +41,9 @@ const AddBusinessReview = () => {
     }
 
 
-
     useEffect(() => {
         const errors = []
-        if (review.length < 4 || review.length > 3000) errors.push("Review must be between 4 and 3000 characters")
+        if (review.length < 4 || review.length > 3000 || !review.trim().length) errors.push("Review must be between 4 and 3000 characters")
         if (nopes < 1) errors.push("Please select a rating")
         setValidationErrors(errors)
     }, [review, nopes])
@@ -84,12 +83,12 @@ const AddBusinessReview = () => {
                             <img id="write-review-logo" src={nope} />
                         </NavLink>
 
-                        <img id="user-avatar" src={js} />
+                        <img id="user-avatar" src={user.userAvatar} />
                     </div>
                 </div>
                 <div className="review-wrapper">
                     <div className="review-container">
-                        <div className="review-business-title">Business Name</div>
+                        <div className="review-business-title">How was {business.business_name}?</div>
                         <div className="nopes-and-review-wrapper">
                             <div id="nope-selector" className='nopes'>
                                 <span
@@ -105,7 +104,7 @@ const AddBusinessReview = () => {
                                     onClick={selectedNopes(3)}
                                     value='4'
                                     required
-                                    // onChange={updateNopes}
+                                // onChange={updateNopes}
                                 >
                                     <img src={ratingimg} />
                                 </span>
@@ -123,7 +122,7 @@ const AddBusinessReview = () => {
                                     onClick={selectedNopes(1)}
                                     value='2'
                                     required
-                                    // onChange={updateNopes}
+                                // onChange={updateNopes}
                                 >
                                     <img src={ratingimg} />
                                 </span>
@@ -132,7 +131,7 @@ const AddBusinessReview = () => {
                                     onClick={selectedNopes(0)}
                                     value='1'
                                     required
-                                    // onChange={updateNopes}
+                                // onChange={updateNopes}
                                 >
                                     <img src={ratingimg} />
                                 </span>
@@ -142,11 +141,11 @@ const AddBusinessReview = () => {
                                 <form onSubmit={handleSubmit}>
                                     <div>
                                         {showErrors &&
-                                            <ul>
+                                            <div id="error-holder">
                                                 {validationErrors.map((e, i) => {
-                                                    return <div key={i}>{e}</div>
+                                                    return <div id="review-error" key={i}>{e}</div>
                                                 })}
-                                            </ul>
+                                            </div>
                                         }
                                         <textarea
                                             type='text'

@@ -58,6 +58,10 @@
     height: 600px;
 }
 
+#add-photo-error {
+    color: red;
+}
+
 #add-photo-input-field {
     padding-left: 10px;
     height: 40px;
