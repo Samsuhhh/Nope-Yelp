@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
 from app.models import Review, db, User
@@ -73,3 +74,21 @@ def delete_review(id):
   db.session.commit()
 
   return {"message":"Successfully deleted", "statusCode":200}
+
+
+## GET REVIEW BY ID
+@review_routes.route('/<int:id>', methods=['GET'])
+@login_required
+def get_singular_review(id):
+  review = Review.query.get(id)
+
+  if not review:
+    return {"message": "Review couldn't be found", "statusCode":404}
+  if current_user.id != review.user_id:
+    return {"message":"Forbidden", "statusCode":403}
+
+  review_dict = review.to_dict()
+  owner = (User.query.filter(User.id == review.user_id).one()).to_dict()
+  review_dict['Owner'] = owner
+
+  return review_dict
