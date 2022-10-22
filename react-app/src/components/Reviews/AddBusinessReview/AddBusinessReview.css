@@ -350,3 +350,14 @@ textarea:focus {
     background-color: #ff2323;
     cursor: pointer;
 }
+
+#review-error {
+    color: red;
+    margin-top: 0px;
+}
+
+#error-holder {
+    margin-top: -34px;
+    width: 100%;
+    height: 50px;
+}
