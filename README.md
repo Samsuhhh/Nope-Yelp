@@ -167,6 +167,6 @@ DO NOT paste this anywhere. The code above is already provided in our package.js
 | <img src=https://i.imgur.com/2ffGJqj.png width=20> | [LinkedIn](https://www.linkedin.com/in/jake-matillano-b141811a3/) | [LinkedIn](https://www.linkedin.com/) | [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/) | [LinkedIn](https://www.linkedin.com/in/gary-song-96b071246/) |
 | <img src=https://i.imgur.com/w9xwrCT.png width=20> | [GitHub](https://github.com/jakezmat) | [GitHub](https://github.com/Samsuhhh) | [GitHub](https://github.com/Aldam55) | [GitHub](https://github.com/garydsong) |
 
-# 🥚🥚🥚 For checking out our project we wanted to say 🥚🥚🥚
+# 🥚 For checking out our project we wanted to say 🥚
 
 ![thankyoueggs](https://user-images.githubusercontent.com/105745865/197347731-a3116dbe-0bec-444c-ae22-a82f69c90717.png)
