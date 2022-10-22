@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import Footer from '../Footer/Footer';
 import nopewhite from '../../assets/nope-white.png'
 import unhappy from '../../assets/imgs/unhappy.png'
+import speechbox from '../../assets/imgs/speechbox.svg'
 import './SignUpForm.css'
 
 const SignUpForm = () => {
@@ -15,11 +17,35 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+
+  const [firstNameErr, setFirstNameErr] = useState("")
+  const [lastNameErr, setLastNameErr] = useState("")
+  const [usernameErr, setUsernameErr] = useState("")
+  const [passwordErr, setPasswordErr] = useState("")
+  const [noErr, setNoErr] = useState(true)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
+
+    if (firstName.length < 2) {
+      setFirstNameErr("*First name cannot be less than 2 characters")
+      setNoErr(false)
+    }
+    if (lastName.length < 2) {
+      setLastNameErr("*Last name cannot be less than 2 characters")
+      setNoErr(false)
+    }
+    if (username.length < 6) {
+      setUsernameErr("*Username cannot be less than 6 characters")
+      setNoErr(false)
+    }
+    if (password.length < 6) {
+      setPasswordErr("*Password cannot be less than 6 characters")
+      setNoErr(false)
+    }
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(firstName, lastName, username, email, password));
       if (data) {
@@ -28,6 +54,9 @@ const SignUpForm = () => {
     }
   };
 
+  useEffect(()=> {
+    setNoErr(true)
+  },[noErr])
   const updateFirstName = (e) => {
     setFirstName(e.target.value);
   };
@@ -63,16 +92,36 @@ const SignUpForm = () => {
       <div className='sign-up-header'>
         <a href="/"><img id="signup-logo" src={nopewhite} /></a>
       </div>
+
+        <div id="error-box">
+          {!firstNameErr.length
+          &&!lastNameErr.length
+          &&!usernameErr.length
+          &&!passwordErr.length &&
+          (<div id="no-errs-message">Enter your information on the right!</div>)}
+          <div>
+            {(!!firstNameErr.length && firstNameErr)}
+          </div>
+          <div>
+            {(!!lastNameErr.length && lastNameErr)}
+          </div>
+          <div>
+            {(!!usernameErr.length && usernameErr)}
+          </div>
+          <div>
+            {(!!passwordErr.length && passwordErr)}
+          </div>
+        </div>
       <div className="sign-up-form-wrapper">
+        <img id="unhappy-img" src={unhappy} />
+        <img id="speechbox-img" src={speechbox} />
         <div className="sign-up-and-image">
           <div>
             <form className="sign-up-form" onSubmit={onSignUp}>
               <div>
-                {errors.map((error, ind) => (
-                  <div key={ind}>{error}</div>
-                ))}
-              </div>
-              <div>
+                <div>
+
+                </div>
                 <input
                   id="first-name-input"
                   type='text'
@@ -104,7 +153,7 @@ const SignUpForm = () => {
               <div>
                 <input
                   id="email-input"
-                  type='text'
+                  type='email'
                   name='email'
                   placeholder='Email'
                   onChange={updateEmail}
@@ -133,17 +182,10 @@ const SignUpForm = () => {
                 ></input>
               </div>
               <button id="signup-submit-button" type='submit'>Sign Up</button>
-              <button
-                id='signup-submit-button'
-                type='submit'
-                onClick={() => {
-                  setEmail('CarlMaki@email.com')
-                  setPassword('password')
-                }}
-              >Login as Demo User</button>
+
             </form>
           </div>
-          <img id="unhappy-img" src={unhappy} />
+
         </div>
       </div>
       <Footer />
