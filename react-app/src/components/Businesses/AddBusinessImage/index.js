@@ -53,7 +53,7 @@ export default function AddBusinessImage() {
         <>
             <div className="add-business-nav-bar">
                 <div className="add-business-nav-bar-content-wrapper">
-                <Link to={`/businesses/${businessId}`}>
+                <Link to={`/`}>
                     <img id="add-business-nav-bar-logo" src={nope} />
                     </Link>
                     <Link to={`/businesses/${businessId}`}>
