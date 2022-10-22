@@ -13,9 +13,10 @@ import nopes0 from "../../../assets/nopes/0-nopes.png"
 export default function BusinessCard({ search }) {
   const [businessList, setBusinessList] = useState(null)
 
+
   useEffect(() => {
-    setBusinessList(search)
-  }, [search])
+    setBusinessList(businessList)
+  }, [businessList])
 
 
   const nopeRatingBar = (rating) => {
@@ -44,6 +45,22 @@ export default function BusinessCard({ search }) {
   })
   let priceRange4 = Object.values(search).filter(business => {
     return business.price_range === 4
+  })
+
+  let nope1 = Object.values(search).filter(business => {
+    return Math.floor(business.review_average) === 1
+  })
+  let nope2 = Object.values(search).filter(business => {
+    return Math.floor(business.review_average) === 2
+  })
+  let nope3 = Object.values(search).filter(business => {
+    return Math.floor(business.review_average) === 3
+  })
+  let nope4 = Object.values(search).filter(business => {
+    return Math.floor(business.review_average) === 4
+  })
+  let nope5 = Object.values(search).filter(business => {
+    return Math.floor(business.review_average) === 5
   })
 
   const resetFilter = Object.values(search)
@@ -94,14 +111,64 @@ export default function BusinessCard({ search }) {
               }}
             >$$$$
             </button>
-            <button
-            className="reset-filter-btn"
-              onClick={(e)=> {
-                e.preventDefault()
-                setBusinessList(resetFilter)
-              }}
-            >Reset Filter
-            </button>
+            {/* ------- FILTER BY REVIEW START ------- */}
+            <div id='nope-range-container'>
+              <div id='or-filter'> or </div>
+
+              <button
+                className="nope-range-btn"
+                id="nope-range-btn-one"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setBusinessList(nope1)
+                }}
+              >1
+              </button>
+              <button
+                className="nope-range-btn"
+                id="nope-range-btn-two"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setBusinessList(nope2)
+                }}
+              >2
+              </button>
+              <button
+                className="nope-range-btn"
+                id="nope-range-btn-three"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setBusinessList(nope3)
+                }}
+              >3
+              </button>
+              <button
+                className="nope-range-btn"
+                id="nope-range-btn-four"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setBusinessList(nope4)
+                }}
+              >4
+              </button>
+              <button
+                className="nope-range-btn"
+                id="nope-range-btn-five"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setBusinessList(nope5)
+                }}
+              >5
+              </button>
+              <button
+                className="reset-filter-btn"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setBusinessList(resetFilter)
+                }}
+              >Reset Filter
+              </button>
+            </div>
           </div>
           {/* <div id="checkbox-container">
             <h3>Suggested</h3>
@@ -149,7 +216,7 @@ export default function BusinessCard({ search }) {
                           <img id='nopes' alt='nopes' style={{ height: "23px", width: "125px" }} src={nopeRatingBar(business.review_average)} ></img>
                         </div>
                         <div id="business-card-review-average-div">
-                          <span >{business.review_average}</span>
+                          <span >{Math.ceil(business.review_average)}</span>
                         </div>
                         <div id="business-card-grumble-count-div">({business.review_count} {" "}{business.review_count > 1 ? "Grumbles" : "Grumble"})</div>
                       </div>
@@ -173,6 +240,7 @@ export default function BusinessCard({ search }) {
         {/* RIGHT DIV START */}
         <div>Map Will Go Here...eventually</div>
       </div>
+
     </>
 
   )

@@ -94,6 +94,7 @@
     justify-content: space-between;
     width: 100%;
     height: 40%;
+    margin-bottom: 25px;
     /* border: 1px solid white; */
 }
 
@@ -107,25 +108,38 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
-}
-
-#nopes-container {
+    text-align: center;
     margin-bottom: 5px;
 }
 
+/* #nopes-container {
+    margin-bottom: 5px;
+
+} */
+
 #nopes-container,
 #nopes {
-    width: 175px;
-    height: 30px;
-    margin-top: 3px;
+    width: 181px;
+    height: 32px;
 }
 
 #review-count-div {
     color: white;
     margin-left: 10px;
+    font-size: 16px;
 }
 
+#flex-row-tags{
+    display: flex;
+}
+
+#claimed{
+    color: rgba(88, 180, 255, 1);;
+}
+.bull{
+    margin-left: 10px;
+    margin-right: 10px;
+}
 
 .info-price-tags {
     color: white;
@@ -133,7 +147,7 @@
 
 #all-photos-div {
     width: 20%;
-
+    margin-bottom: 25px;
 }
 
 #all-photos-button:hover,
@@ -404,8 +418,10 @@
 }
 
 #overall-ratings-div-font-styling {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
+    font-family: "Open Sans";
+    margin-bottom: 10px;
 }
 
 #overall-ratings-big-nopes-review-count {
@@ -504,6 +520,7 @@
     font-size: 16px;
     font-weight: 600;
     margin-left: 2%;
+    margin-top: 10px;
     /* have to change width to fixed sizing so it doesn't change width */
 }
 

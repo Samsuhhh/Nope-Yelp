@@ -183,7 +183,7 @@ const BusinessDetails = ({ search, onClose }) => {
 
     }, [dispatch, businessId, existingReviews.length, showPhotosModal, reviewsObj])
 
-    let numReviews = business.reviewCount === 1 ? "Review" : "Reviews"
+    let numReviews = business.reviewCount === 1 ? "review" : "reviews"
     let numPhotos = business?.BusinessImages?.length === 1 ? "Photo" : "Photos"
 
     return isLoaded && (
@@ -251,10 +251,13 @@ const BusinessDetails = ({ search, onClose }) => {
                                     </div>
                                 </div>
                                 <div id='business-details-info-price-tags'>
-                                    <div className='info-price-tags'>
-                                        <div id='claimed'></div>
+                                    <div id='flex-row-tags' className='info-price-tags'>
+                                        <div id='claimed'>Claimed </div>
                                         {/* Claimed div not done just leaving as a reminder */}
-                                        Claimed &bull; {priceSetter(business.price_range)} &bull; {`${business.tags[0].tag}, ${business.tags[1].tag}, ${business.tags[2].tag}`}
+                                        <div className='bull'>&bull;</div>  
+                                        <div>{priceSetter(business.price_range)}</div>
+                                        <div className='bull'>&bull;</div> 
+                                        <div>{`${business.tags[0].tag}, ${business.tags[1].tag}, ${business.tags[2].tag}`}</div>
                                     </div>
                                 </div>
                                 <div className='info-price-tags'>

@@ -73,7 +73,11 @@ div{
   transition:.6s;
 }
 
+#nope-range-container{
+  margin-top: 20px;
+}
 
+#nope-range-btn-one,
 #price-range-btn-one{
   border: rgb(165, 165, 165) solid 1px;
   border-top-left-radius: 999px;
@@ -81,6 +85,9 @@ div{
   padding: 6px 14px;
 
 }
+#nope-range-btn-two,
+#nope-range-btn-three,
+#nope-range-btn-four,
 #price-range-btn-two,
 #price-range-btn-three{
   border-radius: 0px;
@@ -89,7 +96,7 @@ div{
   border-left: none;
 
 }
-
+#nope-range-btn-five,
 #price-range-btn-four{
   border: rgb(165, 165, 165) solid 1px;
   border-top-right-radius: 999px;
