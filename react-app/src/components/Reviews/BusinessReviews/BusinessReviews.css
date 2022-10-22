@@ -51,3 +51,14 @@
     margin-top: 10px;
     width: 80%;
 }
+
+#review-actions-business-reviews{
+    display: flex;
+    justify-content: flex-end;
+
+    margin: 15px 190px 0px 0px;
+}
+
+.eviscerate-btn{
+    margin-left: 5px;
+}
