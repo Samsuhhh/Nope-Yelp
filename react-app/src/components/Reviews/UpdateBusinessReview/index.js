@@ -1,7 +1,7 @@
 import './UpdateBusinessReview.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory, useParams, NavLink } from 'react-router-dom'
 import { updateReview } from '../../../store/review'
 import nope from '../../../assets/nope.png'
 import ratingimg from '../../../assets/nopes/ratingimg.png'
@@ -13,6 +13,7 @@ const UpdateBusinessReview = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
+    const business = useSelector(state => state.businesses.singleBusiness)
     const existingReviewsObj = useSelector(state => state.reviews.business)
     const existingReview = Object.values(existingReviewsObj).filter(review => review?.user_id === user.id)[0]
 
@@ -72,17 +73,21 @@ const UpdateBusinessReview = () => {
     }
     return (
         <>
-            {user && (
-                <div>
-                    <form onSubmit={handleSubmit}>
-                        <div>
-                            {showErrors &&
-                                <ul>
-                                    {validationErrors.map((e, i) => {
-                                        return <div key={i}>{e}</div>
-                                    })}
-                                </ul>
-                            }
+            {/* {user && ( */}
+            <div className="write-review-main">
+                <div className="write-review-nav">
+                    <div className="write-review-nav-wrapper">
+                        <NavLink to='/' exact={true} activeClassName='active'>
+                            <img id="write-review-logo" src={nope} />
+                        </NavLink>
+
+                        <img id="user-avatar" src={js} />
+                    </div>
+                </div>
+                <div className="review-wrapper">
+                    <div className="review-container">
+                        <div className="review-business-title">Edit your review for {business.business_name}</div>
+                        <div className="nopes-and-review-wrapper">
                             <div id="nope-selector" className='nopes'>
                                 <span
                                     value='5'
@@ -130,27 +135,123 @@ const UpdateBusinessReview = () => {
                                 </span>
 
                             </div>
-                            <textarea
-                                type='text'
-                                placeholder=''
-                                value={review}
-                                required
-                                onChange={(e) => setReview(e.target.value)} />
+                            <div className="write-a-review">
+                                <form onSubmit={handleSubmit}>
+                                    <div>
+                                        {showErrors &&
+                                            <ul>
+                                                {validationErrors.map((e, i) => {
+                                                    return <div key={i}>{e}</div>
+                                                })}
+                                            </ul>
+                                        }
+                                        <textarea
+                                            type='text'
+                                            placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit libero volutpat. Sit amet consectetur adipiscing elit. Porttitor massa id neque aliquam vestibulum morbi blandit. Netus et malesuada fames ac turpis egestas maecenas. Urna neque viverra justo nec ultrices dui sapien eget mi. Molestie at elementum eu facilisis sed. Auctor elit sed vulputate mi sit amet mauris. Mauris nunc congue nisi vitae suscipit tellus mauris a diam. Nunc mattis enim ut tellus elementum sagittis. Donec adipiscing tristique risus nec feugiat in fermentum posuere.'
+                                            value={review}
+                                            required
+                                            onChange={updateReview} />
+                                        <div className="submit-and-cancel-review">
+                                            <button
+                                                id='submit-review'
+                                                type='submit'>
+                                                Post Review
+                                            </button>
+                                            <button
+                                                id='cancel-review'
+                                                type='button'
+                                                onClick={handleCancel}>
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
 
-                            <button
-                                type='submit'>
-                                Submit
-                            </button>
-                            <button
-                                type='button'
-                                onClick={handleCancel}>
-                                Cancel
-                            </button>
+                            </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            )}
+            </div>
+            {/* )} */}
         </>
+        // <>
+        //         <div>
+        //             <form onSubmit={handleSubmit}>
+        //                 <div>
+        //                     {showErrors &&
+        //                         <ul>
+        //                             {validationErrors.map((e, i) => {
+        //                                 return <div key={i}>{e}</div>
+        //                             })}
+        //                         </ul>
+        //                     }
+        //                     <div id="nope-selector" className='nopes'>
+        //                         <span
+        //                             value='5'
+        //                             // onChange={updateNopes}
+        //                             required
+        //                             onClick={selectedNopes(4)}
+        //                         >
+        //                             <img src={ratingimg} />
+        //                         </span>
+
+        //                         <span
+        //                             onClick={selectedNopes(3)}
+        //                             value='4'
+        //                             required
+        //                         // onChange={updateNopes}
+        //                         >
+        //                             <img src={ratingimg} />
+        //                         </span>
+
+        //                         <span
+        //                             onClick={selectedNopes(2)}
+        //                             value='3'
+        //                             required
+        //                             onChange={updateNopes}
+        //                         >
+        //                             <img src={ratingimg} />
+        //                         </span>
+
+        //                         <span
+        //                             onClick={selectedNopes(1)}
+        //                             value='2'
+        //                             required
+        //                         // onChange={updateNopes}
+        //                         >
+        //                             <img src={ratingimg} />
+        //                         </span>
+
+        //                         <span
+        //                             onClick={selectedNopes(0)}
+        //                             value='1'
+        //                             required
+        //                         // onChange={updateNopes}
+        //                         >
+        //                             <img src={ratingimg} />
+        //                         </span>
+
+        //                     </div>
+        //                     <textarea
+        //                         type='text'
+        //                         placeholder=''
+        //                         value={review}
+        //                         required
+        //                         onChange={(e) => setReview(e.target.value)} />
+
+        //                     <button
+        //                         type='submit'>
+        //                         Submit
+        //                     </button>
+        //                     <button
+        //                         type='button'
+        //                         onClick={handleCancel}>
+        //                         Cancel
+        //                     </button>
+        //                 </div>
+        //             </form>
+        //         </div>
+        // </>
     )
 }
 

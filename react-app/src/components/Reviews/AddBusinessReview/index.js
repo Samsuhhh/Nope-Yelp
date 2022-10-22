@@ -13,7 +13,7 @@ const AddBusinessReview = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
-    const business = useSelector(state => state.businesses)
+    const business = useSelector(state => state.businesses.singleBusiness)
     const { businessId } = useParams()
 
     const [review, setReview] = useState('')
@@ -89,7 +89,7 @@ const AddBusinessReview = () => {
                 </div>
                 <div className="review-wrapper">
                     <div className="review-container">
-                        <div className="review-business-title">Business Name</div>
+                        <div className="review-business-title">How was {business.business_name}?</div>
                         <div className="nopes-and-review-wrapper">
                             <div id="nope-selector" className='nopes'>
                                 <span
@@ -105,7 +105,7 @@ const AddBusinessReview = () => {
                                     onClick={selectedNopes(3)}
                                     value='4'
                                     required
-                                    // onChange={updateNopes}
+                                // onChange={updateNopes}
                                 >
                                     <img src={ratingimg} />
                                 </span>
@@ -123,7 +123,7 @@ const AddBusinessReview = () => {
                                     onClick={selectedNopes(1)}
                                     value='2'
                                     required
-                                    // onChange={updateNopes}
+                                // onChange={updateNopes}
                                 >
                                     <img src={ratingimg} />
                                 </span>
@@ -132,7 +132,7 @@ const AddBusinessReview = () => {
                                     onClick={selectedNopes(0)}
                                     value='1'
                                     required
-                                    // onChange={updateNopes}
+                                // onChange={updateNopes}
                                 >
                                     <img src={ratingimg} />
                                 </span>

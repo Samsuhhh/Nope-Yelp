@@ -171,14 +171,14 @@ const CreateBusiness = () => {
     // NEED TO ADD MORE VALIDATION ERRORS
     useEffect(() => {
         const errors = []
-        if (businessName.length > 40 || businessName.length < 1) errors.push("Business name must be between 1 and 40 characters")
+        if (businessName.length > 40 || businessName.length < 1 || !businessName.trim().length) errors.push("Business name must be between 1 and 40 characters")
         if (!email.match(/^\S+@\S+\.\S+$/)) errors.push('Please enter a valid email address')
-        if (phone.length !== 10) errors.push("Please enter a valid phone number")
-        if (streetAddress.length > 50 || streetAddress.length < 5) errors.push("Street address must be between 5 and 50 characters.")
-        if (city.length > 20 || city.length < 2) errors.push("City must be between 2 and 20 characters.")
+        if (phone.length !== 10 || isNaN(phone)) errors.push("Please enter a valid phone number")
+        if (streetAddress.length > 50 || streetAddress.length < 5 || !streetAddress.trim().length) errors.push("Street address must be between 5 and 50 characters.")
+        if (city.length > 20 || city.length < 2 || !city.trim().length) errors.push("City must be between 2 and 20 characters.")
         if (zipcode > 99999 || zipcode < 10000) errors.push("Please enter a valid zip code.")
-        if (state.length > 20 || state.length < 2) errors.push('State must be between 2 and 15 characters.')
-        if (about.length > 3000 || about.length < 5) errors.push('About must be between 5 and 3000 characters.')
+        if (state.length > 20 || state.length < 2 || !state.trim().length) errors.push('State must be between 2 and 15 characters.')
+        if (about.length > 3000 || about.length < 5 || !about.trim().length) errors.push('About must be between 5 and 3000 characters.')
         if (isNaN(longitude) || longitude < -180 || longitude > 180) errors.push("Longitude must be a number between -180 and 180")
         if (isNaN(latitude) || latitude < -90 || latitude > 90) errors.push("Latitude must be a number between -90 and 90")
         if (!priceRange.length) errors.push("Please select a valid price range")
@@ -194,7 +194,7 @@ const CreateBusiness = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setShowErrors(true)
-        
+
         if (!validationErrors.length) {
             const business = {
                 business_name: businessName,
@@ -436,7 +436,7 @@ const CreateBusiness = () => {
                                 <Modal onClose={() => setShowTagModal(false)}>
                                     <div id='modal-header'>
                                         <div id="close-modal" onClick={exitModal}>
-                                            Close 
+                                            Close
                                             <img id="close-modal-icon" src={xicon} alt='close icon' />
                                         </div>
                                         <div id='header-div'>
@@ -453,8 +453,8 @@ const CreateBusiness = () => {
                                                         onChange={handleCheck}
                                                         name={tag.title}
                                                         value={tag.title}
-                                                        disabled={tagsList.length >= 3 }
-                                                        />
+                                                        disabled={tagsList.length >= 3}
+                                                    />
                                                     <label id='text-align-center'>{tag.title}</label>
                                                 </div>
                                             })}
