@@ -271,7 +271,7 @@ const CreateBusiness = () => {
                             <div className='fragmented-div-styling'>
                                 <input
                                     className='create-business-input'
-                                    type='text'
+                                    type='email'
                                     placeholder='Email'
                                     value={email}
                                     onChange={updateEmail}

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useHistory, useParams } from 'react-router-dom'
 import { createReview } from '../../../store/review'
+import { getSingleBusinessThunk } from '../../../store/business'
 import nope from '../../../assets/nope.png'
 import ratingimg from '../../../assets/nopes/ratingimg.png'
 import js from '../../../assets/icons/JavaScript.svg'
@@ -40,6 +41,9 @@ const AddBusinessReview = () => {
         }
     }
 
+    useEffect(() => {
+        dispatch(getSingleBusinessThunk(businessId))
+    }, [dispatch])
 
     useEffect(() => {
         const errors = []
