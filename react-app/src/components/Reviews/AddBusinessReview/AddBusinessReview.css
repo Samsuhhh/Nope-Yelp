@@ -22,6 +22,11 @@
     height: 40px;
 }
 
+#write-review-error {
+    color: red;
+    border: 1px solid black;
+}
+
 #user-avatar {
     height: 40px;
     border-radius: 999px;
@@ -56,6 +61,7 @@
     padding: 30px;
     border: lightgray 1px solid;
     border-radius: 5px;
+
 }
 
 .write-a-review {
@@ -80,6 +86,7 @@ textarea:focus {
     overflow: auto;
     outline: none;
 }
+
 
 .nopes{
     displaY:inline-block;
