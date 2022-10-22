@@ -43,7 +43,7 @@ const AddBusinessReview = () => {
 
     useEffect(() => {
         dispatch(getSingleBusinessThunk(businessId))
-    })
+    }, [dispatch])
 
     useEffect(() => {
         const errors = []
