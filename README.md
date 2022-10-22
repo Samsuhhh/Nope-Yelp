@@ -161,18 +161,9 @@ DO NOT paste this anywhere. The code above is already provided in our package.js
 *And voilà!*
 
 # 📱 Contacts
-### Jake Matillano
-- <img src=https://i.imgur.com/2ffGJqj.png width=20>[LinkedIn](https://www.linkedin.com/in/jake-matillano-b141811a3/)
-- <img src=https://i.imgur.com/w9xwrCT.png width=20>[GitHub](https://github.com/jakezmat)
 
-### Sam Suh
-- <img src=https://i.imgur.com/2ffGJqj.png width=20>[LinkedIn](https://www.linkedin.com/)
-- <img src=https://i.imgur.com/w9xwrCT.png width=20>[GitHub](https://github.com/Samsuhhh)
+|        | Jake Matillano |  Sam Suh  | Alex Dam | Gary Song |
+|--------|----------------|-----------|----------|-----------|
+| <img src=https://i.imgur.com/2ffGJqj.png width=20> | [LinkedIn](https://www.linkedin.com/in/jake-matillano-b141811a3/) | [LinkedIn](https://www.linkedin.com/) | [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/) | [LinkedIn](https://www.linkedin.com/in/gary-song-96b071246/) |
+| <img src=https://i.imgur.com/w9xwrCT.png width=20> | [GitHub](https://github.com/jakezmat) | [GitHub](https://github.com/Samsuhhh) | [GitHub](https://github.com/Aldam55) | [GitHub](https://github.com/garydsong) |
 
-### Alex Dam
-- <img src=https://i.imgur.com/2ffGJqj.png width=20>[LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/)
-- <img src=https://i.imgur.com/w9xwrCT.png width=20>[GitHub](https://github.com/Aldam55)
-
-### Gary Song
-- <img src=https://i.imgur.com/2ffGJqj.png width=20>[LinkedIn](https://www.linkedin.com/in/gary-song-96b071246/)
-- <img src=https://i.imgur.com/w9xwrCT.png width=20>[GitHub](https://github.com/garydsong)
