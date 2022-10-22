@@ -158,7 +158,7 @@ This runs a predefined command specified in the "start" property of a package's 
 ```
 DO NOT paste this anywhere. The code above is already provided in our package.json file!
 
-***And voilà!**
+*And voilà!*
 
 # 📱 Contacts
 ### Jake Matillano
