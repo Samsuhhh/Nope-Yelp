@@ -79,8 +79,7 @@ const LoginForm = () => {
                 id='login-submit-button'
                 type='submit'
                 onClick={() => {
-                  setEmail('CarlMaki@email.com')
-                  setPassword('password')
+                  dispatch(login('CarlMaki@email.com', 'password'))
                 }}
               >Login as Demo User</button>
             </div>
