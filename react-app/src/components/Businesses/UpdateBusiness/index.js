@@ -267,7 +267,7 @@ const UpdateBusiness = () => {
                             {/*------ EMAIL ------*/}
                             <div className='fragmented-div-styling'>
                                 <input
-                                    type='text'
+                                    type='email'
                                     placeholder='Email'
                                     value={email}
                                     onChange={updateEmail}
