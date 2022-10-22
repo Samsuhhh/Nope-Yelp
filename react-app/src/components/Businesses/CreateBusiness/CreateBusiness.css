@@ -2,8 +2,8 @@
     border: 1px solid red;
     /* display: flex; */
     /* justify-content: center; */
-    font-family: "Open Sans"
-
+    font-family: "Open Sans";
+    display: flex;
 }
 
 #create-form-container {

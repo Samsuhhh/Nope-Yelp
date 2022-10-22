@@ -106,20 +106,31 @@ div{
 
 }
 
+.nope-range-btn:focus,
 .price-range-btn:focus{
   background-color: #E00707;
   color: rgb(236, 236, 236);
 }
+.nope-range-btn,
 .price-range-btn{
   background-color: white;
   transition:.6s;
   font: 12px;
 }
+.nope-range-btn:hover,
 .price-range-btn:hover {
   background-color: rgb(219, 219, 219);
   cursor: pointer;
   color: black;
 }
+
+/* .nope-range-btn{
+  background-color: white;
+}
+.nope-range-btn:hover{
+  cursor: pointer;
+} */
+
 
 #business-card-nopes-review-average-div{
   display:flex;

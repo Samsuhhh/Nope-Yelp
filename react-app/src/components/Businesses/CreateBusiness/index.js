@@ -490,6 +490,9 @@ const CreateBusiness = () => {
                     </form>
                 </div>
             </div >
+            <div id='create-form-page-right-half'>
+                hello from the right side
+            </div>
         </div >
     )
 }

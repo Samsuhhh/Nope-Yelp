@@ -32,7 +32,7 @@ const UserProfile = () => {
     "How do you make an apple turnover? Push it downhill.",
     "What kind of socks do you need to plant asparagus? Garden hose.",
     "Why did the skeleton go to the barbecue? To get another rib.",
-    "What did the pecan say to the walnut?We’re friends because we’re both nuts.",
+    "What did the pecan say to the walnut? We’re friends because we’re both nuts.",
     "Where did the broccoli go to have a few drinks? The salad bar.",
     "What did one blueberry say to the other blueberry? If you weren’t so sweet, we wouldn’t be in this jam.",
     "What do you call cheese that is not ours? Nacho cheese.",

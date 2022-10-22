@@ -134,8 +134,18 @@
 }
 
 #claimed{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: rgba(88, 180, 255, 1);;
 }
+#circle-check-svg{
+    filter: invert(68%) sepia(31%) saturate(4358%) hue-rotate(183deg) brightness(103%) contrast(101%);
+    width: 13px;
+    height: 13px;
+    margin-right: 5px;
+}
+
 .bull{
     margin-left: 10px;
     margin-right: 10px;
