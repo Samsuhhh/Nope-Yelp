@@ -1,6 +1,6 @@
 # ![nope](https://user-images.githubusercontent.com/105745865/196279933-2feae36c-6493-406e-a8b3-795d31f51456.png)
 
-Nope is a fullstack web application, inspired by [Yelp](https://yelp.com). Visit our site as a passive user, active user, or business owner. As a business owner you can recieve feedback known as grumbles, dedicated to shedding light on how the business can improve. As an active user you can read, post, delete, and edit grumbles or become a business owner yourself! As a passive user you may not write grumbles but you may visit business pages to read grumbles. 
+Nope is a fullstack web application, inspired by [Yelp](https://yelp.com). Our rating system is opposite the typical norm. The more stars (known to us as nopes) you have, the worse the business is. We've noticed that users are typically more honest and put more thought into bad reviews than good reviews, hence the name Nope. Visit our site as a passive user, active user, or business owner. As a business owner you can recieve feedback known as grumbles, dedicated to shedding light on how the business can improve. As an active user you can read, post, delete, and edit grumbles or become a business owner yourself! As a passive user you may not write grumbles or leave nopes but you may visit business pages to read grumbles. 
 
 **Live site: [Nope](http://nope-yelp.herokuapp.com)**
 
@@ -74,3 +74,99 @@ Assets utilized and/or created by:
 - Display your Avatar
 - Check your reviews
 - Check your businesses
+
+# ▶️ Get Started
+
+### Clone repository.
+
+- SSH:
+
+```
+git@github.com:Samsuhhh/Nope-Yelp.git
+```
+
+- HTTPS:
+
+```
+https://github.com/Samsuhhh/Nope-Yelp.git
+```
+
+- CLI:
+```
+gh repo clone Samsuhhh/Nope-Yelp
+```
+
+### Install dependencies & Prep database.
+- In the project directory you will run:
+
+```
+pipenv install
+```
+
+This command will install packages into the pipenv virtual environment and update your Pipfile.
+
+- Create a .env file in said current directory.
+- Paste in SECRET_KEY and DATABASE_URL configurations.
+
+```
+SECRET_KEY=<<SECRET_KEY>>
+DATABASE_URL=sqlite:///dev.db
+```
+
+The .env file contains the individual user environment variables that override the variables set in the /etc/environment file. You can customize your environment variables as desired by modifying your .env file. In this case we are setting the SECRET_KEY and the DATABASE_URL.
+
+- While in your root directory run:
+
+```
+pipenv shell
+```
+
+This will create a new active pip environment for  you to run your backend.
+
+- Followed by:
+
+```
+flask db upgrade
+flask seed all
+pipenv run flask run
+```
+
+Because this application uses SQLite, the upgrade command will detect that a database does not exist and will create it. While now you are creating the database you are also seeding in our 105 businesses, 315 business images, 30 users, and all of their 270 grumbles/nopes.
+
+- Navigate to your /Nope-Yelp/react-app/ folder and create another .env file.
+- Paste in the REACT_APP_BASE_URL
+
+```
+REACT_APP_BASE_URL=http://localhost:5000
+```
+We'll be pasting in the path to server for frontend into this newly created environment file.
+
+- All there is to do is:
+
+```
+npm install
+```
+This command installs a package and any packages that it depends on. Since the package has a package-lock the installation of dependencies will be driven by that. If you take a peak into your package.json file you can see all the dependencies our project is installing.
+
+```
+npm start
+```
+This runs a predefined command specified in the "start" property of a package's "scripts" object in our case it is:
+
+```
+"start": "react-scripts start"
+```
+DO NOT paste this anywhere. The code above is already provided in our package.json file!
+
+*And voilà!*
+
+# 📱 Contacts
+
+|        | Jake Matillano |  Sam Suh  | Alex Dam | Gary Song |
+|--------|----------------|-----------|----------|-----------|
+| <img src=https://i.imgur.com/2ffGJqj.png width=20> | [LinkedIn](https://www.linkedin.com/in/jake-matillano-b141811a3/) | [LinkedIn](https://www.linkedin.com/) | [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/) | [LinkedIn](https://www.linkedin.com/in/gary-song-96b071246/) |
+| <img src=https://i.imgur.com/w9xwrCT.png width=20> | [GitHub](https://github.com/jakezmat) | [GitHub](https://github.com/Samsuhhh) | [GitHub](https://github.com/Aldam55) | [GitHub](https://github.com/garydsong) |
+
+# 🥚 Thanks for checking out our project! 🥚
+
+![thankyoueggs](https://user-images.githubusercontent.com/105745865/197347731-a3116dbe-0bec-444c-ae22-a82f69c90717.png)
