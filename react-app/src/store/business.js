@@ -7,6 +7,7 @@ const CREATE = "businesses/CREATE";
 const UPDATE = "businesses/UPDATE";
 const REMOVE = "businesses/DELETE";
 const ADD_IMAGE = "businesses/IMAGE"
+const RESET = 'businesses/RESET'
 const REMOVE_IMAGE = "images/DELETE"
 
 //Action Creators
@@ -48,6 +49,10 @@ const addImage = businessId => ({
 const removeImage = imageId => ({
   type: REMOVE_IMAGE,
   imageId
+})
+
+export const resetBusiness = () => ({
+  type: RESET,
 })
 
 // THUNK action creators
@@ -257,6 +262,8 @@ const businessReducer = (state = initialState, action) => {
       }
       // return {...newState} should we spread the new state?
       return newState
+    case RESET:
+      return initialState
     default:
       return state
   }
