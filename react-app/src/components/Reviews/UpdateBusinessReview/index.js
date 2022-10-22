@@ -1,4 +1,3 @@
-import './UpdateBusinessReview.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams, NavLink } from 'react-router-dom'
@@ -18,7 +17,7 @@ const UpdateBusinessReview = () => {
     const existingReview = Object.values(existingReviewsObj).filter(review => review?.user_id === user.id)[0]
 
     const [review, setReview] = useState(existingReview.review)
-    const [nopes, setNopes] = useState(existingReview.nope)
+    const [nopes, setNopes] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
 
@@ -41,7 +40,7 @@ const UpdateBusinessReview = () => {
 
     useEffect(() => {
         const errors = []
-        if (review.length < 4 || review.length > 3000) errors.push("Review must be between 4 and 3000 characters")
+        if (review.length < 4 || review.length > 3000 || !review.trim().length) errors.push("Review must be between 4 and 3000 characters")
         if (nopes < 1) errors.push("Please select a rating")
         setValidationErrors(errors)
     }, [review, nopes])
@@ -139,18 +138,18 @@ const UpdateBusinessReview = () => {
                                 <form onSubmit={handleSubmit}>
                                     <div>
                                         {showErrors &&
-                                            <ul>
+                                            <div id="error-holder">
                                                 {validationErrors.map((e, i) => {
-                                                    return <div key={i}>{e}</div>
+                                                    return <div id="review-error" key={i}>{e}</div>
                                                 })}
-                                            </ul>
+                                            </div>
                                         }
                                         <textarea
                                             type='text'
                                             placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit libero volutpat. Sit amet consectetur adipiscing elit. Porttitor massa id neque aliquam vestibulum morbi blandit. Netus et malesuada fames ac turpis egestas maecenas. Urna neque viverra justo nec ultrices dui sapien eget mi. Molestie at elementum eu facilisis sed. Auctor elit sed vulputate mi sit amet mauris. Mauris nunc congue nisi vitae suscipit tellus mauris a diam. Nunc mattis enim ut tellus elementum sagittis. Donec adipiscing tristique risus nec feugiat in fermentum posuere.'
                                             value={review}
                                             required
-                                            onChange={updateReview} />
+                                            onChange={(e) => setReview(e.target.value)} />
                                         <div className="submit-and-cancel-review">
                                             <button
                                                 id='submit-review'
