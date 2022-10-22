@@ -9,6 +9,7 @@ import nopes2 from "../../../assets/nopes/2-nopes.png"
 import nopes1 from "../../../assets/nopes/1-nopes.png"
 import nopes0 from "../../../assets/nopes/0-nopes.png"
 import editicon from '../../../assets/icons/edit-pen.svg'
+import businessicon from '../../../assets/icons/business.svg'
 import './CurrentUserBusinesses.css'
 
 const CurrentUserBusinesses = () => {
@@ -29,6 +30,17 @@ const CurrentUserBusinesses = () => {
     if (rating > 0 && rating <= 1) return (nopes1)
     else return nopes0
   }
+
+  const imgOnLoadHandler = e => {
+    console.log("loaded")
+    if(e.currentTarget.className !=="error") {
+      console.log("success")
+    }
+  }
+  const imageOnErrorHandler = (event) => {
+    event.currentTarget.src = businessicon;
+  };
+
   useEffect(() => {
     dispatch(getAllBusinessesThunk())
   }, [dispatch])
@@ -51,7 +63,12 @@ const CurrentUserBusinesses = () => {
             <div id="review-list-container-current-reviews">
               <div id="text-container-current-reviews">
 
-                <img id="current-user-reviews-business-img" src={business?.images?.url}></img>
+                <img
+                id="current-user-reviews-business-img"
+                src={business?.images?.url}
+                onLoad={imgOnLoadHandler}
+                onError={imageOnErrorHandler}
+                ></img>
               </div>
               <div id="business-information-container-current-user-reviews">
               <NavLink id="business-name-navlink-current-user-businesses"to={`/businesses/${business?.id}`}>

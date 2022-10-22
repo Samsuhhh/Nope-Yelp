@@ -16,6 +16,8 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+
+
 }
 
 .sign-up-and-image {
@@ -30,6 +32,9 @@
 
 #unhappy-img {
     width: 340px;
+    position: relative;
+    top: 75px;
+    left: 170px;
 }
 
 .sign-up-form {
@@ -37,6 +42,9 @@
     flex-direction: column;
     justify-content: space-between;
     height: 320px;
+    margin-left: 50px;
+    position: relative;
+    left: 150px;
 }
 
 #first-name-input {
@@ -87,4 +95,30 @@
     border: none;
     border-radius: 5px;
     color: white;
+}
+
+#speechbox-img{
+    height:400px;
+    position:relative;
+    bottom: 60px;
+    left: 160px;
+    stroke-width: 1px
+
+}
+
+#error-box{
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    font-size: 14px;
+    position: absolute;
+    left: 822px;
+    top: 190px;
+    z-index: 999;
+    color: #E00707;
+    font-weight: bold;
+}
+
+#no-errs-message{
+    font-size: 30px;
 }

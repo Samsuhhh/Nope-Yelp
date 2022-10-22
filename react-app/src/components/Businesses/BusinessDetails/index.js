@@ -17,9 +17,9 @@ import phoneIcon from '../../../assets/icons/phoneicon.svg'
 import emailIcon from '../../../assets/icons/emailicon.svg'
 import editpen from '../../../assets/icons/edit-pen.svg'
 import trashcan from '../../../assets/icons/trash-can.svg'
-
+import userprofileicon from '../../../assets/icons/userprofile.svg'
 import xicon from '../../../assets/icons/x-icon.svg'
-
+import businessicon from '../../../assets/icons/business.svg'
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
@@ -152,7 +152,25 @@ const BusinessDetails = ({ search, onClose }) => {
         if (averageNopes > 0 && averageNopes <= 1) return (nopes1)
         else return nope
     }
+    const imgOnLoadHandlerAvatar = e => {
+        console.log("loaded")
+        if(e.currentTarget.className !=="error") {
+          console.log("success")
+        }
+      }
+      const imageOnErrorHandlerAvatar = (event) => {
+        event.currentTarget.src = userprofileicon;
+      };
 
+      const imgOnLoadHandlerBiz = e => {
+        console.log("loaded")
+        if(e.currentTarget.className !=="error") {
+          console.log("success")
+        }
+      }
+      const imageOnErrorHandlerBiz = (event) => {
+        event.currentTarget.src = businessicon;
+      };
     const phoneStyling = (phone) => {
         let split = phone.split("");
         split.unshift('(')
@@ -189,7 +207,7 @@ const BusinessDetails = ({ search, onClose }) => {
             {showPhotosModal && (
                 <Modal id='photo-modal' onClose={() => setShowPhotosModal(false)}>
                     <div id="close-modal" onClick={() => setShowPhotosModal(false)}>
-                        Close <img id="close-modal-icon" src={xicon} alt='close icon'/>
+                        Close <img id="close-modal-icon" src={xicon} alt='close icon' />
                     </div>
                     <div>
                         <BusinessImages></BusinessImages>
@@ -217,7 +235,13 @@ const BusinessDetails = ({ search, onClose }) => {
                                 <CarouselItem>
                                     <div className='carousel-images'>
                                         <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
-                                        <img id="caro-img" alt='yes' src={image.url}></img>
+                                        <img
+                                        id="caro-img"
+                                        alt='yes'
+                                        src={image.url}
+                                        onLoad={imgOnLoadHandlerBiz}
+                                        onError={imageOnErrorHandlerBiz}
+                                        ></img>
                                         <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
                                     </div>
                                 </CarouselItem>
@@ -287,7 +311,7 @@ const BusinessDetails = ({ search, onClose }) => {
                                 <>
                                     <div id='action-buttons-div'>
                                         <NavLink to={`/businesses/${business.id}/images/new`} className='action-buttons'>
-                                            <img id="add-photo-icon" src={camera} alt='camera icon'/>
+                                            <img id="add-photo-icon" src={camera} alt='camera icon' />
                                             Add photo
                                         </NavLink>
                                     </div>
@@ -307,7 +331,13 @@ const BusinessDetails = ({ search, onClose }) => {
                             </div>
                             <div id='about-owner-content'>
                                 <div id='business-details-owner-avatar'>
-                                    <img alt='sexy pfp' id='owner-avatar' src={business.Owner.userAvatar} />
+                                    <img
+                                        alt='sexy pfp'
+                                        id='owner-avatar'
+                                        src={business.Owner.userAvatar}
+                                        onLoad={imgOnLoadHandlerAvatar}
+                                        onError={imageOnErrorHandlerAvatar}
+                                    />
                                 </div>
                                 <div id='owner-name-title-div-column'>
                                     <div id='business-details-owner-name'>
@@ -327,7 +357,7 @@ const BusinessDetails = ({ search, onClose }) => {
 
                                 <div id="review-trust-banner">
                                     <div id="review-trust-lining"></div>
-                                    <img id="info-img" src={info} alt='info img'/>
+                                    <img id="info-img" src={info} alt='info img' />
                                     <div id="review-trust-message">
                                         <b>Your trust is of inconsequential concern,</b> so businesses can pay large amounts to alter or remove their reviews. Thank you for understanding.
                                     </div>
@@ -339,7 +369,13 @@ const BusinessDetails = ({ search, onClose }) => {
                                 {currentUser && currentUser.id === business.owner_id && (
                                     <div id='left-user-review-info'>
                                         <div id="current-user-review-record">
-                                            <img alt='owner avatar' id='owner-avatar' src={currentUser.userAvatar}></img>
+                                            <img
+                                            alt='owner avatar'
+                                            id='owner-avatar'
+                                            src={currentUser.userAvatar}
+                                            onLoad={imgOnLoadHandlerAvatar}
+                                            onError={imageOnErrorHandlerAvatar}
+                                            ></img>
                                             <div>
                                                 <div id="left-user-name-styling">{currentUser.username}</div>
                                                 <div id="left-user-fullname-styling">{currentUser.firstName} {currentUser.lastName}</div>
@@ -358,7 +394,13 @@ const BusinessDetails = ({ search, onClose }) => {
                                 {currentUser && currentUser.id !== business.owner_id && (
                                     <div id='left-user-review-info'>
                                         <div id="current-user-review-record">
-                                            <img alt='owner avatar' id='owner-avatar' src={currentUser.userAvatar}></img>
+                                            <img
+                                            alt='owner avatar'
+                                            id='owner-avatar'
+                                            src={currentUser.userAvatar}
+                                            onLoad={imgOnLoadHandlerAvatar}
+                                            onError={imageOnErrorHandlerAvatar}
+                                            ></img>
                                             <div>
                                                 <div id="left-user-name-styling">{currentUser.username}</div>
                                                 <div id="left-user-fullname-styling">{currentUser.firstName} {currentUser.lastName}</div>

@@ -59,3 +59,14 @@
 #login-submit-button:hover {
     cursor: pointer;
 }
+
+.signup-error-text{
+    color: red;
+    font-size: 12px;
+    text-align: right;
+    margin-right: 50px;
+}
+
+.required-fields-text{
+    margin-bottom: 20px;
+}

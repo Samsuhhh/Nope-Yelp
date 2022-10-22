@@ -59,6 +59,14 @@
 #delete-review-btn-current-user-reviews{
   margin-left: 1px;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+#edit-review-btn-current-user-reviews {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
 #nopes-date-container-container-user-reviews{
@@ -75,6 +83,12 @@
   height:25px;
   width:20px;
   cursor: pointer;
+  transition: .4s;
+  filter: invert(82%) sepia(10%) saturate(0%) hue-rotate(314deg) brightness(82%) contrast(90%);
+}
+
+.current-user-review-action-btns:hover {
+  filter: invert(0%) sepia(6%) saturate(24%) hue-rotate(268deg) brightness(97%) contrast(107%);
 }
 
 #no-reviews-message{

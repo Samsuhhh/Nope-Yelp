@@ -1,8 +1,8 @@
-"""delete db repush to heroku
+"""empty message
 
-Revision ID: d929e721092b
+Revision ID: eb1e90bc3468
 Revises: 
-Create Date: 2022-10-21 16:44:59.426937
+Create Date: 2022-10-22 10:04:42.905020
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd929e721092b'
+revision = 'eb1e90bc3468'
 down_revision = None
 branch_labels = None
 depends_on = None

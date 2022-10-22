@@ -47,7 +47,7 @@ const AddBusinessReview = () => {
 
     useEffect(() => {
         const errors = []
-        if (review.length < 4 || review.length > 3000) errors.push("Review must be between 4 and 3000 characters")
+        if (review.length < 4 || review.length > 3000 || !review.trim().length) errors.push("Review must be between 4 and 3000 characters")
         if (nopes < 1) errors.push("Please select a rating")
         setValidationErrors(errors)
     }, [review, nopes])
@@ -87,7 +87,7 @@ const AddBusinessReview = () => {
                             <img id="write-review-logo" src={nope} />
                         </NavLink>
 
-                        <img id="user-avatar" src={js} />
+                        <img id="user-avatar" src={user.userAvatar} />
                     </div>
                 </div>
                 <div className="review-wrapper">
@@ -145,11 +145,11 @@ const AddBusinessReview = () => {
                                 <form onSubmit={handleSubmit}>
                                     <div>
                                         {showErrors &&
-                                            <ul>
+                                            <div id="error-holder">
                                                 {validationErrors.map((e, i) => {
-                                                    return <div key={i}>{e}</div>
+                                                    return <div id="review-error" key={i}>{e}</div>
                                                 })}
-                                            </ul>
+                                            </div>
                                         }
                                         <textarea
                                             type='text'
