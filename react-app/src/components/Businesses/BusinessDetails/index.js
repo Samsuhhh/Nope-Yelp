@@ -19,7 +19,7 @@ import editpen from '../../../assets/icons/edit-pen.svg'
 import trashcan from '../../../assets/icons/trash-can.svg'
 import userprofileicon from '../../../assets/icons/userprofile.svg'
 import xicon from '../../../assets/icons/x-icon.svg'
-
+import businessicon from '../../../assets/icons/business.svg'
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
@@ -152,14 +152,24 @@ const BusinessDetails = ({ search, onClose }) => {
         if (averageNopes > 0 && averageNopes <= 1) return (nopes1)
         else return nope
     }
-    const imgOnLoadHandler = e => {
+    const imgOnLoadHandlerAvatar = e => {
         console.log("loaded")
         if(e.currentTarget.className !=="error") {
           console.log("success")
         }
       }
-      const imageOnErrorHandler = (event) => {
+      const imageOnErrorHandlerAvatar = (event) => {
         event.currentTarget.src = userprofileicon;
+      };
+
+      const imgOnLoadHandlerBiz = e => {
+        console.log("loaded")
+        if(e.currentTarget.className !=="error") {
+          console.log("success")
+        }
+      }
+      const imageOnErrorHandlerBiz = (event) => {
+        event.currentTarget.src = businessicon;
       };
     const phoneStyling = (phone) => {
         let split = phone.split("");
@@ -227,7 +237,13 @@ const BusinessDetails = ({ search, onClose }) => {
                                 <CarouselItem>
                                     <div className='carousel-images'>
                                         <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
-                                        <img id="caro-img" alt='yes' src={image.url}></img>
+                                        <img
+                                        id="caro-img"
+                                        alt='yes'
+                                        src={image.url}
+                                        onLoad={imgOnLoadHandlerBiz}
+                                        onError={imageOnErrorHandlerBiz}
+                                        ></img>
                                         <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
                                     </div>
                                 </CarouselItem>
@@ -321,8 +337,8 @@ const BusinessDetails = ({ search, onClose }) => {
                                         alt='sexy pfp'
                                         id='owner-avatar'
                                         src={business.Owner.userAvatar}
-                                        onLoad={imgOnLoadHandler}
-                                        onError={imageOnErrorHandler}
+                                        onLoad={imgOnLoadHandlerAvatar}
+                                        onError={imageOnErrorHandlerAvatar}
                                     />
                                 </div>
                                 <div id='owner-name-title-div-column'>
@@ -359,8 +375,8 @@ const BusinessDetails = ({ search, onClose }) => {
                                             alt='owner avatar'
                                             id='owner-avatar'
                                             src={currentUser.userAvatar}
-                                            onLoad={imgOnLoadHandler}
-                                            onError={imageOnErrorHandler}
+                                            onLoad={imgOnLoadHandlerAvatar}
+                                            onError={imageOnErrorHandlerAvatar}
                                             ></img>
                                             <div>
                                                 <div id="left-user-name-styling">{currentUser.username}</div>
@@ -384,8 +400,8 @@ const BusinessDetails = ({ search, onClose }) => {
                                             alt='owner avatar'
                                             id='owner-avatar'
                                             src={currentUser.userAvatar}
-                                            onLoad={imgOnLoadHandler}
-                                            onError={imageOnErrorHandler}
+                                            onLoad={imgOnLoadHandlerAvatar}
+                                            onError={imageOnErrorHandlerAvatar}
                                             ></img>
                                             <div>
                                                 <div id="left-user-name-styling">{currentUser.username}</div>
