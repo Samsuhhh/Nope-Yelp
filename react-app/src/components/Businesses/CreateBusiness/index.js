@@ -338,8 +338,6 @@ const CreateBusiness = () => {
                                             className='create-business-input'
                                             type='number'
                                             placeholder='Zipcode'
-                                            min='10000'
-                                            max='99999'
                                             value={zipcode}
                                             onChange={updateZipcode}
                                             required />
