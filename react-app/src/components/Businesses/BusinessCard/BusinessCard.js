@@ -1,8 +1,18 @@
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
+import blurmap from '../../../assets/imgs/blurmap.png'
 import './BusinessCard.css'
 import BusinessNavBar from "../BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar"
 import Fuse from 'fuse.js'
+
+import {
+  StaticGoogleMap,
+  Marker,
+  Path,
+} from 'react-static-google-map';
+
+
+import businessicon from '../../../assets/icons/business.svg'
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
@@ -65,7 +75,17 @@ export default function BusinessCard({ search }) {
 
   const resetFilter = Object.values(search)
 
+  const imgOnLoadHandler = e => {
+    console.log("loaded")
+    if (e.currentTarget.className !== "error") {
+      console.log("success")
+    }
+  }
+  const imageOnErrorHandler = (event) => {
+    event.currentTarget.src = businessicon;
+  };
 
+  console.log("----THIS IS SEARCH----", search)
   if (!search.length) return (<h1 className="no-results-search">No results for this search</h1>)
   return (
     <>
@@ -206,7 +226,12 @@ export default function BusinessCard({ search }) {
                 <Link id='business-card-link' to={`/businesses/${business.id}`}>
                   <div id="business-card-container">
                     <div id="business-card-img-div">
-                      <img id="business-card-image" alt="" src={business.images.url}></img>
+                      <img id="business-card-image"
+                        alt="bizzie"
+                        src={business.images.url}
+                        onLoad={imgOnLoadHandler}
+                        onError={imageOnErrorHandler}
+                      ></img>
                     </div>
                     <div id="business-card-text-container">
                       <div id="business-card-business-name">{business.business_name}</div>
@@ -237,7 +262,32 @@ export default function BusinessCard({ search }) {
         </div>
         {/* MIDDLE DIV END */}
         {/* RIGHT DIV START */}
-        <div>Map Will Go Here...eventually</div>
+
+        <div id="blur-map-div"style={{backgroundImage:`url(${blurmap})`}}>
+          <div id="google-map-div">
+
+            <StaticGoogleMap size="640x640" apiKey="AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU">
+              <Marker
+                location={{ lat: search[0].latitude, lng: search[0].longitude }}
+                color="red"
+                label="P"
+              />
+              {!!businessList?.length && Object.values(businessList || search).map((business, i) => {
+                return (
+                  <Marker
+                    location={{ lat: business.latitude, lng: business.longitude }}
+                    color="red"
+                    label="P"
+                  />
+                )
+              })}
+            </StaticGoogleMap>
+
+          </div>
+        </div>
+
+
+
       </div>
 
     </>

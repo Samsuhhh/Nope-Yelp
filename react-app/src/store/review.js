@@ -7,6 +7,7 @@ const CREATE = 'reviews/CREATE'
 const UPDATE = 'reviews/UPDATE'
 const REMOVE = 'reviews/REMOVE'
 const RESET = 'reviews/RESET'
+const LOAD_ONE = 'reviews/LOAD_ONE'
 
 // Action Creators
 const load = (reviews, businessId) => ({
@@ -41,8 +42,13 @@ const remove = (reviewId) => ({
     reviewId
 })
 
-export const reset = () => ({
+export const resetReview = () => ({
     type: RESET
+})
+
+const loadOne = (reviewId) => ({
+    type: LOAD_ONE,
+    reviewId
 })
 
 // THUNK action creators by business ID
@@ -142,6 +148,19 @@ export const removeReview = (reviewId) => async dispatch => {
     }
 }
 
+export const getOneReview = (reviewId) => async dispatch => {
+    const response = await fetch(`/api/reviews/${reviewId}`)
+
+    if (response.ok) {
+        const oneReview = await response.json()
+        dispatch(loadOne(oneReview))
+        return
+    } else {
+        console.log("----Load One Review Thunk Error----")
+        return
+    }
+}
+
 
 const initialState = {
     business: {},
@@ -181,6 +200,10 @@ const reviewReducer = (state = initialState, action) => {
                 ...state,
                 user
             }
+        case LOAD_ONE:
+            newState = { ...state, business: { ...state.business }, user: { ...state.user } }
+            newState.business[action.reviewId.id] = action.reviewId
+            return newState
         case CREATE:
             newState = { business: { ...state.business }, user: { ...state.user } }
             newState.business[action.review.id] = action.review
@@ -190,7 +213,7 @@ const reviewReducer = (state = initialState, action) => {
             newState.business[action.review.id] = action.review
             return newState
         case REMOVE:
-            newState = { business: { ...state.business }, user: { ...state.user } }
+            newState = { ...state, business: { ...state.business }, user: { ...state.user } }
             delete newState.business[action.reviewId]
             delete newState.user[action.reviewId]
             return newState

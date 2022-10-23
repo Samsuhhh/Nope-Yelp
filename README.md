@@ -1,1132 +1,172 @@
-![nope](https://user-images.githubusercontent.com/105745865/196279933-2feae36c-6493-406e-a8b3-795d31f51456.png)
-# :chart_with_upwards_trend: API Documentation
+# ![nope](https://user-images.githubusercontent.com/105745865/196279933-2feae36c-6493-406e-a8b3-795d31f51456.png)
 
-<details>
- <summary>Table of Contents </summary>
- 
-- [FEATURE 0: USER AUTHORIZATION](#feature-0--user-authorization)
-  * [All endpoints that require authentication](#all-endpoints-that-require-authentication)
-  * [All endpoints that require proper authorization](#all-endpoints-that-require-proper-authorization)
-  * [Get the Current User](#get-the-current-user)
-  * [Log In a User](#log-in-a-user)
-  * [Sign Up a User](#sign-up-a-user)
-- [FEATURE 1: BUSINESSES](#feature-1--businesses)
-  * [Get all Businesses](#get-all-businesses)
-  * [Businesses owned by Current User](#businesses-owned-by-current-user)
-  * [Get details of a Business from an Id](#get-details-of-a-business-from-an-id)
-  * [Create a Business](#create-a-business)
-  * [Edit Business](#edit-business)
-  * [Delete a Business](#delete-a-business)
-- [FEATURE 2: REVIEWS](#feature-2--reviews)
-  * [Get all Reviews of the Current User](#get-all-reviews-of-the-current-user)
-  * [Get all Reviews by a Business's id](#get-all-reviews-by-a-businesses-s-id)
-  * [Create a Review for a Business based on the Business's id](#create-a-review-for-a-business-based-on-the-business-s-id)
-  * [Add an Image to a Review based on the Review's id](#add-an-image-to-a-review-based-on-the-review-s-id)
-  * [Edit a Review](#edit-a-review)
-  * [Delete a Review](#delete-a-review)
-- [FEATURE 3: TAGS](#feature-3--tags)
-  * [Get all Tags](#get-all-tags)
-  * [Get Tags by Business ID](#get-tags-by-business-id)
-  * [Create Tags for a business by business ID](#create-tags-for-a-business-by-business-id)
-  * [Update Tags by Business ID](#update-tags-by-business-id)
- 
-</details>
+Nope is a fullstack web application, inspired by [Yelp](https://yelp.com). Our rating system is opposite the typical norm. The more stars (known to us as nopes) you have, the worse the business is. We've noticed that users are typically more honest and put more thought into bad reviews than good reviews, hence the name Nope. Visit our site as a passive user, active user, or business owner. As a business owner you can recieve feedback known as grumbles, dedicated to shedding light on how the business can improve. As an active user you can read, post, delete, and edit grumbles or become a business owner yourself! As a passive user you may not write grumbles or leave nopes but you may visit business pages to read grumbles. 
+
+**Live site: [Nope](http://nope-yelp.herokuapp.com)**
+
+# 🔗 Wiki Links
+- [API Documentation](https://github.com/samsuhhh/Nope-Yelp/wiki/API-Documentation)
+- [Database Schema](https://github.com/samsuhhh/Nope-Yelp/wiki/Database-Schema)
+- [Feature List](https://github.com/samsuhhh/Nope-Yelp/wiki/Feature-List)
+- [Redux Store Shape](https://github.com/samsuhhh/Nope-Yelp/wiki/Redux-State)
+- [User Stories](https://github.com/Samsuhhh/Nope-Yelp/wiki/User-Stories)
 
 
-## FEATURE 0: USER AUTHORIZATION
+# 🖥️ Technologies
+### Frameworks, Platforms, Libraries:
+[![My Skills](https://skillicons.dev/icons?i=py,flask,js,react)](http://nope-yelp.herokuapp.com)
 
-### All endpoints that require authentication
+[![My Skills](https://skillicons.dev/icons?i=redux,postgres,docker,sqlite)](http://nope-yelp.herokuapp.com)
 
-All endpoints that require a current user to be logged in.
+[![My Skills](https://skillicons.dev/icons?i=css,html,heroku)](http://nope-yelp.herokuapp.com)
 
-* Request: endpoints that require authentication
-* Error Response: Require authentication
-  * Status Code: 401
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Python, Flask, JavaScript, React
+- Redux, Postgres, Docker, SQLite
+- CSS3, HTML5, Heroku
 
-    ```json
-    {
-      "message": "Authentication required",
-      "status_code": 401
-    }
-    ```
+### Asset Design:
+[![My Skills](https://skillicons.dev/icons?i=svg,ps,ai,css)](http://nope-yelp.herokuapp.com)
 
-### All endpoints that require proper authorization
+Assets utilized and/or created by:
 
-All endpoints that require authentication and the current user does not have the
-correct role(s) or permission(s).
+- SVG, Adobe Photoshop, Adobe Illustrator, CSS3
 
-* Request: endpoints that require proper authorization
-* Error Response: Require proper authorization
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
 
-    ```json
-    {
-      "message": "Forbidden",
-      "status_code": 403
-    }
-    ```
+# 📃 Pages
 
-### Get the Current User
+## 💦 Splash Page
+![nope-landing](https://user-images.githubusercontent.com/105745865/197316610-4d8b99d9-9771-484a-98fe-8525242fbf29.gif)
 
-Returns the information about the current user that is logged in.
+## 🔍 Search Function
+![nope-search](https://user-images.githubusercontent.com/105745865/197316723-51f9468a-cb11-4f69-974b-f672d7562a65.gif)
+### Search by:
+- Name
+- Keywords
+- Tag Names
+- Cities
+- Types of food
 
-* Require Authentication: true
-* Request
-  * Method: GET
-  * URL: /api/session
-  * Body: none
+## 📷 Filter Search Function
+![nope-filter](https://user-images.githubusercontent.com/105745865/197316865-654ef89f-c24c-48cf-8aa9-03b7e727e2f4.gif)
+### Filter by:
+- Price
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+## 🐝 Business Page
+![nope-bus-page-photos](https://user-images.githubusercontent.com/105745865/197317160-7af4ee07-a017-49f0-a9ae-2813133346fc.gif)
+### Owner of Business:
+- Delete Photos
+- Add Photos
+- Edit Business Details
+- Delete your Business
 
-    ```json
-    {
-      "id": 1,
-      "first_name": "John",
-      "last_name": "Smith",
-      "email": "john.smith@gmail.com",
-      "username": "JohnSmith",
-      "user_avatar":"image.url"
-    }
-    ```
-### Log In a User
+### User
+- Leave a grumble
+- Edit/Delete grumble
 
-Logs in a current user with valid credentials and returns the current user's
-information.
+## 💢 Grumbles
+![nope-bus-leave-review](https://user-images.githubusercontent.com/105745865/197317207-0f2c2012-27f9-4cc1-855f-2f95828f8013.gif)
 
-* Require Authentication: false
-* Request
-  * Method: POST
-  * URL: /api/session
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+## 🏢 Create a Business
+![nope-for-businesses](https://user-images.githubusercontent.com/105745865/197317331-479844a0-5585-44c1-93e4-196fdaad996e.gif)
 
-    ```json
-    {
-      "credential": "john.smith@gmail.com",
-      "password": "secret password"
-    }
-    ```
+## ⛹️ User Profile
+![nope-user](https://user-images.githubusercontent.com/105745865/197317454-7efe1571-bcfa-4d99-af3f-5877e98236e2.gif)
+- Display your Avatar
+- Check your reviews
+- Check your businesses
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+# ▶️ Get Started
 
-    ```json
-    {
-      "id": 1,
-      "first_name": "John",
-      "last_name": "Smith",
-      "email": "john.smith@gmail.com",
-      "username": "JohnSmith",
-      "token": ""
-    }
-    ```
+### Clone repository.
 
-* Error Response: Invalid credentials
-  * Status Code: 401
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- SSH:
 
-    ```json
-    {
-      "message": "Invalid credentials",
-      "status_code": 401
-    }
-    ```
-
-* Error response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation error",
-      "status_code": 400,
-      "errors": {
-        "credential": "Email or username is required",
-        "password": "Password is required"
-      }
-    }
-    ```
-    
-### Sign Up a User
-
-Creates a new user, logs them in as the current user, and returns the current
-user's information.
-
-* Require Authentication: false
-* Request
-  * Method: POST
-  * URL: /api/users
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "first_name": "John",
-      "last_name": "Smith",
-      "username": "JohnSmith",
-      "email": "john.smith@gmail.com",
-      "password": "secret password"
-    }
-    ```
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "first_name": "John",
-      "last_name": "Smith",
-      "username": "JohnSmith",
-      "email": "john.smith@gmail.com",
-      "token": ""
-    }
-    ```
-
-* Error response: User already exists with the specified email
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "User already exists",
-      "status_code": 403,
-      "errors": {
-        "email": "User with that email already exists"
-      }
-    }
-    ```
-
-* Error response: User already exists with the specified username
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "User already exists",
-      "status_code": 403,
-      "errors": {
-        "username": "User with that username already exists"
-      }
-    }
-    ```
-
-* Error response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation error",
-      "status_code": 400,
-      "errors": {
-        "email": "Invalid email",
-        "username": "Username is required",
-        "first_name": "First Name is required",
-        "last_name": "Last Name is required"
-      }
-    }
-    ```
-    
-    
-## FEATURE 1: BUSINESSES
-
-## Get all Businesses
-
-Returns all the businesses
-
-Return businesses (with optional filter by query parameters).
-
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /api/businesses
-  * Query Parameters
-    * page: integer, minimum: 1, maximum: 10, default: 1
-    * size: integer, minimum: 1, maximum: 20, default: 20
-    * business_name: string, optional
-    * business_tags: string, optional
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "businesses":[
-        {
-          "id": 1,
-          "business_name": "Some Place",
-          "email":"business@app.io",
-          "phone":"123-456-8910",
-          "street_address": "123 Street Ave",
-          "city":"Springfield",
-          "zipcode":98765,
-          "state":"CA",
-          "country":"United States of America",
-          "about":"Some descriptive sentence",
-          "longitude":130,
-          "latitude":90,
-          "price_range":,
-          "owner_id": 1,
-          "website":"linktobusinesswebsite.url",
-          "created_at":"some date string",
-          "updated_at":"some other date string",
-        }
-      ],
-      "page": 1,
-      "size": 15
-    }
-    ```
-    
-## Businesses owned by Current User
-
-Returns all Businesses owned by the current user.
-
-* Require Authentication: True
-* Request
-  * Method: GET
-  * URL: /api/businesses/current
-  * Body: none
- * Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body: 
-  ```json
-  {
-      "businesses":[
-        {
-          "id": 1,
-          "business_name": "Some Place",
-          "email":"business@app.io",
-          "phone":"123-456-8910",
-          "street_address": "123 Street Ave",
-          "city":"Springfield",
-          "zipcode":98765,
-          "state":"CA",
-          "country":"United States of America",
-          "about":"Some descriptive sentence",
-          "longitude":130,
-          "latitude":90,
-          "price_range":,
-          "owner_id": 1,
-          "website":"linktobusinesswebsite.url",
-          "created_at":"some date string",
-          "updated_at":"some other date string",
-        }
-      ]
-    }
-  ```
-  
-  ## Get details of a Business from an Id
-  
-  Returns details of a business specified by its id
-  
-   * Require Authentication: false
-   * Request
-     * Method: GET
-     * URL: /api/businesses/:business_id
-   * Successful Response
-     * Status Code: 200
-     * Headers:
-       * Content-Type: application/json 
-     * Body:
-```json
-{
-          "id": 1,
-          "business_name": "Some Place",
-          "email":"business@app.io",
-          "phone":"123-456-8910",
-          "street_address": "123 Street Ave",
-          "city":"Springfield",
-          "zipcode":98765,
-          "state":"CA",
-          "country":"United States of America",
-          "about":"Some descriptive sentence",
-          "longitude":130,
-          "latitude":90,
-          "price_range":,
-          "owner_id": 1,
-          "website":"linktobusinesswebsite.url",
-          "created_at":"some date string",
-          "updated_at":"some other date string",
-          "Owner": {
-            "id":1,
-            "first_name":"Gare",
-            "last_name":"Bear",
-          },
-          "Images" : [
-            {
-               "id":3,
-               "business_id":1,
-               "url":"image.url"
-            }
-          ],
-          "Reviews": [
-            {
-              "id":1,
-              "business_id":1,
-              "user_id":1,
-              "rating":4,
-              "review":"Yummy! I'd take my wife here again!",
-              "created_at":"some date",
-              "updated_at":"some date"
-            }
-          ],
-          "Tags": {
-              "tag":"some tags as string here"
-          }
-          
-          
-}
 ```
-* Error response: Couldn't find a Business with the specified id
-
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body: 
-  ```json
-  {
-    "message":"Sorry, this business doesn't exist",
-    "status_code":404
-  }
-  ```
-  ## Create a Business
-  
-  Create and return a business
-  
-  * Require Authentication: true
-  * Request
-    * Method:POST
-    * URL:/api/business
-    * Headers:
-      * Content-Type: application/json
-    * Body:
-```json
-{
-      "business_name": "Some Place",
-      "email":"business@app.io",
-      "phone":"123-456-8910",
-      "street_address": "123 Street Ave",
-      "city":"Springfield"        
-      "zipcode":98765,
-      "state":"CA",
-      "country":"United States of America",
-      "about":"Some descriptive sentence",
-      "longitude":130,
-      "latitude":90,
-      "price_range":,
-}
-```
-* Successful Response
-  * Status Code: 201
-  * Headers: 
-    * Content-Type: application/json
-  * Body:
-```json
-{
-          "id": 1,
-          "business_name": "Some Place",
-          "email":"business@app.io",
-          "phone":"123-456-8910",
-          "street_address": "123 Street Ave",
-          "city":"Springfield",
-          "zipcode":98765,
-          "state":"CA",
-          "country":"United States of America",
-          "about":"Some descriptive sentence",
-          "longitude":130,
-          "latitude":90,
-          "price_range":,
-          "owner_id": 1,
-          "created_at":"some date string",
-          "updated_at":"some other date string",
-        }
-```
-* Error Response: Body validation error
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body: 
-```json
-{
-   "message":"Validation Error",
-   "status_code": 400,
-   "errors":{
-      "street_address":"Address is required",
-      "street_address":"A business already exists with this address",
-      "city":"City is required",
-      "state":"State is required",
-      "country","Country is required",
-      "zipcode":"Zipcode is required",
-      "business_name":"Business name is required",
-      "business_name":"A business with this name already exists",
-      "business_name":"Business name must be less than 50 characters",
-      "about":"About is required",
-      "longitude":"Longitude is required",
-      "latitude":"latitude is required",
-      "price_range":"Price range is required"
-      
-   }
-}
+git@github.com:Samsuhhh/Nope-Yelp.git
 ```
 
-   ## Edit Business
-   
-   Edit and return an existing business
-   
-   * Require Authentication: true
-   * Request
-      * Method:PUT
-      * URL:/api/businesses/:business_id
-      * Headers:
-         * Content-Type: application/json
-      * Body:
-```json
-{
-      "business_name": "Some Place",
-      "email":"business@app.io",
-      "phone":"123-456-8910",
-      "street_address": "123 Street Ave",
-      "city":"Springfield",        
-      "zipcode":98765,
-      "state":"CA",
-      "country":"United States of America",
-      "about":"Some descriptive sentence",
-      "longitude":130,
-      "latitude":90,
-      "price_range":1-5,
-      "website":"linktobusinesswebsite.url",
-}
+- HTTPS:
+
 ```
-* Successful Response
-  * Status Code: 201
-  * Headers:
-     * Content-Type: application/json
-  * Body: 
-```json
-{
-          "id": 1,
-          "business_name": "Some Edited Place",
-          "email":"new_email@app.io",
-          "phone":"123-456-8910",
-          "street_address": "123 New Street",
-          "city":"Newfield",
-          "zipcode":98765,
-          "state":"CA",
-          "country":"United States of America",
-          "about":"Updated descriptive sentence",
-          "longitude":130,
-          "latitude":90,
-          "price_range":,
-          "owner_id": 1,
-          "website":"linktobusinesswebsite.url",
-          "created_at":"some date string",
-          "updated_at":"some other date string",
-}
-```
-* Error Response: Body Validation Error
-    * Status Code: 400
-    * Headers: 
-       * Content-Type: application/json
-    * Body:
-```json
-{
-   "message":"Validation Error",
-   "status_code": 400,
-   "errors":{
-      "street_address":"Address is required",
-      "street_address":"A business already exists with this address",
-      "city":"City is required",
-      "state":"State is required",
-      "country","Country is required",
-      "zipcode":"Zipcode is required",
-      "business_name":"Business name is required",
-      "business_name":"A business with this name already exists",
-      "business_name":"Business name must be less than 50 characters",
-      "about":"About is required",
-      "longitude":"Longitude is required",
-      "latitude":"latitude is required",
-      "price_range":"Price range is required"
-}
-```
-* Error Response: Couldn't find a business associated with the specified id
-    * Status Code: 404
-    * Headers:
-      * Content-Type: application/json
-    * Body:
-```json
-{
-  "message":"This business couldn't be found",
-  "status_code":404
-}
+https://github.com/Samsuhhh/Nope-Yelp.git
 ```
 
-  ## Delete a Business
-  
-  Delete an existing Business
-  
-   * Require Authentication: true
-   * Request
-      * Method:DELETE
-      * URL:/api/businesses/:business_id
-      * Headers:
-         * Content-Type: application/json
-      * Body: None
-      
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Successfully deleted",
-      "statusCode": 200
-    }
-    ```
-
-* Error response: Couldn't find a Business with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Business couldn't be found",
-      "statusCode": 404
-    }
-    ```
-    
-## FEATURE 2: REVIEWS
-
-### Get all Reviews of the Current User
-
-Returns all the reviews written by the current user.
-
-* Require Authentication: true
-* Request
-  * Method: GET
-  * URL: /api/reviews/current
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "reviews": [
-        {
-          "id": 1,
-          "user_id": 1,
-          "business_id": 1,
-          "review": "This was an awesome spot!",
-          "rating": 5,
-          "created_at": "2021-11-19 20:39:36",
-          "updated_at": "2021-11-19 20:39:36" ,
-          "user": {
-            "id": 1,
-            "first_name": "John",
-            "last_name": "Smith"
-          },
-          "businesses": {
-            "id": 1,
-            "owner_id": 1,
-            "business_name": "Some Place",
-            "email": "business@app.io",
-            "phone": "123-456-8910",
-            "street_address": "123 Street Ave",
-            "city": "Springfield",
-            "zipcode": 98765,
-            "state": "CA",
-            "country": "United States of America",
-            "about": "Some descriptive sentence",
-            "longitude": 130,
-            "latitude": 90,
-            "price_range": 1,
-            "created_at":"some date string",
-            "updated_at":"some other date string"
-          },
-          "review_images": [
-            {
-              "id": 1,
-              "url": "image url"
-            }
-          ]
-        }
-      ]
-    }
-    ```
-
-### Get all Reviews by a Businesses's id
-
-Returns all the reviews that belong to a spot specified by id.
-
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /api/businesses/:business_id/reviews
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "reviews": [
-        {
-          "id": 1,
-          "user_id": 1,
-          "business_id": 1,
-          "review": "This was an awesome spot!",
-          "rating": 5,
-          "created_at": "2021-11-19 20:39:36",
-          "updated_at": "2021-11-19 20:39:36" ,
-          "user": {
-            "id": 1,
-            "first_name": "John",
-            "last_name": "Smith"
-          },
-          "review_images": [
-            {
-              "id": 1,
-              "url": "image url"
-            }
-          ],
-        }
-      ]
-    }
-    ```
-
-* Error response: Couldn't find a Business with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Business couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Create a Review for a Business based on the Business's id
-
-Create and return a new review for a spot specified by id.
-
-* Require Authentication: true
-* Request
-  * Method: POST
-  * URL: /api/businesses/:business_id/reviews
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "review": "This was awful!",
-      "nopes": 5,
-    }
-    ```
-
-* Successful Response
-  * Status Code: 201
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "user_id": 1,
-      "business_id": 1,
-      "review": "This was awful!",
-      "nopes": 5,
-      "created_at": "2021-11-19 20:39:36",
-      "updated_at": "2021-11-19 20:39:36"
-    }
-    ```
-
-* Error Response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation error",
-      "statusCode": 400,
-      "errors": {
-        "review": "Review text is required",
-        "nopes": "Nopes must be an integer from 1 to 5",
-      }
-    }
-    ```
-
-* Error response: Couldn't find a Business with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Business couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-* Error response: Review from the current user already exists for the Business
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "User already has a review for this business",
-      "statusCode": 403
-    }
-    ```
-
-### Add an Image to a Review based on the Review's id
-
-Create and return a new image for a review specified by id.
-
-* Require Authentication: true
-* Require proper authorization: Review must belong to the current user
-* Request
-  * Method: POST
-  * URL: /api/reviews/:review_id/images
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "url": "image url"
-    }
-    ```
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "url": "image url"
-    }
-    ```
-
-* Error response: Couldn't find a Review with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Review couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-* Error response: Cannot add any more images because there is a maximum of 10
-  images per resource
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Maximum number of images for this resource was reached",
-      "statusCode": 403
-    }
-    ```
-
-### Edit a Review
-
-Update and return an existing review.
-
-* Require Authentication: true
-* Require proper authorization: Review must belong to the current user
-* Request
-  * Method: PUT
-  * URL: /api/reviews/:review_id
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "review": "This was awful!",
-      "nopes": 5,
-    }
-    ```
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "id": 1,
-      "user_id": 1,
-      "business_id": 1,
-      "review": "This was awful!",
-      "nopes": 5,
-      "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-20 10:06:40"
-    }
-    ```
-
-* Error Response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Validation error",
-      "statusCode": 400,
-      "errors": {
-        "review": "Review text is required",
-        "nopes": "Nopes must be an integer from 1 to 5",
-      }
-    }
-    ```
-
-* Error response: Couldn't find a Review with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Review couldn't be found",
-      "statusCode": 404
-    }
-    ```
-
-### Delete a Review
-
-Delete an existing review.
-
-* Require Authentication: true
-* Require proper authorization: Review must belong to the current user
-* Request
-  * Method: DELETE
-  * URL: /api/reviews/:review_id
-  * Body: none
-
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Successfully deleted",
-      "statusCode": 200
-    }
-    ```
-
-* Error response: Couldn't find a Review with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-      "message": "Review couldn't be found",
-      "statusCode": 404
-    }
-    ```
-## Feature 3: Tags
-
-### Get all Tags
-
-Returns all tag options.
-
-* Require Authentication: True
-  * Method: GET
-  * URL: /api/tags
-  * Body: none
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-```json
-  {
-      "tags": ["some tag", "some other tag", "etc"]
-  }
+- CLI:
+```
+gh repo clone Samsuhhh/Nope-Yelp
 ```
 
-### Get Tags by Business ID
+### Install dependencies & Prep database.
+- In the project directory you will run:
 
-Returns all tags associated with a business by business ID
+```
+pipenv install
+```
 
-* Require Authentication: False
-  * Method: GET
-  * URL: /api/businesses/:business_id/tags
-  * Body: None
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-```json
-    {
-      "tags": ["some tag", "some other tag", "etc"]
-    }
-```
-* Error response: Couldn't find a Business with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+This command will install packages into the pipenv virtual environment and update your Pipfile.
 
-```json
-    {
-      "message": "Business couldn't be found",
-      "statusCode": 404
-    }
-```
-### Create Tags for a business by business ID
+- Create a .env file in said current directory.
+- Paste in SECRET_KEY and DATABASE_URL configurations.
 
-Add tags to a business through its ID
+```
+SECRET_KEY=<<SECRET_KEY>>
+DATABASE_URL=sqlite:///dev.db
+```
 
-* Require Authentication: True
-* Request
-  * Method: POST
-  * URL: /api/businesses/:business_id/tags
-  * Body:
-```json
-  {
-     "tags": ["some tag", "some other tag", "etc"]
-  }
-```
-* Successful Response
-  * Status Code: 201
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-```json
-   {
-      "tags": ["some tag", "some other tag", "etc"]
-   }
-```
-* Error response: Couldn't find a Business associated with the specified ID
-* Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+The .env file contains the individual user environment variables that override the variables set in the /etc/environment file. You can customize your environment variables as desired by modifying your .env file. In this case we are setting the SECRET_KEY and the DATABASE_URL.
 
-```json
-    {
-      "message": "Business couldn't be found",
-      "statusCode": 404
-    }
-```
-### Update Tags by Business ID
-Update tags associated with a business.
-* Require Authentication: True
-* Request:
-  * Method: POST
-  * URL: /api/businesses/:business_id/tags
-  * Body:
-```json
-  {
-      "tags": ["some tag", "some other tag", "etc"]
-  }
-```
-* Successful Response
-  * Status Code: 201
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-```json
-   {
-     "tags": ["some tag", "some other tag", "etc"]
-   }
-```
-* Error Response: Body Validation Error
-    * Status Code: 400
-    * Headers:
-       * Content-Type: application/json
-    * Body:
-```json
-   {
-      "message":"Validation Error",
-      "status_code": 400,
-      "errors":{
-         "message":"Tag is required",
-      }
-    }
-```
-* Error response: Couldn't find a Business associated with the specified ID
-* Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- While in your root directory run:
 
-```json
-    {
-      "message": "Business couldn't be found",
-      "statusCode": 404
-    }
 ```
+pipenv shell
+```
+
+This will create a new active pip environment for  you to run your backend.
+
+- Followed by:
+
+```
+flask db upgrade
+flask seed all
+pipenv run flask run
+```
+
+Because this application uses SQLite, the upgrade command will detect that a database does not exist and will create it. While now you are creating the database you are also seeding in our 105 businesses, 315 business images, 30 users, and all of their 270 grumbles/nopes.
+
+- Navigate to your /Nope-Yelp/react-app/ folder and create another .env file.
+- Paste in the REACT_APP_BASE_URL
+
+```
+REACT_APP_BASE_URL=http://localhost:5000
+```
+We'll be pasting in the path to server for frontend into this newly created environment file.
+
+- All there is to do is:
+
+```
+npm install
+```
+This command installs a package and any packages that it depends on. Since the package has a package-lock the installation of dependencies will be driven by that. If you take a peak into your package.json file you can see all the dependencies our project is installing.
+
+```
+npm start
+```
+This runs a predefined command specified in the "start" property of a package's "scripts" object in our case it is:
+
+```
+"start": "react-scripts start"
+```
+DO NOT paste this anywhere. The code above is already provided in our package.json file!
+
+*And voilà!*
+
+# 📱 Contacts
+
+|        | Jake Matillano |  Sam Suh  | Alex Dam | Gary Song |
+|--------|----------------|-----------|----------|-----------|
+| <img src=https://i.imgur.com/2ffGJqj.png width=20> | [LinkedIn](https://www.linkedin.com/in/jake-matillano-b141811a3/) | [LinkedIn](https://www.linkedin.com/) | [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/) | [LinkedIn](https://www.linkedin.com/in/gary-song-96b071246/) |
+| <img src=https://i.imgur.com/w9xwrCT.png width=20> | [GitHub](https://github.com/jakezmat) | [GitHub](https://github.com/Samsuhhh) | [GitHub](https://github.com/Aldam55) | [GitHub](https://github.com/garydsong) |
+
+# 🥚 Thanks for checking out our project! 🥚
+
+![thankyoueggs](https://user-images.githubusercontent.com/105745865/197347731-a3116dbe-0bec-444c-ae22-a82f69c90717.png)

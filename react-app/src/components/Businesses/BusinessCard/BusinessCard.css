@@ -1,18 +1,21 @@
 #main-div-business-card{
   display: flex;
   justify-content: center;
-  margin: 50px 300px;
+  margin-right: 570px;
+  margin-left: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   padding-top: 80px;
+  
 }
 
 #left-div-business-card{
   /* position:fixed; */
-  left: 175px;
   top: 145px;
-
   width: 200px;
   justify-content: center;
   padding: 10px;
+
 }
 
 #price-range-container{
@@ -61,6 +64,7 @@ div{
   justify-content: center;
   align-items: center;
   width: 100%;
+
 }
 .tag-button{
   background-color: rgb(232, 232, 232);
@@ -269,4 +273,25 @@ div{
 .reset-filter-btn:hover{
   background-color: #ff2323;
   transition: 1s;
+}
+
+#blur-map-div{
+  position: fixed;
+  height: 100vh;
+  right: 25px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  top:100px;
+}
+
+#google-map-div {
+  margin-bottom: 140px;
+}
+
+#google-map-div img{
+  box-shadow:
+        0px 18px 16px -10px #AAA,
+        0px -18px 16px -10px #AAA;
+
 }

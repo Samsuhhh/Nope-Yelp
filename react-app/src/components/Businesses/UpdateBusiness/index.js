@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
-import { updateBusinessThunk } from '../../../store/business'
+import { updateBusinessThunk, getSingleBusinessThunk, resetBusiness } from '../../../store/business'
 import './UpdateBusiness.css'
 import { Modal } from '../../../context/Modal'
 import xicon from '../../../assets/icons/x-icon.svg'
@@ -15,25 +15,53 @@ const UpdateBusiness = () => {
 
     // const user = useSelector(state => state.session.user)
     const existingBusiness = useSelector(state => state.businesses.singleBusiness)
-
-    const [businessName, setBusinessName] = useState(existingBusiness.business_name)
-    const [email, setEmail] = useState(existingBusiness.email)
-    const [phone, setPhone] = useState(existingBusiness.phone)
-    const [streetAddress, setStreetAddress] = useState(existingBusiness.street_address)
-    const [city, setCity] = useState(existingBusiness.city)
-    const [zipcode, setZipcode] = useState(existingBusiness.zipcode)
-    const [state, setState] = useState(existingBusiness.state)
-    const [about, setAbout] = useState(existingBusiness.about)
-    const [longitude, setLongitude] = useState(existingBusiness.longitude)
-    const [latitude, setLatitude] = useState(existingBusiness.latitude)
-    const [priceRange, setPriceRange] = useState(existingBusiness.price_range)
-    const [website, setWebsite] = useState(existingBusiness.website)
+    if (!Object.values(existingBusiness).length) dispatch(getSingleBusinessThunk(businessId))
+    // const [businessName, setBusinessName] = useState(existingBusiness.business_name)
+    // const [email, setEmail] = useState(existingBusiness.email)
+    // const [phone, setPhone] = useState(existingBusiness.phone)
+    // const [streetAddress, setStreetAddress] = useState(existingBusiness.street_address)
+    // const [city, setCity] = useState(existingBusiness.city)
+    // const [zipcode, setZipcode] = useState(existingBusiness.zipcode)
+    // const [state, setState] = useState(existingBusiness.state)
+    // const [about, setAbout] = useState(existingBusiness.about)
+    // const [longitude, setLongitude] = useState(existingBusiness.longitude)
+    // const [latitude, setLatitude] = useState(existingBusiness.latitude)
+    // const [priceRange, setPriceRange] = useState(existingBusiness.price_range)
+    // const [website, setWebsite] = useState(existingBusiness.website)
+    const [businessName, setBusinessName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [streetAddress, setStreetAddress] = useState('')
+    const [city, setCity] = useState('')
+    const [zipcode, setZipcode] = useState('')
+    const [state, setState] = useState('')
+    const [about, setAbout] = useState('')
+    const [longitude, setLongitude] = useState('')
+    const [latitude, setLatitude] = useState('')
+    const [priceRange, setPriceRange] = useState('')
+    const [website, setWebsite] = useState('')
     // FIX EDITING AN IMAGE AND EDITING TAGS
     // const [imgUrl, setImgUrl] = useState(existingBusiness?.BusinessImages[0].url)
     const [tags, setTags] = useState([])
     const [validationErrors, setValidationErrors] = useState([])
     const [showErrors, setShowErrors] = useState(false)
     const [showTagModal, setShowTagModal] = useState(false);
+
+    useEffect(() => {
+        if (Object.values(existingBusiness).length) {
+            setBusinessName(existingBusiness.business_name)
+            setEmail(existingBusiness.email)
+            setPhone(existingBusiness.phone)
+            setStreetAddress(existingBusiness.street_address)
+            setCity(existingBusiness.city)
+            setZipcode(existingBusiness.zipcode)
+            setState(existingBusiness.state)
+            setAbout(existingBusiness.about)
+            setLongitude(existingBusiness.longitude)
+            setLatitude(existingBusiness.latitude)
+            setWebsite(existingBusiness.website)
+        }
+    }, [existingBusiness])
 
     const updateBusinessName = (e) => setBusinessName(e.target.value)
     const updateEmail = (e) => setEmail(e.target.value)
@@ -172,26 +200,34 @@ const UpdateBusiness = () => {
         { 'title': 'Bootcamp' }
     ]
 
+    useEffect(() => {
+        dispatch(getSingleBusinessThunk(businessId))
+
+        return () => dispatch(resetBusiness())
+    }, [businessId])
+
     // NEED TO ADD MORE VALIDATION ERRORS
     useEffect(() => {
         const errors = []
-        if (businessName?.length > 40 || businessName?.length < 1) errors.push("Business name must be between 1 and 40 characters")
-        if (!email?.match(/^\S+@\S+\.\S+$/)) errors.push('Please enter a valid email address')
-        if (phone?.length !== 10) errors.push("Please enter a valid phone number")
-        if (streetAddress?.length > 50 || streetAddress?.length < 5) errors.push("Street address must be between 5 and 50 characters.")
-        if (city?.length > 20 || city?.length < 2) errors.push("City must be between 2 and 20 characters.")
-        if (zipcode > 99999 || zipcode < 10000) errors.push("Please enter a valid zip code.")
-        if (state?.length > 20 || state?.length < 2) errors.push('State must be between 2 and 15 characters.')
-        if (about?.length > 3000 || about?.length < 5) errors.push('About must be between 5 and 3000 characters.')
-        if (isNaN(longitude) || longitude < -180 || longitude > 180) errors.push("Longitude must be a number between -180 and 180")
-        if (isNaN(latitude) || latitude < -90 || latitude > 90) errors.push("Latitude must be a number between -90 and 90")
-        if (!priceRange?.length) errors.push("Please select a valid price range")
-        if (website?.length > 75 || website?.length < 4) errors.push('Website url must be between 4 and 75 characters.')
-        if (!website?.match(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi)) errors.push("Please enter a valid website")
-        // if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image(jpg/jpeg/png).')
-        if (tags?.length !== 3) errors.push('Please select 3 tags for your business')
-        // console.log(tags.length)
-        setValidationErrors(errors)
+        if (Object.values(existingBusiness).length) {
+            if (businessName.length > 40 || businessName.length < 1 || !businessName.trim().length) errors.push("Business name must be between 1 and 40 characters")
+            if (!email.match(/^\S+@\S+\.\S+$/)) errors.push('Please enter a valid email address')
+            if (phone.length !== 10 || isNaN(phone)) errors.push("Please enter a valid phone number")
+            if (streetAddress.length > 50 || streetAddress.length < 5 || !streetAddress.trim().length) errors.push("Street address must be between 5 and 50 characters.")
+            if (city.length > 20 || city.length < 2 || !city.trim().length) errors.push("City must be between 2 and 20 characters.")
+            if (zipcode > 99999 || zipcode < 10000) errors.push("Please enter a valid zip code.")
+            if (state.length > 20 || state.length < 2 || !state.trim().length) errors.push('State must be between 2 and 15 characters.')
+            if (about.length > 3000 || about.length < 5 || !about.trim().length) errors.push('About must be between 5 and 3000 characters.')
+            if (isNaN(longitude) || longitude < -180 || longitude > 180) errors.push("Longitude must be a number between -180 and 180")
+            if (isNaN(latitude) || latitude < -90 || latitude > 90) errors.push("Latitude must be a number between -90 and 90")
+            if (!priceRange.length) errors.push("Please select a valid price range")
+            if (website.length > 75 || website.length < 4) errors.push('Website url must be between 4 and 75 characters.')
+            if (!website.match(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi)) errors.push("Please enter a valid website")
+            // if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image(jpg/jpeg/png).')
+            if (tags.length !== 3) errors.push('Please select 3 tags for your business')
+            // console.log(tags.length)
+            setValidationErrors(errors)
+        }
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
         about, longitude, latitude, priceRange, website, tags, tagsList, helper])
 
@@ -267,7 +303,7 @@ const UpdateBusiness = () => {
                             {/*------ EMAIL ------*/}
                             <div className='fragmented-div-styling'>
                                 <input
-                                    type='text'
+                                    type='email'
                                     placeholder='Email'
                                     value={email}
                                     onChange={updateEmail}

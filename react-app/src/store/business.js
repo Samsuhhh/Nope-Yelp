@@ -7,6 +7,7 @@ const CREATE = "businesses/CREATE";
 const UPDATE = "businesses/UPDATE";
 const REMOVE = "businesses/DELETE";
 const ADD_IMAGE = "businesses/IMAGE"
+const RESET = 'businesses/RESET'
 const REMOVE_IMAGE = "images/DELETE"
 
 //Action Creators
@@ -50,6 +51,10 @@ const removeImage = imageId => ({
   imageId
 })
 
+export const resetBusiness = () => ({
+  type: RESET,
+})
+
 // THUNK action creators
 export const getAllBusinessesThunk = () => async (dispatch) => {
   const response = await fetch("/api/businesses/");
@@ -83,15 +88,17 @@ export const getCurrentUserBusinessesThunk = () => async (dispatch) => {
 
 export const getSingleBusinessThunk = (businessId) => async (dispatch) => {
   const response = await fetch(`/api/businesses/${businessId}`);
-  const singleBusinessData = await response.json();
+  console.log('response from get single business', response)
 
   if (response.ok) {
+    const singleBusinessData = await response.json();
     dispatch(loadOne(singleBusinessData));
+    return
   }
   else {
     console.log("-----Get Single Business Thunk Error-----");
+    return
   }
-  return singleBusinessData;
 }
 
 export const createBusinessThunk = (business) => async (dispatch) => {
@@ -255,6 +262,8 @@ const businessReducer = (state = initialState, action) => {
       }
       // return {...newState} should we spread the new state?
       return newState
+    case RESET:
+      return initialState
     default:
       return state
   }
