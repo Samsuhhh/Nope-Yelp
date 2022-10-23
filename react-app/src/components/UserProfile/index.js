@@ -84,7 +84,8 @@ const UserProfile = () => {
           <div>
             <h1>{user.firstName} {user.lastName}</h1>
             <h4>{user.email}</h4>
-            <h4>{randomGreeting[Math.floor(Math.random() * (randomGreeting.length - 1))]}</h4>
+            {/* <h4>{randomGreeting[Math.floor(Math.random() * (randomGreeting.length - 1))]}</h4> */}
+            <h4>What does a nosey pepper do? Gets jalapeño business.</h4>
             <div id="user-actions-btn-container">
               <div className="dropdown-links">
                 <NavLink className="user-profile-navlink" to='/'>
