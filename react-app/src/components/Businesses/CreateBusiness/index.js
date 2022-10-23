@@ -301,6 +301,7 @@ const CreateBusiness = () => {
                                 <div id='address-input-div'>
                                     <label id='address-label'>Address</label>
                                     <input
+                                        id='force-border'
                                         className='create-business-input'
                                         type='text'
                                         placeholder='Address'
@@ -526,4 +527,4 @@ const CreateBusiness = () => {
 }
 
 
-            export default CreateBusiness
+export default CreateBusiness
