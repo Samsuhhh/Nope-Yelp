@@ -10,8 +10,9 @@
 }
 
 #left-div-business-card {
-  /* position:fixed; */
+  /* position:absolute; */
   top: 145px;
+  /* left: 100px; */
   width: 200px;
   display: flex;
   flex-direction: column;
@@ -22,13 +23,13 @@
 
 }
 
-#or-filter{
+/* #or-filter{
   width: 100%;
   display: flex;
   justify-content: center;
   font-size: 15px;
   height: 50px;
-}
+} */
 
 #price-range-container {
   font-size: 10px;
@@ -56,7 +57,7 @@ div {
 
 #no-results-message {
   width: 800px;
-  padding-left: 37px;
+  margin-left: 40px;
 }
 
 #business-card-container {
@@ -200,15 +201,20 @@ div {
   width: 17px;
   height: 17px;
   margin-right: 5px;
+  /* filter: invert(68%) sepia(31%) saturate(4358%) hue-rotate(183deg) brightness(103%) contrast(101%); */
 }
 
-/* .nope-range-btn{
-  background-color: white;
+.nope-range-btn:active{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  content: "✓"
 }
-.nope-range-btn:hover{
+/* .nope-range-btn:hover{
   cursor: pointer;
-} */
-
+}
+ */
 
 #business-card-nopes-review-average-div {
   display: flex;
@@ -326,6 +332,10 @@ div {
   border: solid white;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
+}
+
+#no-results-div{
+  /* border: 1px solid black; */
 }
 
 .no-results-search {

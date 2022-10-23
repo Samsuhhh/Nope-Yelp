@@ -87,10 +87,14 @@ export default function BusinessCard({ search }) {
   };
 
   console.log("----THIS IS SEARCH----", search)
-  if (!search.length) return (<h1 className="no-results-search">No results for this search</h1>)
+  if (!search.length) return (
+    <div id='no-results-div'>
+      <h1 className="no-results-search">No results for this search</h1>
+    </div>
+
+  )
   return (
     <>
-
       <div id="main-div-business-card">
         {/* LEFT DIV START */}
         <div id="left-div-business-card">
@@ -248,6 +252,12 @@ export default function BusinessCard({ search }) {
 
         <div id="center-div-container">
           <div id="middle-div-list-container" >
+            {!search.length && (
+              <div id='no-results-div'>
+                <h1 className="no-results-search">No results for this search</h1>
+              </div>
+            )}
+
             {!businessList?.length && (
               <div id="no-results-message">
                 <h2>Looks like no businesses match your search</h2>

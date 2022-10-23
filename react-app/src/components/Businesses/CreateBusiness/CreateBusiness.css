@@ -248,9 +248,11 @@
     font-size: 13.5px;
 }
 
+#checkbox-input:hover,
 #checkbox-input {
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 #text-align-center {
