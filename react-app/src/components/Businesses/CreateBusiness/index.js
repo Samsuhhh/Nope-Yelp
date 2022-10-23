@@ -261,17 +261,21 @@ const CreateBusiness = () => {
                         <form onSubmit={handleSubmit}>
                             {/*------- BUSINESS NAME  -------*/}
                             <div className='create-input-divs'>
+                                
+                                <label id='name-label'>Business name</label>
                                 <input
                                     className='create-business-input'
                                     type='text'
-                                    placeholder='Business Name'
+                                    placeholder='Business name'
                                     value={businessName}
                                     onChange={updateBusinessName}
                                     required />
+                                
                             </div>
                             <div className='fragmented-divs-container-address-LL-url'>
                                 {/*------ EMAIL ------*/}
                                 <div className='fragmented-div-styling'>
+                                    <label id="email-label">Email</label>
                                     <input
                                         className='create-business-input'
                                         type='text'
@@ -282,6 +286,7 @@ const CreateBusiness = () => {
                                 </div>
                                 {/*------ PHONE ------*/}
                                 <div className='fragmented-div-styling'>
+                                    <label id='phone-label'>Phone</label>
                                     <input
                                         className='create-business-input'
                                         type='text'
@@ -294,6 +299,7 @@ const CreateBusiness = () => {
                             <div className='fragmented-container' >
                                 {/* ------ STREET ADDRESS ------ */}
                                 <div id='address-input-div'>
+                                    <label id='address-label'>Address</label>
                                     <input
                                         className='create-business-input'
                                         type='text'

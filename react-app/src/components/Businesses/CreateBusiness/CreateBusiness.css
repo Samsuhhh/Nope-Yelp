@@ -22,6 +22,7 @@
     height: 70%;
     z-index: -1;
     margin-left: 18%;
+    margin-top: 150px;
 }
 
 #error-div {
@@ -42,7 +43,7 @@
     padding-right: 10px;
 }
 
-#hidden{
+#hidden {
     display: none
 }
 
@@ -298,7 +299,7 @@
     border: 1px solid lightgrey;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 6px 16px 0px;
-    
+
     /* height: 40px; */
     font-size: 15px;
     font-weight: 600;
@@ -337,15 +338,15 @@
     border: 0;
 }
 
-.rate> input{
+.rate>input {
     display: none;
 }
 
-.rate > .lbl {
+.rate>.lbl {
     float: right;
 }
 
-.rate > .lbl:before {
+.rate>.lbl:before {
     display: inline-block;
     font-size: 24px;
     padding-left: 10px;
@@ -356,9 +357,9 @@
 }
 
 
-input:checked ~ .lbl,
+input:checked~.lbl,
 .lbl:hover,
-.lbl:hover ~ .lbl {
+.lbl:hover~.lbl {
     color: #FFD700;
 }
 
@@ -367,7 +368,7 @@ input:checked~.lbl:hover,
 input:checked~.lbl:hover~.lbl,
 .lbl:hover~input:checked~.lbl {
     color: #FFD700;
-} 
+}
 
 
 
@@ -422,6 +423,63 @@ input:checked~.lbl:hover~.lbl,
 
 .create-business-input {
     font-size: 16;
+
+    outline: none;
+    background: none;
+
+}
+
+.create-business-input:focus {
+    border: 2px solid #008EA7;
+}
+
+.create-business-input:focus::placeholder {
+    color: transparent
+}
+
+#name-label {
+    position: absolute;
+    top: 27.5%;
+    left: 15%;
+    z-index: 1;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 14px;
+    color: #008EA7;
+}
+
+#email-label {
+    position: absolute;
+    top: 33%;
+    left: 15%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 14px;
+    color: #008EA7;
+}
+
+#phone-label {
+    position: absolute;
+    top: 33%;
+    left: 32%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 14px;
+    color: #008EA7;
+}
+
+#address-label {
+    position: absolute;
+    top: 39%;
+    left: 15%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 14px;
+    color: #008EA7;
 }
 
 #tag-confirm-button {
