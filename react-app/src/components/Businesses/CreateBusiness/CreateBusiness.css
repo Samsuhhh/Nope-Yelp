@@ -301,7 +301,7 @@
     box-shadow: rgba(0, 0, 0, 0.07) 0px 6px 16px 0px;
 
     /* height: 40px; */
-    
+
     font-size: 15px;
     font-weight: 600;
 
@@ -345,7 +345,7 @@
     float: right;
 }
 
-.lbl{
+.lbl {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -448,8 +448,9 @@ input:checked~.lbl:hover~.lbl,
     background-color: white;
     padding: 0 5px;
     z-index: 1;
-    font-size: 14px;
+    font-size: 13px;
     color: #008EA7;
+    font-weight: 700;
 }
 
 #email-label {
@@ -459,8 +460,9 @@ input:checked~.lbl:hover~.lbl,
     background-color: white;
     padding: 0 5px;
     z-index: 1;
-    font-size: 14px;
+    font-size: 13px;
     color: #008EA7;
+    font-weight: 700;
 }
 
 #phone-label {
@@ -470,8 +472,9 @@ input:checked~.lbl:hover~.lbl,
     background-color: white;
     padding: 0 5px;
     z-index: 1;
-    font-size: 14px;
+    font-size: 13px;
     color: #008EA7;
+    font-weight: 700;
 }
 
 #address-label {
@@ -481,9 +484,100 @@ input:checked~.lbl:hover~.lbl,
     background-color: white;
     padding: 0 5px;
     z-index: 1;
-    font-size: 14px;
+    font-size: 13px;
     color: #008EA7;
+    font-weight: 700;
 }
+
+#city-label {
+    position: absolute;
+    top: 45%;
+    left: 15%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 13px;
+    color: #008EA7;
+    font-weight: 700;
+}
+
+#state-label {
+    position: absolute;
+    top: 45%;
+    left: 26%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 13px;
+    color: #008EA7;
+    font-weight: 700;
+}
+
+#zipcode-label {
+    position: absolute;
+    top: 45%;
+    left: 37%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 13px;
+    color: #008EA7;
+    font-weight: 700;
+}
+
+
+#longitude-label {
+    position: absolute;
+    bottom: 47%;
+    left: 15%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 13px;
+    color: #008EA7;
+    font-weight: 700;
+}
+
+#latitude-label {
+    position: absolute;
+    bottom: 47%;
+    left: 31.5%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 13px;
+    color: #008EA7;
+    font-weight: 700;
+}
+
+#website-label {
+    position: absolute;
+    bottom: 41.5%;
+    left: 15%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 13px;
+    color: #008EA7;
+    font-weight: 700;
+}
+
+
+#img-label {
+    position: absolute;
+    bottom: 41.5%;
+    left: 31.5%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 13px;
+    color: #008EA7;
+    font-weight: 700;
+}
+
+/* ::placeholder{
+    color: transparent;
+} */
 
 #tag-confirm-button {
     height: 40px;
