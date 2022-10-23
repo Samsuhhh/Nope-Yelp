@@ -14,7 +14,7 @@ import nopes1 from "../../../assets/nopes/1-nopes.png"
 import Categories from './Categories'
 
 
-function RecentActivity() {
+function RecentActivity({setSearch}) {
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
     const review = useSelector(state => state.reviews.allReviews)
@@ -297,10 +297,10 @@ function RecentActivity() {
                             </div>
                         </div>
                     </div>
-                    {/* <Categories />
+                    <Categories setSearch={setSearch}/>
                     <br /><br /><br /><br />
                     <br /><br /><br /><br />
-                    <Footer /> */}
+                    <Footer />
                 </>
             }
         </>
