@@ -64,6 +64,7 @@ const CurrentUserBusinesses = () => {
               <div id="text-container-current-reviews">
 
                 <img
+                alt='business img'
                 id="current-user-reviews-business-img"
                 src={business?.images?.url}
                 onLoad={imgOnLoadHandler}
