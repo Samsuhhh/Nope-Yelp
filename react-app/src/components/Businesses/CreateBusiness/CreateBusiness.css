@@ -22,7 +22,7 @@
     height: 70%;
     z-index: -1;
     margin-left: 18%;
-    margin-top: 150px;
+    position: fixed;
 }
 
 #error-div {
@@ -34,7 +34,8 @@
 }
 
 #goop-validations {
-    width: 80%;
+    width: 40%;
+    margin-left: 250px;
     z-index: 0;
 }
 
@@ -50,10 +51,10 @@
 
 #validations-div {
     position: absolute;
-    top: 25%;
-    right: 18%;
+    top: 10%;
+    right: 52.5%;
     width: 320px;
-    height: 210px;
+    height: 168px;
     /* border: 1px solid red; */
     row-gap: 20px;
     background-color: #ffda18;
@@ -621,13 +622,14 @@ input:checked~.lbl:hover~.lbl,
 
 #error-div {
     animation: fade 1s linear forwards;
+    margin-bottom: 20px;
 }
 
 @keyframes fade {
     from {
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-10px);
+      transform: translateY(0px);
     }
     to {
       opacity: 1;
