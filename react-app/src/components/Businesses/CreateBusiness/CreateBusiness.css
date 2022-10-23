@@ -34,6 +34,7 @@
 
 #goop-validations {
     width: 80%;
+    z-index: 0;
 }
 
 #bNope {
@@ -51,13 +52,19 @@
     top: 25%;
     right: 18%;
     width: 320px;
-    height: 200px;
+    height: 210px;
     /* border: 1px solid red; */
     row-gap: 20px;
     background-color: #ffda18;
     /* background-color: transparent; */
 
+    /* overflow: hidden; */
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
+
+
 
 #create-form-container-left {
     width: 70%;
@@ -299,7 +306,7 @@
     border: 1px solid lightgrey;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 6px 16px 0px;
-    
+
     /* height: 40px; */
     font-size: 15px;
     font-weight: 600;
@@ -368,7 +375,7 @@ input:checked~.lbl:hover,
 input:checked~.lbl:hover~.lbl,
 .lbl:hover~input:checked~.lbl {
     color: #FFD700;
-} 
+}
 
 
 
@@ -441,3 +448,20 @@ input:checked~.lbl:hover~.lbl,
     align-items: center;
     margin-top: 10px;
 }
+
+#error-div {
+    animation: fade 1s linear forwards;
+}
+
+@keyframes fade {
+    from {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
