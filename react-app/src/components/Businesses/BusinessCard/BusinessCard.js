@@ -19,6 +19,7 @@ import nopes3 from "../../../assets/nopes/3-nopes.png"
 import nopes2 from "../../../assets/nopes/2-nopes.png"
 import nopes1 from "../../../assets/nopes/1-nopes.png"
 import nopes0 from "../../../assets/nopes/0-nopes.png"
+import blacknope from "../../../assets/nopes/ratingimgblack.png"
 
 export default function BusinessCard({ search }) {
   const [businessList, setBusinessList] = useState(null)
@@ -26,7 +27,7 @@ export default function BusinessCard({ search }) {
 
   useEffect(() => {
     setBusinessList(search)
-  }, [search] )
+  }, [search])
 
 
   const nopeRatingBar = (rating) => {
@@ -93,7 +94,11 @@ export default function BusinessCard({ search }) {
       <div id="main-div-business-card">
         {/* LEFT DIV START */}
         <div id="left-div-business-card">
-          <h2>Filters</h2>
+          <div id='filter-heading-div'>
+            <h3>Filters</h3>
+
+          </div>
+          {/* <div>Price Range</div> */}
           <div id="price-range-container">
             <button
               className="price-range-btn"
@@ -132,63 +137,93 @@ export default function BusinessCard({ search }) {
             >$$$$
             </button>
             {/* ------- FILTER BY REVIEW START ------- */}
-            <div id='nope-range-container'>
-              <div id='or-filter'> or </div>
-              <button
-                className="nope-range-btn"
-                id="nope-range-btn-one"
+            {/* <div id='or-filter'>
+              <h4>OR</h4>
+            </div> */}
+          </div>
+          {/* <h4>Suggested</h4> */}
+          <div id='avg-rating-filter'>Avg. Rating</div>
+          <div id='nope-filter-column-container'>
+
+            <div className='button-nope-row'>
+              <button className="nope-range-btn" id='nope-range-button-v2'
                 onClick={(e) => {
                   e.preventDefault()
                   setBusinessList(nope1)
                 }}
-              >1
+              >
               </button>
-              <button
-                className="nope-range-btn"
-                id="nope-range-btn-two"
+              <div>
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+              </div>
+            </div>
+            <div className='button-nope-row'>
+              <button className="nope-range-btn" id='nope-range-button-v2'
                 onClick={(e) => {
                   e.preventDefault()
                   setBusinessList(nope2)
                 }}
-              >2
+              >
               </button>
-              <button
-                className="nope-range-btn"
-                id="nope-range-btn-three"
+              <div>
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+              </div>
+            </div>
+            <div className='button-nope-row'>
+              <button className="nope-range-btn" id='nope-range-button-v2'
                 onClick={(e) => {
                   e.preventDefault()
                   setBusinessList(nope3)
                 }}
-              >3
+              >
               </button>
-              <button
-                className="nope-range-btn"
-                id="nope-range-btn-four"
+              <div>
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+              </div>
+            </div>
+            <div className='button-nope-row'>
+              <button className="nope-range-btn" id='nope-range-button-v2'
                 onClick={(e) => {
                   e.preventDefault()
                   setBusinessList(nope4)
                 }}
-              >4
+              >
               </button>
-              <button
-                className="nope-range-btn"
-                id="nope-range-btn-five"
+              <div>
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+              </div>
+            </div>
+            <div className='button-nope-row'>
+              <button className="nope-range-btn" id='nope-range-button-v2'
                 onClick={(e) => {
                   e.preventDefault()
                   setBusinessList(nope5)
                 }}
-              >5
+              >
               </button>
-              <button
-                className="reset-filter-btn"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setBusinessList(resetFilter)
-                }}
-              >Reset Filter
-              </button>
+              <div>
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+                <img alt='black-filter-nope' className="filter-blackNope" src={blacknope} />
+              </div>
             </div>
           </div>
+          <button
+            className="reset-filter-btn"
+            onClick={(e) => {
+              e.preventDefault()
+              setBusinessList(resetFilter)
+            }}
+          >Reset Filter
+          </button>
           {/* <div id="checkbox-container">
             <h3>Suggested</h3>
             <label className='container'>
@@ -263,7 +298,7 @@ export default function BusinessCard({ search }) {
         {/* MIDDLE DIV END */}
         {/* RIGHT DIV START */}
 
-        <div id="blur-map-div"style={{backgroundImage:`url(${blurmap})`}}>
+        <div id="blur-map-div" style={{ backgroundImage: `url(${blurmap})` }}>
           <div id="google-map-div">
 
             <StaticGoogleMap size="640x640" apiKey="AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU">
