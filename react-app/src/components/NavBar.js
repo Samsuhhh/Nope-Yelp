@@ -12,6 +12,8 @@ import BusinessCard from './Businesses/BusinessCard/BusinessCard';
 import emailIcon from '../assets/icons/emailicon.svg'
 import userprofileicon from '../assets/icons/userprofile.svg'
 import logouticon from '../assets/icons/logout.svg'
+
+
 const options = {
   findAllMatches: true,
   keys: [

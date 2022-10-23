@@ -15,8 +15,8 @@ export default function BusinessCard({ search }) {
 
 
   useEffect(() => {
-    setBusinessList(businessList)
-  }, [businessList])
+    setBusinessList(search)
+  }, [search] )
 
 
   const nopeRatingBar = (rating) => {
@@ -114,7 +114,6 @@ export default function BusinessCard({ search }) {
             {/* ------- FILTER BY REVIEW START ------- */}
             <div id='nope-range-container'>
               <div id='or-filter'> or </div>
-
               <button
                 className="nope-range-btn"
                 id="nope-range-btn-one"
