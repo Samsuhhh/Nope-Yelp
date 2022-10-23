@@ -301,10 +301,9 @@
     box-shadow: rgba(0, 0, 0, 0.07) 0px 6px 16px 0px;
 
     /* height: 40px; */
+    
     font-size: 15px;
     font-weight: 600;
-    text-align: center;
-
 
 }
 
@@ -346,10 +345,14 @@
     float: right;
 }
 
+.lbl{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .rate>.lbl:before {
     display: inline-block;
     font-size: 24px;
-    padding-left: 10px;
     margin: 0;
     cursor: pointer;
     font-family: system-ui;
