@@ -506,7 +506,7 @@ const CreateBusiness = () => {
                         {showErrors &&
                             <div className='validation-div-scroll' id={validationErrors.length ? 'validations-div' : 'hidden'} >
                                 {/* <div id={`${hiddenDiv(!validationErrors.length)}`} style={{backgroundColor: whatever}}> */}
-                                <ul>
+                                <div>
                                     {validationErrors.map((e, i) => {
                                         return (
                                             <div id='error-div' key={i}>
@@ -517,7 +517,7 @@ const CreateBusiness = () => {
                                             </div>
                                         )
                                     })}
-                                </ul>
+                                </div>
                             </div>
                         }
                     </div>
