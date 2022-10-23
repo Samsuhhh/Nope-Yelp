@@ -237,7 +237,9 @@ const CreateBusiness = () => {
         <>
             <div className="add-business-nav-bar">
                 <div className="add-business-nav-bar-content-wrapper">
+                    <Link to="/">
                     <img alt='navlogo' id="add-business-nav-bar-logo" src={nope} />
+                    </Link>
                     <Link to="/">
                         <div className="add-business-nav-bar-back-to-nope">Back to nope</div></Link>
                 </div>
