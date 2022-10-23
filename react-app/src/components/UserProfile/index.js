@@ -59,7 +59,14 @@ const UserProfile = () => {
     return businessCount
   })
 
-
+  const imgOnLoadHandler = (e) => {
+    if (e.currentTarget.className !== "error"){
+      console.log('img loaded successfully!')
+    }
+  }
+  const imgOnErrorHandler = (event) => {
+    event.currentTarget.src = userProfile;
+  }
 
   return (
     <>
@@ -67,7 +74,13 @@ const UserProfile = () => {
       <div id="entire-page-container">
         <div id="middle-page-conatiner">
           <div id="user-information-div">
-            <img id="user-profile-pic" alt='user profile'/>
+            <img
+            src={user.userAvatar}
+            id="user-profile-pic" 
+            alt='user profile' 
+            onLoad={imgOnLoadHandler}
+            onError={imgOnErrorHandler}
+            />
           <div>
             <h1>{user.firstName} {user.lastName}</h1>
             <h4>{user.email}</h4>
