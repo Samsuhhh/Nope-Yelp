@@ -59,10 +59,8 @@ export const getAllReviews = (businessId) => async dispatch => {
         const reviews = await response.json()
         dispatch(load(reviews, businessId))
         return reviews
-    } else {
-        console.log("------Get All Reviews Thunk Error-------")
     }
-    return null
+    return
 }
 
 export const getAllBusinessesReviews = () => async (dispatch) => {
@@ -70,14 +68,10 @@ export const getAllBusinessesReviews = () => async (dispatch) => {
 
     if (response.ok) {
         const reviewData = await response.json()
-        console.log(reviewData)
         await dispatch(loadAllBusinessesReviews(reviewData))
         return reviewData
-    } else {
-        console.log('get all buisnesses reviews error')
     }
-
-
+    return
 };
 
 export const getCurrentReviews = () => async dispatch => {
@@ -88,9 +82,7 @@ export const getCurrentReviews = () => async dispatch => {
         dispatch(loadCurrent(review))
         return review
     }
-    else {
-        console.log("------Get Current Reviews Thunk Error------")
-    }
+    return
 }
 
 export const createReview = (review, businessId) => async dispatch => {
@@ -107,10 +99,7 @@ export const createReview = (review, businessId) => async dispatch => {
         dispatch(create(businessReview, businessId))
         return businessReview
     }
-    else {
-        console.log('------Create Review Thunk Error------')
-    }
-    return null
+    return
 }
 
 export const updateReview = (review, reviewId) => async dispatch => {
@@ -127,9 +116,6 @@ export const updateReview = (review, reviewId) => async dispatch => {
         dispatch(update(updatedReview))
         return updatedReview
     }
-    else {
-        console.log("-------Update Review Thunk Error-------")
-    }
     return
 }
 
@@ -142,10 +128,7 @@ export const removeReview = (reviewId) => async dispatch => {
         dispatch(remove(reviewId))
         return
     }
-    else {
-        console.log("----Delete Review Thunk Error----")
-        return
-    }
+    return
 }
 
 export const getOneReview = (reviewId) => async dispatch => {
@@ -155,10 +138,8 @@ export const getOneReview = (reviewId) => async dispatch => {
         const oneReview = await response.json()
         dispatch(loadOne(oneReview))
         return
-    } else {
-        console.log("----Load One Review Thunk Error----")
-        return
     }
+    return
 }
 
 
@@ -175,7 +156,6 @@ const reviewReducer = (state = initialState, action) => {
     let newState
     switch (action.type) {
         case LOAD_ALL:
-            console.log('All Reviews reducer hitting', action)
             action.reviews.forEach(review => {
                 business[review.id] = review
             })
@@ -184,7 +164,6 @@ const reviewReducer = (state = initialState, action) => {
                 business
             }
         case LOAD_ALL_BUSINESSES_REVIEWS:
-            console.log('TESTING', action.reviews)
             action.reviews.reviews.forEach(review => {
                 allReviews[review.id] = review
             })

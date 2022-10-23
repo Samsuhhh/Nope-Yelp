@@ -51,22 +51,11 @@ const CreateBusiness = () => {
         // const tagsList = tags
         if (e.target.checked) {
             tagsList.push(e.target.value)
-            // tags.push(e.target.value)
-            // setTags(tagsList)
-            console.log('current tag array', tagsList)
-            console.log('tag array that we are sending', tags)
         } else {
             const index = tagsList.indexOf(e.target.value)
             tagsList.splice(index, 1)
-            // const index = tags.indexOf(e.target.value)
-            // tags.splice(index, 1)
-            // setTags(tagsList)
-            console.log('current array after removing a tag', tagsList)
-            console.log('tag array that we are sending', tags)
         }
         setHelper(!helper)
-        // setTags(tagsList)
-        // setTags(tags)
     }
     const confirmModal = () => {
         setTags(tagsList)
@@ -187,7 +176,6 @@ const CreateBusiness = () => {
         if (!website.match(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi)) errors.push("Please enter a valid website")
         if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image(jpg/jpeg/png).')
         if (tags.length !== 3) errors.push('Please select 3 tags for your business')
-        // console.log(tags.length)
         setValidationErrors(errors)
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
         about, longitude, latitude, priceRange, website, imgUrl, tags, tagsList, helper])

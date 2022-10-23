@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory, Link } from 'react-router-dom';
-import LogoutButton from '../../../../auth/LogoutButton';
+// import LogoutButton from '../../../../auth/LogoutButton';
 import { getAllBusinessesThunk } from '../../../../../store/business';
 import nope from '../../../../../assets/nope.png';
 import magglass from '../../../../../assets/icons/mag-glass.png';
 import * as sessionActions from "../../../../../store/session"
 import Fuse from 'fuse.js'
-import emailicon from '../../../../../assets/icons/emailicon.svg'
+// import emailicon from '../../../../../assets/icons/emailicon.svg'
 import logouticon from '../../../../../assets/icons/logout.svg'
 import userprofileicon from '../../../../../assets/icons/userprofile.svg'
 import './BusinessNavBar.css'
@@ -28,24 +28,18 @@ const BusinessNavBar = ({ setSearch }) => {
   const history = useHistory()
   const businesses = useSelector(state => state.businesses.allBusinesses)
   const [query, setQuery] = useState("")
-  console.log('--------businesses--------', businesses)
 
   useEffect(() => {
     dispatch(getAllBusinessesThunk())
   }, [dispatch])
 
-  const imgOnLoadHandler = e => {
-    console.log("loaded")
-    if(e.currentTarget.className !=="error") {
-      console.log("success")
-    }
-  }
+
   const imageOnErrorHandler = (event) => {
     event.currentTarget.src = userprofileicon;
 };
-  const fuse = new Fuse(Object.values(businesses), options)
-  const results = fuse.search(query)
-  const businessResults = results.map(result => result.item).slice(0, 15)
+  // const fuse = new Fuse(Object.values(businesses), options)
+  // const results = fuse.search(query)
+  // const businessResults = results.map(result => result.item).slice(0, 15)
 
   function handleOnSearch({ target = {} }) {
     const { value } = target
@@ -54,12 +48,9 @@ const BusinessNavBar = ({ setSearch }) => {
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault()
-    console.log("search input value", document.getElementById("search-input-field").value)
-
 
     const fuse = new Fuse(Object.values(businesses), options)
     const results = fuse.search(document.getElementById("search-input-field").value).slice(0, 15)
-    console.log("fuse search results in nav bar", results)
     const businessResults = results.map(result => result.item)
     setSearch(businessResults)
     return history.push("/businesses")
@@ -115,7 +106,6 @@ const BusinessNavBar = ({ setSearch }) => {
                     id='user-avatar-img'
                     src={`${sessionUser.userAvatar}`}
                     alt='avatar'
-                    onLoad={imgOnLoadHandler}
                     onError={imageOnErrorHandler}
                   />
                 </button>
@@ -193,18 +183,18 @@ const BusinessNavBar = ({ setSearch }) => {
       <nav className='business-nav-navbar'>
         <div>
           <NavLink to='/' exact={true} activeClassName='active'>
-            <img src={nope} id="logo"></img>
+            <img src={nope} id="logo" alt='logo img'></img>
           </NavLink>
         </div>
         <div></div>
 
 
         <div className="business-nav-search-wrapper">
-          <div class="business-nav-search">
-            <div class="business-nav-left-side">
+          <div className="business-nav-search">
+            <div className="business-nav-left-side">
               <form onSubmit={handleSearchSubmit}>
 
-                <input type="business-nav-search" value={query} onChange={handleOnSearch} id="search-input-field" placeholder="tacos, cheap dinner, Max's" class="field request" />
+                <input type="business-nav-search" value={query} onChange={handleOnSearch} id="search-input-field" placeholder="tacos, cheap dinner, Max's" className="field request" />
                 {/* <ul class="left-side__sublist">
                 <li class="left-side__subitem" ><a  class="left-side__sublink restaraunts first">Restaurants</a></li>
                 <li class="left-side__subitem"><a  class="left-side__sublink bar">Breakfast & Brunch</a></li>
@@ -213,7 +203,7 @@ const BusinessNavBar = ({ setSearch }) => {
                 <li class="left-side__subitem"><a  class="left-side__sublink takeout">Takeout</a></li>
                 <li class="left-side__subitem"><a  class="left-side__sublink reservations">Reservations</a></li>
               </ul> */}
-                <button className="business-nav-search-button-wrapper" type="submit" ><img id="mag" src={magglass} ></img></button>
+                <button className="business-nav-search-button-wrapper" type="submit" ><img id="mag" src={magglass} alt='submit img'></img></button>
               </form>
 
             </div>

@@ -18,7 +18,6 @@ const CurrentUserReviews = () => {
     const user = useSelector(state => state.session.user)
     const reviews = useSelector(state => state.reviews.user)
     const businesses = useSelector(state => state.businesses.allBusinesses)
-    console.log("your mom", Object.values(businesses))
 
     const priceRange = e => {
         if (e === 4) return "$$$$"
@@ -55,7 +54,6 @@ const CurrentUserReviews = () => {
                                     <NavLink id="business-navlink-card" to={`/businesses/${businesses[review.business_id]?.id}`}>
                                     <div id="review-list-container-current-reviews">
                                         <div id="text-container-current-reviews">
-                                            {console.log(businesses[review.business_id]?.images.url)}
                                             <img id="current-user-reviews-business-img" src={businesses[review.business_id]?.images?.url}></img>
                                         </div>
                                         <div id="business-information-container-current-user-reviews">

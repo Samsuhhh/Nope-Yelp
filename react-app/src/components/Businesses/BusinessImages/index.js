@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
 import { removeBusinessImage } from '../../../store/business'
 import trash from '../../../assets/icons/trash-can.svg'
 import businessicon from '../../../assets/icons/business.svg'
@@ -25,7 +23,7 @@ export default function BusinessImages() {
                             <div>{(user && user.id === business.owner_id) && (
                                 <button id="modal-delete-img" onClick={() =>
                                     dispatch(removeBusinessImage(image.id))}>
-                                    <img id="modal-trash-icon" src={trash} />
+                                    <img id="modal-trash-icon" src={trash} alt='trash icon'/>
 
                                 </button>
                             )}</div>

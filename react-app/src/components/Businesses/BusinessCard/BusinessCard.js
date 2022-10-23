@@ -2,13 +2,13 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import blurmap from '../../../assets/imgs/blurmap.png'
 import './BusinessCard.css'
-import BusinessNavBar from "../BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar"
-import Fuse from 'fuse.js'
+// import BusinessNavBar from "../BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar"
+// import Fuse from 'fuse.js'
 
 import {
   StaticGoogleMap,
   Marker,
-  Path,
+  // Path,
 } from 'react-static-google-map';
 
 
@@ -76,17 +76,10 @@ export default function BusinessCard({ search }) {
 
   const resetFilter = Object.values(search)
 
-  const imgOnLoadHandler = e => {
-    console.log("loaded")
-    if (e.currentTarget.className !== "error") {
-      console.log("success")
-    }
-  }
   const imageOnErrorHandler = (event) => {
     event.currentTarget.src = businessicon;
   };
 
-  console.log("----THIS IS SEARCH----", search)
   if (!search.length) return (
     <div id='no-results-div'>
       <h1 className="no-results-search">No results for this search</h1>
@@ -274,7 +267,6 @@ export default function BusinessCard({ search }) {
                       <img id="business-card-image"
                         alt="bizzie"
                         src={business.images.url}
-                        onLoad={imgOnLoadHandler}
                         onError={imageOnErrorHandler}
                       ></img>
                     </div>

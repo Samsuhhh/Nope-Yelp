@@ -12,6 +12,7 @@ const UserProfile = () => {
   const user = useSelector(state => state.session.user)
   const reviews = useSelector(state => state.reviews.user)
   const businesses = useSelector(state => state.businesses.allBusinesses)
+  console.log('how often am i rerendering this page?')
 
   const randomGreeting = [
     "Hangry?",
@@ -51,19 +52,12 @@ const UserProfile = () => {
     "How do you truly savor a hot dog? With relish."
   ]
 
-  console.log(randomGreeting[Math.floor(Math.random() * (randomGreeting.length - 1))])
   let businessCount = 0
-  console.log(Math.floor(Math.random() * (randomGreeting.length - 1)))
   Object.values(businesses).map(business => {
     if (business.owner_id === user.id) businessCount++
     return businessCount
   })
 
-  const imgOnLoadHandler = (e) => {
-    if (e.currentTarget.className !== "error"){
-      console.log('img loaded successfully!')
-    }
-  }
   const imgOnErrorHandler = (event) => {
     event.currentTarget.src = userProfile;
   }
@@ -75,10 +69,9 @@ const UserProfile = () => {
         <div id="middle-page-conatiner">
           <div id="user-information-div">
             <img
-            src={user.userAvatar}
+            src={`${user.userAvatar}`}
             id="user-profile-pic"
             alt='user profile'
-            onLoad={imgOnLoadHandler}
             onError={imgOnErrorHandler}
             />
           <div>

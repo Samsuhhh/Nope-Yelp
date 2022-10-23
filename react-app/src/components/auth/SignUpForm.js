@@ -17,6 +17,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [userAvatar, setUserAvatar] = useState('https://freesvg.org/img/abstract-user-flat-4.png')
 
   const [firstNameErr, setFirstNameErr] = useState("")
   const [lastNameErr, setLastNameErr] = useState("")
@@ -47,16 +48,16 @@ const SignUpForm = () => {
     }
 
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(firstName, lastName, username, email, password));
+      const data = await dispatch(signUp(firstName, lastName, username, email, password, userAvatar));
       if (data) {
         setErrors(data)
       }
     }
   };
 
-  useEffect(()=> {
+  useEffect(() => {
     setNoErr(true)
-  },[noErr])
+  }, [noErr])
   const updateFirstName = (e) => {
     setFirstName(e.target.value);
   };
@@ -93,25 +94,25 @@ const SignUpForm = () => {
         <a href="/"><img id="signup-logo" src={nopewhite} /></a>
       </div>
 
-        <div id="error-box">
-          {!firstNameErr.length
-          &&!lastNameErr.length
-          &&!usernameErr.length
-          &&!passwordErr.length &&
+      <div id="error-box">
+        {!firstNameErr.length
+          && !lastNameErr.length
+          && !usernameErr.length
+          && !passwordErr.length &&
           (<div id="no-errs-message">Enter your information on the right!</div>)}
-          <div>
-            {(!!firstNameErr.length && firstNameErr)}
-          </div>
-          <div>
-            {(!!lastNameErr.length && lastNameErr)}
-          </div>
-          <div>
-            {(!!usernameErr.length && usernameErr)}
-          </div>
-          <div>
-            {(!!passwordErr.length && passwordErr)}
-          </div>
+        <div>
+          {(!!firstNameErr.length && firstNameErr)}
         </div>
+        <div>
+          {(!!lastNameErr.length && lastNameErr)}
+        </div>
+        <div>
+          {(!!usernameErr.length && usernameErr)}
+        </div>
+        <div>
+          {(!!passwordErr.length && passwordErr)}
+        </div>
+      </div>
       <div className="sign-up-form-wrapper">
         <img id="unhappy-img" src={unhappy} />
         <img id="speechbox-img" src={speechbox} />

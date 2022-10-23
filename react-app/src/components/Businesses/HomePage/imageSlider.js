@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import githubicon from '../../../assets/icons/githubicon.svg'
 import linkedinicon from '../../../assets/icons/linkedinicon.svg'
 import websiteicon from '../../../assets/icons/websiteicon.svg'
