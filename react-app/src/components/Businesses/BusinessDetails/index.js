@@ -166,8 +166,12 @@ const BusinessDetails = ({ search, onClose }) => {
     }
 
     const deleteHandler = async () => {
-        await dispatch(deleteBusinessThunk(businessId))
-        history.push('/')
+        if (window.confirm('Are you fucken sure????')){
+            await dispatch(deleteBusinessThunk(businessId))
+            history.push('/')
+        }else {
+            history.push(`/businesses/${businessId}`)
+        }
     }
 
 
