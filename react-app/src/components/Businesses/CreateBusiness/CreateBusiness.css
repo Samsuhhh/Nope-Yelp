@@ -449,137 +449,149 @@ input:checked~.lbl:hover~.lbl,
 
 #name-label {
     position: absolute;
-    top: 27.5%;
-    left: 15%;
+    top: 27.3%;
+    left: 14.5%;
     z-index: 1;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #email-label {
     position: absolute;
     top: 33%;
-    left: 15%;
+    left: 14.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #phone-label {
     position: absolute;
     top: 33%;
-    left: 32%;
+    left: 31.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #address-label {
     position: absolute;
     top: 39%;
-    left: 15%;
+    left: 14.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #city-label {
     position: absolute;
     top: 45%;
-    left: 15%;
+    left: 14.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #state-label {
     position: absolute;
     top: 45%;
-    left: 26%;
+    left: 25.7%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #zipcode-label {
     position: absolute;
     top: 45%;
-    left: 37%;
+    left: 36.9%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 
 #longitude-label {
     position: absolute;
-    bottom: 47%;
-    left: 15%;
+    bottom: 47.5%;
+    left: 14.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #latitude-label {
     position: absolute;
-    bottom: 47%;
+    bottom: 47.5%;
     left: 31.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #website-label {
     position: absolute;
-    bottom: 41.5%;
-    left: 15%;
+    bottom: 41.7%;
+    left: 14.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 
 #img-label {
     position: absolute;
-    bottom: 41.5%;
+    bottom: 41.7%;
     left: 31.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
+}
+
+#about-label {
+    position: absolute;
+    bottom: 27.7%;
+    left: 14.5%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 13px;
+    color: #008EA7;
+    font-weight: 600;
 }
 
 /* ::placeholder{

@@ -426,6 +426,7 @@ const CreateBusiness = () => {
                             </div>
                             {/*------- ABOUT -------*/}
                             <div id='about-textarea-div'>
+                                <label id="about-label">About</label>
                                 <textarea
                                     className='create-business-input'
                                     id='create-text-area'
