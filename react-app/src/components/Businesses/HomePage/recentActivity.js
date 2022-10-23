@@ -11,6 +11,7 @@ import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
 import nopes2 from "../../../assets/nopes/2-nopes.png"
 import nopes1 from "../../../assets/nopes/1-nopes.png"
+import Categories from './Categories'
 
 
 function RecentActivity() {
@@ -296,6 +297,8 @@ function RecentActivity() {
                             </div>
                         </div>
                     </div>
+                    <Categories />
+                    <br /><br /><br /><br />
                     <br /><br /><br /><br />
                     <Footer />
                 </>

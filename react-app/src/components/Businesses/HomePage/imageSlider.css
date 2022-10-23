@@ -76,6 +76,7 @@ a:active { text-decoration: none; }
 }
 
 .text-contacts-container {
+  margin-left: 115px;
     padding-left: 40px;
     font-family: 'Open Sans', sans-serif;
     color: white;
@@ -141,6 +142,7 @@ a:active { text-decoration: none; }
     float: left;
     padding-right: 0px;
     border-radius: 999px;
+    margin-left: 115px;
 }
 
 .bar1 {

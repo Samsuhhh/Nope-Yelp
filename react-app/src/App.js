@@ -26,6 +26,7 @@ import BusinessImages from './components/Businesses/BusinessImages';
 import AddBusinessImage from './components/Businesses/AddBusinessImage';
 import CurrentUserBusinesses from './components/Businesses/CurrentUserBusinesses';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const [search, setSearch] = useState([])
