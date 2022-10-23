@@ -506,7 +506,7 @@ const CreateBusiness = () => {
                     <div id='goop-container'>
                         <img id='goop-validations' src='https://i.imgur.com/CsnWphk.png' alt='gooper' />
                         {showErrors &&
-                            <div id={validationErrors.length ? 'validations-div' : 'hidden'} >
+                            <div className='validation-div-scroll' id={validationErrors.length ? 'validations-div' : 'hidden'} >
                             {/* <div id={`${hiddenDiv(!validationErrors.length)}`} style={{backgroundColor: whatever}}> */}
                                 <ul>
                                     {validationErrors.map((e, i) => {
