@@ -70,8 +70,8 @@ function App() {
         <Route path='/' exact={true}>
           <NavBar setSearch={setSearch} />
           <HomeSlider />
-          <RecentActivity />
-          <Categories setSearch={setSearch}/>
+          <RecentActivity setSearch={setSearch} />
+
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
