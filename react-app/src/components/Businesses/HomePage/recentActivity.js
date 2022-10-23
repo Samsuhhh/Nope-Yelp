@@ -297,10 +297,10 @@ function RecentActivity() {
                             </div>
                         </div>
                     </div>
-                    <Categories />
+                    {/* <Categories />
                     <br /><br /><br /><br />
                     <br /><br /><br /><br />
-                    <Footer />
+                    <Footer /> */}
                 </>
             }
         </>

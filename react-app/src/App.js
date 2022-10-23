@@ -25,7 +25,7 @@ import UserProfile from './components/UserProfile';
 import BusinessImages from './components/Businesses/BusinessImages';
 import AddBusinessImage from './components/Businesses/AddBusinessImage';
 import CurrentUserBusinesses from './components/Businesses/CurrentUserBusinesses';
-
+import Categories from './components/Businesses/HomePage/Categories';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -69,8 +69,9 @@ function App() {
 
         <Route path='/' exact={true}>
           <NavBar setSearch={setSearch} />
-          <RecentActivity />
           <HomeSlider />
+          <RecentActivity />
+          <Categories setSearch={setSearch}/>
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
