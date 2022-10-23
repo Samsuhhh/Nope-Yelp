@@ -28,7 +28,7 @@ function AddBusiness() {
             <div className="add-business-nav-bar">
                 <div className="add-business-nav-bar-content-wrapper">
                 <Link to={`/`}>
-                    <img id="add-business-nav-bar-logo" src={nope} />
+                    <img id="add-business-nav-bar-logo" src={nope} alt='nope icon' />
                     </Link>
                     <Link to="/">
                         <div className="add-business-nav-bar-back-to-nope">Back to nope</div></Link>
@@ -46,22 +46,22 @@ function AddBusiness() {
                         </div>
                         <NavLink to={'/createabusiness'} className="create-business-ad-card-create-button">Manage my free listing</NavLink>
                     </div>
-                    <img src={as1} />
+                    <img src={as1} alt='add business icon' />
                 </div>
 
                 <div className="create-business-trio-card-wrapper">
                     <div className="create-business-trio-card 1">
-                        <img id="svg-trio-card" src={ic1} />
+                        <img id="svg-trio-card" src={ic1}  alt='svg icon'/>
                         <div className="svg-trio-card-title">Get 24/7 presence in 5 mins</div>
                         <div className="svg-trio-card-paragraph">Be present 24/7 with your always-on free page so customers can always find you.</div>
                     </div>
                     <div className="create-business-trio-card 2">
-                        <img id="svg-trio-card" src={ic2} />
+                        <img id="svg-trio-card" src={ic2} alt='svg icon' />
                         <div className="svg-trio-card-title">Get found & grow</div>
                         <div className="svg-trio-card-paragraph">Your page gets you in front of ready-to-spend customers both on and beyond Nope.</div>
                     </div>
                     <div className="create-business-trio-card 3">
-                        <img id="svg-trio-card" src={ic3} />
+                        <img id="svg-trio-card" src={ic3}  alt='svg icon'/>
                         <div className="svg-trio-card-title">Help them choose you</div>
                         <div className="svg-trio-card-paragraph">Add your worst photos, fill out your page with business specialties, and more.</div>
                     </div>
@@ -70,7 +70,7 @@ function AddBusiness() {
 
                 <div className="add-business-mid-page-container">
                     <div className="add-business-mid-info-wrapper">
-                        <img src={as2} />
+                        <img src={as2} alt='add business icon2'/>
                         <div className="add-business-mid-info">
                             <div className="add-business-mid-page">
                                 BUSINESS PAGE
@@ -83,15 +83,15 @@ function AddBusiness() {
                             </div>
                             <div className="add-business-mid-checklist">
                                 <div>
-                                    <img id="chk" src={chk} />
+                                    <img id="chk" src={chk} alt='checkmark' />
                                     Update your business info so people can find you
                                 </div>
                                 <div>
-                                    <img id="chk" src={chk} />
+                                    <img id="chk" src={chk} alt='checkmark' />
                                     Cry at your reviews and messages as soon as they come in
                                 </div>
                                 <div>
-                                    <img id="chk" src={chk} />
+                                    <img id="chk" src={chk} alt='checkmark' />
                                     Add photos to showcase the worst of your business
                                 </div>
                             </div>
@@ -103,7 +103,7 @@ function AddBusiness() {
                         <div className="add-business-mid-features-trio">
                             <div className="add-business-mid-features-trio-item">
                                 <div className="add-business-mid-features-trio-item-title">
-                                    <img id="f-icons" src={ficon5} />
+                                    <img id="f-icons" src={ficon5} alt='check icon'/>
                                     Listing
                                 </div>
                                 <div className="item-unordered-list">
@@ -114,7 +114,7 @@ function AddBusiness() {
                             </div>
                             <div className="add-business-mid-features-trio-item">
                                 <div className="add-business-mid-features-trio-item-title">
-                                    <img id="f-icons" src={ficon7} />
+                                    <img id="f-icons" src={ficon7} alt='phone icon'/>
                                     Contact
                                 </div>
                                 <div className="item-unordered-list">
@@ -125,7 +125,7 @@ function AddBusiness() {
                             </div>
                             <div className="add-business-mid-features-trio-item">
                                 <div className="add-business-mid-features-trio-item-title">
-                                    <img id="f-icons" src={ficon6} />
+                                    <img id="f-icons" src={ficon6} alt='clock icon'/>
                                     Availability
                                 </div>
                                 <div className="item-unordered-list">
@@ -139,7 +139,7 @@ function AddBusiness() {
                         <div className="add-business-mid-features-trio">
                             <div className="add-business-mid-features-trio-item">
                                 <div className="add-business-mid-features-trio-item-title">
-                                    <img id="f-icons" src={ficon2} />
+                                    <img id="f-icons" src={ficon2} alt='book icon' />
                                     Offerings
                                 </div>
                                 <div className="item-unordered-list">
@@ -150,7 +150,7 @@ function AddBusiness() {
                             </div>
                             <div className="add-business-mid-features-trio-item">
                                 <div className="add-business-mid-features-trio-item-title">
-                                    <img id="f-icons" src={ficon3} />
+                                    <img id="f-icons" src={ficon3} alt='box icon'/>
                                     Personal
                                 </div>
                                 <div className="item-unordered-list">
@@ -161,7 +161,7 @@ function AddBusiness() {
                             </div>
                             <div className="add-business-mid-features-trio-item">
                                 <div className="add-business-mid-features-trio-item-title">
-                                    <img id="f-icons" src={ficon4} />
+                                    <img id="f-icons" src={ficon4} alt='camera icon'/>
                                     Attract
                                 </div>
                                 <div className="item-unordered-list">
@@ -175,7 +175,7 @@ function AddBusiness() {
                         <div className="add-business-mid-features-trio">
                             <div className="add-business-mid-features-trio-item">
                                 <div className="add-business-mid-features-trio-item-title">
-                                    <img id="f-icons" src={ficon9} />
+                                    <img id="f-icons" src={ficon9} alt='text icon'/>
                                     Connect
                                 </div>
                                 <div className="item-unordered-list">
@@ -186,7 +186,7 @@ function AddBusiness() {
                             </div>
                             <div className="add-business-mid-features-trio-item">
                                 <div className="add-business-mid-features-trio-item-title">
-                                    <img id="f-icons" src={ficon8} />
+                                    <img id="f-icons" src={ficon8} alt='star icon' />
                                     Interactions
                                 </div>
                                 <div className="item-unordered-list">
@@ -197,7 +197,7 @@ function AddBusiness() {
                             </div>
                             <div className="add-business-mid-features-trio-item">
                                 <div className="add-business-mid-features-trio-item-title">
-                                    <img id="f-icons" src={ficon1} />
+                                    <img id="f-icons" src={ficon1} alt='bar icon'/>
                                     Performance
                                 </div>
                                 <div className="item-unordered-list">

@@ -259,13 +259,6 @@ const CreateBusiness = () => {
 
                     <div id='form-content'>
                         <form onSubmit={handleSubmit}>
-                            {/* {showErrors &&
-                            <ul>
-                                {validationErrors.map((e, i) => {
-                                    return <div key={i}>{e}</div>
-                                })}
-                            </ul>
-                        } */}
                             {/*------- BUSINESS NAME  -------*/}
                             <div className='create-input-divs'>
                                 <input
@@ -397,17 +390,6 @@ const CreateBusiness = () => {
                             {/*------- PRICE RANGE -------*/}
                             <div id='tags-price-inputs'>
                                 <div id='price-select-div-hover'>
-
-                                    {/* <select
-                                        value={priceRange}
-                                        onChange={updatePriceRange}
-                                        required>
-                                        <option value=''>Select a price range</option>
-                                        <option value='1'>$</option>
-                                        <option value='2'>$$</option>
-                                        <option value='3'>$$$</option>
-                                        <option value='4'>$$$$</option>
-                                    </select> */}
                                     <div id='priceHeading'>What is the price range of your business?</div>
                                     <div id='price-setter-container'>
                                         <fieldset id='fieldset-price' className="rate" value={priceRange} onChange={updatePriceRange}>
@@ -507,7 +489,6 @@ const CreateBusiness = () => {
                         <img id='goop-validations' src='https://i.imgur.com/CsnWphk.png' alt='gooper' />
                         {showErrors &&
                             <div id={validationErrors.length ? 'validations-div' : 'hidden'} >
-                            {/* <div id={`${hiddenDiv(!validationErrors.length)}`} style={{backgroundColor: whatever}}> */}
                                 <ul>
                                     {validationErrors.map((e, i) => {
                                         return (

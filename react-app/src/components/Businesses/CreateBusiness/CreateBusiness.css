@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     padding-left: 10%;
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 #create-form-page-right-half {
@@ -71,16 +71,15 @@
 #create-form-header {
     width: 100%;
     /* height: 50%; */
-    /* margin-top: 26px; */
 }
 
 #create-form-header>h1 {
-    line-height: 36px;
+    line-height: 30px;
     overflow-wrap: break-word;
 }
 
 #form-content {
-    margin-top: 36px;
+    margin-top: 25px;
     border: 1px solid #ebebeb;
     border-radius: 15px;
     padding: 10px 20px 20px 20px;
