@@ -35,6 +35,7 @@
 
 #goop-validations {
     width: 80%;
+    z-index: 0;
 }
 
 #bNope {
@@ -52,13 +53,19 @@
     top: 25%;
     right: 18%;
     width: 320px;
-    height: 200px;
+    height: 210px;
     /* border: 1px solid red; */
     row-gap: 20px;
     background-color: #ffda18;
     /* background-color: transparent; */
 
+    /* overflow: hidden; */
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
+
+
 
 #create-form-container-left {
     width: 70%;
@@ -586,7 +593,7 @@ input:checked~.lbl:hover~.lbl,
     font-weight: 600;
     font-size: 15px;
     color: white;
-    background-color: #E00707;
+    background-color: rgb(224, 7, 7);
     border: 1px solid lightgrey;
     border-radius: 5px;
     cursor: pointer;
@@ -595,3 +602,24 @@ input:checked~.lbl:hover~.lbl,
     align-items: center;
     margin-top: 10px;
 }
+
+#tag-confirm-button:disabled{
+    background-color: rgba(224, 7, 7, .35);
+}
+
+#error-div {
+    animation: fade 1s linear forwards;
+}
+
+@keyframes fade {
+    from {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }

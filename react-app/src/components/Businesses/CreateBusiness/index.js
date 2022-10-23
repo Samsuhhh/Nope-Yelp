@@ -190,7 +190,7 @@ const CreateBusiness = () => {
         // console.log(tags.length)
         setValidationErrors(errors)
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
-        about, longitude, latitude, priceRange, website, imgUrl, tags, tagsList, helper ])
+        about, longitude, latitude, priceRange, website, imgUrl, tags, tagsList, helper])
     const handleSubmit = async (e) => {
         e.preventDefault()
         setShowErrors(true)
@@ -238,7 +238,7 @@ const CreateBusiness = () => {
             <div className="add-business-nav-bar">
                 <div className="add-business-nav-bar-content-wrapper">
                     <Link to="/">
-                    <img alt='navlogo' id="add-business-nav-bar-logo" src={nope} />
+                        <img alt='navlogo' id="add-business-nav-bar-logo" src={nope} />
                     </Link>
                     <Link to="/">
                         <div className="add-business-nav-bar-back-to-nope">Back to nope</div></Link>
@@ -261,7 +261,7 @@ const CreateBusiness = () => {
                         <form onSubmit={handleSubmit}>
                             {/*------- BUSINESS NAME  -------*/}
                             <div className='create-input-divs'>
-                                
+
                                 <label id='name-label'>Business name</label>
                                 <input
                                     className='create-business-input'
@@ -270,7 +270,7 @@ const CreateBusiness = () => {
                                     value={businessName}
                                     onChange={updateBusinessName}
                                     required />
-                                
+
                             </div>
                             <div className='fragmented-divs-container-address-LL-url'>
                                 {/*------ EMAIL ------*/}
@@ -467,11 +467,13 @@ const CreateBusiness = () => {
                                                 })}
                                             </div>
                                         </div>
-                                        <div
+                                        <button
+                                            type='button'
                                             id='tag-confirm-button'
-                                            onClick={confirmModal}>
+                                            onClick={confirmModal}
+                                            disabled={tagsList.length < 3}>
                                             Confirm
-                                        </div>
+                                        </button>
                                     </Modal>
                                 </div>
 
@@ -501,7 +503,8 @@ const CreateBusiness = () => {
                     <div id='goop-container'>
                         <img id='goop-validations' src='https://i.imgur.com/CsnWphk.png' alt='gooper' />
                         {showErrors &&
-                            <div id={validationErrors.length ? 'validations-div' : 'hidden'} >
+                            <div className='validation-div-scroll' id={validationErrors.length ? 'validations-div' : 'hidden'} >
+                                {/* <div id={`${hiddenDiv(!validationErrors.length)}`} style={{backgroundColor: whatever}}> */}
                                 <ul>
                                     {validationErrors.map((e, i) => {
                                         return (
@@ -524,5 +527,4 @@ const CreateBusiness = () => {
 }
 
 
-
-export default CreateBusiness
+            export default CreateBusiness
