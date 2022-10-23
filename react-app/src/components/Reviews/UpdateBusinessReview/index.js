@@ -92,7 +92,7 @@ const UpdateBusinessReview = () => {
                                 <img id="write-review-logo" src={nope} />
                             </NavLink>
 
-                            <img id="user-avatar" src={js} />
+                            <img id="user-avatar" src={user.userAvatar} />
                         </div>
                     </div>
                     <div className="review-wrapper">
@@ -150,15 +150,15 @@ const UpdateBusinessReview = () => {
                                     <form onSubmit={handleSubmit}>
                                         <div>
                                             {showErrors &&
-                                                <ul>
+                                                <div id="error-holder">
                                                     {validationErrors.map((e, i) => {
-                                                        return <div key={i}>{e}</div>
+                                                        return <div id="review-error" key={i}>{e}</div>
                                                     })}
-                                                </ul>
+                                                </div>
                                             }
                                             <textarea
                                                 type='text'
-                                                placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar mattis nunc sed blandit libero volutpat. Sit amet consectetur adipiscing elit. Porttitor massa id neque aliquam vestibulum morbi blandit. Netus et malesuada fames ac turpis egestas maecenas. Urna neque viverra justo nec ultrices dui sapien eget mi. Molestie at elementum eu facilisis sed. Auctor elit sed vulputate mi sit amet mauris. Mauris nunc congue nisi vitae suscipit tellus mauris a diam. Nunc mattis enim ut tellus elementum sagittis. Donec adipiscing tristique risus nec feugiat in fermentum posuere.'
+                                                placeholder="Really, I don't know what I was expecting. For a place that seems to have it all together on the outside they really don't have it all together on the inside. There's a lesson to be learned here... something about judging a book by it's cover. But also maybe I didn't give this place a fair shot. Afterall I did go inside and left immediately. I did however find what I believe to be the best Panda Express possibly in the country. Honey walnut shrimp was divine. I washed that thing down with an ice cold pepsi and just basked in what was possibly the happiest food coma I've ever had."
                                                 value={review}
                                                 required
                                                 onChange={(e) => setReview(e.target.value)} />
