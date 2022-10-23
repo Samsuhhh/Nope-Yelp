@@ -1,21 +1,77 @@
 #create-business-form-page {
-    border: 1px solid red;
     /* display: flex; */
     /* justify-content: center; */
-    font-family: "Open Sans"
+    font-family: "Open Sans";
+    display: flex;
+    justify-content: center;
+    padding-left: 10%;
+    margin-top: 3%;
+}
+
+#create-form-page-right-half {
+    width: 100%;
+    background-color: #f1f1f1 !important;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#goop-container {
+    width: 70%;
+    height: 70%;
+    z-index: -1;
+    margin-left: 18%;
+}
+
+#error-div {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+#goop-validations {
+    width: 80%;
+}
+
+#bNope {
+    width: 25px;
+    height: 25px;
+    padding-right: 10px;
+}
+
+#hidden{
+    display: none
+}
+
+#validations-div {
+    position: absolute;
+    top: 25%;
+    right: 18%;
+    width: 320px;
+    height: 200px;
+    /* border: 1px solid red; */
+    row-gap: 20px;
+    background-color: #ffda18;
+    /* background-color: transparent; */
 
 }
 
-#create-form-container {
-    border: 1px dashed blue;
-    width: 50%;
+#create-form-container-left {
+    width: 70%;
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 #create-form-header {
     width: 100%;
-    height: 100%;
-    margin-top: 26px;
+    /* height: 50%; */
+    /* margin-top: 26px; */
 }
 
 #create-form-header>h1 {
@@ -160,6 +216,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 10px;
+    /* border: 1px solid pink; */
 }
 
 #click-me {
@@ -190,9 +248,11 @@
     font-size: 13.5px;
 }
 
+#checkbox-input:hover,
 #checkbox-input {
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 #text-align-center {
@@ -227,12 +287,25 @@
 }
 
 
-/* price setter */
+#price-setter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 175px;
+    height: 40px;
+}
 
 #fieldset-price {
     border: 1px solid lightgrey;
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 6px 16px 0px;
+    
+    /* height: 40px; */
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+
+
 }
 
 
@@ -241,19 +314,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* border: 1px solid red; */
+    text-align: center;
 }
 
 #open-tags-modal {
-    margin-top: 18px;
-    margin-bottom: 22px;
-    font-size: 18px;
+    /* margin-top: 15px;*/
+    margin-bottom: 10px;
+    font-size: 15px;
     font: "Open Sans";
     font-weight: 400px;
 }
 
 #priceHeading {
-    font-size: 18px;
-    margin-top: 28px;
+    font-size: 15px;
     margin-bottom: 10px;
     font: "Open Sans";
     font-weight: 400;
@@ -264,38 +338,40 @@
     border: 0;
 }
 
-.rate>input {
+.rate> input{
     display: none;
 }
 
-.rate>label {
+.rate > .lbl {
     float: right;
 }
 
-.rate>label:before {
+.rate > .lbl:before {
     display: inline-block;
-    font-size: 2rem;
-    padding: .3rem .2rem;
+    font-size: 24px;
+    padding-left: 10px;
     margin: 0;
     cursor: pointer;
     font-family: system-ui;
     content: "$";
-    /* position: relative; */
-    /* color: lightgrey; */
 }
 
-.priceInput:checked~label,
-label:hover,
-label:hover~label {
-    color: #FFD700
-}
 
-.priceInput:checked+label:hover,
-.priceInput:checked~label:hover,
-input:checked~label:hover~label,
-label:hover~.priceInput:checked~label {
+input:checked ~ .lbl,
+.lbl:hover,
+.lbl:hover ~ .lbl {
     color: #FFD700;
 }
+
+input:checked+.lbl:hover,
+input:checked~.lbl:hover,
+input:checked~.lbl:hover~.lbl,
+.lbl:hover~input:checked~.lbl {
+    color: #FFD700;
+} 
+
+
+
 
 #button-width {
     width: 100%;
@@ -305,23 +381,23 @@ label:hover~.priceInput:checked~label {
 
 #button-container {
     display: flex;
-    width: 400px;
+    width: 100%;
     justify-content: center;
-    justify-content: space-around;
+    justify-content: flex-end;
     margin-top: 25px;
 }
 
 #tags-button,
 #tags-button:hover {
-    width: 147.5px;
-    height: 55px;
+    width: 175px;
+    height: 40px;
     cursor: pointer;
     border: 1px solid lightgrey;
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 6px 16px 0px;
     background-color: white;
-    font-size: 30px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
     font-family: "Open Sans";
     display: flex;
     justify-content: center;
@@ -342,6 +418,7 @@ label:hover~.priceInput:checked~label {
     border: 1px solid lightgrey;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 15px;
 }
 
 .create-business-input {
