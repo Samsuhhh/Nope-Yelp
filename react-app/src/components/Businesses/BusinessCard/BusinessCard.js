@@ -59,19 +59,19 @@ export default function BusinessCard({ search }) {
   })
 
   let nope1 = Object.values(search).filter(business => {
-    return Math.floor(business.review_average) === 1
+    return business.review_average === 1
   })
   let nope2 = Object.values(search).filter(business => {
-    return Math.floor(business.review_average) === 2
+    return business.review_average === 2
   })
   let nope3 = Object.values(search).filter(business => {
-    return Math.floor(business.review_average) === 3
+    return business.review_average === 3
   })
   let nope4 = Object.values(search).filter(business => {
-    return Math.floor(business.review_average) === 4
+    return business.review_average === 4
   })
   let nope5 = Object.values(search).filter(business => {
-    return Math.floor(business.review_average) === 5
+    return business.review_average === 5
   })
 
   const resetFilter = Object.values(search)
@@ -285,9 +285,9 @@ export default function BusinessCard({ search }) {
                           <img id='nopes' alt='nopes' style={{ height: "23px", width: "125px" }} src={nopeRatingBar(business.review_average)} ></img>
                         </div>
                         <div id="business-card-review-average-div">
-                          <span >{Math.ceil(business.review_average)}</span>
+                          <span >{business.review_average > 0 ? Math.ceil(business.review_average) : 'New' }</span>
                         </div>
-                        <div id="business-card-grumble-count-div">({business.review_count} {" "}{business.review_count > 1 ? "Grumbles" : "Grumble"})</div>
+                        <div id="business-card-grumble-count-div">({business.review_count > 0 ? business.review_count : '0'} {" "}{business.review_count > 1 || !business.review_count ? "Grumbles" : "Grumble"})</div>
                       </div>
                       <div><button className="tag-button">{business?.tags[0]?.tag}</button>{" "}<button className="tag-button">{business?.tags[1]?.tag}</button>{" "}
                         <button className="tag-button">{business?.tags[2]?.tag}</button>{" "}<span>{priceRange(business.price_range)} &#x2022;
