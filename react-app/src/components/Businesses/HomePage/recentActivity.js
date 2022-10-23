@@ -11,10 +11,11 @@ import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
 import nopes2 from "../../../assets/nopes/2-nopes.png"
 import nopes1 from "../../../assets/nopes/1-nopes.png"
+import userprofileicon from '../../../assets/icons/userprofile.svg'
 import Categories from './Categories'
 
 
-function RecentActivity({setSearch}) {
+function RecentActivity({ setSearch }) {
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
     const review = useSelector(state => state.reviews.allReviews)
@@ -29,6 +30,10 @@ function RecentActivity({setSearch}) {
         else return null
     }
 
+    const imageOnErrorHandler = (event) => {
+        event.currentTarget.src = userprofileicon;
+      };
+
     useEffect(() => {
         dispatch(getAllBusinessesReviews())
             .then(() => { setIsLoaded(true) })
@@ -40,7 +45,7 @@ function RecentActivity({setSearch}) {
         <>
             {isLoaded &&
                 <>
-                <div className="whitespace-top-recent-act"></div>
+                    <div className="whitespace-top-recent-act"></div>
                     <div className='recent-act-wrapper'>
                         <div className='recent-act-body'>
                             <div className='recent-act-title-wrapper'>
@@ -51,7 +56,7 @@ function RecentActivity({setSearch}) {
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
                                             {console.log('rev array', Object.values(review))}
-                                            <img id="grid-avi" src={review[Object.values(review).length]?.owner?.userAvatar} />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length]?.owner?.userAvatar}`} onError={imageOnErrorHandler}/>
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
                                             <div className='user-name-recent-act-grid'>{review[Object.values(review).length]?.owner?.firstName} {review[Object.values(review).length]?.owner?.lastName}</div>
@@ -63,10 +68,10 @@ function RecentActivity({setSearch}) {
                                     </div>
 
 
-                                        <div className='business-name-recent-act-grid'>
+                                    <div className='business-name-recent-act-grid'>
                                         <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length]?.business_id}`}>{business?.[review[Object.values(review).length]?.business_id]?.business_name}
                                         </Link>
-                                        </div>
+                                    </div>
 
 
                                     <div className='nopes-recent-act-grid'>
@@ -297,7 +302,7 @@ function RecentActivity({setSearch}) {
                             </div>
                         </div>
                     </div>
-                    <Categories setSearch={setSearch}/>
+                    <Categories setSearch={setSearch} />
                     <br /><br /><br /><br />
                     <br /><br /><br /><br />
                     <Footer />
