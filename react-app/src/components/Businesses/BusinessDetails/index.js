@@ -155,23 +155,23 @@ const BusinessDetails = ({ search, onClose }) => {
     }
     const imgOnLoadHandlerAvatar = e => {
         console.log("loaded")
-        if(e.currentTarget.className !=="error") {
-          console.log("success")
+        if (e.currentTarget.className !== "error") {
+            console.log("success")
         }
-      }
-      const imageOnErrorHandlerAvatar = (event) => {
+    }
+    const imageOnErrorHandlerAvatar = (event) => {
         event.currentTarget.src = userprofileicon;
-      };
+    };
 
-      const imgOnLoadHandlerBiz = e => {
+    const imgOnLoadHandlerBiz = e => {
         console.log("loaded")
-        if(e.currentTarget.className !=="error") {
-          console.log("success")
+        if (e.currentTarget.className !== "error") {
+            console.log("success")
         }
-      }
-      const imageOnErrorHandlerBiz = (event) => {
+    }
+    const imageOnErrorHandlerBiz = (event) => {
         event.currentTarget.src = businessicon;
-      };
+    };
     const phoneStyling = (phone) => {
         let split = phone.split("");
         split.unshift('(')
@@ -231,11 +231,11 @@ const BusinessDetails = ({ search, onClose }) => {
                                     <div className='carousel-images'>
                                         <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
                                         <img
-                                        id="caro-img"
-                                        alt='yes'
-                                        src={image.url}
-                                        onLoad={imgOnLoadHandlerBiz}
-                                        onError={imageOnErrorHandlerBiz}
+                                            id="caro-img"
+                                            alt='yes'
+                                            src={`${image.url}`}
+                                            onLoad={imgOnLoadHandlerBiz}
+                                            onError={imageOnErrorHandlerBiz}
                                         ></img>
                                         <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
                                     </div>
@@ -258,7 +258,7 @@ const BusinessDetails = ({ search, onClose }) => {
                                 <div id='business-details-info-price-tags'>
                                     <div id='flex-row-tags' className='info-price-tags'>
                                         <div id='claimed'>
-                                            <img alt='check' id='circle-check-svg'src={circlecheck}></img>
+                                            <img alt='check' id='circle-check-svg' src={circlecheck}></img>
                                             Claimed
                                         </div>
                                         <div className='bull'>&bull;</div>
@@ -318,9 +318,9 @@ const BusinessDetails = ({ search, onClose }) => {
                             <div id='about-owner-content'>
                                 <div id='business-details-owner-avatar'>
                                     <img
-                                        alt='sexy pfp'
+                                        alt='Owner Avatar'
                                         id='owner-avatar'
-                                        src={business.Owner.userAvatar}
+                                        src={`${business.Owner.userAvatar}`}
                                         onLoad={imgOnLoadHandlerAvatar}
                                         onError={imageOnErrorHandlerAvatar}
                                     />
@@ -356,11 +356,11 @@ const BusinessDetails = ({ search, onClose }) => {
                                     <div id='left-user-review-info'>
                                         <div id="current-user-review-record">
                                             <img
-                                            alt='owner avatar'
-                                            id='owner-avatar'
-                                            src={currentUser.userAvatar}
-                                            onLoad={imgOnLoadHandlerAvatar}
-                                            onError={imageOnErrorHandlerAvatar}
+                                                alt='owner avatar'
+                                                id='owner-avatar'
+                                                src={`${currentUser.userAvatar}`}
+                                                onLoad={imgOnLoadHandlerAvatar}
+                                                onError={imageOnErrorHandlerAvatar}
                                             ></img>
                                             <div>
                                                 <div id="left-user-name-styling">{currentUser.username}</div>
@@ -381,11 +381,11 @@ const BusinessDetails = ({ search, onClose }) => {
                                     <div id='left-user-review-info'>
                                         <div id="current-user-review-record">
                                             <img
-                                            alt='owner avatar'
-                                            id='owner-avatar'
-                                            src={currentUser.userAvatar}
-                                            onLoad={imgOnLoadHandlerAvatar}
-                                            onError={imageOnErrorHandlerAvatar}
+                                                alt='User Avatar'
+                                                id='owner-avatar'
+                                                src={`${currentUser.userAvatar}`}
+                                                onLoad={imgOnLoadHandlerAvatar}
+                                                onError={imageOnErrorHandlerAvatar}
                                             ></img>
                                             <div>
                                                 <div id="left-user-name-styling">{currentUser.username}</div>

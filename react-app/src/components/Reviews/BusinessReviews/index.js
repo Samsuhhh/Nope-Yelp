@@ -58,8 +58,8 @@ const BusinessReview = () => {
                                 <div id='review-user-avatar-div'>
                                     <img
                                         id='user-avatar'
+                                        src={`${review.Owner.userAvatar}`}
                                         alt='user avatar'
-                                        src={review.Owner.userAvatar}
                                         onLoad={imgOnLoadHandler}
                                         onError={imageOnErrorHandler}
                                     />

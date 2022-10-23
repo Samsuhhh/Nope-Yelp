@@ -76,8 +76,8 @@ const UserProfile = () => {
           <div id="user-information-div">
             <img
             src={user.userAvatar}
-            id="user-profile-pic" 
-            alt='user profile' 
+            id="user-profile-pic"
+            alt='user profile'
             onLoad={imgOnLoadHandler}
             onError={imgOnErrorHandler}
             />

@@ -439,7 +439,7 @@ input:checked~.lbl:hover~.lbl,
     font-weight: 600;
     font-size: 15px;
     color: white;
-    background-color: #E00707;
+    background-color: rgb(224, 7, 7);
     border: 1px solid lightgrey;
     border-radius: 5px;
     cursor: pointer;
@@ -447,6 +447,10 @@ input:checked~.lbl:hover~.lbl,
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+}
+
+#tag-confirm-button:disabled{
+    background-color: rgba(224, 7, 7, .35);
 }
 
 #error-div {

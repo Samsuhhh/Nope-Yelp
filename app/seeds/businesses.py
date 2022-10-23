@@ -1588,7 +1588,7 @@ businesses = [
      'latitude': 33.8478353,
      'price_range': 3,
      'website': "https://buckhead.5church-atlanta.com/",
-     'tags': ['Tapas', 'Breweries']
+     'tags': ['Tapas', 'Breweries', 'Asian Fusion']
      },
     {'owner_id': 11,
      'business_name': 'Okiboru Tsukemen & Ramen',
