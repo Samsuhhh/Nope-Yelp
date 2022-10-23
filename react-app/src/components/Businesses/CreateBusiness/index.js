@@ -259,26 +259,23 @@ const CreateBusiness = () => {
 
                     <div id='form-content'>
                         <form onSubmit={handleSubmit}>
-                            {/* {showErrors &&
-                            <ul>
-                                {validationErrors.map((e, i) => {
-                                    return <div key={i}>{e}</div>
-                                })}
-                            </ul>
-                        } */}
                             {/*------- BUSINESS NAME  -------*/}
                             <div className='create-input-divs'>
+
+                                <label id='name-label'>Business name</label>
                                 <input
                                     className='create-business-input'
                                     type='text'
-                                    placeholder='Business Name'
+                                    placeholder='Business name'
                                     value={businessName}
                                     onChange={updateBusinessName}
                                     required />
+
                             </div>
                             <div className='fragmented-divs-container-address-LL-url'>
                                 {/*------ EMAIL ------*/}
                                 <div className='fragmented-div-styling'>
+                                    <label id="email-label">Email</label>
                                     <input
                                         className='create-business-input'
                                         type='text'
@@ -289,6 +286,7 @@ const CreateBusiness = () => {
                                 </div>
                                 {/*------ PHONE ------*/}
                                 <div className='fragmented-div-styling'>
+                                    <label id='phone-label'>Phone</label>
                                     <input
                                         className='create-business-input'
                                         type='text'
@@ -301,6 +299,7 @@ const CreateBusiness = () => {
                             <div className='fragmented-container' >
                                 {/* ------ STREET ADDRESS ------ */}
                                 <div id='address-input-div'>
+                                    <label id='address-label'>Address</label>
                                     <input
                                         className='create-business-input'
                                         type='text'
@@ -312,6 +311,7 @@ const CreateBusiness = () => {
                                 <div className='fragmented-divs-container-address-LL-url'>
                                     {/*------ CITY ------*/}
                                     <div className='fragmented-address-div'>
+                                        <label id='city-label'>City</label>
                                         <input
                                             className='create-business-input'
                                             type='text'
@@ -322,6 +322,7 @@ const CreateBusiness = () => {
                                     </div>
                                     {/*------- STATE -------*/}
                                     <div className='fragmented-address-div'>
+                                        <label id='state-label'>State</label>
                                         <input
                                             className='create-business-input'
                                             type='text'
@@ -332,6 +333,7 @@ const CreateBusiness = () => {
                                     </div>
                                     {/*------- ZIPCODE -------*/}
                                     <div className='fragmented-address-div'>
+                                        <label id='zipcode-label'>Zipcode</label>
                                         <input
                                             className='create-business-input'
                                             type='number'
@@ -348,6 +350,7 @@ const CreateBusiness = () => {
                                 <div className='fragmented-divs-container-address-LL-url'>
                                     {/*------- LONGITUDE -------*/}
                                     <div className='fragmented-div-styling'>
+                                        <label id='longitude-label'>Longitude</label>
                                         <input
                                             className='create-business-input'
                                             type='text'
@@ -360,6 +363,7 @@ const CreateBusiness = () => {
                                     </div>
                                     {/*------- LATITUDE -------*/}
                                     <div className='fragmented-div-styling'>
+                                        <label id='latitude-label'>Latitude</label>
                                         <input
                                             className='create-business-input'
                                             type='text'
@@ -374,6 +378,7 @@ const CreateBusiness = () => {
                                 <div className='fragmented-divs-container-address-LL-url'>
                                     {/*------- WEBSITE -------*/}
                                     <div className='fragmented-div-styling'>
+                                        <label id='website-label'>Website URL</label>
                                         <input
                                             className='create-business-input'
                                             type='text'
@@ -384,6 +389,7 @@ const CreateBusiness = () => {
                                     </div>
                                     {/*------- IMG URL -------*/}
                                     <div className='fragmented-div-styling'>
+                                        <label id='img-label'>IMG Url</label>
                                         <input
                                             className='create-business-input'
                                             type='text'
@@ -397,17 +403,6 @@ const CreateBusiness = () => {
                             {/*------- PRICE RANGE -------*/}
                             <div id='tags-price-inputs'>
                                 <div id='price-select-div-hover'>
-
-                                    {/* <select
-                                        value={priceRange}
-                                        onChange={updatePriceRange}
-                                        required>
-                                        <option value=''>Select a price range</option>
-                                        <option value='1'>$</option>
-                                        <option value='2'>$$</option>
-                                        <option value='3'>$$$</option>
-                                        <option value='4'>$$$$</option>
-                                    </select> */}
                                     <div id='priceHeading'>What is the price range of your business?</div>
                                     <div id='price-setter-container'>
                                         <fieldset id='fieldset-price' className="rate" value={priceRange} onChange={updatePriceRange}>
@@ -532,5 +527,4 @@ const CreateBusiness = () => {
 }
 
 
-
-export default CreateBusiness
+            export default CreateBusiness
