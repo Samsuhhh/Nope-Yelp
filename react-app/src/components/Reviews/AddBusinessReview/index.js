@@ -6,7 +6,7 @@ import { createReview } from '../../../store/review'
 import { getSingleBusinessThunk } from '../../../store/business'
 import nope from '../../../assets/nope.png'
 import ratingimg from '../../../assets/nopes/ratingimg.png'
-import js from '../../../assets/icons/JavaScript.svg'
+// import js from '../../../assets/icons/JavaScript.svg'
 import './AddBusinessReview.css'
 
 const AddBusinessReview = () => {
@@ -43,7 +43,7 @@ const AddBusinessReview = () => {
 
     useEffect(() => {
         dispatch(getSingleBusinessThunk(businessId))
-    }, [dispatch])
+    }, [dispatch, businessId])
 
     useEffect(() => {
         const errors = []

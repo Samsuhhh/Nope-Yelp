@@ -2,14 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory, Link } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+// import LogoutButton from './auth/LogoutButton';
 import { getAllBusinessesThunk } from '../store/business';
 import * as sessionActions from "../store/session"
 import nope from '../assets/nope-white.png';
 import magglass from '../assets/icons/mag-glass.png';
 import Fuse from 'fuse.js'
-import BusinessCard from './Businesses/BusinessCard/BusinessCard';
-import emailIcon from '../assets/icons/emailicon.svg'
+// import BusinessCard from './Businesses/BusinessCard/BusinessCard';
+// import emailIcon from '../assets/icons/emailicon.svg'
 import userprofileicon from '../assets/icons/userprofile.svg'
 import logouticon from '../assets/icons/logout.svg'
 
@@ -36,15 +36,9 @@ const NavBar = ({ setSearch }) => {
     dispatch(getAllBusinessesThunk())
   }, [dispatch])
 
-  const fuse = new Fuse(Object.values(businesses), options)
-  const results = fuse.search(query)
-  const businessResults = results.map(result => result.item)
-  const imgOnLoadHandler = e => {
-    console.log("loaded")
-    if(e.currentTarget.className !=="error") {
-      console.log("success")
-    }
-  }
+  // const fuse = new Fuse(Object.values(businesses), options)
+  // const results = fuse.search(query)
+
   const imageOnErrorHandler = (event) => {
     event.currentTarget.src = userprofileicon;
   };
@@ -88,7 +82,6 @@ const NavBar = ({ setSearch }) => {
     dispatch(sessionActions.logout());
     history.push('/')
   };
-  console.log("THIS IS user", sessionUser)
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -110,7 +103,6 @@ const NavBar = ({ setSearch }) => {
                   <img id='user-avatar-img'
                     src={`${sessionUser.userAvatar}`}
                     alt='avatar'
-                    onLoad={imgOnLoadHandler}
                     onError={imageOnErrorHandler} />
                 </button>
               </div>
@@ -188,14 +180,14 @@ const NavBar = ({ setSearch }) => {
     <nav className='navbar'>
       <div>
         <NavLink to='/' exact={true} activeClassName='active'>
-          <img src={nope} id="logo"></img>
+          <img src={nope} id="logo" alt='logo'></img>
         </NavLink>
       </div>
 
 
       <div className="search-wrapper">
-        <div class="search">
-          <div class="left-side">
+        <div className="search">
+          <div className="left-side">
             <form onSubmit={handleSearchSubmit}>
 
               <input type="search" value={query} onChange={handleOnSearch} id="search-input-field-business-list" placeholder="tacos, cheap dinner, Max's" className="field request" />
@@ -207,7 +199,7 @@ const NavBar = ({ setSearch }) => {
                 <li class="left-side__subitem"><a  class="left-side__sublink takeout">Takeout</a></li>
                 <li class="left-side__subitem"><a  class="left-side__sublink reservations">Reservations</a></li>
               </ul> */}
-              <button className="search-button-wrapper" type="submit" ><img id="mag" src={magglass} ></img></button>
+              <button className="search-button-wrapper" type="submit" ><img id="mag" src={magglass} alt='magglass'></img></button>
             </form>
 
           </div>

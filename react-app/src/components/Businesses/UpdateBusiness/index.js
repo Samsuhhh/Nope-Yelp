@@ -82,22 +82,13 @@ const UpdateBusiness = () => {
         // const tagsList = tags
         if (e.target.checked) {
             tagsList.push(e.target.value)
-            // tags.push(e.target.value)
             setTags(tagsList)
-            console.log('current tag array', tagsList)
-            console.log('tag array that we are sending', tags)
         } else {
             const index = tagsList.indexOf(e.target.value)
             tagsList.splice(index, 1)
-            // const index = tags.indexOf(e.target.value)
-            // tags.splice(index, 1)
             setTags(tagsList)
-            console.log('current array after removing a tag', tagsList)
-            console.log('tag array that we are sending', tags)
         }
         setHelper(!helper)
-        // setTags(tagsList)
-        // setTags(tags)
     }
     const confirmModal = () => {
         setTags(tagsList)
@@ -204,7 +195,7 @@ const UpdateBusiness = () => {
         dispatch(getSingleBusinessThunk(businessId))
 
         return () => dispatch(resetBusiness())
-    }, [businessId])
+    }, [dispatch, businessId])
 
     // NEED TO ADD MORE VALIDATION ERRORS
     useEffect(() => {
@@ -223,9 +214,7 @@ const UpdateBusiness = () => {
             if (!priceRange.length) errors.push("Please select a valid price range")
             if (website.length > 75 || website.length < 4) errors.push('Website url must be between 4 and 75 characters.')
             if (!website.match(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi)) errors.push("Please enter a valid website")
-            // if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image(jpg/jpeg/png).')
             if (tags.length !== 3) errors.push('Please select 3 tags for your business')
-            // console.log(tags.length)
             setValidationErrors(errors)
         }
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
@@ -423,7 +412,7 @@ const UpdateBusiness = () => {
                             </select> */}
                                 <div id='priceHeading'>What is the price range of your business?</div>
                                 <div id='price-setter-container'>
-                                    <fieldset id='fieldset-price' class="rate" value={priceRange} onChange={updatePriceRange}>
+                                    <fieldset id='fieldset-price' className="rate" value={priceRange} onChange={updatePriceRange}>
                                         {/* <input className="priceInput" type="radio" id="rating10" name="rating" value="5" /><label for="rating10" title="5 stars"></label> */}
                                         <input className="priceInput" type="radio" id="rating8" name="rating" value="4" /><label for="rating8" title="4 stars"></label>
                                         <input className="priceInput" type="radio" id="rating6" name="rating" value="3" /><label for="rating6" title="3 stars"></label>

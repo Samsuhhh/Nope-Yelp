@@ -22,18 +22,9 @@ const BusinessReview = () => {
     const businessReviews = useSelector(state => state.reviews.business)
     const [isLoaded, setIsLoaded] = useState(false)
 
-    const imgOnLoadHandler = e => {
-        console.log("loaded")
-        if (e.currentTarget.className !== "error") {
-            console.log("success")
-        }
-    }
     const imageOnErrorHandler = (event) => {
         event.currentTarget.src = userprofileicon;
     };
-
-    // conditional to render edit and delete YOUR review button
-    // { user && user.id === businessReviews.Owner.id}
 
     const nopeImgs = (nopesCount) => {
         if (nopesCount > 4 && nopesCount <= 5) return (nopes5)
@@ -60,7 +51,6 @@ const BusinessReview = () => {
                                         id='user-avatar'
                                         src={`${review.Owner.userAvatar}`}
                                         alt='user avatar'
-                                        onLoad={imgOnLoadHandler}
                                         onError={imageOnErrorHandler}
                                     />
                                 </div>
