@@ -22,7 +22,7 @@
     height: 70%;
     z-index: -1;
     margin-left: 18%;
-    margin-top: 150px;
+    position: fixed;
 }
 
 #error-div {
@@ -34,7 +34,8 @@
 }
 
 #goop-validations {
-    width: 80%;
+    width: 40%;
+    margin-left: 250px;
     z-index: 0;
 }
 
@@ -50,10 +51,10 @@
 
 #validations-div {
     position: absolute;
-    top: 25%;
-    right: 18%;
+    top: 10%;
+    right: 52.5%;
     width: 320px;
-    height: 210px;
+    height: 168px;
     /* border: 1px solid red; */
     row-gap: 20px;
     background-color: #ffda18;
@@ -113,7 +114,7 @@
     width: 100%;
     height: 100%;
     border-radius: 4px;
-    border: 1px solid black;
+    border: lightgray 1px solid;
 }
 
 #address-input-div {
@@ -132,7 +133,7 @@
     font-family: "Open Sans";
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border: lightgray 1px solid;
     border-radius: 4px;
 }
 
@@ -171,7 +172,7 @@
     font-family: "Open Sans";
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border: lightgray 1px solid;
     border-radius: 4px;
 }
 
@@ -191,7 +192,7 @@
     font-family: "Open Sans";
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border: lightgray 1px solid;
     border-radius: 4px;
 }
 
@@ -210,8 +211,8 @@
 #create-text-area {
     /* border-left: 1px solid black;
     border-right: 1px solid black; */
-    border: 1px solid black;
     border-radius: 4px;
+    border: lightgray 1px solid;
     width: 100%;
     height: 150px;
     padding: 15px;
@@ -431,15 +432,19 @@ input:checked~.lbl:hover~.lbl,
     margin-left: 15px;
 }
 
+
 .create-business-input {
     font-size: 16;
-
     outline: none;
     background: none;
 
 }
 
 .create-business-input:focus {
+    border: 2px solid #008EA7;
+}
+
+#force-border:focus {
     border: 2px solid #008EA7;
 }
 
@@ -621,13 +626,14 @@ input:checked~.lbl:hover~.lbl,
 
 #error-div {
     animation: fade 1s linear forwards;
+    margin-bottom: 20px;
 }
 
 @keyframes fade {
     from {
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-10px);
+      transform: translateY(0px);
     }
     to {
       opacity: 1;

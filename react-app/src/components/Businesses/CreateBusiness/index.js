@@ -289,6 +289,7 @@ const CreateBusiness = () => {
                                 <div id='address-input-div'>
                                     <label id='address-label'>Address</label>
                                     <input
+                                        id='force-border'
                                         className='create-business-input'
                                         type='text'
                                         placeholder='Address'
@@ -492,7 +493,7 @@ const CreateBusiness = () => {
                         {showErrors &&
                             <div className='validation-div-scroll' id={validationErrors.length ? 'validations-div' : 'hidden'} >
                                 {/* <div id={`${hiddenDiv(!validationErrors.length)}`} style={{backgroundColor: whatever}}> */}
-                                <ul>
+                                <div>
                                     {validationErrors.map((e, i) => {
                                         return (
                                             <div id='error-div' key={i}>
@@ -503,7 +504,7 @@ const CreateBusiness = () => {
                                             </div>
                                         )
                                     })}
-                                </ul>
+                                </div>
                             </div>
                         }
                     </div>
@@ -514,4 +515,4 @@ const CreateBusiness = () => {
 }
 
 
-            export default CreateBusiness
+export default CreateBusiness

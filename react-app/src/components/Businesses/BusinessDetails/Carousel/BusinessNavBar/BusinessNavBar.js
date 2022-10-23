@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useHistory, Link } from 'react-router-dom';
+import { NavLink, useHistory, Link, useParams } from 'react-router-dom';
 // import LogoutButton from '../../../../auth/LogoutButton';
 import { getAllBusinessesThunk } from '../../../../../store/business';
 import nope from '../../../../../assets/nope.png';
@@ -24,6 +24,7 @@ const options = {
 }
 
 const BusinessNavBar = ({ setSearch }) => {
+  const { businessId } = useParams()
   const dispatch = useDispatch()
   const history = useHistory()
   const businesses = useSelector(state => state.businesses.allBusinesses)
@@ -80,7 +81,12 @@ const BusinessNavBar = ({ setSearch }) => {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
-    history.push('/')
+
+    if (businessId) {
+      history.push(`/businesses/${businessId}`)
+    } else {
+      history.push('/businesses/')
+    }
   };
   let sessionLinks;
   if (sessionUser) {
