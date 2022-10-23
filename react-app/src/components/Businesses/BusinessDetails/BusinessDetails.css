@@ -652,6 +652,7 @@
     border: 1px solid rgb(146, 146, 146);
     height: fit-content;
     width: fit-content;
+
 }
 
 #review-actions-container{
@@ -659,3 +660,7 @@
     justify-content: center;
 }
 
+.eviscerate-btn {
+    background-color: transparent;
+    border: none;
+}
