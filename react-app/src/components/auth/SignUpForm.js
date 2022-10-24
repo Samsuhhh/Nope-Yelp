@@ -58,9 +58,10 @@ const SignUpForm = () => {
     if (!errors.length) {
       const newUser = {
         first_name: firstName,
-        last_name: lastName,
+        last_name:  lastName,
         email,
         username,
+        user_avatar: userAvatar,
         password
       }
       const data = await dispatch(signUp(newUser));
