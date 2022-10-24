@@ -1,8 +1,8 @@
-"""reseeding heroku
+"""david broke our site lol we fixed
 
-Revision ID: 9ce219436c91
+Revision ID: 7d301e1b9d01
 Revises: 
-Create Date: 2022-10-23 17:55:15.235787
+Create Date: 2022-10-23 20:41:14.119053
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9ce219436c91'
+revision = '7d301e1b9d01'
 down_revision = None
 branch_labels = None
 depends_on = None
