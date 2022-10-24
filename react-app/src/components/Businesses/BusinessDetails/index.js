@@ -49,8 +49,10 @@ const BusinessDetails = ({ search, onClose }) => {
     const business = useSelector(state => state.businesses.singleBusiness);
     const currentUser = useSelector(state => state.session.user);
     const reviewsObj = useSelector(state => state?.reviews.business);
-    let existingReview;
+    let existingReview
+    const imagepng                                                                                                                                                                                                = "AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU"
     const existingReviews = Object.values(reviewsObj);
+
     const [isLoaded, setIsLoaded] = useState(false);
     const [showPhotosModal, setShowPhotosModal] = useState(false);
 
@@ -317,7 +319,7 @@ const BusinessDetails = ({ search, onClose }) => {
 
                             {/* <div id="blur-map-div-details" style={{ backgroundImage: `url(${blurmap})` }}> */}
                             <div id="google-map-div-details">
-                                <StaticGoogleMap size="490x300" apiKey="AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU">
+                                <StaticGoogleMap size="490x300" apiKey={imagepng}>
                                     <Marker
                                         location={{ lat: business.latitude, lng: business.longitude }}
                                         color="red"
@@ -327,10 +329,7 @@ const BusinessDetails = ({ search, onClose }) => {
                             </div>
                             {/* </div> */}
 
-                            <div>
-                                <div> {business.street_address} {business.city}, {business.state} {business.zipcode}</div>
 
-                            </div>
                         </div>
 
 
@@ -525,16 +524,7 @@ const BusinessDetails = ({ search, onClose }) => {
                             </div>
 
                         </div>
-                        <div id="google-map-div-details">
-                            <StaticGoogleMap size="425x300" apiKey="AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU">
-                                <Marker
-                                    location={{ lat: business.latitude, lng: business.longitude }}
-                                    color="red"
-                                    label="P"
-                                />
-                            </StaticGoogleMap>
-                            <div> {business.street_address} {business.city}, {business.state} {business.zipcode}</div>
-                        </div>
+
                     </div>
                 </div>
                 <div id="whitespacetop"></div>

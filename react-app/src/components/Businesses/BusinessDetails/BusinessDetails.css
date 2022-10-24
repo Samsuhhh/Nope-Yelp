@@ -534,7 +534,6 @@
     font-weight: 600;
     margin-left: 2%;
     margin-top: 10px;
-    border: 1px solid red;
     /* have to change width to fixed sizing so it doesn't change width */
 }
 

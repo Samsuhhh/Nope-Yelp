@@ -65,7 +65,7 @@ const BusinessNavBar = ({ setSearch }) => {
       let results = fuse.search(document.getElementById("search-input-field").value).slice(0, 15)
        businessResults = results.map(result => result.item)
     }
-  
+
     setSearch(businessResults)
     return history.push("/businesses")
 
@@ -240,3 +240,6 @@ const BusinessNavBar = ({ setSearch }) => {
 }
 
 export default BusinessNavBar;
+
+
+

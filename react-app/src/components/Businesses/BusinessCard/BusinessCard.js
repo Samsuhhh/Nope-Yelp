@@ -4,7 +4,6 @@ import blurmap from '../../../assets/imgs/blurmap.png'
 import './BusinessCard.css'
 // import BusinessNavBar from "../BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar"
 // import Fuse from 'fuse.js'
-
 import {
   StaticGoogleMap,
   Marker,
@@ -23,7 +22,6 @@ import blacknope from "../../../assets/nopes/ratingimgblack.png"
 
 export default function BusinessCard({ search }) {
   const [businessList, setBusinessList] = useState(null)
-
 
   useEffect(() => {
     setBusinessList(search)
@@ -44,6 +42,8 @@ export default function BusinessCard({ search }) {
     if (e === 2) return "$$"
     if (e === 1) return "$"
   }
+  
+  const imagepng                                                                                                                                                                                                = "AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU"
 
   let priceRange1 = Object.values(search).filter(business => {
     return business.price_range === 1
@@ -75,7 +75,6 @@ export default function BusinessCard({ search }) {
   })
 
   const resetFilter = Object.values(search)
-
   const imageOnErrorHandler = (event) => {
     event.currentTarget.src = businessicon;
   };
@@ -303,7 +302,7 @@ export default function BusinessCard({ search }) {
         <div id="blur-map-div" style={{ backgroundImage: `url(${blurmap})` }}>
           <div id="google-map-div">
 
-            <StaticGoogleMap size="640x640" apiKey="AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU">
+            <StaticGoogleMap size="640x640" apiKey={imagepng}>
               <Marker
                 location={{ lat: search[0].latitude, lng: search[0].longitude }}
                 color="red"
