@@ -665,3 +665,21 @@
     border: none;
 }
 
+#location-header-div{
+    border-top: 1px solid #ebebeb;
+    margin-top: 10px;
+}
+
+#google-map-address-div{
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: 20px;
+}
+
+#city-state-address-div{
+    /* font-weight: bold; */
+}
+
+#street-address-google-div{
+    font-weight: bold;
+    padding-top: 10px;
+}

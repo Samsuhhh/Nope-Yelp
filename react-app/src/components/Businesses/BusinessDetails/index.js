@@ -312,7 +312,7 @@ const BusinessDetails = ({ search, onClose }) => {
                         </div>
                         <div id="location-header-div">
                             <h2>Location </h2>
-                            <div> {business.street_address} {business.city}, {business.state} {business.zipcode}</div>
+
 
                         </div>
                         <div id="google-map-address-container">
@@ -326,6 +326,11 @@ const BusinessDetails = ({ search, onClose }) => {
                                         label="P"
                                     />
                                 </StaticGoogleMap>
+                            </div>
+                            <div id="google-map-address-div">
+
+                            <div id="street-address-google-div"> {business.street_address}</div>
+                            <div id="city-state-address-div">{business.city}, {business.state} {business.zipcode}</div>
                             </div>
                             {/* </div> */}
 
