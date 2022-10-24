@@ -19,7 +19,7 @@ import Categories from './Categories'
 function RecentActivity({ setSearch }) {
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
-    const review = useSelector(state => state.reviews.allReviews)
+    const reviews = useSelector(state => state.reviews.allReviews)
     const business = useSelector(state => state.businesses.allBusinesses)
 
     const nopeImgs = (averageNopes) => {
@@ -55,7 +55,39 @@ function RecentActivity({ setSearch }) {
                             <div className='recent-act-title-wrapper'>
                                 <div className='recent-act-title'>Recent Activity</div>
                             </div>
-                            <div className='recent-reviews-grid'>
+                            <div className="recent-reviews-grid">
+                                {Object.values(reviews).reverse().slice(0,9).map((review, i) => (
+
+                                    <div className='recent-act-card'>
+                                        <div className='user-recent-act-grid-wrapper'>
+                                            <div className='user-avi-recent-act-grid'>
+                                                <img id="grid-avi" src={`${review?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='User' />
+                                            </div>
+                                            <div className='user-name-recent-act-grid-wrapper'>
+                                                <div className='user-name-recent-act-grid'>{review?.owner?.firstName} {review?.owner?.lastName}</div>
+                                                <div className='user-action-recent-act-grid'>Wrote a Review</div>
+                                            </div>
+                                        </div>
+                                        <div className='business-img-recent-act-grid'>
+                                            <img id="grid-business-img" src={`${business?.[review?.business_id]?.images?.url}`} onError={businessImageOnErrorHandler} alt='business img' />
+                                        </div>
+
+
+                                        <div className='business-name-recent-act-grid'>
+                                            <Link className='business-name-recent-act-grid' to={`/businesses/${review?.business_id}`}>{business?.[review?.business_id]?.business_name}
+                                            </Link>
+                                        </div>
+
+
+                                        <div className='nopes-recent-act-grid'>
+                                            <img id='nopes-grid' alt='nopes' src={nopeImgs(review?.nope)} />
+                                        </div>
+                                        <div className='review-recent-act-grid'>{review?.review}</div>
+                                    </div>
+
+                                ))}
+                            </div>
+                            {/* <div className='recent-reviews-grid'>
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
@@ -270,39 +302,8 @@ function RecentActivity({ setSearch }) {
                                 </div>
 
 
-                                {/* <div className='recent-act-card'>
-                            {review[2]?.review}
-                            </div>
 
-                            <div className='recent-act-card'>
-                            {review[3]?.review}
-                            </div>
-
-                            <div className='recent-act-card'>
-                            {review[4]?.review}
-                            </div>
-
-                            <div className='recent-act-card'>
-                            {review[5]?.review}
-                            </div>
-
-                            <div className='recent-act-card'>
-                            {review[6]?.review}
-                            </div>
-
-                            <div className='recent-act-card'>
-                            {review[7]?.review}
-                            </div>
-
-                            <div className='recent-act-card'>
-                            {review[8]?.review}
-                            </div>
-
-                            <div className='recent-act-card'>
-                            {review[9]?.review}
-                        </div> */}
-
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <Categories setSearch={setSearch} />
