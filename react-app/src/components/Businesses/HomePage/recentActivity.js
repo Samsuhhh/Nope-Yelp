@@ -59,59 +59,34 @@ function RecentActivity({ setSearch }) {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={`${review[Object.values(review).length]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='User' />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length-1]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='User' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[Object.values(review).length]?.owner?.firstName} {review[Object.values(review).length]?.owner?.lastName}</div>
+                                            <div className='user-name-recent-act-grid'>{review[Object.values(review).length-1]?.owner?.firstName} {review[Object.values(review).length-1]?.owner?.lastName}</div>
                                             <div className='user-action-recent-act-grid'>Wrote a Review</div>
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={`${business?.[review[Object.values(review).length]?.business_id]?.images?.url}`} onError={businessImageOnErrorHandler} alt='business img' />
+                                        <img id="grid-business-img" src={`${business?.[review[Object.values(review).length-1]?.business_id]?.images?.url}`} onError={businessImageOnErrorHandler} alt='business img' />
                                     </div>
 
 
                                     <div className='business-name-recent-act-grid'>
-                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length]?.business_id}`}>{business?.[review[Object.values(review).length]?.business_id]?.business_name}
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length-1]?.business_id}`}>{business?.[review[Object.values(review).length-1]?.business_id]?.business_name}
                                         </Link>
                                     </div>
 
 
                                     <div className='nopes-recent-act-grid'>
-                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[Object.values(review).length]?.nope)} />
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[Object.values(review).length-1]?.nope)} />
                                     </div>
-                                    <div className='review-recent-act-grid'>{review[Object.values(review).length]?.review}</div>
+                                    <div className='review-recent-act-grid'>{review[Object.values(review).length-1]?.review}</div>
                                 </div>
 
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={`${review[Object.values(review).length - 1]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='User' />
-                                        </div>
-                                        <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 1]?.owner?.firstName} {review[Object.values(review).length - 1]?.owner?.lastName}</div>
-                                            <div className='user-action-recent-act-grid'>Wrote a Review</div>
-                                        </div>
-                                    </div>
-                                    <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 1]?.business_id]?.images?.url} alt='business img' />
-                                    </div>
-
-                                    <div className='business-name-recent-act-grid'>
-                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 1]?.business_id}`}>{business?.[review[Object.values(review).length - 1]?.business_id]?.business_name}
-                                        </Link>
-                                    </div>
-
-                                    <div className='nopes-recent-act-grid'>
-                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[Object.values(review).length - 1]?.nope)} />
-                                    </div>
-                                    <div className='review-recent-act-grid'>{review[Object.values(review).length - 1]?.review}</div>
-                                </div>
-
-                                <div className='recent-act-card'>
-                                    <div className='user-recent-act-grid-wrapper'>
-                                        <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={`${review[Object.values(review).length - 2]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='user' />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length - 2]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='User' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
                                             <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 2]?.owner?.firstName} {review[Object.values(review).length - 2]?.owner?.lastName}</div>
@@ -119,12 +94,14 @@ function RecentActivity({ setSearch }) {
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 2]?.business_id]?.images?.url} alt='user' />
+                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 2]?.business_id]?.images?.url} alt='business img' />
                                     </div>
+
                                     <div className='business-name-recent-act-grid'>
                                         <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 2]?.business_id}`}>{business?.[review[Object.values(review).length - 2]?.business_id]?.business_name}
                                         </Link>
                                     </div>
+
                                     <div className='nopes-recent-act-grid'>
                                         <img id='nopes-grid' alt='nopes' src={nopeImgs(review[Object.values(review).length - 2]?.nope)} />
                                     </div>
@@ -237,7 +214,7 @@ function RecentActivity({ setSearch }) {
                                         <img id="grid-business-img" src={business?.[review[Object.values(review).length - 7]?.business_id]?.images?.url} alt='user' />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
-                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 7].business_id}`}>{business?.[review[Object.values(review).length - 7]?.business_id]?.business_name}
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 7]?.business_id}`}>{business?.[review[Object.values(review).length - 7]?.business_id]?.business_name}
                                         </Link>
                                     </div>
                                     <div className='nopes-recent-act-grid'>
@@ -267,6 +244,29 @@ function RecentActivity({ setSearch }) {
                                         <img id='nopes-grid' alt='nopes' src={nopeImgs(review[Object.values(review).length - 8]?.nope)} />
                                     </div>
                                     <div className='review-recent-act-grid'>{review[Object.values(review).length - 8]?.review}</div>
+                                </div>
+
+                                <div className='recent-act-card'>
+                                    <div className='user-recent-act-grid-wrapper'>
+                                        <div className='user-avi-recent-act-grid'>
+                                            <img id="grid-avi" src={`${review[Object.values(review).length - 9]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='user' />
+                                        </div>
+                                        <div className='user-name-recent-act-grid-wrapper'>
+                                            <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 9]?.owner?.firstName} {review[Object.values(review).length - 9]?.owner?.lastName}</div>
+                                            <div className='user-action-recent-act-grid'>Wrote a Review</div>
+                                        </div>
+                                    </div>
+                                    <div className='business-img-recent-act-grid'>
+                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 9]?.business_id]?.images?.url} alt='user' />
+                                    </div>
+                                    <div className='business-name-recent-act-grid'>
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 9].business_id}`}>{business?.[review[Object.values(review).length - 9]?.business_id]?.business_name}
+                                        </Link>
+                                    </div>
+                                    <div className='nopes-recent-act-grid'>
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[Object.values(review).length - 9]?.nope)} />
+                                    </div>
+                                    <div className='review-recent-act-grid'>{review[Object.values(review).length - 9]?.review}</div>
                                 </div>
 
 
