@@ -43,7 +43,7 @@ const BusinessReview = () => {
         <div>
             {businessReviews &&
                 <div>
-                    {Object.values(businessReviews).map(review => (
+                    {Object.values(businessReviews).reverse().map(review => (
                         <div id='review-card' key={review.id}>
                             <div id='review-info'>
                                 <div id='review-user-avatar-div'>
@@ -73,7 +73,7 @@ const BusinessReview = () => {
                                                 </img>
                                             </button>
                                         </NavLink>
-                                        <button className="eviscerate-btn"onClick={() => dispatch(removeReview(review.id))}>
+                                        <button className="eviscerate-btn" onClick={() => dispatch(removeReview(review.id))}>
                                             <img className="current-user-review-action-btns" alt='eviscerate me' src={trashcan}></img>
                                         </button>
                                     </div>
