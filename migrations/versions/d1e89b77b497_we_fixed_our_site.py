@@ -1,8 +1,8 @@
-"""david broke our site lol we fixed
+"""we fixed our site
 
-Revision ID: 7d301e1b9d01
+Revision ID: d1e89b77b497
 Revises: 
-Create Date: 2022-10-23 20:41:14.119053
+Create Date: 2022-10-23 21:04:04.734788
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7d301e1b9d01'
+revision = 'd1e89b77b497'
 down_revision = None
 branch_labels = None
 depends_on = None
