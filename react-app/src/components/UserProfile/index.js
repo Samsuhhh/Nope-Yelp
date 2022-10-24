@@ -12,7 +12,6 @@ const UserProfile = () => {
   const user = useSelector(state => state.session.user)
   const reviews = useSelector(state => state.reviews.user)
   const businesses = useSelector(state => state.businesses.allBusinesses)
-  console.log('how often am i rerendering this page?')
 
   const randomGreeting = [
     "Hangry?",
