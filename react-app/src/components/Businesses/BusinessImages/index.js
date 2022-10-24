@@ -23,7 +23,11 @@ export default function BusinessImages() {
                             <img id="modal-image" alt='yes' src={`${image.url}`} onError={imageOnErrorHandler}></img>
                             {deleteImageHandler = async () => {
                                 if (window.confirm('Are you sure you want to delete this picture?')) {
-                                    await dispatch(removeBusinessImage(image.id))
+                                    if (BusinessImages.length >= 2) {
+                                        await dispatch(removeBusinessImage(image.id))
+                                    } else {
+                                        window.alert('Could not delete: Your business must have at least one image')
+                                    }
                                 }
                             }}
                             <div>{(user && user.id === business.owner_id) && (
