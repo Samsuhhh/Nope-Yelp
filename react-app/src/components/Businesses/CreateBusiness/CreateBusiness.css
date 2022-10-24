@@ -65,6 +65,27 @@
     overflow: hidden;
 }
 
+#action-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#signup-submit-btn,
+#signup-submit-btn:hover,
+#signup-cancel-btn,
+#signup-cancel-btn:hover {
+    height: 40px;
+    width: 175px;
+    font-family: "Open Sans";
+    font-weight: 600;
+    font-size: 15px;
+    color: white;
+    background-color: #E00707;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 
 #create-form-container-left {
@@ -603,7 +624,7 @@ input:checked~.lbl:hover~.lbl,
     margin-top: 10px;
 }
 
-#tag-confirm-button:disabled{
+#tag-confirm-button:disabled {
     background-color: rgba(224, 7, 7, .35);
 }
 
@@ -613,13 +634,14 @@ input:checked~.lbl:hover~.lbl,
 
 @keyframes fade {
     from {
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
     }
+
     to {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
-  }
+}
