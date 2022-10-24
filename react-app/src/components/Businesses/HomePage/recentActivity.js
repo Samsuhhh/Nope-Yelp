@@ -21,6 +21,7 @@ function RecentActivity({ setSearch }) {
     const dispatch = useDispatch()
     const review = useSelector(state => state.reviews.allReviews)
     const business = useSelector(state => state.businesses.allBusinesses)
+    console.log('----the review object from useSelector----', review)
 
     const nopeImgs = (averageNopes) => {
         if (averageNopes > 4 && averageNopes <= 5) return (nopes5)
@@ -59,28 +60,28 @@ function RecentActivity({ setSearch }) {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={`${review[Object.values(review).length-1]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='User' />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length - 1]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='User' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
-                                            <div className='user-name-recent-act-grid'>{review[Object.values(review).length-1]?.owner?.firstName} {review[Object.values(review).length-1]?.owner?.lastName}</div>
+                                            <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 1]?.owner?.firstName} {review[Object.values(review).length - 1]?.owner?.lastName}</div>
                                             <div className='user-action-recent-act-grid'>Wrote a Review</div>
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={`${business?.[review[Object.values(review).length-1]?.business_id]?.images?.url}`} onError={businessImageOnErrorHandler} alt='business img' />
+                                        <img id="grid-business-img" src={`${business?.[review[Object.values(review).length - 1]?.business_id]?.images?.url}`} onError={businessImageOnErrorHandler} alt='business img' />
                                     </div>
 
 
                                     <div className='business-name-recent-act-grid'>
-                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length-1]?.business_id}`}>{business?.[review[Object.values(review).length-1]?.business_id]?.business_name}
+                                        <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 1]?.business_id}`}>{business?.[review[Object.values(review).length - 1]?.business_id]?.business_name}
                                         </Link>
                                     </div>
 
 
                                     <div className='nopes-recent-act-grid'>
-                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[Object.values(review).length-1]?.nope)} />
+                                        <img id='nopes-grid' alt='nopes' src={nopeImgs(review[Object.values(review).length - 1]?.nope)} />
                                     </div>
-                                    <div className='review-recent-act-grid'>{review[Object.values(review).length-1]?.review}</div>
+                                    <div className='review-recent-act-grid'>{review[Object.values(review).length - 1]?.review}</div>
                                 </div>
 
                                 <div className='recent-act-card'>
