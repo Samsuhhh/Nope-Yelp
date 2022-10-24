@@ -11,23 +11,45 @@
     height: 40px;
 }
 
-.sign-up-form-wrapper {
+#sign-up-form-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-
+    border: 10px solid red;
 
 }
-
+/* 
 .sign-up-and-image {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     height: 100%;
     width: 700px;
     padding-top: 100px;
     padding-bottom: 100px;
+    border: 1px solid
+} */
+
+#signUp-form-left{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid pink;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+#signUp-form-content{
+    border: 1px solid green;
+    padding: 10px 20px 20px 20px;
+
+}
+
+#signUp-form-right-side{
+    border: 1px solid blue;
+    width: 100%;
+    height: 100%;
 }
 
 #unhappy-img {
@@ -38,51 +60,78 @@
 }
 
 .sign-up-form {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 320px;
-    margin-left: 50px;
-    position: relative;
-    left: 150px;
+     */
+    /* margin-left: 50px; */
+    /* position: relative; */
+    /* left: 150px; */
+}
+
+#fragmented-first-last-container{
+    display: flex;
+
+}
+
+.signup-input-divs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 48%;
+    border: 1px solid black;
+}
+
+
+
+.signup-input-divs >input{
+    padding-left: 15px;
+    font-size: 15px;
+    font-family: "Open Sans";
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: 1px solid red;
+
+}
+
+.signUp-input{
+
 }
 
 #first-name-input {
-    height: 30px;
-    width: 147px;
+    height: 100%;
+    width: 100%;
     border: 1px lightgray solid;
     border-radius: 5px;
 }
 
-#first-name-input:focus {
-    border: blue;
-}
 
 #last-name-input {
-    margin-left: 6px;
-    height: 30px;
-    width: 147px;
+    height: 100%;
+    width: 100%;
     border: 1px lightgray solid;
     border-radius: 5px;
 }
 
 #username-input {
     height: 30px;
-    width: 308px;
+    width: 100%;
     border: 1px lightgray solid;
     border-radius: 5px;
 }
 
 #email-input {
     height: 30px;
-    width: 308px;
+    width: 100%;
     border: 1px lightgray solid;
     border-radius: 5px;
 }
 
 #password-input {
     height: 30px;
-    width: 308px;
+    width: 100%;
     border: 1px lightgray solid;
     border-radius: 5px;
 }
@@ -103,7 +152,6 @@
     bottom: 60px;
     left: 160px;
     stroke-width: 1px
-
 }
 
 #error-box{
