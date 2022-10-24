@@ -58,16 +58,11 @@ export const resetBusiness = () => ({
 // THUNK action creators
 export const getAllBusinessesThunk = () => async (dispatch) => {
   const response = await fetch("/api/businesses/");
-  console.log('response in get all business thunk', response)
 
   if (response.ok) {
     const businessData = await response.json();
-    console.log('Get All businesses Thunk data', businessData)
     await dispatch(loadAll(businessData));
     return businessData
-  }
-  else {
-    console.log("-----Get All Business Thunk Error-----");
   }
   return;
 };
@@ -80,25 +75,18 @@ export const getCurrentUserBusinessesThunk = () => async (dispatch) => {
     dispatch(loadAll(businessData));
     return businessData
   }
-  else {
-    console.log("-----Get Current User Businesses Thunk Error-----");
-  }
   return;
 };
 
 export const getSingleBusinessThunk = (businessId) => async (dispatch) => {
   const response = await fetch(`/api/businesses/${businessId}`);
-  console.log('response from get single business', response)
 
   if (response.ok) {
     const singleBusinessData = await response.json();
     dispatch(loadOne(singleBusinessData));
     return
   }
-  else {
-    console.log("-----Get Single Business Thunk Error-----");
-    return
-  }
+  return
 }
 
 export const createBusinessThunk = (business) => async (dispatch) => {
@@ -109,17 +97,13 @@ export const createBusinessThunk = (business) => async (dispatch) => {
     },
     body: JSON.stringify(business)
   });
-  console.log('what is the response in the thunk?', response)
 
   if (response.ok) {
     const createdBusinessData = await response.json();
     dispatch(create(createdBusinessData));
     return createdBusinessData;
   }
-  else {
-    console.log("-----Create Business Thunk Error-----");
-    return
-  }
+  return
 }
 
 export const updateBusinessThunk = (business, businessId) => async (dispatch) => {
@@ -136,10 +120,7 @@ export const updateBusinessThunk = (business, businessId) => async (dispatch) =>
     dispatch(update(updatedBusinessData));
     return updatedBusinessData;
   }
-  else {
-    console.log("-----Updated Business Thunk Error-----");
-    return
-  }
+  return
 }
 
 export const deleteBusinessThunk = (businessId) => async (dispatch) => {
@@ -147,15 +128,10 @@ export const deleteBusinessThunk = (businessId) => async (dispatch) => {
     method: "DELETE"
   });
 
-  console.log('response from deleting a business', response)
-
   if (response.ok) {
     const deletedBusinessData = await response.json();
     dispatch(remove(deletedBusinessData));
     return
-  }
-  else {
-    console.log("------Delete Business Thunk Error-----");
   }
   return;
 }
@@ -172,10 +148,7 @@ export const addBusinessImage = (data, businessId) => async (dispatch) => {
     dispatch(addImage(image))
     return image
   }
-  else {
-    console.log("----ERROR IN ADD IMAGE THUNK ACTION CREATOR----")
-    return
-  }
+  return
 }
 
 export const removeBusinessImage = (imageId) => async (dispatch) => {
@@ -186,10 +159,8 @@ export const removeBusinessImage = (imageId) => async (dispatch) => {
   if (response.ok) {
     dispatch(removeImage(imageId))
     return
-  } else {
-    console.log("----Delete Business Image Thunk Error----")
-    return
   }
+  return
 }
 
 let initialState = {
@@ -202,7 +173,6 @@ const businessReducer = (state = initialState, action) => {
   const allBusinesses = {}
   switch (action.type) {
     case LOAD_ALL:
-      console.log('Businesses Reducer HITTING', action)
       action.businesses.forEach(business => {
         allBusinesses[business.id] = business;
       })
@@ -254,8 +224,6 @@ const businessReducer = (state = initialState, action) => {
       }
       const businessImages = newState.singleBusiness.BusinessImages
       for (let i = 0; i < businessImages.length; i++) {
-        console.log('this is the action', action)
-        console.log('this is the image id in the action', action.imageId)
         if (businessImages[i].id === action.imageId) {
           businessImages.splice(i, 1)
         }

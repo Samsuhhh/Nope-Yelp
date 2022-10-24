@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Footer from "../../Footer/Footer";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAllBusinessesThunk } from "../../../store/business";
@@ -115,7 +114,7 @@ function Categories({ setSearch }) {
                                 className="category-element"
                             >
                                 <div className="category-icon-title-wrapper">
-                                    <img className="category-icon-svg one" src={ic1} />
+                                    <img className="category-icon-svg one" src={ic1} alt='icon1' />
                                     <div className="category-title">Burgers</div>
                                 </div>
                             </button>
@@ -124,7 +123,7 @@ function Categories({ setSearch }) {
                         <form onSubmit={handleSearchSubmitCoffee}>
                             <button className="category-element" type="submit">
                                 <div className="category-icon-title-wrapper">
-                                    <img className="category-icon-svg two" src={ic2} />
+                                    <img className="category-icon-svg two" src={ic2} alt='icon2' />
                                     <div className="category-title">Coffee</div>
                                 </div>
                             </button>
@@ -133,7 +132,7 @@ function Categories({ setSearch }) {
                         <form onSubmit={handleSearchSubmitSushi}>
                             <button className="category-element" type="submit">
                                 <div className="category-icon-title-wrapper">
-                                    <img className="category-icon-svg three" src={ic3} />
+                                    <img className="category-icon-svg three" src={ic3} alt='icon3' />
                                     <div className="category-title">Sushi</div>
                                 </div>
                             </button>
@@ -142,7 +141,7 @@ function Categories({ setSearch }) {
                         <form onSubmit={handleSearchSubmitBWS}>
                             <button className="category-element" type="submit">
                                 <div className="category-icon-title-wrapper">
-                                    <img className="category-icon-svg four" src={ic4} />
+                                    <img className="category-icon-svg four" src={ic4} alt='icon4' />
                                     <div className="category-title">Beer & Wine & Spirits</div>
                                 </div>
                             </button>
@@ -150,7 +149,7 @@ function Categories({ setSearch }) {
                         <form onSubmit={handleSearchSubmitAlex}>
                             <button className="category-element" type="submit">
                                 <div className="category-icon-title-wrapper">
-                                    <img className="category-icon-svg five" src={ic5} />
+                                    <img className="category-icon-svg five" src={ic5} alt='icon5' />
                                     <div className="category-title">Ice Cream</div>
                                 </div>
                             </button>
@@ -158,7 +157,7 @@ function Categories({ setSearch }) {
                         <form onSubmit={handleSearchSubmitDelivery}>
                             <button className="category-element" type="submit">
                                 <div className="category-icon-title-wrapper">
-                                    <img className="category-icon-svg six" src={ic6} />
+                                    <img className="category-icon-svg six" src={ic6} alt='icon6' />
                                     <div className="category-title">Delivery</div>
                                 </div>
                             </button>
@@ -167,7 +166,7 @@ function Categories({ setSearch }) {
 
                             <button className="category-element" type="submit">
                                 <div className="category-icon-title-wrapper">
-                                    <img className="category-icon-svg seven" src={ic7} />
+                                    <img className="category-icon-svg seven" src={ic7} alt='icon7' />
                                     <div className="category-title">Pizza</div>
                                 </div>
                             </button>
@@ -175,7 +174,7 @@ function Categories({ setSearch }) {
                         <form onSubmit={handleSearchSubmitSoup}>
                             <button className="category-element" type="submit">
                                 <div className="category-icon-title-wrapper">
-                                    <img className="category-icon-svg eight" src={ic8} />
+                                    <img className="category-icon-svg eight" src={ic8} alt='icon8' />
                                     <div className="category-title">Soup</div>
                                 </div>
                             </button>

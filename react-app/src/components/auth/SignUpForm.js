@@ -22,6 +22,7 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showErrors, setShowErrors] = useState('');
+  const [userAvatar, setUserAvatar] = useState('https://freesvg.org/img/abstract-user-flat-4.png')
   const [errors, setErrors] = useState([]);
 
   // const [firstNameErr, setFirstNameErr] = useState("")
@@ -114,9 +115,9 @@ const SignUpForm = () => {
 
   // useEffect(() => {
   //   setNoErr(true)
-
-
   // }, [noErr])
+
+
 
 
   // if (user) {

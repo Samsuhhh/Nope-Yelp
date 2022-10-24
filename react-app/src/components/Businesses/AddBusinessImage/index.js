@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addBusinessImage } from "../../../store/business";
 import './AddBusinessImage.css'
 import nope from '../../../assets/nope.png'
@@ -13,7 +13,7 @@ export default function AddBusinessImage() {
     const dispatch = useDispatch()
     const history = useHistory()
     const { businessId } = useParams()
-    const user = useSelector(state => state.session.user)
+    // const user = useSelector(state => state.session.user)
 
     const [imgUrl, setImgUrl] = useState('')
     const [showErrors, setShowErrors] = useState(false)
@@ -54,7 +54,7 @@ export default function AddBusinessImage() {
             <div className="add-business-nav-bar">
                 <div className="add-business-nav-bar-content-wrapper">
                 <Link to={`/`}>
-                    <img id="add-business-nav-bar-logo" src={nope} />
+                    <img id="add-business-nav-bar-logo" src={nope} alt='business'/>
                     </Link>
                     <Link to={`/businesses/${businessId}`}>
                         <div className="add-business-nav-bar-back-to-nope">Back to your page</div></Link>
@@ -63,7 +63,7 @@ export default function AddBusinessImage() {
             <div className="add-photo-main-wrapper">
                 <div className="add-photo-container">
                     <div className="add-photo-icon-graphic">
-                        <img id="add-photo-icon" src={add} />
+                        <img id="add-photo-icon" src={add} alt='business'/>
                     </div>
                     <form onSubmit={handleSubmit}>
                         {/* ----DISPLAY VALIDATION ERRORS---- */}

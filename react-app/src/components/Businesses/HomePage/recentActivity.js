@@ -4,14 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../../Footer/Footer'
 import './recentActivity.css'
 import { getAllBusinessesReviews } from '../../../store/review';
-import docker from '../../../assets/icons/Docker.svg'
-import bg1 from '../../../assets/bgs/bg1.png'
+// import docker from '../../../assets/icons/Docker.svg'
+// import bg1 from '../../../assets/bgs/bg1.png'
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
 import nopes3 from "../../../assets/nopes/3-nopes.png"
 import nopes2 from "../../../assets/nopes/2-nopes.png"
 import nopes1 from "../../../assets/nopes/1-nopes.png"
 import userprofileicon from '../../../assets/icons/userprofile.svg'
+import businessicon from '../../../assets/icons/business.svg'
 import Categories from './Categories'
 
 
@@ -32,7 +33,7 @@ function RecentActivity({ setSearch }) {
 
     const imageOnErrorHandler = (event) => {
         event.currentTarget.src = userprofileicon;
-      };
+    };
 
     useEffect(() => {
         dispatch(getAllBusinessesReviews())
@@ -40,7 +41,6 @@ function RecentActivity({ setSearch }) {
 
     }, [dispatch])
 
-    // console.log('ya', review?.reviews[2])
     return (
         <>
             {isLoaded &&
@@ -55,8 +55,7 @@ function RecentActivity({ setSearch }) {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            {console.log('rev array', Object.values(review))}
-                                            <img id="grid-avi" src={`${review[Object.values(review).length]?.owner?.userAvatar}`} onError={imageOnErrorHandler}/>
+                                            <img id="grid-avi" src={`${review[Object.values(review).length]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='User' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
                                             <div className='user-name-recent-act-grid'>{review[Object.values(review).length]?.owner?.firstName} {review[Object.values(review).length]?.owner?.lastName}</div>
@@ -64,7 +63,7 @@ function RecentActivity({ setSearch }) {
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length]?.business_id]?.images?.url} />
+                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length]?.business_id]?.images?.url} alt='business img' />
                                     </div>
 
 
@@ -83,7 +82,7 @@ function RecentActivity({ setSearch }) {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={review[Object.values(review).length - 1]?.owner?.userAvatar} />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length - 1]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='User' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
                                             <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 1]?.owner?.firstName} {review[Object.values(review).length - 1]?.owner?.lastName}</div>
@@ -91,7 +90,7 @@ function RecentActivity({ setSearch }) {
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 1]?.business_id]?.images?.url} />
+                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 1]?.business_id]?.images?.url} alt='business img' />
                                     </div>
 
                                     <div className='business-name-recent-act-grid'>
@@ -108,7 +107,7 @@ function RecentActivity({ setSearch }) {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={review[Object.values(review).length - 2]?.owner?.userAvatar} />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length - 2]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='user' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
                                             <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 2]?.owner?.firstName} {review[Object.values(review).length - 2]?.owner?.lastName}</div>
@@ -116,7 +115,7 @@ function RecentActivity({ setSearch }) {
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 2]?.business_id]?.images?.url} />
+                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 2]?.business_id]?.images?.url} alt='user' />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
                                         <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 2]?.business_id}`}>{business?.[review[Object.values(review).length - 2]?.business_id]?.business_name}
@@ -131,7 +130,7 @@ function RecentActivity({ setSearch }) {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={review[Object.values(review).length - 3]?.owner?.userAvatar} />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length - 3]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='user' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
                                             <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 3]?.owner?.firstName} {review[Object.values(review).length - 3]?.owner?.lastName}</div>
@@ -139,7 +138,7 @@ function RecentActivity({ setSearch }) {
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 3]?.business_id]?.images?.url} />
+                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 3]?.business_id]?.images?.url} alt='user' />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
                                         <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 3]?.business_id}`}>{business?.[review[Object.values(review).length - 3]?.business_id]?.business_name}
@@ -154,7 +153,7 @@ function RecentActivity({ setSearch }) {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={review[Object.values(review).length - 4]?.owner?.userAvatar} />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length - 4]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='user' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
                                             <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 4]?.owner?.firstName} {review[Object.values(review).length - 4]?.owner?.lastName}</div>
@@ -162,7 +161,7 @@ function RecentActivity({ setSearch }) {
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 4]?.business_id]?.images?.url} />
+                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 4]?.business_id]?.images?.url} alt='user' />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
                                         <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 4]?.business_id}`}>{business?.[review[Object.values(review).length - 4]?.business_id]?.business_name}
@@ -177,7 +176,7 @@ function RecentActivity({ setSearch }) {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={review[Object.values(review).length - 5]?.owner?.userAvatar} />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length - 5]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='user' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
                                             <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 5]?.owner?.firstName} {review[Object.values(review).length - 5]?.owner?.lastName}</div>
@@ -185,7 +184,7 @@ function RecentActivity({ setSearch }) {
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 5]?.business_id]?.images?.url} />
+                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 5]?.business_id]?.images?.url} alt='user' />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
                                         <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 5]?.business_id}`}>{business?.[review[Object.values(review).length - 5]?.business_id]?.business_name}
@@ -200,7 +199,7 @@ function RecentActivity({ setSearch }) {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={review[Object.values(review).length - 6]?.owner?.userAvatar} />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length - 6]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='user' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
                                             <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 6]?.owner?.firstName} {review[Object.values(review).length - 6]?.owner?.lastName}</div>
@@ -208,7 +207,7 @@ function RecentActivity({ setSearch }) {
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 6]?.business_id]?.images?.url} />
+                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 6]?.business_id]?.images?.url} alt='user' />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
                                         <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 6]?.business_id}`}>{business?.[review[Object.values(review).length - 6]?.business_id]?.business_name}
@@ -223,7 +222,7 @@ function RecentActivity({ setSearch }) {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={review[Object.values(review).length - 7]?.owner?.userAvatar} />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length - 7]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='user' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
                                             <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 7]?.owner?.firstName} {review[Object.values(review).length - 7]?.owner?.lastName}</div>
@@ -231,7 +230,7 @@ function RecentActivity({ setSearch }) {
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 7]?.business_id]?.images?.url} />
+                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 7]?.business_id]?.images?.url} alt='user' />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
                                         <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 7].business_id}`}>{business?.[review[Object.values(review).length - 7]?.business_id]?.business_name}
@@ -246,7 +245,7 @@ function RecentActivity({ setSearch }) {
                                 <div className='recent-act-card'>
                                     <div className='user-recent-act-grid-wrapper'>
                                         <div className='user-avi-recent-act-grid'>
-                                            <img id="grid-avi" src={review[Object.values(review).length - 8]?.owner?.userAvatar} />
+                                            <img id="grid-avi" src={`${review[Object.values(review).length - 8]?.owner?.userAvatar}`} onError={imageOnErrorHandler} alt='user' />
                                         </div>
                                         <div className='user-name-recent-act-grid-wrapper'>
                                             <div className='user-name-recent-act-grid'>{review[Object.values(review).length - 8]?.owner?.firstName} {review[Object.values(review).length - 8]?.owner?.lastName}</div>
@@ -254,7 +253,7 @@ function RecentActivity({ setSearch }) {
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 8]?.business_id]?.images?.url} />
+                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length - 8]?.business_id]?.images?.url} alt='user' />
                                     </div>
                                     <div className='business-name-recent-act-grid'>
                                         <Link className='business-name-recent-act-grid' to={`/businesses/${review[Object.values(review).length - 8].business_id}`}>{business?.[review[Object.values(review).length - 8]?.business_id]?.business_name}

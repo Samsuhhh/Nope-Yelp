@@ -31,12 +31,6 @@ const CurrentUserBusinesses = () => {
     else return nopes0
   }
 
-  const imgOnLoadHandler = e => {
-    console.log("loaded")
-    if(e.currentTarget.className !=="error") {
-      console.log("success")
-    }
-  }
   const imageOnErrorHandler = (event) => {
     event.currentTarget.src = businessicon;
   };
@@ -67,7 +61,6 @@ const CurrentUserBusinesses = () => {
                 alt='business img'
                 id="current-user-reviews-business-img"
                 src={business?.images?.url}
-                onLoad={imgOnLoadHandler}
                 onError={imageOnErrorHandler}
                 ></img>
               </div>

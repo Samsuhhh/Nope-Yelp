@@ -22,7 +22,7 @@
     height: 70%;
     z-index: -1;
     margin-left: 18%;
-    margin-top: 150px;
+    position: fixed;
 }
 
 #error-div {
@@ -34,7 +34,8 @@
 }
 
 #goop-validations {
-    width: 80%;
+    width: 40%;
+    margin-left: 250px;
     z-index: 0;
 }
 
@@ -50,10 +51,10 @@
 
 #validations-div {
     position: absolute;
-    top: 25%;
-    right: 18%;
+    top: 10%;
+    right: 52.5%;
     width: 320px;
-    height: 210px;
+    height: 168px;
     /* border: 1px solid red; */
     row-gap: 20px;
     background-color: #ffda18;
@@ -134,7 +135,7 @@
     width: 100%;
     height: 100%;
     border-radius: 4px;
-    border: 1px solid black;
+    border: lightgray 1px solid;
 }
 
 #address-input-div {
@@ -153,7 +154,7 @@
     font-family: "Open Sans";
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border: lightgray 1px solid;
     border-radius: 4px;
 }
 
@@ -192,7 +193,7 @@
     font-family: "Open Sans";
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border: lightgray 1px solid;
     border-radius: 4px;
 }
 
@@ -212,7 +213,7 @@
     font-family: "Open Sans";
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border: lightgray 1px solid;
     border-radius: 4px;
 }
 
@@ -231,8 +232,8 @@
 #create-text-area {
     /* border-left: 1px solid black;
     border-right: 1px solid black; */
-    border: 1px solid black;
     border-radius: 4px;
+    border: lightgray 1px solid;
     width: 100%;
     height: 150px;
     padding: 15px;
@@ -452,9 +453,9 @@ input:checked~.lbl:hover~.lbl,
     margin-left: 15px;
 }
 
+
 .create-business-input {
     font-size: 16;
-
     outline: none;
     background: none;
 
@@ -464,143 +465,159 @@ input:checked~.lbl:hover~.lbl,
     border: 2px solid #008EA7;
 }
 
+#force-border:focus {
+    border: 2px solid #008EA7;
+}
+
 .create-business-input:focus::placeholder {
     color: transparent
 }
 
 #name-label {
     position: absolute;
-    top: 27.5%;
-    left: 15%;
+    top: 27.3%;
+    left: 14.5%;
     z-index: 1;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #email-label {
     position: absolute;
     top: 33%;
-    left: 15%;
+    left: 14.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #phone-label {
     position: absolute;
     top: 33%;
-    left: 32%;
+    left: 31.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #address-label {
     position: absolute;
     top: 39%;
-    left: 15%;
+    left: 14.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #city-label {
     position: absolute;
     top: 45%;
-    left: 15%;
+    left: 14.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #state-label {
     position: absolute;
     top: 45%;
-    left: 26%;
+    left: 25.7%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #zipcode-label {
     position: absolute;
     top: 45%;
-    left: 37%;
+    left: 36.9%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 
 #longitude-label {
     position: absolute;
-    bottom: 47%;
-    left: 15%;
+    bottom: 47.5%;
+    left: 14.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #latitude-label {
     position: absolute;
-    bottom: 47%;
+    bottom: 47.5%;
     left: 31.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #website-label {
     position: absolute;
-    bottom: 41.5%;
-    left: 15%;
+    bottom: 41.7%;
+    left: 14.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 
 #img-label {
     position: absolute;
-    bottom: 41.5%;
+    bottom: 41.7%;
     left: 31.5%;
     background-color: white;
     padding: 0 5px;
     z-index: 1;
     font-size: 13px;
     color: #008EA7;
-    font-weight: 700;
+    font-weight: 600;
+}
+
+#about-label {
+    position: absolute;
+    bottom: 27.7%;
+    left: 14.5%;
+    background-color: white;
+    padding: 0 5px;
+    z-index: 1;
+    font-size: 13px;
+    color: #008EA7;
+    font-weight: 600;
 }
 
 /* ::placeholder{
@@ -630,13 +647,14 @@ input:checked~.lbl:hover~.lbl,
 
 #error-div {
     animation: fade 1s linear forwards;
+    margin-bottom: 20px;
 }
 
 @keyframes fade {
     from {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(0px);
     }
 
     to {

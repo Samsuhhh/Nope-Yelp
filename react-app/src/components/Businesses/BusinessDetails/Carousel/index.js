@@ -21,7 +21,7 @@ const Carousel = ({ children }) => {
                     onClick={() => {
                         setActiveIndex(activeIndex - 1);
                     }}>
-                    <img id="prev-button" src={prev} />
+                    <img id="prev-button" src={prev} alt='prev button'/>
                 </button>
             </div>
             <div className="inner" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
@@ -35,7 +35,7 @@ const Carousel = ({ children }) => {
                         setActiveIndex(activeIndex + 1);
                     }}>
 
-                    <img id="next-button" src={activeIndex < 2 ? next : ''} />
+                    <img id="next-button" src={activeIndex < 2 ? next : ''} alt='next button'/>
                 </button>
             </div>
         </div>

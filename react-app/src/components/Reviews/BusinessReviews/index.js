@@ -1,7 +1,7 @@
 //  empty for now TODO
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams, NavLink } from 'react-router-dom'
+import { useParams, NavLink, useHistory } from 'react-router-dom'
 import { getAllReviews, removeReview } from '../../../store/review'
 import editicon from '../../../assets/icons/edit-pen.svg'
 import trashcan from '../../../assets/icons/trash-can.svg'
@@ -17,23 +17,16 @@ import './BusinessReviews.css'
 const BusinessReview = () => {
     const { businessId } = useParams()
     const dispatch = useDispatch()
+    const history = useHistory()
+    let deleteReviewHandler;
 
     const user = useSelector(state => state.session.user)
     const businessReviews = useSelector(state => state.reviews.business)
     const [isLoaded, setIsLoaded] = useState(false)
 
-    const imgOnLoadHandler = e => {
-        console.log("loaded")
-        if (e.currentTarget.className !== "error") {
-            console.log("success")
-        }
-    }
     const imageOnErrorHandler = (event) => {
         event.currentTarget.src = userprofileicon;
     };
-
-    // conditional to render edit and delete YOUR review button
-    // { user && user.id === businessReviews.Owner.id}
 
     const nopeImgs = (nopesCount) => {
         if (nopesCount > 4 && nopesCount <= 5) return (nopes5)
@@ -52,7 +45,7 @@ const BusinessReview = () => {
         <div>
             {businessReviews &&
                 <div>
-                    {Object.values(businessReviews).map(review => (
+                    {Object.values(businessReviews).reverse().map(review => (
                         <div id='review-card' key={review.id}>
                             <div id='review-info'>
                                 <div id='review-user-avatar-div'>
@@ -60,7 +53,6 @@ const BusinessReview = () => {
                                         id='user-avatar'
                                         src={`${review.Owner.userAvatar}`}
                                         alt='user avatar'
-                                        onLoad={imgOnLoadHandler}
                                         onError={imageOnErrorHandler}
                                     />
                                 </div>
@@ -83,7 +75,15 @@ const BusinessReview = () => {
                                                 </img>
                                             </button>
                                         </NavLink>
-                                        <button className="eviscerate-btn"onClick={() => dispatch(removeReview(review.id))}>
+                                        {deleteReviewHandler = async () => {
+                                            if (window.confirm('Are you sure you want to delete your review?')) {
+                                                await dispatch(removeReview(review.id))
+                                                history.push(`/businesses/${businessId}`)
+                                            } else {
+                                                history.push(`/businesses/${businessId}`)
+                                            }
+                                        }}
+                                        <button className="eviscerate-btn" onClick={deleteReviewHandler}>
                                             <img className="current-user-review-action-btns" alt='eviscerate me' src={trashcan}></img>
                                         </button>
                                     </div>

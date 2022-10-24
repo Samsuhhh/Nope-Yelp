@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSingleBusinessThunk, updateBusinessThunk } from '../../../store/business';
-import { getAllReviews } from '../../../store/review';
+import { getSingleBusinessThunk } from '../../../store/business';
+// import { getAllReviews } from '../../../store/review';
 import { useParams, useHistory, Link, NavLink } from 'react-router-dom';
 import BusinessReview from '../../Reviews/BusinessReviews'
 import React from 'react';
 import './BusinessDetails.css'
-import { deleteBusinessThunk, addBusinessImage } from '../../../store/business';
+import { deleteBusinessThunk } from '../../../store/business';
 import Carousel, { CarouselItem } from './Carousel';
-import BusinessNavBar from './Carousel/BusinessNavBar/BusinessNavBar'
+// import BusinessNavBar from './Carousel/BusinessNavBar/BusinessNavBar'
 import Footer from '../../Footer/Footer'
 import { Modal } from '../../../context/Modal';
 import { removeReview } from '../../../store/review';
@@ -48,10 +48,6 @@ const BusinessDetails = ({ search, onClose }) => {
     const existingReviews = Object.values(reviewsObj);
     const [isLoaded, setIsLoaded] = useState(false);
     const [showPhotosModal, setShowPhotosModal] = useState(false);
-
-    // const [img, setImg] = useState()
-    // console.log('user', currentUser)
-    // console.log('busi', business)
 
     if (!existingReviews.length) {
         existingReview = true
@@ -128,7 +124,6 @@ const BusinessDetails = ({ search, onClose }) => {
 
     // let images = Object.keys(business?.businessImages)
     // const length = images.length
-    // console.log(length)
     // const nextSlide = () => {
     //     setCurrent(current === length - 1 ? 0 : current + 1)
     // };
@@ -153,22 +148,11 @@ const BusinessDetails = ({ search, onClose }) => {
         if (averageNopes > 0 && averageNopes <= 1) return (nopes1)
         else return nope
     }
-    const imgOnLoadHandlerAvatar = e => {
-        console.log("loaded")
-        if (e.currentTarget.className !== "error") {
-            console.log("success")
-        }
-    }
+
     const imageOnErrorHandlerAvatar = (event) => {
         event.currentTarget.src = userprofileicon;
     };
 
-    const imgOnLoadHandlerBiz = e => {
-        console.log("loaded")
-        if (e.currentTarget.className !== "error") {
-            console.log("success")
-        }
-    }
     const imageOnErrorHandlerBiz = (event) => {
         event.currentTarget.src = businessicon;
     };
@@ -188,6 +172,15 @@ const BusinessDetails = ({ search, onClose }) => {
         if (window.confirm('Are you sure you want to delete your business?')) {
             await dispatch(deleteBusinessThunk(businessId))
             history.push('/')
+        } else {
+            history.push(`/businesses/${businessId}`)
+        }
+    }
+
+    const deleteReviewHandler = async () => {
+        if (window.confirm('Are you sure you want to delete your review?')) {
+            await dispatch(removeReview(currentUserReview[0]?.id))
+            history.push(`/businesses/${businessId}`)
         } else {
             history.push(`/businesses/${businessId}`)
         }
@@ -234,7 +227,6 @@ const BusinessDetails = ({ search, onClose }) => {
                                             id="caro-img"
                                             alt='yes'
                                             src={`${image.url}`}
-                                            onLoad={imgOnLoadHandlerBiz}
                                             onError={imageOnErrorHandlerBiz}
                                         ></img>
                                         <img id="caro-img" alt='yes' src={restaurantArray[randomNum()]}></img>
@@ -321,7 +313,6 @@ const BusinessDetails = ({ search, onClose }) => {
                                         alt='Owner Avatar'
                                         id='owner-avatar'
                                         src={`${business.Owner.userAvatar}`}
-                                        onLoad={imgOnLoadHandlerAvatar}
                                         onError={imageOnErrorHandlerAvatar}
                                     />
                                 </div>
@@ -359,7 +350,6 @@ const BusinessDetails = ({ search, onClose }) => {
                                                 alt='owner avatar'
                                                 id='owner-avatar'
                                                 src={`${currentUser.userAvatar}`}
-                                                onLoad={imgOnLoadHandlerAvatar}
                                                 onError={imageOnErrorHandlerAvatar}
                                             ></img>
                                             <div>
@@ -384,7 +374,6 @@ const BusinessDetails = ({ search, onClose }) => {
                                                 alt='User Avatar'
                                                 id='owner-avatar'
                                                 src={`${currentUser.userAvatar}`}
-                                                onLoad={imgOnLoadHandlerAvatar}
                                                 onError={imageOnErrorHandlerAvatar}
                                             ></img>
                                             <div>
@@ -403,7 +392,7 @@ const BusinessDetails = ({ search, onClose }) => {
                                                                     <img className="current-user-review-actions-img" src={editpen} alt='nope images'></img>
                                                                 </button>
                                                             </NavLink>
-                                                            <button onClick={() => dispatch(removeReview(currentUserReview[0]?.id))} className="current-user-review-actions-btn">
+                                                            <button onClick={deleteReviewHandler} className="current-user-review-actions-btn">
                                                                 <img className="current-user-review-actions-img" src={trashcan} alt='trash can icon'></img>
                                                             </button>
 

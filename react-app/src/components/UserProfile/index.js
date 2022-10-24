@@ -51,19 +51,12 @@ const UserProfile = () => {
     "How do you truly savor a hot dog? With relish."
   ]
 
-  console.log(randomGreeting[Math.floor(Math.random() * (randomGreeting.length - 1))])
   let businessCount = 0
-  console.log(Math.floor(Math.random() * (randomGreeting.length - 1)))
   Object.values(businesses).map(business => {
     if (business.owner_id === user.id) businessCount++
     return businessCount
   })
 
-  const imgOnLoadHandler = (e) => {
-    if (e.currentTarget.className !== "error"){
-      console.log('img loaded successfully!')
-    }
-  }
   const imgOnErrorHandler = (event) => {
     event.currentTarget.src = userProfile;
   }
@@ -75,16 +68,16 @@ const UserProfile = () => {
         <div id="middle-page-conatiner">
           <div id="user-information-div">
             <img
-            src={user.userAvatar}
+            src={`${user.userAvatar}`}
             id="user-profile-pic"
             alt='user profile'
-            onLoad={imgOnLoadHandler}
             onError={imgOnErrorHandler}
             />
           <div>
             <h1>{user.firstName} {user.lastName}</h1>
             <h4>{user.email}</h4>
-            <h4>{randomGreeting[Math.floor(Math.random() * (randomGreeting.length - 1))]}</h4>
+            {/* <h4>{randomGreeting[Math.floor(Math.random() * (randomGreeting.length - 1))]}</h4> */}
+            <h4>What does a nosey pepper do? Gets jalapeño business.</h4>
             <div id="user-actions-btn-container">
               <div className="dropdown-links">
                 <NavLink className="user-profile-navlink" to='/'>
