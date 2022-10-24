@@ -21,7 +21,7 @@ function RecentActivity({ setSearch }) {
     const dispatch = useDispatch()
     const reviews = useSelector(state => state.reviews.allReviews)
     const business = useSelector(state => state.businesses.allBusinesses)
-    console.log('----the review object from useSelector----', review)
+    
 
     const nopeImgs = (averageNopes) => {
         if (averageNopes > 4 && averageNopes <= 5) return (nopes5)
