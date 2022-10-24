@@ -71,7 +71,8 @@
 
 #fragmented-first-last-container{
     display: flex;
-
+    justify-content: space-between;
+    align-items: center;
 }
 
 .signup-input-divs{
@@ -96,9 +97,12 @@
 
 }
 
-.signUp-input{
-
+.singup-input-divs-single{
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
 }
+
 
 #first-name-input {
     height: 100%;
@@ -114,8 +118,13 @@
     border: 1px lightgray solid;
     border-radius: 5px;
 }
+.signup-input{
+    height: 100%;
+    width: 100%;
 
-#username-input {
+}
+
+/* #username-input {
     height: 30px;
     width: 100%;
     border: 1px lightgray solid;
@@ -134,7 +143,7 @@
     width: 100%;
     border: 1px lightgray solid;
     border-radius: 5px;
-}
+} */
 
 #signup-submit-button {
     font-weight: 700;

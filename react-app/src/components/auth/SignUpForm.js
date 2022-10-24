@@ -176,7 +176,7 @@ const SignUpForm = () => {
               </div>
               <div className='signup-input-divs-single'>
                 <input
-                  className='signUp-input'
+                  className='signup-input'
                   id="username-input"
                   type='text'
                   name='username'
