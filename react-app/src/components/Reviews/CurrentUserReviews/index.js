@@ -10,6 +10,7 @@ import nopes3 from "../../../assets/nopes/3-nopes.png"
 import nopes2 from "../../../assets/nopes/2-nopes.png"
 import nopes1 from "../../../assets/nopes/1-nopes.png"
 import nopes0 from "../../../assets/nopes/0-nopes.png"
+import businessicon from '../../../assets/icons/business.svg'
 import './CurrentUserReviews.css'
 
 const CurrentUserReviews = () => {
@@ -35,6 +36,9 @@ const CurrentUserReviews = () => {
         else return nopes0
     }
     let deleteReviewHandler;
+    const imageOnErrorHandler = (event) => {
+        event.currentTarget.src = businessicon;
+      };
     useEffect(() => {
         dispatch(getCurrentReviews())
         // return () => dispatch(reset())
@@ -56,7 +60,7 @@ const CurrentUserReviews = () => {
                                     <NavLink id="business-navlink-card" to={`/businesses/${businesses[review.business_id]?.id}`}>
                                         <div id="review-list-container-current-reviews">
                                             <div id="text-container-current-reviews">
-                                                <img id="current-user-reviews-business-img" src={businesses[review.business_id]?.images?.url}></img>
+                                                <img id="current-user-reviews-business-img" src={`${businesses[review.business_id]?.images?.url}`} onError={imageOnErrorHandler}></img>
                                             </div>
                                             <div id="business-information-container-current-user-reviews">
                                                 <NavLink id="business-name-navlink-current-user-businesses" to={`/businesses/${businesses[review.business_id]?.id}`}>
