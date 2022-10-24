@@ -5,6 +5,7 @@ import { updateBusinessThunk, getSingleBusinessThunk, resetBusiness } from '../.
 import './UpdateBusiness.css'
 import { Modal } from '../../../context/Modal'
 import xicon from '../../../assets/icons/x-icon.svg'
+import blacknope from '../../../assets/nopes/ratingimgblack.png'
 
 
 const UpdateBusiness = () => {
@@ -218,7 +219,7 @@ const UpdateBusiness = () => {
             setValidationErrors(errors)
         }
     }, [businessName, email, phone, streetAddress, city, zipcode, state,
-        about, longitude, latitude, priceRange, website, tags, tagsList, helper])
+        about, longitude, latitude, priceRange, website, tags, tagsList, helper, existingBusiness])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -259,40 +260,39 @@ const UpdateBusiness = () => {
     return (
         <div id='create-business-form-page'>
 
-            <div id='create-form-container'>
+            <div id='create-form-container-left'>
                 <div id='create-form-header'>
                     <div>
-                        <h1>Hello again ! What would you like to change?</h1>
+                        <h1>Hello! Let's start with your business information</h1>
                     </div>
                     <div>
-                        We'll use this information to help you update your Nope page.
-                        Your existing business information will come up automatically, just change what you need to and submit.
+                        We'll use this information to help you claim your Nope page.
+                        Your new business will load automatically once you submit.
                     </div>
                 </div>
 
                 <div id='form-content'>
                     <form onSubmit={handleSubmit}>
-                        {showErrors &&
-                            <ul>
-                                {validationErrors.map((e, i) => {
-                                    return <div key={i}>{e}</div>
-                                })}
-                            </ul>
-                        }
                         {/*------- BUSINESS NAME  -------*/}
                         <div className='create-input-divs'>
+
+                            <label id='name-label'>Business name</label>
                             <input
+                                className='create-business-input'
                                 type='text'
-                                placeholder='Business Name'
+                                placeholder='Business name'
                                 value={businessName}
                                 onChange={updateBusinessName}
                                 required />
+
                         </div>
                         <div className='fragmented-divs-container-address-LL-url'>
                             {/*------ EMAIL ------*/}
                             <div className='fragmented-div-styling'>
+                                <label id="email-label">Email</label>
                                 <input
-                                    type='email'
+                                    className='create-business-input'
+                                    type='text'
                                     placeholder='Email'
                                     value={email}
                                     onChange={updateEmail}
@@ -300,7 +300,9 @@ const UpdateBusiness = () => {
                             </div>
                             {/*------ PHONE ------*/}
                             <div className='fragmented-div-styling'>
+                                <label id='phone-label'>Phone</label>
                                 <input
+                                    className='create-business-input'
                                     type='text'
                                     placeholder='Phone'
                                     value={phone}
@@ -311,7 +313,10 @@ const UpdateBusiness = () => {
                         <div className='fragmented-container' >
                             {/* ------ STREET ADDRESS ------ */}
                             <div id='address-input-div'>
+                                <label id='address-label'>Address</label>
                                 <input
+                                    id='force-border'
+                                    className='create-business-input'
                                     type='text'
                                     placeholder='Address'
                                     value={streetAddress}
@@ -321,7 +326,9 @@ const UpdateBusiness = () => {
                             <div className='fragmented-divs-container-address-LL-url'>
                                 {/*------ CITY ------*/}
                                 <div className='fragmented-address-div'>
+                                    <label id='city-label'>City</label>
                                     <input
+                                        className='create-business-input'
                                         type='text'
                                         placeholder='City'
                                         value={city}
@@ -330,7 +337,9 @@ const UpdateBusiness = () => {
                                 </div>
                                 {/*------- STATE -------*/}
                                 <div className='fragmented-address-div'>
+                                    <label id='state-label'>State</label>
                                     <input
+                                        className='create-business-input'
                                         type='text'
                                         placeholder='State'
                                         value={state}
@@ -339,11 +348,11 @@ const UpdateBusiness = () => {
                                 </div>
                                 {/*------- ZIPCODE -------*/}
                                 <div className='fragmented-address-div'>
+                                    <label id='zipcode-label'>Zipcode</label>
                                     <input
+                                        className='create-business-input'
                                         type='number'
                                         placeholder='Zipcode'
-                                        min='10000'
-                                        max='99999'
                                         value={zipcode}
                                         onChange={updateZipcode}
                                         required />
@@ -354,7 +363,9 @@ const UpdateBusiness = () => {
                             <div className='fragmented-divs-container-address-LL-url'>
                                 {/*------- LONGITUDE -------*/}
                                 <div className='fragmented-div-styling'>
+                                    <label id='longitude-label'>Longitude</label>
                                     <input
+                                        className='create-business-input'
                                         type='text'
                                         placeholder='Longitude'
                                         value={longitude}
@@ -365,7 +376,9 @@ const UpdateBusiness = () => {
                                 </div>
                                 {/*------- LATITUDE -------*/}
                                 <div className='fragmented-div-styling'>
+                                    <label id='latitude-label'>Latitude</label>
                                     <input
+                                        className='create-business-input'
                                         type='text'
                                         placeholder='Latitude'
                                         value={latitude}
@@ -375,49 +388,42 @@ const UpdateBusiness = () => {
                                         required />
                                 </div>
                             </div>
-                            {/*------- WEBSITE URL -------*/}
-
-                            <div className='create-input-divs'>
-                                <input
-                                    type='text'
-                                    placeholder='WebsiteURL'
-                                    value={website}
-                                    onChange={updateWebsite}
-                                    required />
+                            <div className='fragmented-divs-container-address-LL-url'>
+                                {/*------- WEBSITE -------*/}
+                                <div className='fragmented-div-styling'>
+                                    <label id='website-label'>Website URL</label>
+                                    <input
+                                        className='create-business-input'
+                                        type='text'
+                                        placeholder='WebsiteURL'
+                                        value={website}
+                                        onChange={updateWebsite}
+                                        required />
+                                </div>
+                                {/*------- IMG URL -------*/}
+                                {/* <div className='fragmented-div-styling'>
+                                    <label id='img-label'>IMG Url</label>
+                                    <input
+                                        className='create-business-input'
+                                        type='text'
+                                        placeholder='IMG URL'
+                                        value={imgUrl}
+                                        onChange={updateImgUrl}
+                                        required />
+                                </div> */}
                             </div>
-                        </div>
-                        {/*------- ABOUT -------*/}
-                        <div id='about-textarea-div'>
-                            <textarea
-                                id='create-text-area'
-                                type='text'
-                                placeholder='About'
-                                value={about}
-                                onChange={updateAbout}
-                                required />
-
                         </div>
                         {/*------- PRICE RANGE -------*/}
                         <div id='tags-price-inputs'>
                             <div id='price-select-div-hover'>
-                                {/* <select
-                                value={priceRange}
-                                onChange={updatePriceRange}
-                                required>
-                                <option value=''>Select a price range</option>
-                                <option value='1'>$</option>
-                                <option value='2'>$$</option>
-                                <option value='3'>$$$</option>
-                                <option value='4'>$$$$</option>
-                            </select> */}
                                 <div id='priceHeading'>What is the price range of your business?</div>
                                 <div id='price-setter-container'>
                                     <fieldset id='fieldset-price' className="rate" value={priceRange} onChange={updatePriceRange}>
                                         {/* <input className="priceInput" type="radio" id="rating10" name="rating" value="5" /><label for="rating10" title="5 stars"></label> */}
-                                        <input className="priceInput" type="radio" id="rating8" name="rating" value="4" /><label for="rating8" title="4 stars"></label>
-                                        <input className="priceInput" type="radio" id="rating6" name="rating" value="3" /><label for="rating6" title="3 stars"></label>
-                                        <input className="priceInput" type="radio" id="rating4" name="rating" value="2" /><label for="rating4" title="2 stars"></label>
-                                        <input className="priceInput" type="radio" id="rating2" name="rating" value="1" /><label for="rating2" title="1 star"></label>
+                                        <input className="priceInput" type="radio" id='rating8' value="4" name='rating' /><label className='lbl' for="rating8" title="4 $"></label>
+                                        <input className="priceInput" type="radio" id='rating6' value="3" name='rating' /><label className='lbl' for="rating6" title="3 $"></label>
+                                        <input className="priceInput" type="radio" id='rating4' value="2" name='rating' /><label className='lbl' for="rating4" title="2 $"></label>
+                                        <input className="priceInput" type="radio" id='rating2' value="1" name='rating' /><label className='lbl' for="rating2" title="1 $"></label>
                                     </fieldset>
                                 </div>
                             </div>
@@ -431,6 +437,19 @@ const UpdateBusiness = () => {
                                 </div>
                             </div>
                         </div>
+                        {/*------- ABOUT -------*/}
+                        <div id='about-textarea-div'>
+                            <label id="about-label">About</label>
+                            <textarea
+                                className='create-business-input'
+                                id='create-text-area'
+                                type='text'
+                                placeholder='About'
+                                value={about}
+                                onChange={updateAbout}
+                                required />
+
+                        </div>
 
                         {showTagModal && (
                             <div id='modal-wrapper'>
@@ -441,16 +460,14 @@ const UpdateBusiness = () => {
                                             Close
                                             <img id="close-modal-icon" src={xicon} alt='close icon' />
                                         </div>
-
                                         <div id='header-div'>
-                                            Select your tags
+                                            Select three tags
                                         </div>
                                     </div>
                                     <div id='modal-children-wrapper' className='grid-container'>
                                         <div id='tags-grid'>
                                             {mainTagsList.map(tag => {
                                                 return <div id='input-styling-grid' key={tag.title}>
-
                                                     <input
                                                         id='checkbox-input'
                                                         type="checkbox"
@@ -459,25 +476,28 @@ const UpdateBusiness = () => {
                                                         value={tag.title}
                                                         disabled={tagsList.length >= 3}
                                                     />
-
                                                     <label id='text-align-center'>{tag.title}</label>
                                                 </div>
                                             })}
                                         </div>
                                     </div>
-                                    <div
+                                    <button
+                                        type='button'
                                         id='tag-confirm-button'
-                                        onClick={confirmModal}>
+                                        onClick={confirmModal}
+                                        disabled={tagsList.length < 3}>
                                         Confirm
-                                    </div>
+                                    </button>
                                 </Modal>
                             </div>
+
                         )}
                         <div id='button-width'>
                             <div id='button-container'>
                                 {/*------- SUBMIT BUTTON -------*/}
                                 <div >
-                                    <button id='submit-button' type='submit'>Update</button>
+                                    <button id='submit-button' type='submit'>Update your business</button>
+
                                 </div>
                                 <div >
                                     {/*------- CANCEL BUTTON -------*/}
@@ -493,6 +513,28 @@ const UpdateBusiness = () => {
                     </form>
                 </div>
             </div >
+            <div id='create-form-page-right-half'>
+                <div id='goop-container'>
+                    <img id='goop-validations' src='https://i.imgur.com/CsnWphk.png' alt='gooper' />
+                    {showErrors &&
+                        <div className='validation-div-scroll' id={validationErrors.length ? 'validations-div' : 'hidden'} >
+                            {/* <div id={`${hiddenDiv(!validationErrors.length)}`} style={{backgroundColor: whatever}}> */}
+                            <div>
+                                {validationErrors.map((e, i) => {
+                                    return (
+                                        <div id='error-div' key={i}>
+                                            <div>
+                                                <img id='bNope' alt='blacknope' src={blacknope} />
+                                            </div>
+                                            {e}
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
         </div >
     )
 }
