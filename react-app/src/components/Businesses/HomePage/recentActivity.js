@@ -35,6 +35,10 @@ function RecentActivity({ setSearch }) {
         event.currentTarget.src = userprofileicon;
     };
 
+    const businessImageOnErrorHandler = (e) => {
+        e.currentTarget.src = businessicon
+    }
+
     useEffect(() => {
         dispatch(getAllBusinessesReviews())
             .then(() => { setIsLoaded(true) })
@@ -63,7 +67,7 @@ function RecentActivity({ setSearch }) {
                                         </div>
                                     </div>
                                     <div className='business-img-recent-act-grid'>
-                                        <img id="grid-business-img" src={business?.[review[Object.values(review).length]?.business_id]?.images?.url} alt='business img' />
+                                        <img id="grid-business-img" src={`${business?.[review[Object.values(review).length]?.business_id]?.images?.url}`} onError={businessImageOnErrorHandler} alt='business img' />
                                     </div>
 
 
