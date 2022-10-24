@@ -57,7 +57,6 @@ export const getAllReviews = (businessId) => async dispatch => {
 
     if (response.ok) {
         const reviews = await response.json()
-        console.log('what do the reviews look like?', reviews)
         dispatch(load(reviews, businessId))
         return reviews
     }
