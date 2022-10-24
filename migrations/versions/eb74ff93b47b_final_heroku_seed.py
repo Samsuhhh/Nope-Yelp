@@ -1,8 +1,8 @@
-"""seeding heroku
+"""final heroku seed
 
-Revision ID: 318b991ed132
+Revision ID: eb74ff93b47b
 Revises: 
-Create Date: 2022-10-23 21:11:35.741916
+Create Date: 2022-10-23 23:52:24.355352
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '318b991ed132'
+revision = 'eb74ff93b47b'
 down_revision = None
 branch_labels = None
 depends_on = None
