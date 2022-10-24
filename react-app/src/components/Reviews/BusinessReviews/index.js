@@ -58,7 +58,7 @@ const BusinessReview = () => {
                                 </div>
                                 <div id='user-info-div'>
                                     <div id='user-name'>{review.Owner.firstName} {review.Owner.lastName ? review.Owner.lastName.slice(0, 1) + '.' : '$.'}</div>
-                                    <div>user friends/pictures/reviews</div>
+                                    <div style={{color:"grey"}}>Elite Grumbler</div>
                                 </div>
                             </div>
                             <div id='review-nopes-container-flex-row'>
