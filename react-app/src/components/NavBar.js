@@ -49,13 +49,26 @@ const NavBar = ({ setSearch }) => {
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault()
-
-
+    let businessResults;
     const fuse = new Fuse(Object.values(businesses), options)
-    const results = fuse.search(document.getElementById("search-input-field-business-list").value===""? "restaurant" :document.getElementById("search-input-field-business-list").value)
-    const businessResults = results.map(result => result.item).slice(0, 15)
+    if (document.getElementById("search-input-field-business-list").value === "")  businessResults = Object.values(businesses)
+    else if (document.getElementById("search-input-field-business-list").value === "San Francisco") {
+      businessResults = Object.values(businesses).filter(business=> business.city === "San Francisco")
+    }
+    else if (document.getElementById("search-input-field-business-list").value === "New York") {
+      businessResults = Object.values(businesses).filter(business=> business.city === "New York")
+    }
+    else if (document.getElementById("search-input-field-business-list").value === "Brooklyn") {
+      businessResults = Object.values(businesses).filter(business=> business.city === "Brooklyn")
+    }
+    else {
+      let results = fuse.search(document.getElementById("search-input-field-business-list").value).slice(0, 15)
+       businessResults = results.map(result => result.item)
+    }
+
     setSearch(businessResults)
     return history.push("/businesses")
+
   }
 
   const sessionUser = useSelector(state => state.session.user)
