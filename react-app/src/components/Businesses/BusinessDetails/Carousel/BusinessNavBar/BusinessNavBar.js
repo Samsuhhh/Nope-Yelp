@@ -49,10 +49,23 @@ const BusinessNavBar = ({ setSearch }) => {
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault()
-
+    let businessResults;
     const fuse = new Fuse(Object.values(businesses), options)
-    const results = fuse.search(document.getElementById("search-input-field").value).slice(0, 15)
-    const businessResults = results.map(result => result.item)
+    if (document.getElementById("search-input-field").value === "")  businessResults = Object.values(businesses)
+    else if (document.getElementById("search-input-field").value === "San Francisco") {
+      businessResults = Object.values(businesses).filter(business=> business.city === "San Francisco")
+    }
+    else if (document.getElementById("search-input-field").value === "New York") {
+      businessResults = Object.values(businesses).filter(business=> business.city === "New York")
+    }
+    else if (document.getElementById("search-input-field").value === "Brooklyn") {
+      businessResults = Object.values(businesses).filter(business=> business.city === "Brooklyn")
+    }
+    else {
+      let results = fuse.search(document.getElementById("search-input-field").value).slice(0, 15)
+       businessResults = results.map(result => result.item)
+    }
+    console.log("this",businessResults)
     setSearch(businessResults)
     return history.push("/businesses")
 

@@ -257,7 +257,7 @@ export default function BusinessCard({ search }) {
               </div>
             )}
             {!!businessList?.length && Object.values(businessList || search).map((business, i) => {
-              let about = business.about
+              let about = business?.about
               business.about.length > 180 ? about = business.about.slice(0, 180) + "..." : about = business.about
               return (
 
@@ -286,7 +286,7 @@ export default function BusinessCard({ search }) {
                         </span>{" "}<span>{business.city}</span></div>
                       <br></br>
 
-                      <div>"{about}"{" "}{business.about.length > 180 && (<Link id="more-link" to={`/businesses/${business.id}`}>more</Link>)}</div>
+                      <div>"{about}"{" "}{business?.about.length > 180 && (<Link id="more-link" to={`/businesses/${business.id}`}>more</Link>)}</div>
 
                     </div>
                   </div>
