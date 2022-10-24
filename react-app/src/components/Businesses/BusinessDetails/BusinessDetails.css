@@ -201,7 +201,8 @@
     height: 50px;
     font-family: "Open Sans";
     align-items: center;
-
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ebebeb;
     /* padding: 10px; */
 }
 
@@ -292,6 +293,8 @@
 #about-business-h2-div {
     font-size: 14px;
     font-weight: 600;
+    border-top: 1px solid #ebebeb;
+    margin-top: 20px;
 }
 
 #review-trust-banner {
@@ -525,12 +528,13 @@
 
 #sticky-sidebar-container {
     width: 425px;
-    height: 900px;
+    height: 100%;
     font-family: 'Open Sans';
     font-size: 16px;
     font-weight: 600;
     margin-left: 2%;
     margin-top: 10px;
+    border: 1px solid red;
     /* have to change width to fixed sizing so it doesn't change width */
 }
 
@@ -669,7 +673,20 @@
     justify-content: center;
     align-items: center;
     height: 325px;
+    width: 400px;
+    margin-top: 10px;
+    border: 1px solid red;
+    padding: 10px;
+
 }
-#google-map-div{
-    margin: 40px;
+#google-map-div-details{
+    position: sticky;
+    top: 305px;
+    margin-top: 15px;
+    background-color: white;
+}
+
+#location-header-div{
+    margin-top: -10px;
+
 }
