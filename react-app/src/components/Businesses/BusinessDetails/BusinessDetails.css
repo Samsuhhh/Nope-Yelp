@@ -664,3 +664,12 @@
     background-color: transparent;
     border: none;
 }
+#blur-map-div-details{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 325px;
+}
+#google-map-div{
+    margin: 40px;
+}

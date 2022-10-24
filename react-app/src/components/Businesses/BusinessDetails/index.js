@@ -32,7 +32,12 @@ import camera from "../../../assets/addbusiness/featureicons/camera-icon.svg"
 import info from "../../../assets/addbusiness/featureicons/info-icon.svg"
 import defpp from "../../../assets/businessdetails/defaultprofile.jpg"
 import BusinessImages from '../BusinessImages';
-
+import blurmap from '../../../assets/imgs/blurmap.png'
+import {
+    StaticGoogleMap,
+    Marker,
+    // Path,
+} from 'react-static-google-map';
 
 
 const BusinessDetails = ({ search, onClose }) => {
@@ -302,6 +307,17 @@ const BusinessDetails = ({ search, onClose }) => {
                                     </div>
                                 </>
                             )}
+                        </div>
+                        <div id="blur-map-div-details" style={{ backgroundImage: `url(${blurmap})` }}>
+                            <div id="google-map-div-details">
+                                <StaticGoogleMap size="640x300" apiKey="AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU">
+                                    <Marker
+                                        location={{ lat: business.latitude, lng: business.longitude }}
+                                        color="red"
+                                        label="P"
+                                    />
+                                </StaticGoogleMap>
+                            </div>
                         </div>
                         <section id='business-details-about-container'>
                             <div id='about-business-h2-div'>
