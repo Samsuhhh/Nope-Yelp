@@ -1,7 +1,7 @@
 //  empty for now TODO
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams, NavLink } from 'react-router-dom'
+import { useParams, NavLink, useHistory } from 'react-router-dom'
 import { getAllReviews, removeReview } from '../../../store/review'
 import editicon from '../../../assets/icons/edit-pen.svg'
 import trashcan from '../../../assets/icons/trash-can.svg'
@@ -17,6 +17,8 @@ import './BusinessReviews.css'
 const BusinessReview = () => {
     const { businessId } = useParams()
     const dispatch = useDispatch()
+    const history = useHistory()
+    let deleteReviewHandler;
 
     const user = useSelector(state => state.session.user)
     const businessReviews = useSelector(state => state.reviews.business)
@@ -73,7 +75,15 @@ const BusinessReview = () => {
                                                 </img>
                                             </button>
                                         </NavLink>
-                                        <button className="eviscerate-btn" onClick={() => dispatch(removeReview(review.id))}>
+                                        {deleteReviewHandler = async () => {
+                                            if (window.confirm('Are you sure you want to delete your review?')) {
+                                                await dispatch(removeReview(review.id))
+                                                history.push(`/businesses/${businessId}`)
+                                            } else {
+                                                history.push(`/businesses/${businessId}`)
+                                            }
+                                        }}
+                                        <button className="eviscerate-btn" onClick={deleteReviewHandler}>
                                             <img className="current-user-review-action-btns" alt='eviscerate me' src={trashcan}></img>
                                         </button>
                                     </div>
