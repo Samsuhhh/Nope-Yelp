@@ -177,6 +177,15 @@ const BusinessDetails = ({ search, onClose }) => {
         }
     }
 
+    const deleteReviewHandler = async () => {
+        if (window.confirm('Are you sure you want to delete your review?')) {
+            await dispatch(removeReview(currentUserReview[0]?.id))
+            history.push(`/businesses/${businessId}`)
+        } else {
+            history.push(`/businesses/${businessId}`)
+        }
+    }
+
 
     let currentUserReview;
     if (currentUser) {
@@ -383,7 +392,7 @@ const BusinessDetails = ({ search, onClose }) => {
                                                                     <img className="current-user-review-actions-img" src={editpen} alt='nope images'></img>
                                                                 </button>
                                                             </NavLink>
-                                                            <button onClick={() => dispatch(removeReview(currentUserReview[0]?.id))} className="current-user-review-actions-btn">
+                                                            <button onClick={deleteReviewHandler} className="current-user-review-actions-btn">
                                                                 <img className="current-user-review-actions-img" src={trashcan} alt='trash can icon'></img>
                                                             </button>
 
