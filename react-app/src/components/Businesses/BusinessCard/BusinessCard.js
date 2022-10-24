@@ -4,14 +4,13 @@ import blurmap from '../../../assets/imgs/blurmap.png'
 import './BusinessCard.css'
 // import BusinessNavBar from "../BusinessDetails/Carousel/BusinessNavBar/BusinessNavBar"
 // import Fuse from 'fuse.js'
-
 import {
   StaticGoogleMap,
   Marker,
   // Path,
 } from 'react-static-google-map';
 
-
+import lem from '../../../assets/imgs/lem.png'
 import businessicon from '../../../assets/icons/business.svg'
 import nopes5 from "../../../assets/nopes/5-nopes.png"
 import nopes4 from "../../../assets/nopes/4-nopes.png"
@@ -23,7 +22,6 @@ import blacknope from "../../../assets/nopes/ratingimgblack.png"
 
 export default function BusinessCard({ search }) {
   const [businessList, setBusinessList] = useState(null)
-
 
   useEffect(() => {
     setBusinessList(search)
@@ -44,6 +42,8 @@ export default function BusinessCard({ search }) {
     if (e === 2) return "$$"
     if (e === 1) return "$"
   }
+
+  const imagepng = "AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU"
 
   let priceRange1 = Object.values(search).filter(business => {
     return business.price_range === 1
@@ -75,14 +75,18 @@ export default function BusinessCard({ search }) {
   })
 
   const resetFilter = Object.values(search)
-
   const imageOnErrorHandler = (event) => {
     event.currentTarget.src = businessicon;
   };
 
   if (!search.length) return (
     <div id='no-results-div'>
-      <h1 className="no-results-search">No results for this search</h1>
+      <img id="lem-image" src={lem} />
+      <div id="no-results-search">
+        <div>NOPE, SORRY!</div>
+        <div>NO RESULTS</div>
+        <div>FOUND</div>
+      </div>
     </div>
 
   )
@@ -257,7 +261,7 @@ export default function BusinessCard({ search }) {
               </div>
             )}
             {!!businessList?.length && Object.values(businessList || search).map((business, i) => {
-              let about = business.about
+              let about = business?.about
               business.about.length > 180 ? about = business.about.slice(0, 180) + "..." : about = business.about
               return (
 
@@ -277,7 +281,7 @@ export default function BusinessCard({ search }) {
                           <img id='nopes' alt='nopes' style={{ height: "23px", width: "125px" }} src={nopeRatingBar(business.review_average)} ></img>
                         </div>
                         <div id="business-card-review-average-div">
-                          <span >{business.review_average > 0 ? Math.ceil(business.review_average) : 'New' }</span>
+                          <span >{business.review_average > 0 ? Math.ceil(business.review_average) : 'New'}</span>
                         </div>
                         <div id="business-card-grumble-count-div">({business.review_count > 0 ? business.review_count : '0'} {" "}{business.review_count > 1 || !business.review_count ? "Grumbles" : "Grumble"})</div>
                       </div>
@@ -286,7 +290,7 @@ export default function BusinessCard({ search }) {
                         </span>{" "}<span>{business.city}</span></div>
                       <br></br>
 
-                      <div>"{about}"{" "}{business.about.length > 180 && (<Link id="more-link" to={`/businesses/${business.id}`}>more</Link>)}</div>
+                      <div>"{about}"{" "}{business?.about.length > 180 && (<Link id="more-link" to={`/businesses/${business.id}`}>more</Link>)}</div>
 
                     </div>
                   </div>
@@ -303,7 +307,7 @@ export default function BusinessCard({ search }) {
         <div id="blur-map-div" style={{ backgroundImage: `url(${blurmap})` }}>
           <div id="google-map-div">
 
-            <StaticGoogleMap size="640x640" apiKey="AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU">
+            <StaticGoogleMap size="640x640" apiKey={imagepng}>
               <Marker
                 location={{ lat: search[0].latitude, lng: search[0].longitude }}
                 color="red"

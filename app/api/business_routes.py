@@ -24,7 +24,7 @@ def get_all_businesses():
   ## TODO ADD QUERYING FOR SEARCHING "LIKE%NAME%"
   businesses = Business.query.all()
 
-  business_lst = [{"placeholder":"placehodor"}]
+  business_lst = []
   for business in businesses:
     business_dict = business.to_dict()
     images = BusinessImage.query.filter(BusinessImage.business_id == business.id).first()

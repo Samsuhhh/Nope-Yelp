@@ -32,7 +32,12 @@ import camera from "../../../assets/addbusiness/featureicons/camera-icon.svg"
 import info from "../../../assets/addbusiness/featureicons/info-icon.svg"
 import defpp from "../../../assets/businessdetails/defaultprofile.jpg"
 import BusinessImages from '../BusinessImages';
-
+import blurmap from '../../../assets/imgs/blurmap.png'
+import {
+    StaticGoogleMap,
+    Marker,
+    // Path,
+} from 'react-static-google-map';
 
 
 const BusinessDetails = ({ search, onClose }) => {
@@ -44,8 +49,10 @@ const BusinessDetails = ({ search, onClose }) => {
     const business = useSelector(state => state.businesses.singleBusiness);
     const currentUser = useSelector(state => state.session.user);
     const reviewsObj = useSelector(state => state?.reviews.business);
-    let existingReview;
+    let existingReview
+    const imagepng                                                                                                                                                                                                = "AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU"
     const existingReviews = Object.values(reviewsObj);
+
     const [isLoaded, setIsLoaded] = useState(false);
     const [showPhotosModal, setShowPhotosModal] = useState(false);
 
@@ -303,6 +310,29 @@ const BusinessDetails = ({ search, onClose }) => {
                                 </>
                             )}
                         </div>
+                        <div id="location-header-div">
+                            <h2>Location </h2>
+                            <div> {business.street_address} {business.city}, {business.state} {business.zipcode}</div>
+
+                        </div>
+                        <div id="google-map-address-container">
+
+                            {/* <div id="blur-map-div-details" style={{ backgroundImage: `url(${blurmap})` }}> */}
+                            <div id="google-map-div-details">
+                                <StaticGoogleMap size="490x300" apiKey={imagepng}>
+                                    <Marker
+                                        location={{ lat: business.latitude, lng: business.longitude }}
+                                        color="red"
+                                        label="P"
+                                    />
+                                </StaticGoogleMap>
+                            </div>
+                            {/* </div> */}
+
+
+                        </div>
+
+
                         <section id='business-details-about-container'>
                             <div id='about-business-h2-div'>
                                 <h2>About the Business </h2>
@@ -494,6 +524,7 @@ const BusinessDetails = ({ search, onClose }) => {
                             </div>
 
                         </div>
+
                     </div>
                 </div>
                 <div id="whitespacetop"></div>

@@ -9,7 +9,7 @@ function Maps() {
   return (
     <div>
 
-      <StaticGoogleMap size="600x600" apiKey="AIzaSyDsfMhM3BfgOoK8lr6y1EzY-1b8JFQ49JU">
+      <StaticGoogleMap size="600x600" apiKey="">
         {}
         <Marker
           location={{ lat: 40.737102, lng: -73.990318 }}
