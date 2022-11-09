@@ -312,7 +312,7 @@ const BusinessDetails = ({ search, onClose }) => {
                         </div>
                         <div id="location-header-div">
                             <h2>Location </h2>
-
+                            
 
                         </div>
                         <div id="google-map-address-container">
